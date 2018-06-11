@@ -14,12 +14,14 @@ fileprivate let keys = TranslateBarKeys()
 
 enum YandexTranslate  {
 	case getSupportedLanguages
+	case detectLanguage(text: String)
+	case translate(from: Language, to: Language, text: String)
 }
 
 extension YandexTranslate: TargetType {
 	var baseURL: URL {
 		switch self {
-		case .getSupportedLanguages:
+		case .getSupportedLanguages, .detectLanguage, .translate:
 			return URL(string: "https://translate.yandex.net")!
 		}
 	}
@@ -28,12 +30,16 @@ extension YandexTranslate: TargetType {
 		switch self {
 		case .getSupportedLanguages:
 			return "/api/v1.5/tr.json/getLangs"
+		case .detectLanguage:
+			return "/api/v1.5/tr.json/detect"
+		case .translate:
+			return "/api/v1.5/tr.json/translate"
 		}
 	}
 
 	var method: Moya.Method {
 		switch self {
-		case .getSupportedLanguages:
+		case .getSupportedLanguages, .detectLanguage, .translate:
 			return .post
 		}
 	}
@@ -54,7 +60,22 @@ extension YandexTranslate: TargetType {
 				parameters: [ParameterKeys.ui: "ru", ParameterKeys.key: keys.yandexTranslateKey],
 				encoding: URLEncoding.default
 			)
+		case .detectLanguage(let text):
+			return .requestParameters(
+				parameters: [ParameterKeys.key: keys.yandexTranslateKey, ParameterKeys.text: text],
+				encoding: URLEncoding.default
+			)
+		case .translate(let from, let to, let text):
+			return .requestParameters(
+				parameters: [
+					ParameterKeys.key: keys.yandexTranslateKey,
+					ParameterKeys.language: "\(from.shortName)-\(to.shortName)",
+					ParameterKeys.text: text
+				],
+				encoding: URLEncoding.default
+			)
 		}
+
 	}
 
 	var headers: [String : String]? {

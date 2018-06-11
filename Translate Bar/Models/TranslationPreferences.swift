@@ -9,15 +9,6 @@
 import Foundation
 import EVReflection
 
-struct Language: Hashable {
-	let shortName: String
-	let fullName: String
-
-	static func == (lhs: Language, rhs: Language) -> Bool {
-		return lhs.fullName == rhs.fullName && lhs.shortName == rhs.shortName
-	}
-}
-
 class TranslationPreferences: EVObject {
 	private var _directions: [(String, String)]?
 
@@ -54,11 +45,11 @@ class TranslationPreferences: EVObject {
 						}
 					}
 					self._directions = nil
-					Log.verbose("Decoding directions from languaged END")
+					Log.verbose("Decoding directions from languages END")
 				},
 				encodeConverter: {
 					var dict: [String: String] = [:]
-					self.languages.forEach({dict.updateValue($0.fullName, forKey: $0.shortName)})
+					self.languages.forEach({dict.updateValue($0.fullName ?? "", forKey: $0.shortName)})
 					return dict
 				}
 			),
@@ -66,7 +57,7 @@ class TranslationPreferences: EVObject {
 				key: "dirs",
 				decodeConverter: { value in
 					guard let dirs = value as? [String] else {
-						Log.error("Unexpected dirs response \(String(describing: value))")
+						Log.error("Unexpected dirs response: \(String(describing: value))")
 						return
 					}
 					self._directions = dirs.map { $0.split(separator: "-")}
@@ -82,8 +73,7 @@ class TranslationPreferences: EVObject {
 						})
 					}).joined())
 				}
-			)
-
+			),
 		]
 	}
 }

@@ -23,7 +23,7 @@ class Translate_BarTests: XCTestCase {
         super.tearDown()
     }
 
-	func testTranslationPreferences() {
+	func testTranslationPreferencesParsing() {
 		let json =
 """
 {
@@ -44,5 +44,35 @@ class Translate_BarTests: XCTestCase {
 		XCTAssertEqual(pref.directions.count, 3)
 		XCTAssertEqual(pref.languages.first(where: {$0.shortName == "en"})!.fullName, "Английский")
 		XCTAssertEqual(pref.directions[Language(shortName: "ru", fullName: "Русский")], [Language(shortName: "uk", fullName: "Украинский")])
+	}
+
+	func testDecodeTextParsing() {
+		let json =
+"""
+{
+    "code": 200,
+    "lang": "en"
+}
+"""
+		let lang = Language(json: json)
+		XCTAssertEqual(lang.shortName, "en")
+		XCTAssertNil(lang.fullName)
+	}
+
+	func testDecodeTranslationParsing() {
+		let json =
+"""
+{
+    "code": 200,
+    "lang": "en-ru",
+    "text": [
+        "Здравствуй, Мир!"
+    ]
+}
+"""
+		let object = Translation(json: json)
+		XCTAssertEqual(object.from, Language(shortName: "en"))
+		XCTAssertEqual(object.to, Language(shortName: "ru"))
+		XCTAssertEqual(object.text, "Здравствуй, Мир!")
 	}
 }
