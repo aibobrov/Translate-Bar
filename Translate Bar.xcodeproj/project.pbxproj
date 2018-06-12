@@ -17,8 +17,8 @@
 		A174EDDF20CC798B00465A42 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A174EDDE20CC798B00465A42 /* AppDelegate.swift */; };
 		A174EDE420CC798B00465A42 /* Translate_Bar.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A174EDE220CC798B00465A42 /* Translate_Bar.xcdatamodeld */; };
 		A174EDE620CC798E00465A42 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A174EDE520CC798E00465A42 /* Assets.xcassets */; };
-		A174EDF520CC798E00465A42 /* Translate_BarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A174EDF420CC798E00465A42 /* Translate_BarTests.swift */; };
-		A174EE0020CC798E00465A42 /* Translate_BarUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A174EDFF20CC798E00465A42 /* Translate_BarUITests.swift */; };
+		A174EDF520CC798E00465A42 /* TranslateBarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A174EDF420CC798E00465A42 /* TranslateBarTests.swift */; };
+		A174EE0020CC798E00465A42 /* TranslateBarUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A174EDFF20CC798E00465A42 /* TranslateBarUITests.swift */; };
 		AFD708C7E1973F659988BE13 /* Pods_Translate_Bar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D12A2F364991FE0E85D2D3AF /* Pods_Translate_Bar.framework */; };
 /* End PBXBuildFile section */
 
@@ -56,10 +56,10 @@
 		A174EDEA20CC798E00465A42 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A174EDEB20CC798E00465A42 /* Translate_Bar.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Translate_Bar.entitlements; sourceTree = "<group>"; };
 		A174EDF020CC798E00465A42 /* Translate BarTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Translate BarTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		A174EDF420CC798E00465A42 /* Translate_BarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Translate_BarTests.swift; sourceTree = "<group>"; };
+		A174EDF420CC798E00465A42 /* TranslateBarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateBarTests.swift; sourceTree = "<group>"; };
 		A174EDF620CC798E00465A42 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A174EDFB20CC798E00465A42 /* Translate BarUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Translate BarUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		A174EDFF20CC798E00465A42 /* Translate_BarUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Translate_BarUITests.swift; sourceTree = "<group>"; };
+		A174EDFF20CC798E00465A42 /* TranslateBarUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateBarUITests.swift; sourceTree = "<group>"; };
 		A174EE0120CC798E00465A42 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ACE1539EC81D8C984F059186 /* Pods-Translate BarTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Translate BarTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Translate BarTests/Pods-Translate BarTests.release.xcconfig"; sourceTree = "<group>"; };
 		B3B419AC4D3C759638D02B10 /* Pods-Translate Bar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Translate Bar.release.xcconfig"; path = "Pods/Target Support Files/Pods-Translate Bar/Pods-Translate Bar.release.xcconfig"; sourceTree = "<group>"; };
@@ -177,7 +177,7 @@
 		A174EDF320CC798E00465A42 /* Translate BarTests */ = {
 			isa = PBXGroup;
 			children = (
-				A174EDF420CC798E00465A42 /* Translate_BarTests.swift */,
+				A174EDF420CC798E00465A42 /* TranslateBarTests.swift */,
 				A174EDF620CC798E00465A42 /* Info.plist */,
 			);
 			path = "Translate BarTests";
@@ -186,7 +186,7 @@
 		A174EDFE20CC798E00465A42 /* Translate BarUITests */ = {
 			isa = PBXGroup;
 			children = (
-				A174EDFF20CC798E00465A42 /* Translate_BarUITests.swift */,
+				A174EDFF20CC798E00465A42 /* TranslateBarUITests.swift */,
 				A174EE0120CC798E00465A42 /* Info.plist */,
 			);
 			path = "Translate BarUITests";
@@ -236,6 +236,7 @@
 				A174EDD820CC798B00465A42 /* Frameworks */,
 				A174EDD920CC798B00465A42 /* Resources */,
 				CDAA7D3DCF72044FA4451143 /* [CP] Embed Pods Frameworks */,
+				A1E717C020D064ED0080A546 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -393,6 +394,19 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		A1E717C020D064ED0080A546 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
+		};
 		BD187C4E2C60F7CB8EA5C37A /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -463,7 +477,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A174EDF520CC798E00465A42 /* Translate_BarTests.swift in Sources */,
+				A174EDF520CC798E00465A42 /* TranslateBarTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -471,7 +485,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A174EE0020CC798E00465A42 /* Translate_BarUITests.swift in Sources */,
+				A174EE0020CC798E00465A42 /* TranslateBarUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

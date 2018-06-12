@@ -1,5 +1,5 @@
 //
-//  Translate_BarTests.swift
+//  TranslateBarTests.swift
 //  Translate BarTests
 //
 //  Created by Artem Bobrov on 09.06.2018.
@@ -13,11 +13,11 @@ import EVReflection
 
 @testable import Translate_Bar
 
-class Translate_BarTests: XCTestCase {
+class TranslateBarTests: XCTestCase {
     override func setUp() {
         super.setUp()
     }
-    
+
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
