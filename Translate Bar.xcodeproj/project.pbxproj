@@ -19,6 +19,9 @@
 		A174EDE620CC798E00465A42 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A174EDE520CC798E00465A42 /* Assets.xcassets */; };
 		A174EDF520CC798E00465A42 /* TranslateBarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A174EDF420CC798E00465A42 /* TranslateBarTests.swift */; };
 		A174EE0020CC798E00465A42 /* TranslateBarUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A174EDFF20CC798E00465A42 /* TranslateBarUITests.swift */; };
+		A1E717C520D07F540080A546 /* TranslateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E717C420D07F540080A546 /* TranslateViewModel.swift */; };
+		A1E717C820D07F9A0080A546 /* TranslateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E717C720D07F9A0080A546 /* TranslateViewController.swift */; };
+		A1E717CA20D087870080A546 /* NSTextView+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E717C920D087870080A546 /* NSTextView+Rx.swift */; };
 		AFD708C7E1973F659988BE13 /* Pods_Translate_Bar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D12A2F364991FE0E85D2D3AF /* Pods_Translate_Bar.framework */; };
 /* End PBXBuildFile section */
 
@@ -61,6 +64,9 @@
 		A174EDFB20CC798E00465A42 /* Translate BarUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Translate BarUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A174EDFF20CC798E00465A42 /* TranslateBarUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateBarUITests.swift; sourceTree = "<group>"; };
 		A174EE0120CC798E00465A42 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A1E717C420D07F540080A546 /* TranslateViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TranslateViewModel.swift; sourceTree = "<group>"; };
+		A1E717C720D07F9A0080A546 /* TranslateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateViewController.swift; sourceTree = "<group>"; };
+		A1E717C920D087870080A546 /* NSTextView+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSTextView+Rx.swift"; sourceTree = "<group>"; };
 		ACE1539EC81D8C984F059186 /* Pods-Translate BarTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Translate BarTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Translate BarTests/Pods-Translate BarTests.release.xcconfig"; sourceTree = "<group>"; };
 		B3B419AC4D3C759638D02B10 /* Pods-Translate Bar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Translate Bar.release.xcconfig"; path = "Pods/Target Support Files/Pods-Translate Bar/Pods-Translate Bar.release.xcconfig"; sourceTree = "<group>"; };
 		C1A3F10545DABA13B1E75731 /* Pods-Translate BarUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Translate BarUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Translate BarUITests/Pods-Translate BarUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -163,6 +169,7 @@
 				A174EDDE20CC798B00465A42 /* AppDelegate.swift */,
 				A120815920CDBC9200C57360 /* Services */,
 				A1E45D8F20CD66DB00FD8198 /* Extensions */,
+				A1E717C620D07F740080A546 /* Controllers */,
 				A1E45D8E20CD465100FD8198 /* Views */,
 				A1E45D8D20CD463F00FD8198 /* ViewModels */,
 				A1E45D8C20CD463100FD8198 /* Models */,
@@ -204,6 +211,7 @@
 		A1E45D8D20CD463F00FD8198 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				A1E717C420D07F540080A546 /* TranslateViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -212,6 +220,7 @@
 			isa = PBXGroup;
 			children = (
 				A120815C20CDBCF100C57360 /* Screens */,
+				A1E717C920D087870080A546 /* NSTextView+Rx.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -222,6 +231,14 @@
 				A1521FD620CD6CD50048EC26 /* NSStoryboardExtensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		A1E717C620D07F740080A546 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				A1E717C720D07F9A0080A546 /* TranslateViewController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -467,9 +484,12 @@
 				A120815820CDB31F00C57360 /* TranslationPreferences.swift in Sources */,
 				A174EDE420CC798B00465A42 /* Translate_Bar.xcdatamodeld in Sources */,
 				A1521FD720CD6CD50048EC26 /* NSStoryboardExtensions.swift in Sources */,
+				A1E717C520D07F540080A546 /* TranslateViewModel.swift in Sources */,
 				A120816A20CEC17C00C57360 /* Language.swift in Sources */,
+				A1E717C820D07F9A0080A546 /* TranslateViewController.swift in Sources */,
 				A120815B20CDBCA600C57360 /* YandexTranslate.swift in Sources */,
 				A174EDDF20CC798B00465A42 /* AppDelegate.swift in Sources */,
+				A1E717CA20D087870080A546 /* NSTextView+Rx.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
