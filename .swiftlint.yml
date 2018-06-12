@@ -1,0 +1,10 @@
+disabled_rules:
+  - line_length
+  - identifier_name
+excluded:
+  - Pods
+
+force_cast:
+  severity: warning
+force_try:
+  severity: warning

@@ -23,7 +23,7 @@ class TranslationPreferences: EVObject {
 		]
 	}
 
-	override func propertyConverters() -> [(key: String, decodeConverter: ((Any?) -> ()), encodeConverter: (() -> Any?))] {
+	override func propertyConverters() -> [(key: String, decodeConverter: ((Any?) -> Void), encodeConverter: (() -> Any?))] {
 		return [
 			(
 				key: "langs",
@@ -64,7 +64,7 @@ class TranslationPreferences: EVObject {
 										   .map { (String($0.first!), String($0.last!)) }
 
 					Log.verbose("Decoding raw translation directions END")
-					
+
 			},
 				encodeConverter: {
 					Array(self.directions.map({ pair -> [String] in
@@ -73,7 +73,7 @@ class TranslationPreferences: EVObject {
 						})
 					}).joined())
 				}
-			),
+			)
 		]
 	}
 }

@@ -11,9 +11,8 @@ import EVReflection
 
 class Language: Hashable {
 
-
 	var shortName: String = ""
-	var fullName: String? = nil
+	var fullName: String?
 
 	init(shortName: String, fullName: String? = nil) {
 		self.shortName = shortName
@@ -29,8 +28,6 @@ class Language: Hashable {
 	}
 }
 
-
-
 class Translation: EVObject {
 	var from: Language?
 	var to: Language?
@@ -45,7 +42,7 @@ class Translation: EVObject {
 		]
 	}
 
-	override func propertyConverters() -> [(key: String, decodeConverter: ((Any?) -> ()), encodeConverter: (() -> Any?))] {
+	override func propertyConverters() -> [(key: String, decodeConverter: ((Any?) -> Void), encodeConverter: (() -> Any?))] {
 		return [
 			(
 				key: "text",

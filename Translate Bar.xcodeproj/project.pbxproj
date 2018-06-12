@@ -119,13 +119,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		A120815420CDAC4700C57360 /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Controllers;
-			sourceTree = "<group>";
-		};
 		A120815920CDBC9200C57360 /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -173,7 +166,6 @@
 				A1E45D8E20CD465100FD8198 /* Views */,
 				A1E45D8D20CD463F00FD8198 /* ViewModels */,
 				A1E45D8C20CD463100FD8198 /* Models */,
-				A120815420CDAC4700C57360 /* Controllers */,
 				A174EDE520CC798E00465A42 /* Assets.xcassets */,
 				A174EDEA20CC798E00465A42 /* Info.plist */,
 				A174EDEB20CC798E00465A42 /* Translate_Bar.entitlements */,

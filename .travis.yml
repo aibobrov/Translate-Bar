@@ -12,4 +12,4 @@ before_install:
 - bundle exec pod keys set YandexTranslateKey $YANDEXAPIDICTIONARYKEY Translate\ Bar
 - pod update
 script: 
-- xcodebuild clean build test -workspace Translate\ Bar.xcworkspace -scheme Translate\ Bar | xcpretty
+- xcodebuild clean build test -workspace Translate\ Bar.xcworkspace -scheme Translate\ Bar | xcpretty -c && exit ${PIPESTATUS[0]}

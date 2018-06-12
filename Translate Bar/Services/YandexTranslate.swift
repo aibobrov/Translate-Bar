@@ -10,9 +10,9 @@ import Foundation
 import Moya
 import Keys
 
-fileprivate let keys = TranslateBarKeys()
+private let keys = TranslateBarKeys()
 
-enum YandexTranslate  {
+enum YandexTranslate {
 	case getSupportedLanguages
 	case detectLanguage(text: String)
 	case translate(from: Language, to: Language, text: String)
@@ -78,7 +78,7 @@ extension YandexTranslate: TargetType {
 
 	}
 
-	var headers: [String : String]? {
+	var headers: [String: String]? {
 		return [
 			"Content-Type": "application/x-www-form-urlencoded",
 			"Accept": "*/*"
