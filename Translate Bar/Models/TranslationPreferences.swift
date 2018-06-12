@@ -39,11 +39,11 @@ class TranslationPreferences: EVObject {
 							let from = self.languages.first(where: { $0.shortName == pair.0 })!
 							let to = self.languages.first(where: { $0.shortName == pair.1 })!
 
-							var value = self.directions[from] ?? []
-							value.append(to)
-							self.directions[from] = value
+							let value = self.directions[from] ?? []
+							self.directions.updateValue(value + [to], forKey: from)
 						}
 					}
+					print(self.directions.map({($0.key.shortName, $0.value.map({$0.shortName}))}))
 					self._directions = nil
 					Log.verbose("Decoding directions from languages END")
 				},

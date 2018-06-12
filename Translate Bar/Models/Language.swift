@@ -9,7 +9,9 @@
 import Foundation
 import EVReflection
 
-class Language: EVObject {
+class Language: Hashable {
+
+
 	var shortName: String = ""
 	var fullName: String? = nil
 
@@ -18,58 +20,13 @@ class Language: EVObject {
 		self.fullName = fullName
 	}
 
-	required init() {
-		super.init()
-	}
-
-	required convenience init?(coder: NSCoder) {
-		self.init(coder: coder)
-	}
-
-	override func propertyMapping() -> [(keyInObject: String?, keyInResource: String?)] {
-		return [
-			(keyInObject: "shortName", keyInResource: nil),
-			(keyInObject: "fullName", keyInResource: nil),
-			(keyInObject: nil, keyInResource: "code"),
-		]
-	}
-
-	override func propertyConverters() -> [(key: String, decodeConverter: ((Any?) -> ()), encodeConverter: (() -> Any?))] {
-		return [
-			(
-				key: "lang",
-				decodeConverter: { value in
-					guard let response = value as? String else {
-						Log.error("Unexpected detected language response: \(String(describing: value))")
-						return
-					}
-					self.shortName = response
-					Log.verbose("Decoding detected language END")
-			},
-				encodeConverter: {
-					return nil
-			}
-			),
-			(
-				key: "code",
-				decodeConverter: { value in
-					guard let code = value as? Int else {
-						Log.error("Unexpected detected language response code: \(String(describing: value))")
-						return
-					}
-					if code != 200 {
-						Log.error("Unexpected response code")
-					}
-				},
-				encodeConverter: { return nil }
-			)
-		]
-	}
-
 	static func == (lhs: Language, rhs: Language) -> Bool {
 		return lhs.fullName == rhs.fullName && lhs.shortName == rhs.shortName
 	}
 
+	var hashValue: Int {
+		return shortName.hashValue
+	}
 }
 
 

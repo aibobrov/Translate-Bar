@@ -54,7 +54,8 @@ class Translate_BarTests: XCTestCase {
     "lang": "en"
 }
 """
-		let lang = Language(json: json)
+		let shortName = EVReflection.dictionaryFromJson(json) as! [String: Any]
+		let lang = Language(shortName: shortName["lang"] as! String)
 		XCTAssertEqual(lang.shortName, "en")
 		XCTAssertNil(lang.fullName)
 	}
