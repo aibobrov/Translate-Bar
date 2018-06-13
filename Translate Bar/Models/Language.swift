@@ -32,13 +32,15 @@ class Translation: EVObject {
 	var from: Language?
 	var to: Language?
 	var text: String?
+	var message: String?
 
 	override func propertyMapping() -> [(keyInObject: String?, keyInResource: String?)] {
 		return [
 			(keyInObject: "from", keyInResource: nil),
 			(keyInObject: "to", keyInResource: nil),
 			(keyInObject: "text", keyInResource: nil),
-			(keyInObject: "code", keyInResource: nil)
+			(keyInObject: "code", keyInResource: nil),
+			(keyInObject: "message", keyInResource: nil)
 		]
 	}
 

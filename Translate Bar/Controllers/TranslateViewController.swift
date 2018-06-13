@@ -11,19 +11,23 @@ import RxCocoa
 import RxSwift
 
 class TranslateViewController: NSViewController {
+	@IBOutlet var InputTextView: NSTextView!
+	@IBOutlet var OutputTextView: NSTextView!
 
-	@IBOutlet var inputTextView: NSTextView!
-	@IBOutlet var outputTextView: NSTextView!
-
-	let translateVM = TranslateViewModel()
-	let disposeBag = DisposeBag()
+	var translateVM = TranslateViewModel()
+	private let disposeBag = DisposeBag()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-		inputTextView.rx.text.bind(to: translateVM.inputText)
-		translateVM.inputText.asObservable().subscribe { (event) in
-			print("translateVM \(event)")
-		}
+		InputTextView.rx.text
+			.filter({$0 != nil && $0!.count > 0})
+			.map({$0!})
+			.debounce(1, scheduler: MainScheduler.instance)
+			.bind(to: translateVM.inputText)
+			.disposed(by: disposeBag)
+
+		translateVM.outputText
+			.bind(to: OutputTextView.rx.text)
+			.disposed(by: disposeBag)
     }
-    
 }

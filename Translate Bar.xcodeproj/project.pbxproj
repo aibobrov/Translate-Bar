@@ -22,6 +22,8 @@
 		A1E717C520D07F540080A546 /* TranslateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E717C420D07F540080A546 /* TranslateViewModel.swift */; };
 		A1E717C820D07F9A0080A546 /* TranslateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E717C720D07F9A0080A546 /* TranslateViewController.swift */; };
 		A1E717CA20D087870080A546 /* NSTextView+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E717C920D087870080A546 /* NSTextView+Rx.swift */; };
+		A1E717CC20D1B84A0080A546 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E717CB20D1B84A0080A546 /* TextView.swift */; };
+		A1E717D120D1CAB90080A546 /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A1E717D020D1CA4C0080A546 /* OpenSans-Regular.ttf */; };
 		AFD708C7E1973F659988BE13 /* Pods_Translate_Bar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D12A2F364991FE0E85D2D3AF /* Pods_Translate_Bar.framework */; };
 /* End PBXBuildFile section */
 
@@ -67,6 +69,8 @@
 		A1E717C420D07F540080A546 /* TranslateViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TranslateViewModel.swift; sourceTree = "<group>"; };
 		A1E717C720D07F9A0080A546 /* TranslateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateViewController.swift; sourceTree = "<group>"; };
 		A1E717C920D087870080A546 /* NSTextView+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSTextView+Rx.swift"; sourceTree = "<group>"; };
+		A1E717CB20D1B84A0080A546 /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
+		A1E717D020D1CA4C0080A546 /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
 		ACE1539EC81D8C984F059186 /* Pods-Translate BarTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Translate BarTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Translate BarTests/Pods-Translate BarTests.release.xcconfig"; sourceTree = "<group>"; };
 		B3B419AC4D3C759638D02B10 /* Pods-Translate Bar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Translate Bar.release.xcconfig"; path = "Pods/Target Support Files/Pods-Translate Bar/Pods-Translate Bar.release.xcconfig"; sourceTree = "<group>"; };
 		C1A3F10545DABA13B1E75731 /* Pods-Translate BarUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Translate BarUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Translate BarUITests/Pods-Translate BarUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -166,6 +170,7 @@
 		A174EDDD20CC798B00465A42 /* Translate Bar */ = {
 			isa = PBXGroup;
 			children = (
+				A1E717CD20D1C4F70080A546 /* Fonts */,
 				A174EDDE20CC798B00465A42 /* AppDelegate.swift */,
 				A120815920CDBC9200C57360 /* Services */,
 				A1E45D8F20CD66DB00FD8198 /* Extensions */,
@@ -221,6 +226,7 @@
 			children = (
 				A120815C20CDBCF100C57360 /* Screens */,
 				A1E717C920D087870080A546 /* NSTextView+Rx.swift */,
+				A1E717CB20D1B84A0080A546 /* TextView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -239,6 +245,14 @@
 				A1E717C720D07F9A0080A546 /* TranslateViewController.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		A1E717CD20D1C4F70080A546 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				A1E717D020D1CA4C0080A546 /* OpenSans-Regular.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -354,6 +368,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A174EDE620CC798E00465A42 /* Assets.xcassets in Resources */,
+				A1E717D120D1CAB90080A546 /* OpenSans-Regular.ttf in Resources */,
 				A120816320CDBF3500C57360 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -490,6 +505,7 @@
 				A120815B20CDBCA600C57360 /* YandexTranslate.swift in Sources */,
 				A174EDDF20CC798B00465A42 /* AppDelegate.swift in Sources */,
 				A1E717CA20D087870080A546 /* NSTextView+Rx.swift in Sources */,
+				A1E717CC20D1B84A0080A546 /* TextView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
