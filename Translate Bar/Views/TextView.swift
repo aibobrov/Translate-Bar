@@ -11,10 +11,4 @@ import Cocoa
 @IBDesignable
 class TextView: NSTextView {
 
-
-
-    override func draw(_ dirtyRect: NSRect) {
-        super.draw(dirtyRect)
-    }
-    
 }

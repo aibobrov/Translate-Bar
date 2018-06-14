@@ -25,8 +25,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 	let popover: NSPopover = {
 		let popover = NSPopover()
 		popover.animates = true
-		popover.behavior = NSPopover.Behavior.transient
-		popover.appearance = NSAppearance(named: NSAppearance.Name.vibrantLight)
+		popover.behavior = .transient
+		popover.appearance = NSAppearance(named: .vibrantLight)
 		return popover
 	}()
 
@@ -53,15 +53,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 	func applicationWillTerminate(_ aNotification: Notification) {
 	}
 
-	func showPopover(_ sender: AnyObject?) {
-		popover.show(relativeTo: sender!.bounds, of: sender! as! NSView, preferredEdge: .maxY)
+	func showPopover(_ sender: NSView) {
+		popover.show(relativeTo: sender.bounds, of: sender, preferredEdge: .maxY)
 	}
 
-	func closePopover(_ sender: AnyObject?) {
+	func closePopover(_ sender: NSView) {
 		popover.performClose(sender)
 	}
 
-	@objc func togglePopover(_ sender: AnyObject) {
+	@objc func togglePopover(_ sender: NSView) {
 		if popover.isShown {
 			closePopover(sender)
 		} else {
@@ -121,7 +121,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 	        let nserror = error as NSError
 
 	        let result = sender.presentError(nserror)
-	        if (result) {
+	        if result {
 	            return .terminateCancel
 	        }
 

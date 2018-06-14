@@ -1,8 +1,12 @@
 disabled_rules:
   - line_length
   - identifier_name
+  - large_tuple
 excluded:
   - Pods
+  - Translate BarTests
+  - Translate BarUITests
+
 
 force_cast:
   severity: warning

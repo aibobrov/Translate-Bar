@@ -10,10 +10,9 @@ import Cocoa
 import RxSwift
 import RxCocoa
 
-class RxTextViewDelegateProxy:
-	DelegateProxy<NSTextView, NSTextViewDelegate>,
-	DelegateProxyType,
-	NSTextViewDelegate {
+class RxTextViewDelegateProxy: DelegateProxy<NSTextView, NSTextViewDelegate>,
+							   DelegateProxyType,
+							   NSTextViewDelegate {
 
 	public weak private(set) var textView: NSTextView?
 	fileprivate let textSubject = PublishSubject<String?>()
