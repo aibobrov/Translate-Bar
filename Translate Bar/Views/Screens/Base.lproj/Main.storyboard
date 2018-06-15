@@ -735,14 +735,18 @@
                                     <real value="3.4028234663852886e+38"/>
                                 </customSpacing>
                             </stackView>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gb9-zA-Jra" customClass="HalfRoundedButton" customModule="Translate_Bar" customModuleProvider="target">
-                                <rect key="frame" x="267" y="312" width="80" height="31"/>
+                            <segmentedControl verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eaZ-JN-MEs">
+                                <rect key="frame" x="20" y="312" width="101" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="push" title="Button" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="CVA-ll-JRc">
-                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
+                                <segmentedCell key="cell" borderStyle="border" alignment="left" style="capsule" trackingMode="selectOne" id="i6a-GO-5Ia" customClass="RightSideRoundedSegmentedCell" customModule="Translate_Bar" customModuleProvider="target">
                                     <font key="font" metaFont="system"/>
-                                </buttonCell>
-                            </button>
+                                    <segments>
+                                        <segment label="0" width="32"/>
+                                        <segment label="1" selected="YES" tag="1"/>
+                                        <segment label="3" width="32"/>
+                                    </segments>
+                                </segmentedCell>
+                            </segmentedControl>
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="eCw-BB-s5c" secondAttribute="bottom" constant="45" id="AiM-ru-eZe"/>
@@ -755,7 +759,7 @@
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="194" y="843"/>
+            <point key="canvasLocation" x="33" y="796"/>
         </scene>
     </scenes>
 </document>

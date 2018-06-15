@@ -25,8 +25,9 @@
 		A1E717CC20D1B84A0080A546 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E717CB20D1B84A0080A546 /* TextView.swift */; };
 		A1E717D120D1CAB90080A546 /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A1E717D020D1CA4C0080A546 /* OpenSans-Regular.ttf */; };
 		A1E717D320D305C90080A546 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E717D220D305C90080A546 /* View.swift */; };
-		A1E717F320D31EE40080A546 /* BezierPathExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E717F220D31EE40080A546 /* BezierPathExtension.swift */; };
-		A1E717F520D3227A0080A546 /* HalfRoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E717F420D322790080A546 /* HalfRoundedButton.swift */; };
+		A1E717F920D4644B0080A546 /* HalfRoundedBezierPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E717F820D4644B0080A546 /* HalfRoundedBezierPath.swift */; };
+		A1E717FE20D479A70080A546 /* BaseRoundedSegmentedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E717FD20D479A70080A546 /* BaseRoundedSegmentedCell.swift */; };
+		A1E7180020D480F80080A546 /* SidedRoundedSegmentedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E717FF20D480F70080A546 /* SidedRoundedSegmentedCell.swift */; };
 		AFD708C7E1973F659988BE13 /* Pods_Translate_Bar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D12A2F364991FE0E85D2D3AF /* Pods_Translate_Bar.framework */; };
 /* End PBXBuildFile section */
 
@@ -75,8 +76,9 @@
 		A1E717CB20D1B84A0080A546 /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
 		A1E717D020D1CA4C0080A546 /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
 		A1E717D220D305C90080A546 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
-		A1E717F220D31EE40080A546 /* BezierPathExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BezierPathExtension.swift; sourceTree = "<group>"; };
-		A1E717F420D322790080A546 /* HalfRoundedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HalfRoundedButton.swift; sourceTree = "<group>"; };
+		A1E717F820D4644B0080A546 /* HalfRoundedBezierPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HalfRoundedBezierPath.swift; sourceTree = "<group>"; };
+		A1E717FD20D479A70080A546 /* BaseRoundedSegmentedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRoundedSegmentedCell.swift; sourceTree = "<group>"; };
+		A1E717FF20D480F70080A546 /* SidedRoundedSegmentedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SidedRoundedSegmentedCell.swift; sourceTree = "<group>"; };
 		ACE1539EC81D8C984F059186 /* Pods-Translate BarTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Translate BarTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Translate BarTests/Pods-Translate BarTests.release.xcconfig"; sourceTree = "<group>"; };
 		B3B419AC4D3C759638D02B10 /* Pods-Translate Bar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Translate Bar.release.xcconfig"; path = "Pods/Target Support Files/Pods-Translate Bar/Pods-Translate Bar.release.xcconfig"; sourceTree = "<group>"; };
 		C1A3F10545DABA13B1E75731 /* Pods-Translate BarUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Translate BarUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Translate BarUITests/Pods-Translate BarUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -230,11 +232,11 @@
 		A1E45D8E20CD465100FD8198 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				A1E717F420D322790080A546 /* HalfRoundedButton.swift */,
+				A1E7180320D483510080A546 /* SegmentedCell */,
+				A1E717FC20D475C00080A546 /* BezierPath */,
 				A1E717C920D087870080A546 /* NSTextView+Rx.swift */,
 				A1E717CB20D1B84A0080A546 /* TextView.swift */,
 				A1E717D220D305C90080A546 /* View.swift */,
-				A1E717F220D31EE40080A546 /* BezierPathExtension.swift */,
 				A120815C20CDBCF100C57360 /* Screens */,
 			);
 			path = Views;
@@ -262,6 +264,23 @@
 				A1E717D020D1CA4C0080A546 /* OpenSans-Regular.ttf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		A1E717FC20D475C00080A546 /* BezierPath */ = {
+			isa = PBXGroup;
+			children = (
+				A1E717F820D4644B0080A546 /* HalfRoundedBezierPath.swift */,
+			);
+			path = BezierPath;
+			sourceTree = "<group>";
+		};
+		A1E7180320D483510080A546 /* SegmentedCell */ = {
+			isa = PBXGroup;
+			children = (
+				A1E717FF20D480F70080A546 /* SidedRoundedSegmentedCell.swift */,
+				A1E717FD20D479A70080A546 /* BaseRoundedSegmentedCell.swift */,
+			);
+			path = SegmentedCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -506,14 +525,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				A120815820CDB31F00C57360 /* TranslationPreferences.swift in Sources */,
-				A1E717F520D3227A0080A546 /* HalfRoundedButton.swift in Sources */,
+				A1E7180020D480F80080A546 /* SidedRoundedSegmentedCell.swift in Sources */,
+				A1E717F920D4644B0080A546 /* HalfRoundedBezierPath.swift in Sources */,
 				A174EDE420CC798B00465A42 /* Translate_Bar.xcdatamodeld in Sources */,
 				A1521FD720CD6CD50048EC26 /* NSStoryboardExtensions.swift in Sources */,
 				A1E717C520D07F540080A546 /* TranslateViewModel.swift in Sources */,
 				A120816A20CEC17C00C57360 /* Language.swift in Sources */,
 				A1E717C820D07F9A0080A546 /* TranslateViewController.swift in Sources */,
 				A120815B20CDBCA600C57360 /* YandexTranslate.swift in Sources */,
-				A1E717F320D31EE40080A546 /* BezierPathExtension.swift in Sources */,
+				A1E717FE20D479A70080A546 /* BaseRoundedSegmentedCell.swift in Sources */,
 				A174EDDF20CC798B00465A42 /* AppDelegate.swift in Sources */,
 				A1E717CA20D087870080A546 /* NSTextView+Rx.swift in Sources */,
 				A1E717D320D305C90080A546 /* View.swift in Sources */,
