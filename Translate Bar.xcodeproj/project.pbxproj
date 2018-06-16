@@ -28,6 +28,8 @@
 		A1E717F920D4644B0080A546 /* HalfRoundedBezierPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E717F820D4644B0080A546 /* HalfRoundedBezierPath.swift */; };
 		A1E717FE20D479A70080A546 /* BaseRoundedSegmentedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E717FD20D479A70080A546 /* BaseRoundedSegmentedCell.swift */; };
 		A1E7180020D480F80080A546 /* SidedRoundedSegmentedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E717FF20D480F70080A546 /* SidedRoundedSegmentedCell.swift */; };
+		A1E7180820D56E4C0080A546 /* BaseRoundedButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E7180720D56E4C0080A546 /* BaseRoundedButtonCell.swift */; };
+		A1E7180A20D576FD0080A546 /* SidedRoundedButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E7180920D576FD0080A546 /* SidedRoundedButtonCell.swift */; };
 		AFD708C7E1973F659988BE13 /* Pods_Translate_Bar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D12A2F364991FE0E85D2D3AF /* Pods_Translate_Bar.framework */; };
 /* End PBXBuildFile section */
 
@@ -79,6 +81,8 @@
 		A1E717F820D4644B0080A546 /* HalfRoundedBezierPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HalfRoundedBezierPath.swift; sourceTree = "<group>"; };
 		A1E717FD20D479A70080A546 /* BaseRoundedSegmentedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRoundedSegmentedCell.swift; sourceTree = "<group>"; };
 		A1E717FF20D480F70080A546 /* SidedRoundedSegmentedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SidedRoundedSegmentedCell.swift; sourceTree = "<group>"; };
+		A1E7180720D56E4C0080A546 /* BaseRoundedButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRoundedButtonCell.swift; sourceTree = "<group>"; };
+		A1E7180920D576FD0080A546 /* SidedRoundedButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidedRoundedButtonCell.swift; sourceTree = "<group>"; };
 		ACE1539EC81D8C984F059186 /* Pods-Translate BarTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Translate BarTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Translate BarTests/Pods-Translate BarTests.release.xcconfig"; sourceTree = "<group>"; };
 		B3B419AC4D3C759638D02B10 /* Pods-Translate Bar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Translate Bar.release.xcconfig"; path = "Pods/Target Support Files/Pods-Translate Bar/Pods-Translate Bar.release.xcconfig"; sourceTree = "<group>"; };
 		C1A3F10545DABA13B1E75731 /* Pods-Translate BarUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Translate BarUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Translate BarUITests/Pods-Translate BarUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -178,15 +182,14 @@
 		A174EDDD20CC798B00465A42 /* Translate Bar */ = {
 			isa = PBXGroup;
 			children = (
-				A1E717CD20D1C4F70080A546 /* Fonts */,
 				A174EDDE20CC798B00465A42 /* AppDelegate.swift */,
+				A1E7180420D485100080A546 /* Resources */,
 				A120815920CDBC9200C57360 /* Services */,
 				A1E45D8F20CD66DB00FD8198 /* Extensions */,
 				A1E717C620D07F740080A546 /* Controllers */,
 				A1E45D8E20CD465100FD8198 /* Views */,
 				A1E45D8D20CD463F00FD8198 /* ViewModels */,
 				A1E45D8C20CD463100FD8198 /* Models */,
-				A174EDE520CC798E00465A42 /* Assets.xcassets */,
 				A174EDEA20CC798E00465A42 /* Info.plist */,
 				A174EDEB20CC798E00465A42 /* Translate_Bar.entitlements */,
 				A174EDE220CC798B00465A42 /* Translate_Bar.xcdatamodeld */,
@@ -232,6 +235,7 @@
 		A1E45D8E20CD465100FD8198 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				A1E7180620D56E360080A546 /* ButtonCell */,
 				A1E7180320D483510080A546 /* SegmentedCell */,
 				A1E717FC20D475C00080A546 /* BezierPath */,
 				A1E717C920D087870080A546 /* NSTextView+Rx.swift */,
@@ -281,6 +285,32 @@
 				A1E717FD20D479A70080A546 /* BaseRoundedSegmentedCell.swift */,
 			);
 			path = SegmentedCell;
+			sourceTree = "<group>";
+		};
+		A1E7180420D485100080A546 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A1E717CD20D1C4F70080A546 /* Fonts */,
+				A1E7180520D485240080A546 /* Assets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		A1E7180520D485240080A546 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				A174EDE520CC798E00465A42 /* Assets.xcassets */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		A1E7180620D56E360080A546 /* ButtonCell */ = {
+			isa = PBXGroup;
+			children = (
+				A1E7180720D56E4C0080A546 /* BaseRoundedButtonCell.swift */,
+				A1E7180920D576FD0080A546 /* SidedRoundedButtonCell.swift */,
+			);
+			path = ButtonCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -537,6 +567,8 @@
 				A174EDDF20CC798B00465A42 /* AppDelegate.swift in Sources */,
 				A1E717CA20D087870080A546 /* NSTextView+Rx.swift in Sources */,
 				A1E717D320D305C90080A546 /* View.swift in Sources */,
+				A1E7180A20D576FD0080A546 /* SidedRoundedButtonCell.swift in Sources */,
+				A1E7180820D56E4C0080A546 /* BaseRoundedButtonCell.swift in Sources */,
 				A1E717CC20D1B84A0080A546 /* TextView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -685,29 +685,29 @@
         <scene sceneID="hIz-AP-VOD">
             <objects>
                 <viewController storyboardIdentifier="MainVCID" id="XfG-lQ-9wD" customClass="TranslateViewController" customModule="Translate_Bar" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" wantsLayer="YES" id="m2S-Jp-Qdl">
+                    <view key="view" wantsLayer="YES" id="4jx-xl-g3l">
                         <rect key="frame" x="0.0" y="0.0" width="724" height="350"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <stackView distribution="fillEqually" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eCw-BB-s5c">
+                            <stackView distribution="fillEqually" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="llx-mB-Obq">
                                 <rect key="frame" x="8" y="45" width="708" height="260"/>
                                 <subviews>
-                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="FTb-be-c8u" customClass="View" customModule="Translate_Bar" customModuleProvider="target">
+                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="qoz-Fu-fvj" customClass="View" customModule="Translate_Bar" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="350" height="260"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="color" keyPath="backgroundColor">
-                                                <color key="value" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="value" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                 <real key="value" value="10"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </customView>
-                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="ji5-Xb-Htq" customClass="View" customModule="Translate_Bar" customModuleProvider="target">
+                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="OPu-tJ-95g" customClass="View" customModule="Translate_Bar" customModuleProvider="target">
                                         <rect key="frame" x="358" y="0.0" width="350" height="260"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="color" keyPath="backgroundColor">
-                                                <color key="value" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="value" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                 <real key="value" value="10"/>
@@ -716,15 +716,15 @@
                                     </customView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="FTb-be-c8u" firstAttribute="top" secondItem="eCw-BB-s5c" secondAttribute="top" id="9Jh-VY-UNT"/>
-                                    <constraint firstItem="FTb-be-c8u" firstAttribute="leading" secondItem="eCw-BB-s5c" secondAttribute="leading" id="E9u-03-bXp"/>
-                                    <constraint firstAttribute="bottom" secondItem="FTb-be-c8u" secondAttribute="bottom" id="ZI6-Bd-QAd"/>
-                                    <constraint firstItem="ji5-Xb-Htq" firstAttribute="leading" secondItem="FTb-be-c8u" secondAttribute="trailing" constant="8" id="d8p-qs-Ptx"/>
-                                    <constraint firstAttribute="trailing" secondItem="ji5-Xb-Htq" secondAttribute="trailing" id="e7S-O1-H5e"/>
-                                    <constraint firstItem="FTb-be-c8u" firstAttribute="height" secondItem="ji5-Xb-Htq" secondAttribute="height" id="h0J-ev-FVl"/>
-                                    <constraint firstAttribute="bottom" secondItem="ji5-Xb-Htq" secondAttribute="bottom" id="vca-E8-poD"/>
-                                    <constraint firstItem="ji5-Xb-Htq" firstAttribute="top" secondItem="eCw-BB-s5c" secondAttribute="top" id="xJh-oS-rmG"/>
-                                    <constraint firstItem="FTb-be-c8u" firstAttribute="width" secondItem="ji5-Xb-Htq" secondAttribute="width" id="zvD-Mz-6DR"/>
+                                    <constraint firstAttribute="trailing" secondItem="OPu-tJ-95g" secondAttribute="trailing" id="2Ce-B7-0A3"/>
+                                    <constraint firstItem="OPu-tJ-95g" firstAttribute="leading" secondItem="qoz-Fu-fvj" secondAttribute="trailing" constant="8" id="2yT-D0-SPb"/>
+                                    <constraint firstAttribute="bottom" secondItem="qoz-Fu-fvj" secondAttribute="bottom" id="76V-wn-nwy"/>
+                                    <constraint firstItem="qoz-Fu-fvj" firstAttribute="width" secondItem="OPu-tJ-95g" secondAttribute="width" id="Fo6-4j-hTs"/>
+                                    <constraint firstItem="qoz-Fu-fvj" firstAttribute="top" secondItem="llx-mB-Obq" secondAttribute="top" id="Ftx-Ui-UbN"/>
+                                    <constraint firstItem="qoz-Fu-fvj" firstAttribute="height" secondItem="OPu-tJ-95g" secondAttribute="height" id="X8R-VT-uf2"/>
+                                    <constraint firstAttribute="bottom" secondItem="OPu-tJ-95g" secondAttribute="bottom" id="Zuj-9Y-vhw"/>
+                                    <constraint firstItem="OPu-tJ-95g" firstAttribute="top" secondItem="llx-mB-Obq" secondAttribute="top" id="a9P-gD-zKp"/>
+                                    <constraint firstItem="qoz-Fu-fvj" firstAttribute="leading" secondItem="llx-mB-Obq" secondAttribute="leading" id="xbb-N8-vFj"/>
                                 </constraints>
                                 <visibilityPriorities>
                                     <integer value="1000"/>
@@ -735,25 +735,33 @@
                                     <real value="3.4028234663852886e+38"/>
                                 </customSpacing>
                             </stackView>
-                            <segmentedControl verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eaZ-JN-MEs">
-                                <rect key="frame" x="20" y="312" width="101" height="23"/>
+                            <segmentedControl verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qNU-8T-Nww">
+                                <rect key="frame" x="12" y="312" width="158" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <segmentedCell key="cell" borderStyle="border" alignment="left" style="capsule" trackingMode="selectOne" id="i6a-GO-5Ia" customClass="RightSideRoundedSegmentedCell" customModule="Translate_Bar" customModuleProvider="target">
+                                <segmentedCell key="cell" borderStyle="border" alignment="left" segmentDistribution="fillEqually" style="capsule" trackingMode="selectOne" id="WlV-aC-tPg" customClass="LeftSideRoundedSegmentedCell" customModule="Translate_Bar" customModuleProvider="target">
                                     <font key="font" metaFont="system"/>
                                     <segments>
-                                        <segment label="0" width="32"/>
-                                        <segment label="1" selected="YES" tag="1"/>
-                                        <segment label="3" width="32"/>
+                                        <segment label="привет" width="53"/>
+                                        <segment label="как" selected="YES" tag="1"/>
+                                        <segment label="ты" width="52"/>
                                     </segments>
                                 </segmentedCell>
                             </segmentedControl>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oyx-zJ-pae">
+                                <rect key="frame" x="168" y="312" width="23" height="23"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="bevel" title="▾" bezelStyle="regularSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="fHd-4D-Jq3" customClass="RightSideRoundedButtonCell" customModule="Translate_Bar" customModuleProvider="target">
+                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
+                                    <font key="font" metaFont="system" size="32"/>
+                                </buttonCell>
+                            </button>
                         </subviews>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="eCw-BB-s5c" secondAttribute="bottom" constant="45" id="AiM-ru-eZe"/>
-                            <constraint firstAttribute="trailing" secondItem="eCw-BB-s5c" secondAttribute="trailing" constant="8" id="FnZ-Ib-l32"/>
-                            <constraint firstItem="eCw-BB-s5c" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="P5M-jh-jaU"/>
-                            <constraint firstItem="eCw-BB-s5c" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="8" id="b3h-WD-noK"/>
-                            <constraint firstItem="eCw-BB-s5c" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="45" id="zE0-1P-87a"/>
+                            <constraint firstAttribute="bottom" secondItem="llx-mB-Obq" secondAttribute="bottom" constant="45" id="0n9-2e-Eb8"/>
+                            <constraint firstAttribute="trailing" secondItem="llx-mB-Obq" secondAttribute="trailing" constant="8" id="O0f-Tm-yNc"/>
+                            <constraint firstItem="llx-mB-Obq" firstAttribute="centerX" secondItem="4jx-xl-g3l" secondAttribute="centerX" id="R1m-ZS-TFu"/>
+                            <constraint firstItem="llx-mB-Obq" firstAttribute="leading" secondItem="4jx-xl-g3l" secondAttribute="leading" constant="8" id="YAH-4l-QA7"/>
+                            <constraint firstItem="llx-mB-Obq" firstAttribute="top" secondItem="4jx-xl-g3l" secondAttribute="top" constant="45" id="pIh-ov-T0Q"/>
                         </constraints>
                     </view>
                 </viewController>

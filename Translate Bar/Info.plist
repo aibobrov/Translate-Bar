@@ -4,7 +4,7 @@
 <dict>
 	<key>UIAppFonts</key>
 	<array>
-		<string>Fonts/OpenSans-Regular.ttf</string>
+		<string>Resources/Fonts/OpenSans-Regular.ttf</string>
 	</array>
 	<key>LSUIElement</key>
 	<true/>

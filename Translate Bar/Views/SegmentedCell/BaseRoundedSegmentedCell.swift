@@ -17,8 +17,8 @@ protocol CustomSegmentedCell where Self: NSSegmentedCell {
 class CustomRoundedSegmentCell: NSSegmentedCell, CustomSegmentedCell {
 	var strokeColor: NSColor = .lightGray
 	var tintColor: NSColor = .gray
-	var mainColor: NSColor = .white
-	var cornerRadius: CGFloat = 7
+	var mainColor: NSColor = NSColor(red: 250 / 255, green: 250 / 255, blue: 250 / 255, alpha: 1)
+	var cornerRadius: CGFloat = 5
 
 	override func draw(withFrame cellFrame: NSRect, in controlView: NSView) {
 		let cellWidth = cellFrame.width / CGFloat(self.segmentCount)
@@ -33,11 +33,10 @@ class CustomRoundedSegmentCell: NSSegmentedCell, CustomSegmentedCell {
 		let bezierPath: NSBezierPath = path(for: segment, in: frame)
 		backgroundColor(for: segment).setFill()
 		bezierPath.fill()
-
 		let text = self.textForSegment(segment)
 
 		let textFrame = NSRect(x: frame.origin.x,
-							   y: -2,
+							   y: -3.5,
 							   width: frame.width,
 							   height: 22)
 		text.draw(in: textFrame)
