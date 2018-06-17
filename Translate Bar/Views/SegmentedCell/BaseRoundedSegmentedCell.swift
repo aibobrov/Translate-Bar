@@ -51,14 +51,12 @@ class CustomRoundedSegmentCell: NSSegmentedCell, CustomSegmentedCell {
 	}
 
 	private func textForSegment(_ segment: Int) -> NSAttributedString {
-		let font = NSFont(name: "OpenSans-Regular", size: 13)!
-
-		let textColor: NSColor
-		if self.selectedSegment == segment {
-			textColor = .white
-		} else {
-			textColor = self.tintColor
+		guard let font = self.font else {
+			Log.warning("No font for segment: \(segment)")
+			return NSAttributedString(string: "")
 		}
+
+		let textColor: NSColor = self.selectedSegment == segment ? .white : self.tintColor
 
 		let style = NSMutableParagraphStyle()
 		style.alignment = .center

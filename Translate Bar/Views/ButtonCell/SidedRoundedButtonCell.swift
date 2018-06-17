@@ -19,3 +19,17 @@ class RightSideRoundedButtonCell: CustomRoundedButtonCell {
 		return HalfRoundedBezierPath.path(for: .right, in: rect, with: cornerRadius)
 	}
 }
+
+class RoundedButtonCell: CustomRoundedButtonCell {
+	override func draw(withFrame cellFrame: NSRect, in controlView: NSView) {
+		super.draw(withFrame: cellFrame, in: controlView)
+		DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .milliseconds(100)) {
+			self.state = .off
+		}
+
+	}
+
+	override func path(for rect: NSRect) -> NSBezierPath {
+		return NSBezierPath(roundedRect: rect, xRadius: cornerRadius, yRadius: cornerRadius)
+	}
+}

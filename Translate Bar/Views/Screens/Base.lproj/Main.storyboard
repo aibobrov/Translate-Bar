@@ -735,33 +735,103 @@
                                     <real value="3.4028234663852886e+38"/>
                                 </customSpacing>
                             </stackView>
-                            <segmentedControl verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qNU-8T-Nww">
-                                <rect key="frame" x="12" y="312" width="158" height="23"/>
+                            <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mhb-Q1-4t4">
+                                <rect key="frame" x="8" y="313" width="177" height="22"/>
+                                <subviews>
+                                    <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qNU-8T-Nww">
+                                        <rect key="frame" x="0.0" y="-1" width="158" height="23"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="158" id="A5l-dW-vFV"/>
+                                            <constraint firstAttribute="height" constant="22" id="I1I-sm-F0h"/>
+                                        </constraints>
+                                        <segmentedCell key="cell" borderStyle="border" alignment="left" segmentDistribution="fillEqually" style="capsule" trackingMode="selectOne" id="WlV-aC-tPg" customClass="LeftSideRoundedSegmentedCell" customModule="Translate_Bar" customModuleProvider="target">
+                                            <font key="font" size="13" name="OpenSans-Regular"/>
+                                            <segments>
+                                                <segment label="привет" width="53"/>
+                                                <segment label="как" selected="YES" tag="1"/>
+                                                <segment label="ты" width="52"/>
+                                            </segments>
+                                        </segmentedCell>
+                                    </segmentedControl>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="oyx-zJ-pae">
+                                        <rect key="frame" x="156" y="-1" width="23" height="23"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="19" id="rZR-Lx-5r9"/>
+                                            <constraint firstAttribute="height" constant="18" id="skB-G2-8WF"/>
+                                        </constraints>
+                                        <buttonCell key="cell" type="bevel" title="▾" bezelStyle="regularSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="fHd-4D-Jq3" customClass="RightSideRoundedButtonCell" customModule="Translate_Bar" customModuleProvider="target">
+                                            <behavior key="behavior" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
+                                            <font key="font" size="15" name="OpenSans-Regular"/>
+                                        </buttonCell>
+                                    </button>
+                                </subviews>
+                                <visibilityPriorities>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
+                            </stackView>
+                            <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UHi-ji-HrT">
+                                <rect key="frame" x="539" y="313" width="177" height="22"/>
+                                <subviews>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cAY-tG-QQc">
+                                        <rect key="frame" x="-2" y="-1" width="23" height="23"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="18" id="MPb-Yh-MN0"/>
+                                            <constraint firstAttribute="width" constant="19" id="e5B-bB-zDw"/>
+                                        </constraints>
+                                        <buttonCell key="cell" type="bevel" title="▾" bezelStyle="regularSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Dc3-q7-czm" customClass="LeftSideRoundedButtonCell" customModule="Translate_Bar" customModuleProvider="target">
+                                            <behavior key="behavior" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
+                                            <font key="font" size="15" name="OpenSans-Regular"/>
+                                        </buttonCell>
+                                    </button>
+                                    <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Loz-ca-azi">
+                                        <rect key="frame" x="19" y="-1" width="158" height="23"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="22" id="4L4-Lc-9Kh"/>
+                                            <constraint firstAttribute="width" constant="158" id="6sk-dV-Vcd"/>
+                                        </constraints>
+                                        <segmentedCell key="cell" borderStyle="border" alignment="left" segmentDistribution="fillEqually" style="capsule" trackingMode="selectOne" id="pAU-21-d4i" customClass="RightSideRoundedSegmentedCell" customModule="Translate_Bar" customModuleProvider="target">
+                                            <font key="font" size="13" name="OpenSans-Regular"/>
+                                            <segments>
+                                                <segment label="привет" width="53"/>
+                                                <segment label="как" selected="YES" tag="1"/>
+                                                <segment label="ты" width="52"/>
+                                            </segments>
+                                        </segmentedCell>
+                                    </segmentedControl>
+                                </subviews>
+                                <visibilityPriorities>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
+                            </stackView>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xGI-FN-2D9">
+                                <rect key="frame" x="347" y="312" width="30" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <segmentedCell key="cell" borderStyle="border" alignment="left" segmentDistribution="fillEqually" style="capsule" trackingMode="selectOne" id="WlV-aC-tPg" customClass="LeftSideRoundedSegmentedCell" customModule="Translate_Bar" customModuleProvider="target">
-                                    <font key="font" metaFont="system"/>
-                                    <segments>
-                                        <segment label="привет" width="53"/>
-                                        <segment label="как" selected="YES" tag="1"/>
-                                        <segment label="ты" width="52"/>
-                                    </segments>
-                                </segmentedCell>
-                            </segmentedControl>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oyx-zJ-pae">
-                                <rect key="frame" x="168" y="312" width="23" height="23"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="bevel" title="▾" bezelStyle="regularSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="fHd-4D-Jq3" customClass="RightSideRoundedButtonCell" customModule="Translate_Bar" customModuleProvider="target">
-                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
-                                    <font key="font" metaFont="system" size="32"/>
+                                <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="swap" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="beB-oC-A97" customClass="RoundedButtonCell" customModule="Translate_Bar" customModuleProvider="target">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" size="15" name="OpenSans-Regular"/>
                                 </buttonCell>
                             </button>
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="llx-mB-Obq" secondAttribute="bottom" constant="45" id="0n9-2e-Eb8"/>
+                            <constraint firstItem="UHi-ji-HrT" firstAttribute="trailing" secondItem="llx-mB-Obq" secondAttribute="trailing" id="38x-o7-vF1"/>
                             <constraint firstAttribute="trailing" secondItem="llx-mB-Obq" secondAttribute="trailing" constant="8" id="O0f-Tm-yNc"/>
                             <constraint firstItem="llx-mB-Obq" firstAttribute="centerX" secondItem="4jx-xl-g3l" secondAttribute="centerX" id="R1m-ZS-TFu"/>
                             <constraint firstItem="llx-mB-Obq" firstAttribute="leading" secondItem="4jx-xl-g3l" secondAttribute="leading" constant="8" id="YAH-4l-QA7"/>
+                            <constraint firstItem="llx-mB-Obq" firstAttribute="top" secondItem="Mhb-Q1-4t4" secondAttribute="bottom" constant="8" id="hFX-ia-kGE"/>
                             <constraint firstItem="llx-mB-Obq" firstAttribute="top" secondItem="4jx-xl-g3l" secondAttribute="top" constant="45" id="pIh-ov-T0Q"/>
+                            <constraint firstItem="llx-mB-Obq" firstAttribute="leading" secondItem="Mhb-Q1-4t4" secondAttribute="leading" id="uXn-dn-SUI"/>
+                            <constraint firstItem="llx-mB-Obq" firstAttribute="top" secondItem="UHi-ji-HrT" secondAttribute="bottom" constant="8" id="xGg-BK-WcI"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -770,4 +840,7 @@
             <point key="canvasLocation" x="33" y="796"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="swap" width="25.600000381469727" height="25.600000381469727"/>
+    </resources>
 </document>
