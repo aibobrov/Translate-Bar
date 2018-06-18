@@ -15,4 +15,7 @@ class TextView: NSTextView {
         manager.ensureLayout(for: textContainer!)
         return manager.usedRect(for: textContainer!).size
     }
+    override var readablePasteboardTypes: [NSPasteboard.PasteboardType] {
+        return [NSPasteboard.PasteboardType.string]
+    }
 }
