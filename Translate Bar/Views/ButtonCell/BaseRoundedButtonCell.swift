@@ -54,13 +54,13 @@ class CustomRoundedButtonCell: NSButtonCell, CustomButtonCellProtocol {
 						  NSAttributedStringKey.foregroundColor: textColor,
 						  NSAttributedStringKey.paragraphStyle: style]
 
-
 		let attributedString = NSAttributedString(string: text, attributes: attributes)
 
-		let textFrame = NSRect(x: rect.origin.x,
+		var textFrame = NSRect(x: rect.origin.x,
 							   y: -3.5,
 							   width: rect.width,
 							   height: 22)
+        textFrame.center = rect.center
 
 		attributedString.draw(in: textFrame)
 	}

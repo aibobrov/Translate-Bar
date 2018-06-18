@@ -25,6 +25,7 @@ class CustomRoundedSegmentCell: NSSegmentedCell, CustomSegmentedCell {
 		for index in 0 ..< self.segmentCount {
 			let x = cellWidth * CGFloat(index)
 			let rect = NSRect(x: x, y: 0, width: cellWidth, height: cellFrame.height)
+
 			drawSegmentItem(index, in: rect, with: controlView)
 		}
 	}
@@ -33,13 +34,13 @@ class CustomRoundedSegmentCell: NSSegmentedCell, CustomSegmentedCell {
 		let bezierPath: NSBezierPath = path(for: segment, in: frame)
 		backgroundColor(for: segment).setFill()
 		bezierPath.fill()
-		let text = self.textForSegment(segment)
 
-		let textFrame = NSRect(x: frame.origin.x,
+		var textFrame = NSRect(x: frame.origin.x,
 							   y: -3.5,
 							   width: frame.width,
 							   height: 22)
-		text.draw(in: textFrame)
+        textFrame.center = frame.center
+        draw(for: segment, in: textFrame)
 	}
 
 	private func backgroundColor(for segment: Int) -> NSColor {
@@ -50,23 +51,29 @@ class CustomRoundedSegmentCell: NSSegmentedCell, CustomSegmentedCell {
 		return NSBezierPath(rect: rect)
 	}
 
-	private func textForSegment(_ segment: Int) -> NSAttributedString {
-		guard let font = self.font else {
-			Log.warning("No font for segment: \(segment)")
-			return NSAttributedString(string: "")
-		}
+    func draw(for segment: Int, in rect: NSRect) {
+        guard let font = self.font else {
+            Log.warning("No font for button")
+            return
+        }
 
-		let textColor: NSColor = self.selectedSegment == segment ? .white : self.tintColor
+        let textColor: NSColor = self.selectedSegment == segment ? .white : self.tintColor
 
-		let style = NSMutableParagraphStyle()
-		style.alignment = .center
+        let style = NSMutableParagraphStyle()
+        style.alignment = .center
 
-		let attributes = [NSAttributedStringKey.font: font,
-						  NSAttributedStringKey.foregroundColor: textColor,
-						  NSAttributedStringKey.paragraphStyle: style]
+        let attributes = [NSAttributedStringKey.font: font,
+                          NSAttributedStringKey.foregroundColor: textColor,
+                          NSAttributedStringKey.paragraphStyle: style]
 
-		let text = NSAttributedString(string: self.label(forSegment: segment) ?? "", attributes: attributes)
-		return text
-	}
+        let attributedString = NSAttributedString(string: self.label(forSegment: segment) ?? "", attributes: attributes)
 
+        var textFrame = NSRect(x: rect.origin.x,
+                               y: -3.5,
+                               width: rect.width,
+                               height: 22)
+        textFrame.center = rect.center
+
+        attributedString.draw(in: textFrame)
+    }
 }

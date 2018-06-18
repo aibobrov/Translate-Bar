@@ -287,8 +287,8 @@
 		A1E7180320D483510080A546 /* SegmentedCell */ = {
 			isa = PBXGroup;
 			children = (
-				A1E717FF20D480F70080A546 /* SidedRoundedSegmentedCell.swift */,
 				A1E717FD20D479A70080A546 /* BaseRoundedSegmentedCell.swift */,
+				A1E717FF20D480F70080A546 /* SidedRoundedSegmentedCell.swift */,
 			);
 			path = SegmentedCell;
 			sourceTree = "<group>";
