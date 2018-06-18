@@ -806,26 +806,31 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="350" height="200"/>
                                                 <subviews>
                                                     <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e7X-Jl-M5j">
-                                                        <rect key="frame" x="8" y="8" width="334" height="184"/>
+                                                        <rect key="frame" x="8" y="33" width="334" height="159"/>
                                                         <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="Ica-wc-TKs">
-                                                            <rect key="frame" x="0.0" y="0.0" width="334" height="184"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="334" height="159"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
-                                                                <textView drawsBackground="NO" importsGraphics="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="QxF-x0-7F8" customClass="TextView" customModule="Translate_Bar" customModuleProvider="target">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="334" height="184"/>
+                                                                <textView drawsBackground="NO" importsGraphics="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="QxF-x0-7F8" customClass="LimitedTextView" customModule="Translate_Bar" customModuleProvider="target">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="334" height="159"/>
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                                    <size key="minSize" width="334" height="184"/>
+                                                                    <size key="minSize" width="334" height="159"/>
                                                                     <size key="maxSize" width="463" height="10000000"/>
                                                                     <attributedString key="textStorage">
                                                                         <fragment content=" ">
                                                                             <attributes>
-                                                                                <font key="NSFont" size="12" name="OpenSans"/>
+                                                                                <font key="NSFont" metaFont="cellTitle"/>
                                                                                 <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                             </attributes>
                                                                         </fragment>
                                                                     </attributedString>
                                                                     <color key="insertionPointColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="maxCharactersCount">
+                                                                            <integer key="value" value="5000"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                    </userDefinedRuntimeAttributes>
                                                                 </textView>
                                                             </subviews>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -839,10 +844,30 @@
                                                             <autoresizingMask key="autoresizingMask"/>
                                                         </scroller>
                                                     </scrollView>
+                                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="GCV-JS-fTG">
+                                                        <rect key="frame" x="299" y="8" width="43" height="21"/>
+                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="0/5000" drawsBackground="YES" id="RQX-ZA-Ulm">
+                                                            <font key="font" size="12" name="OpenSans-Regular"/>
+                                                            <color key="textColor" name="controlShadowColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" red="0.070588235289999995" green="0.070588235289999995" blue="0.070588235289999995" alpha="0.0" colorSpace="calibratedRGB"/>
+                                                        </textFieldCell>
+                                                    </textField>
+                                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3T7-pU-Vy3">
+                                                        <rect key="frame" x="8" y="8" width="103" height="21"/>
+                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Did you mean ... ?" drawsBackground="YES" id="tVy-E3-bEU">
+                                                            <font key="font" size="12" name="OpenSans-Regular"/>
+                                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" red="0.070588235289999995" green="0.070588235289999995" blue="0.070588235289999995" alpha="0.0" colorSpace="calibratedRGB"/>
+                                                        </textFieldCell>
+                                                    </textField>
                                                 </subviews>
                                                 <constraints>
-                                                    <constraint firstAttribute="bottom" secondItem="e7X-Jl-M5j" secondAttribute="bottom" constant="8" id="RYR-QO-EqU"/>
+                                                    <constraint firstItem="3T7-pU-Vy3" firstAttribute="top" secondItem="e7X-Jl-M5j" secondAttribute="bottom" priority="750" constant="4" id="F7V-F6-IYF"/>
+                                                    <constraint firstAttribute="bottom" secondItem="3T7-pU-Vy3" secondAttribute="bottom" constant="8" id="JkT-44-4s0"/>
+                                                    <constraint firstAttribute="trailing" secondItem="GCV-JS-fTG" secondAttribute="trailing" constant="8" id="LT7-5a-Rfw"/>
+                                                    <constraint firstItem="3T7-pU-Vy3" firstAttribute="leading" secondItem="qoz-Fu-fvj" secondAttribute="leading" constant="8" id="Pe7-ZM-Hm1"/>
                                                     <constraint firstItem="e7X-Jl-M5j" firstAttribute="top" secondItem="qoz-Fu-fvj" secondAttribute="top" constant="8" id="SwF-z8-0GH"/>
+                                                    <constraint firstAttribute="bottom" secondItem="GCV-JS-fTG" secondAttribute="bottom" constant="8" id="UIX-60-hWC"/>
                                                     <constraint firstAttribute="trailing" secondItem="e7X-Jl-M5j" secondAttribute="trailing" constant="8" id="qhg-i8-aaV"/>
                                                     <constraint firstItem="e7X-Jl-M5j" firstAttribute="leading" secondItem="qoz-Fu-fvj" secondAttribute="leading" constant="8" id="uvR-QC-Fef"/>
                                                 </constraints>
@@ -873,7 +898,7 @@
                                                                     <attributedString key="textStorage">
                                                                         <fragment content=" ">
                                                                             <attributes>
-                                                                                <font key="NSFont" size="12" name="OpenSans"/>
+                                                                                <font key="NSFont" metaFont="cellTitle"/>
                                                                                 <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                             </attributes>
                                                                         </fragment>
@@ -954,13 +979,15 @@
                     </view>
                     <connections>
                         <outlet property="InputTextView" destination="QxF-x0-7F8" id="1Qq-h3-dY4"/>
+                        <outlet property="InputTextViewLimitationLabel" destination="GCV-JS-fTG" id="vuq-fZ-ODf"/>
                         <outlet property="OutputTextView" destination="UOH-YB-up1" id="ddd-nn-LFz"/>
+                        <outlet property="SuggestTextLabel" destination="3T7-pU-Vy3" id="V10-Mf-f01"/>
                         <outlet property="TextHeightConstraint" destination="cOj-Jb-uiG" id="s33-vo-bfw"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="33" y="853"/>
+            <point key="canvasLocation" x="33" y="852.5"/>
         </scene>
     </scenes>
     <resources>

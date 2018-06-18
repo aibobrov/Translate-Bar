@@ -13,6 +13,7 @@
 		A120815B20CDBCA600C57360 /* YandexTranslate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A120815A20CDBCA600C57360 /* YandexTranslate.swift */; };
 		A120816320CDBF3500C57360 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A120816120CDBF3500C57360 /* Main.storyboard */; };
 		A120816A20CEC17C00C57360 /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = A120816920CEC17C00C57360 /* Language.swift */; };
+		A125BD7E20D8511300C2BAE2 /* LimitedTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A125BD7D20D8511300C2BAE2 /* LimitedTextView.swift */; };
 		A1521FD720CD6CD50048EC26 /* NSStoryboardExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1521FD620CD6CD50048EC26 /* NSStoryboardExtensions.swift */; };
 		A174EDDF20CC798B00465A42 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A174EDDE20CC798B00465A42 /* AppDelegate.swift */; };
 		A174EDE420CC798B00465A42 /* Translate_Bar.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A174EDE220CC798B00465A42 /* Translate_Bar.xcdatamodeld */; };
@@ -61,6 +62,7 @@
 		A120815A20CDBCA600C57360 /* YandexTranslate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YandexTranslate.swift; sourceTree = "<group>"; };
 		A120816220CDBF3500C57360 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A120816920CEC17C00C57360 /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
+		A125BD7D20D8511300C2BAE2 /* LimitedTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LimitedTextView.swift; sourceTree = "<group>"; };
 		A1521FD620CD6CD50048EC26 /* NSStoryboardExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSStoryboardExtensions.swift; sourceTree = "<group>"; };
 		A174EDDB20CC798B00465A42 /* Translate Bar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Translate Bar.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A174EDDE20CC798B00465A42 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -320,6 +322,7 @@
 		D04AE06820D7FF5D00FED056 /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				A125BD7D20D8511300C2BAE2 /* LimitedTextView.swift */,
 				D04AE06920D7FF5D00FED056 /* NSTextView+Rx.swift */,
 				D04AE06A20D7FF5D00FED056 /* TextView.swift */,
 				D04AE06B20D7FF5D00FED056 /* View.swift */,
@@ -569,6 +572,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A120815820CDB31F00C57360 /* TranslationPreferences.swift in Sources */,
+				A125BD7E20D8511300C2BAE2 /* LimitedTextView.swift in Sources */,
 				A1E7180020D480F80080A546 /* SidedRoundedSegmentedCell.swift in Sources */,
 				A1E717F920D4644B0080A546 /* HalfRoundedBezierPath.swift in Sources */,
 				A174EDE420CC798B00465A42 /* Translate_Bar.xcdatamodeld in Sources */,

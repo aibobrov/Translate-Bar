@@ -20,6 +20,12 @@ class TranslateViewModel {
 
 	init() {
 		inputText
+			.filter({$0 == nil || $0!.count == 0})
+			.subscribe { [unowned self] _ in
+				self.outputText.accept("")
+			}
+			.disposed(by: disposeBag)
+		inputText
             .filter({$0 != nil && $0!.count > 0})
             .map({$0!})
             .debounce(1, scheduler: ConcurrentDispatchQueueScheduler(qos: .userInitiated))
