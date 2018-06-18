@@ -13,21 +13,19 @@ import RxSwift
 class TranslateViewController: NSViewController {
 	@IBOutlet weak var InputTextView: LimitedTextView!
 	@IBOutlet weak var OutputTextView: NSTextView!
+
 	@IBOutlet weak var InputTextViewLimitationLabel: NSTextField!
 	@IBOutlet weak var SuggestTextLabel: NSTextField!
 	@IBOutlet weak var TextHeightConstraint: NSLayoutConstraint!
+	@IBOutlet weak var InputTextViewSuggestLabelBottomConstraint: NSLayoutConstraint!
+	@IBOutlet weak var InputTextViewSuperViewBottomSpaceConstraint: NSLayoutConstraint!
 
 	let translateVM = TranslateViewModel()
 	private let disposeBag = DisposeBag()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        InputTextView.rx.text
-            .bind(to: translateVM.inputText)
-            .disposed(by: disposeBag)
-		translateVM.outputText
-			.bind(to: OutputTextView.rx.text)
-			.disposed(by: disposeBag)
+		setupBindings()
 
 		translateVM.inputText
 			.map({$0?.contains(" ") ?? true})
@@ -56,6 +54,15 @@ class TranslateViewController: NSViewController {
             }
             .disposed(by: disposeBag)
     }
+
+	private func setupBindings() {
+		InputTextView.rx.text
+			.bind(to: translateVM.inputText)
+			.disposed(by: disposeBag)
+		translateVM.outputText
+			.bind(to: OutputTextView.rx.text)
+			.disposed(by: disposeBag)
+	}
 
     private func resizeAccordingToContent() {
         let maxTextHeight = max(self.InputTextView.intrinsicContentSize.height, self.OutputTextView.intrinsicContentSize.height) + 41

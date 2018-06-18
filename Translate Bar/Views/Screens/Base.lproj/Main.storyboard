@@ -820,7 +820,7 @@
                                                                     <attributedString key="textStorage">
                                                                         <fragment content=" ">
                                                                             <attributes>
-                                                                                <font key="NSFont" metaFont="cellTitle"/>
+                                                                                <font key="NSFont" size="12" name="OpenSans-Regular"/>
                                                                                 <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                             </attributes>
                                                                         </fragment>
@@ -862,8 +862,11 @@
                                                     </textField>
                                                 </subviews>
                                                 <constraints>
+                                                    <constraint firstItem="3T7-pU-Vy3" firstAttribute="height" secondItem="GCV-JS-fTG" secondAttribute="height" id="8I3-aU-AlV"/>
+                                                    <constraint firstAttribute="bottom" secondItem="e7X-Jl-M5j" secondAttribute="bottom" priority="250" constant="8" id="AJL-4X-Odj"/>
                                                     <constraint firstItem="3T7-pU-Vy3" firstAttribute="top" secondItem="e7X-Jl-M5j" secondAttribute="bottom" priority="750" constant="4" id="F7V-F6-IYF"/>
                                                     <constraint firstAttribute="bottom" secondItem="3T7-pU-Vy3" secondAttribute="bottom" constant="8" id="JkT-44-4s0"/>
+                                                    <constraint firstItem="GCV-JS-fTG" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="3T7-pU-Vy3" secondAttribute="trailing" priority="750" id="JvP-9P-NhE"/>
                                                     <constraint firstAttribute="trailing" secondItem="GCV-JS-fTG" secondAttribute="trailing" constant="8" id="LT7-5a-Rfw"/>
                                                     <constraint firstItem="3T7-pU-Vy3" firstAttribute="leading" secondItem="qoz-Fu-fvj" secondAttribute="leading" constant="8" id="Pe7-ZM-Hm1"/>
                                                     <constraint firstItem="e7X-Jl-M5j" firstAttribute="top" secondItem="qoz-Fu-fvj" secondAttribute="top" constant="8" id="SwF-z8-0GH"/>
@@ -898,7 +901,7 @@
                                                                     <attributedString key="textStorage">
                                                                         <fragment content=" ">
                                                                             <attributes>
-                                                                                <font key="NSFont" metaFont="cellTitle"/>
+                                                                                <font key="NSFont" size="12" name="OpenSans-Regular"/>
                                                                                 <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                             </attributes>
                                                                         </fragment>
@@ -980,6 +983,8 @@
                     <connections>
                         <outlet property="InputTextView" destination="QxF-x0-7F8" id="1Qq-h3-dY4"/>
                         <outlet property="InputTextViewLimitationLabel" destination="GCV-JS-fTG" id="vuq-fZ-ODf"/>
+                        <outlet property="InputTextViewSuggestLabelBottomConstraint" destination="F7V-F6-IYF" id="lBC-eZ-nTd"/>
+                        <outlet property="InputTextViewSuperViewBottomSpaceConstraint" destination="AJL-4X-Odj" id="hW7-O3-aEI"/>
                         <outlet property="OutputTextView" destination="UOH-YB-up1" id="ddd-nn-LFz"/>
                         <outlet property="SuggestTextLabel" destination="3T7-pU-Vy3" id="V10-Mf-f01"/>
                         <outlet property="TextHeightConstraint" destination="cOj-Jb-uiG" id="s33-vo-bfw"/>
