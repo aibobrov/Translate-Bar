@@ -10,5 +10,9 @@ import Cocoa
 
 @IBDesignable
 class TextView: NSTextView {
-
+    override var intrinsicContentSize: NSSize {
+        guard let manager = textContainer?.layoutManager else { return .zero }
+        manager.ensureLayout(for: textContainer!)
+        return manager.usedRect(for: textContainer!).size
+    }
 }

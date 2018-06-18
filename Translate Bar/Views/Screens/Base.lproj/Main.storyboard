@@ -686,45 +686,254 @@
             <objects>
                 <viewController storyboardIdentifier="MainVCID" id="XfG-lQ-9wD" customClass="TranslateViewController" customModule="Translate_Bar" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" wantsLayer="YES" id="4jx-xl-g3l">
-                        <rect key="frame" x="0.0" y="0.0" width="724" height="350"/>
+                        <rect key="frame" x="0.0" y="0.0" width="724" height="285"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <stackView distribution="fillEqually" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="llx-mB-Obq">
-                                <rect key="frame" x="8" y="45" width="708" height="260"/>
+                            <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="plg-2b-sUw">
+                                <rect key="frame" x="8" y="40" width="708" height="230"/>
                                 <subviews>
-                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="qoz-Fu-fvj" customClass="View" customModule="Translate_Bar" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="350" height="260"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="backgroundColor">
-                                                <color key="value" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="10"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                    </customView>
-                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="OPu-tJ-95g" customClass="View" customModule="Translate_Bar" customModuleProvider="target">
-                                        <rect key="frame" x="358" y="0.0" width="350" height="260"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="backgroundColor">
-                                                <color key="value" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="10"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                    </customView>
+                                    <stackView distribution="equalSpacing" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oZe-dF-xuw">
+                                        <rect key="frame" x="0.0" y="208" width="708" height="22"/>
+                                        <subviews>
+                                            <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mhb-Q1-4t4">
+                                                <rect key="frame" x="0.0" y="0.0" width="177" height="22"/>
+                                                <subviews>
+                                                    <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qNU-8T-Nww">
+                                                        <rect key="frame" x="0.0" y="-1" width="158" height="23"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="158" id="A5l-dW-vFV"/>
+                                                            <constraint firstAttribute="height" constant="22" id="I1I-sm-F0h"/>
+                                                        </constraints>
+                                                        <segmentedCell key="cell" borderStyle="border" alignment="left" segmentDistribution="fillEqually" style="capsule" trackingMode="selectOne" id="WlV-aC-tPg" customClass="LeftSideRoundedSegmentedCell" customModule="Translate_Bar" customModuleProvider="target">
+                                                            <font key="font" metaFont="system"/>
+                                                            <segments>
+                                                                <segment label="привет" width="53"/>
+                                                                <segment label="как" selected="YES" tag="1"/>
+                                                                <segment label="ты" width="52"/>
+                                                            </segments>
+                                                        </segmentedCell>
+                                                    </segmentedControl>
+                                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="oyx-zJ-pae">
+                                                        <rect key="frame" x="156" y="-1" width="23" height="23"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="19" id="rZR-Lx-5r9"/>
+                                                            <constraint firstAttribute="height" constant="18" id="skB-G2-8WF"/>
+                                                        </constraints>
+                                                        <buttonCell key="cell" type="bevel" title="▾" bezelStyle="regularSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="fHd-4D-Jq3" customClass="RightSideRoundedButtonCell" customModule="Translate_Bar" customModuleProvider="target">
+                                                            <behavior key="behavior" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
+                                                            <font key="font" metaFont="system" size="15"/>
+                                                        </buttonCell>
+                                                    </button>
+                                                </subviews>
+                                                <visibilityPriorities>
+                                                    <integer value="1000"/>
+                                                    <integer value="1000"/>
+                                                </visibilityPriorities>
+                                                <customSpacing>
+                                                    <real value="3.4028234663852886e+38"/>
+                                                    <real value="3.4028234663852886e+38"/>
+                                                </customSpacing>
+                                            </stackView>
+                                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xGI-FN-2D9">
+                                                <rect key="frame" x="339" y="-1" width="30" height="23"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="26" id="AYt-YU-R0f"/>
+                                                    <constraint firstAttribute="height" constant="18" id="S3P-yE-62G"/>
+                                                </constraints>
+                                                <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="swap" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="beB-oC-A97" customClass="RoundedButtonCell" customModule="Translate_Bar" customModuleProvider="target">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system" size="15"/>
+                                                </buttonCell>
+                                            </button>
+                                            <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UHi-ji-HrT">
+                                                <rect key="frame" x="531" y="0.0" width="177" height="22"/>
+                                                <subviews>
+                                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cAY-tG-QQc">
+                                                        <rect key="frame" x="-2" y="-1" width="23" height="23"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="18" id="MPb-Yh-MN0"/>
+                                                            <constraint firstAttribute="width" constant="19" id="e5B-bB-zDw"/>
+                                                        </constraints>
+                                                        <buttonCell key="cell" type="bevel" title="▾" bezelStyle="regularSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Dc3-q7-czm" customClass="LeftSideRoundedButtonCell" customModule="Translate_Bar" customModuleProvider="target">
+                                                            <behavior key="behavior" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
+                                                            <font key="font" metaFont="system" size="15"/>
+                                                        </buttonCell>
+                                                    </button>
+                                                    <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Loz-ca-azi">
+                                                        <rect key="frame" x="19" y="-1" width="158" height="23"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="22" id="4L4-Lc-9Kh"/>
+                                                            <constraint firstAttribute="width" constant="158" id="6sk-dV-Vcd"/>
+                                                        </constraints>
+                                                        <segmentedCell key="cell" borderStyle="border" alignment="left" segmentDistribution="fillEqually" style="capsule" trackingMode="selectOne" id="pAU-21-d4i" customClass="RightSideRoundedSegmentedCell" customModule="Translate_Bar" customModuleProvider="target">
+                                                            <font key="font" metaFont="system"/>
+                                                            <segments>
+                                                                <segment label="привет" width="53"/>
+                                                                <segment label="как" selected="YES" tag="1"/>
+                                                                <segment label="ты" width="52"/>
+                                                            </segments>
+                                                        </segmentedCell>
+                                                    </segmentedControl>
+                                                </subviews>
+                                                <visibilityPriorities>
+                                                    <integer value="1000"/>
+                                                    <integer value="1000"/>
+                                                </visibilityPriorities>
+                                                <customSpacing>
+                                                    <real value="3.4028234663852886e+38"/>
+                                                    <real value="3.4028234663852886e+38"/>
+                                                </customSpacing>
+                                            </stackView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="22" id="u4K-dL-mvl"/>
+                                        </constraints>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
+                                    <stackView distribution="fillEqually" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="llx-mB-Obq">
+                                        <rect key="frame" x="0.0" y="0.0" width="708" height="200"/>
+                                        <subviews>
+                                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="qoz-Fu-fvj" customClass="View" customModule="Translate_Bar" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="350" height="200"/>
+                                                <subviews>
+                                                    <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e7X-Jl-M5j">
+                                                        <rect key="frame" x="8" y="8" width="334" height="184"/>
+                                                        <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="Ica-wc-TKs">
+                                                            <rect key="frame" x="0.0" y="0.0" width="334" height="184"/>
+                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                            <subviews>
+                                                                <textView drawsBackground="NO" importsGraphics="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="QxF-x0-7F8" customClass="TextView" customModule="Translate_Bar" customModuleProvider="target">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="334" height="184"/>
+                                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                    <size key="minSize" width="334" height="184"/>
+                                                                    <size key="maxSize" width="463" height="10000000"/>
+                                                                    <attributedString key="textStorage">
+                                                                        <fragment content=" ">
+                                                                            <attributes>
+                                                                                <font key="NSFont" size="12" name="OpenSans"/>
+                                                                                <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                            </attributes>
+                                                                        </fragment>
+                                                                    </attributedString>
+                                                                    <color key="insertionPointColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                                </textView>
+                                                            </subviews>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </clipView>
+                                                        <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="bKK-nb-lBj">
+                                                            <rect key="frame" x="-100" y="-100" width="87" height="18"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                        </scroller>
+                                                        <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="s4n-W9-Mjv">
+                                                            <rect key="frame" x="-100" y="-100" width="15" height="252"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                        </scroller>
+                                                    </scrollView>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="bottom" secondItem="e7X-Jl-M5j" secondAttribute="bottom" constant="8" id="RYR-QO-EqU"/>
+                                                    <constraint firstItem="e7X-Jl-M5j" firstAttribute="top" secondItem="qoz-Fu-fvj" secondAttribute="top" constant="8" id="SwF-z8-0GH"/>
+                                                    <constraint firstAttribute="trailing" secondItem="e7X-Jl-M5j" secondAttribute="trailing" constant="8" id="qhg-i8-aaV"/>
+                                                    <constraint firstItem="e7X-Jl-M5j" firstAttribute="leading" secondItem="qoz-Fu-fvj" secondAttribute="leading" constant="8" id="uvR-QC-Fef"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="backgroundColor">
+                                                        <color key="value" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </customView>
+                                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="OPu-tJ-95g" customClass="View" customModule="Translate_Bar" customModuleProvider="target">
+                                                <rect key="frame" x="358" y="0.0" width="350" height="200"/>
+                                                <subviews>
+                                                    <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1sp-PY-XL5">
+                                                        <rect key="frame" x="8" y="8" width="334" height="184"/>
+                                                        <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="Gcs-Rr-byE">
+                                                            <rect key="frame" x="0.0" y="0.0" width="334" height="184"/>
+                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                            <subviews>
+                                                                <textView drawsBackground="NO" importsGraphics="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="UOH-YB-up1" customClass="TextView" customModule="Translate_Bar" customModuleProvider="target">
+                                                                    <rect key="frame" x="0.0" y="-1" width="334" height="184"/>
+                                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                    <size key="minSize" width="334" height="184"/>
+                                                                    <size key="maxSize" width="463" height="10000000"/>
+                                                                    <attributedString key="textStorage">
+                                                                        <fragment content=" ">
+                                                                            <attributes>
+                                                                                <font key="NSFont" size="12" name="OpenSans"/>
+                                                                                <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                            </attributes>
+                                                                        </fragment>
+                                                                    </attributedString>
+                                                                    <color key="insertionPointColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                                </textView>
+                                                            </subviews>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </clipView>
+                                                        <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="jyh-Yg-T3w">
+                                                            <rect key="frame" x="-100" y="-100" width="87" height="18"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                        </scroller>
+                                                        <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="swF-LF-XNa">
+                                                            <rect key="frame" x="-100" y="-100" width="15" height="249"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                        </scroller>
+                                                    </scrollView>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="bottom" secondItem="1sp-PY-XL5" secondAttribute="bottom" constant="8" id="0SF-aa-6VG"/>
+                                                    <constraint firstItem="1sp-PY-XL5" firstAttribute="top" secondItem="OPu-tJ-95g" secondAttribute="top" constant="8" id="luK-Tz-Evh"/>
+                                                    <constraint firstItem="1sp-PY-XL5" firstAttribute="leading" secondItem="OPu-tJ-95g" secondAttribute="leading" constant="8" id="mKL-Xc-lXj"/>
+                                                    <constraint firstAttribute="trailing" secondItem="1sp-PY-XL5" secondAttribute="trailing" constant="8" id="u3O-v9-zwK"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="backgroundColor">
+                                                        <color key="value" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </customView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="OPu-tJ-95g" secondAttribute="trailing" id="2Ce-B7-0A3"/>
+                                            <constraint firstItem="OPu-tJ-95g" firstAttribute="leading" secondItem="qoz-Fu-fvj" secondAttribute="trailing" constant="8" id="2yT-D0-SPb"/>
+                                            <constraint firstAttribute="bottom" secondItem="qoz-Fu-fvj" secondAttribute="bottom" id="76V-wn-nwy"/>
+                                            <constraint firstItem="qoz-Fu-fvj" firstAttribute="width" secondItem="OPu-tJ-95g" secondAttribute="width" id="Fo6-4j-hTs"/>
+                                            <constraint firstItem="qoz-Fu-fvj" firstAttribute="top" secondItem="llx-mB-Obq" secondAttribute="top" id="Ftx-Ui-UbN"/>
+                                            <constraint firstItem="qoz-Fu-fvj" firstAttribute="height" secondItem="OPu-tJ-95g" secondAttribute="height" id="X8R-VT-uf2"/>
+                                            <constraint firstAttribute="bottom" secondItem="OPu-tJ-95g" secondAttribute="bottom" id="Zuj-9Y-vhw"/>
+                                            <constraint firstItem="OPu-tJ-95g" firstAttribute="top" secondItem="llx-mB-Obq" secondAttribute="top" id="a9P-gD-zKp"/>
+                                            <constraint firstAttribute="height" constant="200" id="cOj-Jb-uiG"/>
+                                            <constraint firstItem="qoz-Fu-fvj" firstAttribute="leading" secondItem="llx-mB-Obq" secondAttribute="leading" id="xbb-N8-vFj"/>
+                                        </constraints>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="OPu-tJ-95g" secondAttribute="trailing" id="2Ce-B7-0A3"/>
-                                    <constraint firstItem="OPu-tJ-95g" firstAttribute="leading" secondItem="qoz-Fu-fvj" secondAttribute="trailing" constant="8" id="2yT-D0-SPb"/>
-                                    <constraint firstAttribute="bottom" secondItem="qoz-Fu-fvj" secondAttribute="bottom" id="76V-wn-nwy"/>
-                                    <constraint firstItem="qoz-Fu-fvj" firstAttribute="width" secondItem="OPu-tJ-95g" secondAttribute="width" id="Fo6-4j-hTs"/>
-                                    <constraint firstItem="qoz-Fu-fvj" firstAttribute="top" secondItem="llx-mB-Obq" secondAttribute="top" id="Ftx-Ui-UbN"/>
-                                    <constraint firstItem="qoz-Fu-fvj" firstAttribute="height" secondItem="OPu-tJ-95g" secondAttribute="height" id="X8R-VT-uf2"/>
-                                    <constraint firstAttribute="bottom" secondItem="OPu-tJ-95g" secondAttribute="bottom" id="Zuj-9Y-vhw"/>
-                                    <constraint firstItem="OPu-tJ-95g" firstAttribute="top" secondItem="llx-mB-Obq" secondAttribute="top" id="a9P-gD-zKp"/>
-                                    <constraint firstItem="qoz-Fu-fvj" firstAttribute="leading" secondItem="llx-mB-Obq" secondAttribute="leading" id="xbb-N8-vFj"/>
+                                    <constraint firstAttribute="trailing" secondItem="oZe-dF-xuw" secondAttribute="trailing" id="PWe-am-S4t"/>
+                                    <constraint firstItem="oZe-dF-xuw" firstAttribute="leading" secondItem="plg-2b-sUw" secondAttribute="leading" id="bJe-iA-XAd"/>
                                 </constraints>
                                 <visibilityPriorities>
                                     <integer value="1000"/>
@@ -735,109 +944,23 @@
                                     <real value="3.4028234663852886e+38"/>
                                 </customSpacing>
                             </stackView>
-                            <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mhb-Q1-4t4">
-                                <rect key="frame" x="8" y="313" width="177" height="22"/>
-                                <subviews>
-                                    <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qNU-8T-Nww">
-                                        <rect key="frame" x="0.0" y="-1" width="158" height="23"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="158" id="A5l-dW-vFV"/>
-                                            <constraint firstAttribute="height" constant="22" id="I1I-sm-F0h"/>
-                                        </constraints>
-                                        <segmentedCell key="cell" borderStyle="border" alignment="left" segmentDistribution="fillEqually" style="capsule" trackingMode="selectOne" id="WlV-aC-tPg" customClass="LeftSideRoundedSegmentedCell" customModule="Translate_Bar" customModuleProvider="target">
-                                            <font key="font" size="13" name="OpenSans-Regular"/>
-                                            <segments>
-                                                <segment label="привет" width="53"/>
-                                                <segment label="как" selected="YES" tag="1"/>
-                                                <segment label="ты" width="52"/>
-                                            </segments>
-                                        </segmentedCell>
-                                    </segmentedControl>
-                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="oyx-zJ-pae">
-                                        <rect key="frame" x="156" y="-1" width="23" height="23"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="19" id="rZR-Lx-5r9"/>
-                                            <constraint firstAttribute="height" constant="18" id="skB-G2-8WF"/>
-                                        </constraints>
-                                        <buttonCell key="cell" type="bevel" title="▾" bezelStyle="regularSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="fHd-4D-Jq3" customClass="RightSideRoundedButtonCell" customModule="Translate_Bar" customModuleProvider="target">
-                                            <behavior key="behavior" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
-                                            <font key="font" size="15" name="OpenSans-Regular"/>
-                                        </buttonCell>
-                                    </button>
-                                </subviews>
-                                <visibilityPriorities>
-                                    <integer value="1000"/>
-                                    <integer value="1000"/>
-                                </visibilityPriorities>
-                                <customSpacing>
-                                    <real value="3.4028234663852886e+38"/>
-                                    <real value="3.4028234663852886e+38"/>
-                                </customSpacing>
-                            </stackView>
-                            <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UHi-ji-HrT">
-                                <rect key="frame" x="539" y="313" width="177" height="22"/>
-                                <subviews>
-                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cAY-tG-QQc">
-                                        <rect key="frame" x="-2" y="-1" width="23" height="23"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="18" id="MPb-Yh-MN0"/>
-                                            <constraint firstAttribute="width" constant="19" id="e5B-bB-zDw"/>
-                                        </constraints>
-                                        <buttonCell key="cell" type="bevel" title="▾" bezelStyle="regularSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Dc3-q7-czm" customClass="LeftSideRoundedButtonCell" customModule="Translate_Bar" customModuleProvider="target">
-                                            <behavior key="behavior" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
-                                            <font key="font" size="15" name="OpenSans-Regular"/>
-                                        </buttonCell>
-                                    </button>
-                                    <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Loz-ca-azi">
-                                        <rect key="frame" x="19" y="-1" width="158" height="23"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="22" id="4L4-Lc-9Kh"/>
-                                            <constraint firstAttribute="width" constant="158" id="6sk-dV-Vcd"/>
-                                        </constraints>
-                                        <segmentedCell key="cell" borderStyle="border" alignment="left" segmentDistribution="fillEqually" style="capsule" trackingMode="selectOne" id="pAU-21-d4i" customClass="RightSideRoundedSegmentedCell" customModule="Translate_Bar" customModuleProvider="target">
-                                            <font key="font" size="13" name="OpenSans-Regular"/>
-                                            <segments>
-                                                <segment label="привет" width="53"/>
-                                                <segment label="как" selected="YES" tag="1"/>
-                                                <segment label="ты" width="52"/>
-                                            </segments>
-                                        </segmentedCell>
-                                    </segmentedControl>
-                                </subviews>
-                                <visibilityPriorities>
-                                    <integer value="1000"/>
-                                    <integer value="1000"/>
-                                </visibilityPriorities>
-                                <customSpacing>
-                                    <real value="3.4028234663852886e+38"/>
-                                    <real value="3.4028234663852886e+38"/>
-                                </customSpacing>
-                            </stackView>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xGI-FN-2D9">
-                                <rect key="frame" x="347" y="312" width="30" height="23"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="swap" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="beB-oC-A97" customClass="RoundedButtonCell" customModule="Translate_Bar" customModuleProvider="target">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" size="15" name="OpenSans-Regular"/>
-                                </buttonCell>
-                            </button>
                         </subviews>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="llx-mB-Obq" secondAttribute="bottom" constant="45" id="0n9-2e-Eb8"/>
-                            <constraint firstItem="UHi-ji-HrT" firstAttribute="trailing" secondItem="llx-mB-Obq" secondAttribute="trailing" id="38x-o7-vF1"/>
-                            <constraint firstAttribute="trailing" secondItem="llx-mB-Obq" secondAttribute="trailing" constant="8" id="O0f-Tm-yNc"/>
-                            <constraint firstItem="llx-mB-Obq" firstAttribute="centerX" secondItem="4jx-xl-g3l" secondAttribute="centerX" id="R1m-ZS-TFu"/>
-                            <constraint firstItem="llx-mB-Obq" firstAttribute="leading" secondItem="4jx-xl-g3l" secondAttribute="leading" constant="8" id="YAH-4l-QA7"/>
-                            <constraint firstItem="llx-mB-Obq" firstAttribute="top" secondItem="Mhb-Q1-4t4" secondAttribute="bottom" constant="8" id="hFX-ia-kGE"/>
-                            <constraint firstItem="llx-mB-Obq" firstAttribute="top" secondItem="4jx-xl-g3l" secondAttribute="top" constant="45" id="pIh-ov-T0Q"/>
-                            <constraint firstItem="llx-mB-Obq" firstAttribute="leading" secondItem="Mhb-Q1-4t4" secondAttribute="leading" id="uXn-dn-SUI"/>
-                            <constraint firstItem="llx-mB-Obq" firstAttribute="top" secondItem="UHi-ji-HrT" secondAttribute="bottom" constant="8" id="xGg-BK-WcI"/>
+                            <constraint firstItem="plg-2b-sUw" firstAttribute="leading" secondItem="4jx-xl-g3l" secondAttribute="leading" constant="8" id="M8C-pv-otT"/>
+                            <constraint firstAttribute="trailing" secondItem="plg-2b-sUw" secondAttribute="trailing" constant="8" id="b7A-BD-k2e"/>
+                            <constraint firstAttribute="bottom" secondItem="plg-2b-sUw" secondAttribute="bottom" constant="40" id="eUJ-rh-W7F"/>
+                            <constraint firstItem="plg-2b-sUw" firstAttribute="top" secondItem="4jx-xl-g3l" secondAttribute="top" constant="15" id="wcl-Pf-VhR"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="InputTextView" destination="QxF-x0-7F8" id="1Qq-h3-dY4"/>
+                        <outlet property="OutputTextView" destination="UOH-YB-up1" id="ddd-nn-LFz"/>
+                        <outlet property="TextHeightConstraint" destination="cOj-Jb-uiG" id="s33-vo-bfw"/>
+                    </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="33" y="796"/>
+            <point key="canvasLocation" x="33" y="853"/>
         </scene>
     </scenes>
     <resources>
