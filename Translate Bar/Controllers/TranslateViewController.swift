@@ -28,7 +28,7 @@ class TranslateViewController: NSViewController {
 		setupBindings()
 
 		translateVM.inputText
-			.map({$0?.contains(" ") ?? true})
+			.map { $0?.contains(" ") ?? true }
 			.subscribe { event in
 				self.SuggestTextLabel.isHidden = event.element ?? true
 			}
@@ -65,7 +65,8 @@ class TranslateViewController: NSViewController {
 	}
 
     private func resizeAccordingToContent() {
-        let maxTextHeight = max(self.InputTextView.intrinsicContentSize.height, self.OutputTextView.intrinsicContentSize.height) + 41
+		let extraSpace = self.TextHeightConstraint.constant + self.InputTextViewLimitationLabel.frame.height - min(self.InputTextView.frame.height, self.OutputTextView.frame.height) // swiftlint:disable:this trailing_whitespace
+        let maxTextHeight = max(self.InputTextView.intrinsicContentSize.height, self.OutputTextView.intrinsicContentSize.height) + extraSpace
         let screenHeight = NSScreen.main?.frame.height ?? 0
         self.TextHeightConstraint.constant = max(200, maxTextHeight)
         let appDelegate = NSApplication.shared.delegate as! AppDelegate // swiftlint:disable:this force_cast

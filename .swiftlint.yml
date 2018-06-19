@@ -2,6 +2,7 @@ disabled_rules:
   - line_length
   - identifier_name
   - large_tuple
+  - superfluous_disable_command
 excluded:
   - Pods
   - Translate BarTests
