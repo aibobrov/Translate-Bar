@@ -997,11 +997,11 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="InputTextView" destination="QxF-x0-7F8" id="1Qq-h3-dY4"/>
-                        <outlet property="InputTextViewLimitationLabel" destination="GCV-JS-fTG" id="vuq-fZ-ODf"/>
-                        <outlet property="OutputTextView" destination="UOH-YB-up1" id="ddd-nn-LFz"/>
-                        <outlet property="SuggestTextLabel" destination="3T7-pU-Vy3" id="V10-Mf-f01"/>
-                        <outlet property="TextHeightConstraint" destination="cOj-Jb-uiG" id="s33-vo-bfw"/>
+                        <outlet property="inputTextView" destination="QxF-x0-7F8" id="1Qq-h3-dY4"/>
+                        <outlet property="inputTextViewLimitationLabel" destination="GCV-JS-fTG" id="vuq-fZ-ODf"/>
+                        <outlet property="outputTextView" destination="UOH-YB-up1" id="ddd-nn-LFz"/>
+                        <outlet property="suggestTextLabel" destination="3T7-pU-Vy3" id="V10-Mf-f01"/>
+                        <outlet property="textContainerHeightConstraint" destination="cOj-Jb-uiG" id="s33-vo-bfw"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

@@ -11,14 +11,12 @@ import RxCocoa
 import RxSwift
 
 class TranslateViewController: NSViewController {
-	@IBOutlet weak var InputTextView: LimitedTextView!
-	@IBOutlet weak var OutputTextView: NSTextView!
+	@IBOutlet weak var inputTextView: LimitedTextView!
+	@IBOutlet weak var outputTextView: NSTextView!
 
-	@IBOutlet weak var InputTextViewLimitationLabel: NSTextField!
-	@IBOutlet weak var SuggestTextLabel: NSTextField!
-	@IBOutlet weak var TextHeightConstraint: NSLayoutConstraint!
-	@IBOutlet weak var InputTextViewSuggestLabelBottomConstraint: NSLayoutConstraint!
-	@IBOutlet weak var InputTextViewSuperViewBottomSpaceConstraint: NSLayoutConstraint!
+	@IBOutlet weak var inputTextViewLimitationLabel: NSTextField!
+	@IBOutlet weak var suggestTextLabel: NSTextField!
+	@IBOutlet weak var textContainerHeightConstraint: NSLayoutConstraint!
 
 	let translateVM = TranslateViewModel()
 	private let disposeBag = DisposeBag()
@@ -30,13 +28,13 @@ class TranslateViewController: NSViewController {
 		translateVM.inputText
 			.map { $0?.contains(" ") ?? true }
 			.subscribe { event in
-				self.SuggestTextLabel.isHidden = event.element ?? true
+				self.suggestTextLabel.isHidden = event.element ?? true
 			}
 			.disposed(by: disposeBag)
 		translateVM.inputText
 			.map({$0?.count ?? 0})
 			.subscribe(onNext: { [unowned self] value in
-				self.InputTextViewLimitationLabel.stringValue = "\(value)/\(self.InputTextView.maxCharactersCount)"
+				self.inputTextViewLimitationLabel.stringValue = "\(value)/\(self.inputTextView.maxCharactersCount)"
 			}, onError: { error in
 				Log.error(error)
 			}, onCompleted: {
@@ -56,19 +54,19 @@ class TranslateViewController: NSViewController {
     }
 
 	private func setupBindings() {
-		InputTextView.rx.text
+		inputTextView.rx.text
 			.bind(to: translateVM.inputText)
 			.disposed(by: disposeBag)
 		translateVM.outputText
-			.bind(to: OutputTextView.rx.text)
+			.bind(to: outputTextView.rx.text)
 			.disposed(by: disposeBag)
 	}
 
     private func resizeAccordingToContent() {
-		let extraSpace = self.TextHeightConstraint.constant + self.InputTextViewLimitationLabel.frame.height - min(self.InputTextView.frame.height, self.OutputTextView.frame.height) // swiftlint:disable:this trailing_whitespace
-        let maxTextHeight = max(self.InputTextView.intrinsicContentSize.height, self.OutputTextView.intrinsicContentSize.height) + extraSpace
+		let extraSpace = self.textContainerHeightConstraint.constant + self.inputTextViewLimitationLabel.frame.height - min(self.inputTextView.frame.height, self.outputTextView.frame.height) // swiftlint:disable:this trailing_whitespace
+        let maxTextHeight = max(self.inputTextView.intrinsicContentSize.height, self.outputTextView.intrinsicContentSize.height) + extraSpace
         let screenHeight = NSScreen.main?.frame.height ?? 0
-        self.TextHeightConstraint.constant = max(200, maxTextHeight)
+        self.textContainerHeightConstraint.constant = max(200, maxTextHeight)
         let appDelegate = NSApplication.shared.delegate as! AppDelegate // swiftlint:disable:this force_cast
         appDelegate.popover.contentSize.height = min(appDelegate.popover.contentSize.height, screenHeight)
     }
