@@ -11,7 +11,7 @@ import Cocoa
 class LimitedTextView: TextView, NSTextViewDelegate {
 	@IBInspectable
 	var maxCharactersCount: Int = .max
-	
+
 	override init(frame frameRect: NSRect) {
 		super.init(frame: frameRect)
 		setup()
