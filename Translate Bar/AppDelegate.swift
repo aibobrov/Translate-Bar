@@ -13,7 +13,7 @@ import SwiftyBeaver
 import Moya
 import EVReflection
 
-let Log = SwiftyBeaver.self
+let Log = SwiftyBeaver.self // swiftlint:disable:this variable_name 
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
