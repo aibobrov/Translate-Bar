@@ -18,13 +18,30 @@ class TranslateViewController: NSViewController {
 	@IBOutlet weak var suggestTextLabel: NSTextField!
 	@IBOutlet weak var textContainerHeightConstraint: NSLayoutConstraint!
 
-	let translateVM = TranslateViewModel()
+    @IBOutlet weak var sourceLanguageSegmentedControl: NSSegmentedControl!
+    let translateVM = TranslateViewModel()
 	private let disposeBag = DisposeBag()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-		setupBindings()
+		setupUIBindings()
+        setupViewModelBindings()
+    }
 
+    override func viewDidAppear() {
+        super.viewDidAppear()
+        NSApplication.shared.activate(ignoringOtherApps: true)
+    }
+
+	private func setupUIBindings() {
+		inputTextView.rx.text
+            .bind(to: translateVM.inputText)
+			.disposed(by: disposeBag)
+		translateVM.outputText
+			.bind(to: outputTextView.rx.text)
+			.disposed(by: disposeBag)
+	}
+    private func setupViewModelBindings() {
         translateVM.isSuggestNeeded
             .bind(to: self.suggestTextLabel.rx.isHidden)
             .disposed(by: disposeBag)
@@ -40,20 +57,12 @@ class TranslateViewController: NSViewController {
             .disposed(by: disposeBag)
     }
 
-	private func setupBindings() {
-		inputTextView.rx.text
-            .bind(to: translateVM.inputText)
-			.disposed(by: disposeBag)
-		translateVM.outputText
-			.bind(to: outputTextView.rx.text)
-			.disposed(by: disposeBag)
-	}
-
     private func resizeAccordingToContent() {
 		let extraSpace = self.textContainerHeightConstraint.constant + self.inputTextViewLimitationLabel.frame.height - min(self.inputTextView.frame.height, self.outputTextView.frame.height) // swiftlint:disable:this trailing_whitespace
-        let maxTextHeight = max(self.inputTextView.intrinsicContentSize.height, self.outputTextView.intrinsicContentSize.height) + extraSpace
+        let maxTextHeight = max(self.inputTextView.intrinsicContentSize.height, self.outputTextView.intrinsicContentSize.height)
+        let maxTextContainerHeight = maxTextHeight + extraSpace
         let screenHeight = NSScreen.main?.frame.height ?? 0
-        self.textContainerHeightConstraint.constant = max(200, maxTextHeight)
+        self.textContainerHeightConstraint.constant = max(200, maxTextContainerHeight)
         let appDelegate = NSApplication.shared.delegate as! AppDelegate // swiftlint:disable:this force_cast
         appDelegate.popover.contentSize.height = min(appDelegate.popover.contentSize.height, screenHeight)
     }

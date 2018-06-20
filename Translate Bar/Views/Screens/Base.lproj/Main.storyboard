@@ -809,21 +809,21 @@
                                                         <rect key="frame" x="8" y="8" width="334" height="184"/>
                                                         <subviews>
                                                             <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e7X-Jl-M5j">
-                                                                <rect key="frame" x="0.0" y="29" width="334" height="155"/>
+                                                                <rect key="frame" x="0.0" y="24" width="334" height="160"/>
                                                                 <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="Ica-wc-TKs">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="334" height="155"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="334" height="160"/>
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                     <subviews>
                                                                         <textView drawsBackground="NO" importsGraphics="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="QxF-x0-7F8" customClass="LimitedTextView" customModule="Translate_Bar" customModuleProvider="target">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="334" height="155"/>
+                                                                            <rect key="frame" x="0.0" y="0.0" width="334" height="160"/>
                                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                                            <size key="minSize" width="334" height="155"/>
+                                                                            <size key="minSize" width="334" height="160"/>
                                                                             <size key="maxSize" width="463" height="10000000"/>
                                                                             <attributedString key="textStorage">
                                                                                 <fragment content=" ">
                                                                                     <attributes>
-                                                                                        <font key="NSFont" size="12" name="OpenSans-Regular"/>
+                                                                                        <font key="NSFont" metaFont="cellTitle"/>
                                                                                         <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                                     </attributes>
                                                                                 </fragment>
@@ -848,9 +848,9 @@
                                                                 </scroller>
                                                             </scrollView>
                                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3T7-pU-Vy3">
-                                                                <rect key="frame" x="0.0" y="0.0" width="103" height="21"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="105" height="16"/>
                                                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Did you mean ... ?" drawsBackground="YES" id="tVy-E3-bEU">
-                                                                    <font key="font" size="12" name="OpenSans-Regular"/>
+                                                                    <font key="font" metaFont="cellTitle"/>
                                                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                     <color key="backgroundColor" red="0.070588235289999995" green="0.070588235289999995" blue="0.070588235289999995" alpha="0.0" colorSpace="calibratedRGB"/>
                                                                 </textFieldCell>
@@ -873,9 +873,9 @@
                                                         </customSpacing>
                                                     </stackView>
                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="GCV-JS-fTG">
-                                                        <rect key="frame" x="299" y="8" width="43" height="21"/>
+                                                        <rect key="frame" x="296" y="8" width="46" height="16"/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="0/5000" drawsBackground="YES" id="RQX-ZA-Ulm">
-                                                            <font key="font" size="12" name="OpenSans-Regular"/>
+                                                            <font key="font" metaFont="cellTitle"/>
                                                             <color key="textColor" name="controlShadowColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" red="0.070588235289999995" green="0.070588235289999995" blue="0.070588235289999995" alpha="0.0" colorSpace="calibratedRGB"/>
                                                         </textFieldCell>
@@ -917,7 +917,7 @@
                                                                     <attributedString key="textStorage">
                                                                         <fragment content=" ">
                                                                             <attributes>
-                                                                                <font key="NSFont" size="12" name="OpenSans-Regular"/>
+                                                                                <font key="NSFont" metaFont="cellTitle"/>
                                                                                 <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                             </attributes>
                                                                         </fragment>
@@ -1000,6 +1000,7 @@
                         <outlet property="inputTextView" destination="QxF-x0-7F8" id="1Qq-h3-dY4"/>
                         <outlet property="inputTextViewLimitationLabel" destination="GCV-JS-fTG" id="vuq-fZ-ODf"/>
                         <outlet property="outputTextView" destination="UOH-YB-up1" id="ddd-nn-LFz"/>
+                        <outlet property="sourceLanguageSegmentedControl" destination="qNU-8T-Nww" id="Sf5-AG-SKW"/>
                         <outlet property="suggestTextLabel" destination="3T7-pU-Vy3" id="V10-Mf-f01"/>
                         <outlet property="textContainerHeightConstraint" destination="cOj-Jb-uiG" id="s33-vo-bfw"/>
                     </connections>
