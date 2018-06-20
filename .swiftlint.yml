@@ -3,6 +3,7 @@ disabled_rules:
   - identifier_name
   - large_tuple
   - superfluous_disable_command
+  - type_name
 excluded:
   - Pods
   - Translate BarTests
