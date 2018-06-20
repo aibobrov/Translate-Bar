@@ -11,7 +11,9 @@ import RxCocoa
 import RxSwift
 
 class TranslateViewController: NSViewController {
-	@IBOutlet weak var inputTextView: LimitedTextView!
+    @IBOutlet weak var contentView: NSView!
+    @IBOutlet weak var mainScrollView: NSScrollView!
+    @IBOutlet weak var inputTextView: LimitedTextView!
 	@IBOutlet weak var outputTextView: NSTextView!
 
 	@IBOutlet weak var inputTextViewLimitationLabel: NSTextField!
@@ -59,11 +61,14 @@ class TranslateViewController: NSViewController {
 
     private func resizeAccordingToContent() {
 		let extraSpace = self.textContainerHeightConstraint.constant + self.inputTextViewLimitationLabel.frame.height - min(self.inputTextView.frame.height, self.outputTextView.frame.height) // swiftlint:disable:this trailing_whitespace
-        let maxTextHeight = max(self.inputTextView.intrinsicContentSize.height, self.outputTextView.intrinsicContentSize.height)
-        let maxTextContainerHeight = maxTextHeight + extraSpace
-        let screenHeight = NSScreen.main?.frame.height ?? 0
+        let maxTextContentHeight = max(self.inputTextView.intrinsicContentSize.height, self.outputTextView.intrinsicContentSize.height)
+        let maxTextContainerHeight = maxTextContentHeight + extraSpace
         self.textContainerHeightConstraint.constant = max(200, maxTextContainerHeight)
-        let appDelegate = NSApplication.shared.delegate as! AppDelegate // swiftlint:disable:this force_cast
-        appDelegate.popover.contentSize.height = min(appDelegate.popover.contentSize.height, screenHeight)
+        
+        DispatchQueue.main.async {
+            let appDelegate = NSApplication.shared.delegate as! AppDelegate // swiftlint:disable:this force_cast
+            appDelegate.popover.contentSize.height = self.contentView.frame.height
+            self.view.layoutSubtreeIfNeeded()
+        }
     }
 }
