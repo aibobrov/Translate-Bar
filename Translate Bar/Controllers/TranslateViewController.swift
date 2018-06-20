@@ -25,28 +25,15 @@ class TranslateViewController: NSViewController {
         super.viewDidLoad()
 		setupBindings()
 
-		translateVM.inputText
-			.map { $0?.contains(" ") ?? true }
-			.subscribe { event in
-				self.suggestTextLabel.isHidden = event.element ?? true
-			}
-			.disposed(by: disposeBag)
-		translateVM.inputText
-			.map({$0?.count ?? 0})
-			.subscribe(onNext: { [unowned self] value in
-				self.inputTextViewLimitationLabel.stringValue = "\(value)/\(self.inputTextView.maxCharactersCount)"
-			}, onError: { error in
-				Log.error(error)
-			}, onCompleted: {
-				Log.verbose("inputText sequence finished")
-			}, onDisposed: nil)
-			.disposed(by: disposeBag)
-		translateVM.inputText
-            .subscribe { [unowned self] _ in
-               self.resizeAccordingToContent()
-            }
+        translateVM.isSuggestNeeded
+            .bind(to: self.suggestTextLabel.rx.isHidden)
             .disposed(by: disposeBag)
-        translateVM.outputText
+
+        translateVM.limitationText
+            .bind(to: self.inputTextViewLimitationLabel.rx.text)
+            .disposed(by: disposeBag)
+
+        translateVM.text
             .subscribe { [unowned self] _ in
                 self.resizeAccordingToContent()
             }
@@ -55,7 +42,7 @@ class TranslateViewController: NSViewController {
 
 	private func setupBindings() {
 		inputTextView.rx.text
-			.bind(to: translateVM.inputText)
+            .bind(to: translateVM.inputText)
 			.disposed(by: disposeBag)
 		translateVM.outputText
 			.bind(to: outputTextView.rx.text)

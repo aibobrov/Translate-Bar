@@ -13,6 +13,7 @@ import Moya
 
 class TranslateViewModel {
 	private let disposeBag = DisposeBag()
+    private (set) var maxCharactersCount = 5000
 	var inputText = BehaviorRelay<String?>(value: nil)
 	var outputText = BehaviorRelay<String?>(value: nil)
 
@@ -25,34 +26,46 @@ class TranslateViewModel {
 				self.outputText.accept("")
 			}
 			.disposed(by: disposeBag)
+
 		inputText
+            .distinctUntilChanged()
             .filter({$0 != nil && $0!.count > 0})
-            .map({$0!})
+            .map { $0! }
             .debounce(1, scheduler: ConcurrentDispatchQueueScheduler(qos: .userInitiated))
 			.subscribe(onNext: { [unowned self] value in
-                self.translateProvider
-                    .rx
-					.request(.translate(from: Language(shortName: "ru"), to: Language(shortName: "en"), text: value),
-							 callbackQueue: DispatchQueue.global(qos: .userInteractive)).Rmap(to: Translation.self)
-					.filter({ $0.text != nil })
-					.subscribe(onSuccess: { translation in
-						self.outputText.accept(translation.text!)
-                    }, onError: { (error) in
-                        self.outputText.accept("")
-                        Log.error(error.localizedDescription)
-                    })
+                self.translate(text: value, source: Language(shortName: "en"), target: Language(shortName: "ru"))
+                    .map { $0.text ?? "" }
+                    .bind(to: self.outputText)
                     .disposed(by: self.disposeBag)
-			}, onError: { error in
-                self.outputText.accept("")
-				Log.error(error.localizedDescription)
-			}, onCompleted: {
-                self.outputText.accept("")
-				Log.verbose("Completed inputText sequence")
-			},
-            onDisposed: {
-                self.outputText.accept("")
-                Log.verbose("Disposed inputText sequence")
-            })
+			})
 			.disposed(by: disposeBag)
 	}
+
+    var isSuggestNeeded: Observable<Bool> {
+        return inputText
+                .map { $0?.contains(" ") ?? false }
+                .asObservable()
+    }
+
+    var text: Observable<String?> {
+        return Observable
+                .of(inputText, outputText)
+                .merge()
+    }
+
+    var limitationText: Observable<String> {
+        return inputText
+            .map { $0?.count ?? 0 }
+            .map {"\($0)/\(self.maxCharactersCount)"}
+            .asObservable()
+    }
+
+    func translate(text: String, source: Language, target: Language) -> Observable<Translation> {
+        return translateProvider
+                .rx
+                .request(.translate(from: source, to: target, text: text), callbackQueue: DispatchQueue.global(qos: .userInteractive))
+                .Rmap(to: Translation.self)
+                .filter { $0.text != nil }
+                .asObservable()
+    }
 }
