@@ -14,6 +14,7 @@
 		A120816320CDBF3500C57360 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A120816120CDBF3500C57360 /* Main.storyboard */; };
 		A120816A20CEC17C00C57360 /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = A120816920CEC17C00C57360 /* Language.swift */; };
 		A125BD7E20D8511300C2BAE2 /* LimitedTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A125BD7D20D8511300C2BAE2 /* LimitedTextView.swift */; };
+		A125BD8320DC4A8800C2BAE2 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = A125BD8220DC4A8800C2BAE2 /* Button.swift */; };
 		A1521FD720CD6CD50048EC26 /* NSStoryboardExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1521FD620CD6CD50048EC26 /* NSStoryboardExtensions.swift */; };
 		A174EDDF20CC798B00465A42 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A174EDDE20CC798B00465A42 /* AppDelegate.swift */; };
 		A174EDE420CC798B00465A42 /* Translate_Bar.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A174EDE220CC798B00465A42 /* Translate_Bar.xcdatamodeld */; };
@@ -22,7 +23,6 @@
 		A174EE0020CC798E00465A42 /* TranslateBarUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A174EDFF20CC798E00465A42 /* TranslateBarUITests.swift */; };
 		A1E717C520D07F540080A546 /* TranslateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E717C420D07F540080A546 /* TranslateViewModel.swift */; };
 		A1E717C820D07F9A0080A546 /* TranslateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E717C720D07F9A0080A546 /* TranslateViewController.swift */; };
-		A1E717D120D1CAB90080A546 /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A1E717D020D1CA4C0080A546 /* OpenSans-Regular.ttf */; };
 		A1E717F920D4644B0080A546 /* HalfRoundedBezierPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E717F820D4644B0080A546 /* HalfRoundedBezierPath.swift */; };
 		A1E717FE20D479A70080A546 /* BaseRoundedSegmentedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E717FD20D479A70080A546 /* BaseRoundedSegmentedCell.swift */; };
 		A1E7180020D480F80080A546 /* SidedRoundedSegmentedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E717FF20D480F70080A546 /* SidedRoundedSegmentedCell.swift */; };
@@ -65,6 +65,8 @@
 		A120816220CDBF3500C57360 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A120816920CEC17C00C57360 /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
 		A125BD7D20D8511300C2BAE2 /* LimitedTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LimitedTextView.swift; sourceTree = "<group>"; };
+		A125BD8120DC45E100C2BAE2 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
+		A125BD8220DC4A8800C2BAE2 /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		A1521FD620CD6CD50048EC26 /* NSStoryboardExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSStoryboardExtensions.swift; sourceTree = "<group>"; };
 		A174EDDB20CC798B00465A42 /* Translate Bar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Translate Bar.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A174EDDE20CC798B00465A42 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -80,7 +82,6 @@
 		A174EE0120CC798E00465A42 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A1E717C420D07F540080A546 /* TranslateViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TranslateViewModel.swift; sourceTree = "<group>"; };
 		A1E717C720D07F9A0080A546 /* TranslateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateViewController.swift; sourceTree = "<group>"; };
-		A1E717D020D1CA4C0080A546 /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
 		A1E717F820D4644B0080A546 /* HalfRoundedBezierPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HalfRoundedBezierPath.swift; sourceTree = "<group>"; };
 		A1E717FD20D479A70080A546 /* BaseRoundedSegmentedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRoundedSegmentedCell.swift; sourceTree = "<group>"; };
 		A1E717FF20D480F70080A546 /* SidedRoundedSegmentedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SidedRoundedSegmentedCell.swift; sourceTree = "<group>"; };
@@ -276,7 +277,7 @@
 		A1E717CD20D1C4F70080A546 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				A1E717D020D1CA4C0080A546 /* OpenSans-Regular.ttf */,
+				A125BD8120DC45E100C2BAE2 /* Roboto-Regular.ttf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -332,6 +333,7 @@
 				D04AE06A20D7FF5D00FED056 /* TextView.swift */,
 				D04AE06B20D7FF5D00FED056 /* View.swift */,
 				D05E4CF620DB9A0C0059ACB0 /* ScrollView.swift */,
+				A125BD8220DC4A8800C2BAE2 /* Button.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -449,7 +451,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A174EDE620CC798E00465A42 /* Assets.xcassets in Resources */,
-				A1E717D120D1CAB90080A546 /* OpenSans-Regular.ttf in Resources */,
 				A120816320CDBF3500C57360 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -598,6 +599,7 @@
 				A1E7181420D7229B0080A546 /* NSRectExtensions.swift in Sources */,
 				A1E7180A20D576FD0080A546 /* SidedRoundedButtonCell.swift in Sources */,
 				A1E7180820D56E4C0080A546 /* BaseRoundedButtonCell.swift in Sources */,
+				A125BD8320DC4A8800C2BAE2 /* Button.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

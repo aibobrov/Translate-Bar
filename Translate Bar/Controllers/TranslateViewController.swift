@@ -17,6 +17,7 @@ class TranslateViewController: NSViewController {
 	@IBOutlet weak var outputTextView: NSTextView!
 
 	@IBOutlet weak var inputTextViewLimitationLabel: NSTextField!
+	@IBOutlet weak var clearButton: NSButton!
 	@IBOutlet weak var suggestTextLabel: NSTextField!
 	@IBOutlet weak var textContainerHeightConstraint: NSLayoutConstraint!
 
@@ -39,8 +40,16 @@ class TranslateViewController: NSViewController {
 		inputTextView.rx.text
             .bind(to: translateVM.inputText)
 			.disposed(by: disposeBag)
+		translateVM.inputText
+			.bind(to: inputTextView.rx.text)
+			.disposed(by: disposeBag)
 		translateVM.outputText
 			.bind(to: outputTextView.rx.text)
+			.disposed(by: disposeBag)
+
+		clearButton.rx
+			.controlEvent.map {""}
+			.bind(to: translateVM.inputText)
 			.disposed(by: disposeBag)
 	}
     private func setupViewModelBindings() {
@@ -64,7 +73,7 @@ class TranslateViewController: NSViewController {
         let maxTextContentHeight = max(self.inputTextView.intrinsicContentSize.height, self.outputTextView.intrinsicContentSize.height)
         let maxTextContainerHeight = maxTextContentHeight + extraSpace
         self.textContainerHeightConstraint.constant = max(200, maxTextContainerHeight)
-        
+
         DispatchQueue.main.async {
             let appDelegate = NSApplication.shared.delegate as! AppDelegate // swiftlint:disable:this force_cast
             appDelegate.popover.contentSize.height = self.contentView.frame.height

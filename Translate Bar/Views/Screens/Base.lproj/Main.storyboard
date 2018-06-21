@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14113"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
         <capability name="stacking Non-gravity area distributions on NSStackView" minToolsVersion="7.0" minSystemVersion="10.11"/>
     </dependencies>
@@ -707,14 +708,14 @@
                                                                 <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mhb-Q1-4t4">
                                                                     <rect key="frame" x="0.0" y="0.0" width="177" height="22"/>
                                                                     <subviews>
-                                                                        <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qNU-8T-Nww">
+                                                                        <segmentedControl canDrawConcurrently="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qNU-8T-Nww">
                                                                             <rect key="frame" x="0.0" y="-1" width="158" height="23"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="width" constant="158" id="A5l-dW-vFV"/>
                                                                                 <constraint firstAttribute="height" constant="22" id="I1I-sm-F0h"/>
                                                                             </constraints>
                                                                             <segmentedCell key="cell" borderStyle="border" alignment="left" segmentDistribution="fillEqually" style="capsule" trackingMode="selectOne" id="WlV-aC-tPg" customClass="LeftSideRoundedSegmentedCell" customModule="Translate_Bar" customModuleProvider="target">
-                                                                                <font key="font" metaFont="system"/>
+                                                                                <font key="font" size="13" name="Roboto-Regular"/>
                                                                                 <segments>
                                                                                     <segment label="привет" width="53"/>
                                                                                     <segment label="как" selected="YES" tag="1"/>
@@ -765,17 +766,17 @@
                                                                             </constraints>
                                                                             <buttonCell key="cell" type="bevel" title="▾" bezelStyle="regularSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Dc3-q7-czm" customClass="LeftSideRoundedButtonCell" customModule="Translate_Bar" customModuleProvider="target">
                                                                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
-                                                                                <font key="font" metaFont="system" size="15"/>
+                                                                                <font key="font" size="15" name="Roboto-Regular"/>
                                                                             </buttonCell>
                                                                         </button>
-                                                                        <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Loz-ca-azi">
+                                                                        <segmentedControl canDrawConcurrently="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Loz-ca-azi">
                                                                             <rect key="frame" x="19" y="-1" width="158" height="23"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="height" constant="22" id="4L4-Lc-9Kh"/>
                                                                                 <constraint firstAttribute="width" constant="158" id="6sk-dV-Vcd"/>
                                                                             </constraints>
                                                                             <segmentedCell key="cell" borderStyle="border" alignment="left" segmentDistribution="fillEqually" style="capsule" trackingMode="selectOne" id="pAU-21-d4i" customClass="RightSideRoundedSegmentedCell" customModule="Translate_Bar" customModuleProvider="target">
-                                                                                <font key="font" metaFont="system"/>
+                                                                                <font key="font" size="13" name="Roboto-Regular"/>
                                                                                 <segments>
                                                                                     <segment label="привет" width="53"/>
                                                                                     <segment label="как" selected="YES" tag="1"/>
@@ -834,8 +835,8 @@
                                                                                                 <attributedString key="textStorage">
                                                                                                     <fragment content=" ">
                                                                                                         <attributes>
-                                                                                                            <font key="NSFont" metaFont="cellTitle"/>
-                                                                                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                                                            <font key="NSFont" size="14" name="Roboto-Regular"/>
+                                                                                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                                                         </attributes>
                                                                                                     </fragment>
                                                                                                 </attributedString>
@@ -891,14 +892,39 @@
                                                                                 <color key="backgroundColor" red="0.070588235289999995" green="0.070588235289999995" blue="0.070588235289999995" alpha="0.0" colorSpace="calibratedRGB"/>
                                                                             </textFieldCell>
                                                                         </textField>
+                                                                        <button focusRingType="none" verticalHuggingPriority="750" springLoaded="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bEf-wb-qhD" customClass="Button" customModule="Translate_Bar" customModuleProvider="target">
+                                                                            <rect key="frame" x="355" y="175" width="15" height="18"/>
+                                                                            <constraints>
+                                                                                <constraint firstAttribute="height" constant="15" id="O2A-bD-e1j"/>
+                                                                                <constraint firstAttribute="width" secondItem="bEf-wb-qhD" secondAttribute="height" multiplier="1:1" id="rJ3-KH-Pbl"/>
+                                                                            </constraints>
+                                                                            <buttonCell key="cell" type="squareTextured" bezelStyle="texturedSquare" image="NSStopProgressTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" focusRingType="none" transparent="YES" imageScaling="proportionallyUpOrDown" inset="2" id="tQo-AT-1It">
+                                                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                                                <font key="font" metaFont="system"/>
+                                                                            </buttonCell>
+                                                                            <userDefinedRuntimeAttributes>
+                                                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                                    <real key="value" value="0.0"/>
+                                                                                </userDefinedRuntimeAttribute>
+                                                                                <userDefinedRuntimeAttribute type="color" keyPath="backgroundColor">
+                                                                                    <color key="value" red="0.070588235289999995" green="0.070588235289999995" blue="0.070588235289999995" alpha="0.0" colorSpace="calibratedRGB"/>
+                                                                                </userDefinedRuntimeAttribute>
+                                                                                <userDefinedRuntimeAttribute type="color" keyPath="imageBackgroundColor">
+                                                                                    <color key="value" red="0.070588235289999995" green="0.070588235289999995" blue="0.070588235289999995" alpha="0.0" colorSpace="calibratedRGB"/>
+                                                                                </userDefinedRuntimeAttribute>
+                                                                            </userDefinedRuntimeAttributes>
+                                                                        </button>
                                                                     </subviews>
                                                                     <constraints>
+                                                                        <constraint firstItem="bEf-wb-qhD" firstAttribute="top" secondItem="qoz-Fu-fvj" secondAttribute="top" constant="8" id="3HI-On-zYV"/>
+                                                                        <constraint firstAttribute="trailing" secondItem="bEf-wb-qhD" secondAttribute="trailing" constant="8" id="4rJ-5I-LLg"/>
                                                                         <constraint firstItem="GCV-JS-fTG" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="3T7-pU-Vy3" secondAttribute="trailing" id="Eg0-kq-TpE"/>
                                                                         <constraint firstAttribute="trailing" secondItem="GCV-JS-fTG" secondAttribute="trailing" constant="8" id="LT7-5a-Rfw"/>
                                                                         <constraint firstAttribute="trailing" secondItem="XVo-v2-Mo0" secondAttribute="trailing" constant="8" id="SyS-mQ-Ica"/>
                                                                         <constraint firstAttribute="bottom" secondItem="GCV-JS-fTG" secondAttribute="bottom" constant="8" id="UIX-60-hWC"/>
                                                                         <constraint firstItem="XVo-v2-Mo0" firstAttribute="leading" secondItem="qoz-Fu-fvj" secondAttribute="leading" constant="8" id="e1Q-xp-3SR"/>
                                                                         <constraint firstAttribute="bottom" secondItem="XVo-v2-Mo0" secondAttribute="bottom" constant="8" id="odd-Wz-6GG"/>
+                                                                        <constraint firstItem="bEf-wb-qhD" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="qoz-Fu-fvj" secondAttribute="leading" id="pb0-rQ-0U0"/>
                                                                         <constraint firstItem="XVo-v2-Mo0" firstAttribute="top" secondItem="qoz-Fu-fvj" secondAttribute="top" constant="8" id="uSZ-Pr-JNY"/>
                                                                     </constraints>
                                                                     <userDefinedRuntimeAttributes>
@@ -928,8 +954,8 @@
                                                                                         <attributedString key="textStorage">
                                                                                             <fragment content=" ">
                                                                                                 <attributes>
-                                                                                                    <font key="NSFont" metaFont="cellTitle"/>
-                                                                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                                                    <font key="NSFont" size="14" name="Roboto-Regular"/>
+                                                                                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                                                 </attributes>
                                                                                             </fragment>
                                                                                         </attributedString>
@@ -992,7 +1018,7 @@
                                                             </constraints>
                                                             <userDefinedRuntimeAttributes>
                                                                 <userDefinedRuntimeAttribute type="color" keyPath="backgroundColor">
-                                                                    <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                    <color key="value" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
                                                                 </userDefinedRuntimeAttribute>
                                                                 <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                                     <real key="value" value="10"/>
@@ -1055,6 +1081,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="clearButton" destination="bEf-wb-qhD" id="udM-xU-an6"/>
                         <outlet property="contentView" destination="gQE-pN-nWF" id="vSt-x1-03A"/>
                         <outlet property="inputTextView" destination="QxF-x0-7F8" id="1Qq-h3-dY4"/>
                         <outlet property="inputTextViewLimitationLabel" destination="GCV-JS-fTG" id="vuq-fZ-ODf"/>
@@ -1067,10 +1094,11 @@
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="96.5" y="882"/>
+            <point key="canvasLocation" x="96" y="882"/>
         </scene>
     </scenes>
     <resources>
+        <image name="NSStopProgressTemplate" width="11" height="11"/>
         <image name="swap" width="25.600000381469727" height="25.600000381469727"/>
     </resources>
 </document>

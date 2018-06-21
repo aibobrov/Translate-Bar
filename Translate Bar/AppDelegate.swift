@@ -17,7 +17,7 @@ let Log = SwiftyBeaver.self // swiftlint:disable:this variable_name
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
-	private let (mainImage, alternateImage) = (#imageLiteral(resourceName: "language"), #imageLiteral(resourceName: "language_filled"))
+	private let statusItemImages: [NSImage] = [#imageLiteral(resourceName: "language"), #imageLiteral(resourceName: "language_filled")]
 	private let disposeBag = DisposeBag()
 
 	let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
@@ -34,19 +34,19 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		Log.addDestination(ConsoleDestination())
 
 		if let button = statusItem.button {
-			button.image = mainImage
-			button.alternateImage = alternateImage
+			button.image = statusItemImages.first
 			button.action = #selector(togglePopover(_:))
 		}
 
 		popover.contentViewController = NSStoryboard.instantiateController(from: "Main", withIdentifier: "MainVCID")
 
 		popover.rx.observe(Bool.self, #keyPath(NSPopover.isShown))
-			.map({ $0 ?? false })
-			.subscribe { [unowned self] event in
-
-				self.statusItem.button?.image = event.element! ? self.alternateImage : self.mainImage
-			}
+			.observeOn(MainScheduler.asyncInstance)
+			.map { $0 ?? false }
+			.map { $0 ? 1 : 0 }
+			.subscribe({ [unowned self] event in
+				self.statusItem.button?.image = self.statusItemImages[event.element!]
+			})
 			.disposed(by: disposeBag)
 	}
 
