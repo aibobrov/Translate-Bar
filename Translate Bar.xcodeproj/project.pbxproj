@@ -35,6 +35,7 @@
 		D04AE06C20D7FF5D00FED056 /* NSTextView+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04AE06920D7FF5D00FED056 /* NSTextView+Rx.swift */; };
 		D04AE06D20D7FF5D00FED056 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04AE06A20D7FF5D00FED056 /* TextView.swift */; };
 		D04AE06E20D7FF5D00FED056 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04AE06B20D7FF5D00FED056 /* View.swift */; };
+		D05E4CF720DB9A0C0059ACB0 /* ScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05E4CF620DB9A0C0059ACB0 /* ScrollView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,6 +95,7 @@
 		D04AE06920D7FF5D00FED056 /* NSTextView+Rx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSTextView+Rx.swift"; sourceTree = "<group>"; };
 		D04AE06A20D7FF5D00FED056 /* TextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
 		D04AE06B20D7FF5D00FED056 /* View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
+		D05E4CF620DB9A0C0059ACB0 /* ScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollView.swift; sourceTree = "<group>"; };
 		D12A2F364991FE0E85D2D3AF /* Pods_Translate_Bar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Translate_Bar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0AE73213BC271F12033EF1C /* Pods_Translate_BarTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Translate_BarTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -329,6 +331,7 @@
 				D04AE06920D7FF5D00FED056 /* NSTextView+Rx.swift */,
 				D04AE06A20D7FF5D00FED056 /* TextView.swift */,
 				D04AE06B20D7FF5D00FED056 /* View.swift */,
+				D05E4CF620DB9A0C0059ACB0 /* ScrollView.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -582,6 +585,7 @@
 				D04AE06C20D7FF5D00FED056 /* NSTextView+Rx.swift in Sources */,
 				A1521FD720CD6CD50048EC26 /* NSStoryboardExtensions.swift in Sources */,
 				A1E717C520D07F540080A546 /* TranslateViewModel.swift in Sources */,
+				D05E4CF720DB9A0C0059ACB0 /* ScrollView.swift in Sources */,
 				A120816A20CEC17C00C57360 /* Language.swift in Sources */,
 				A1E717C820D07F9A0080A546 /* TranslateViewController.swift in Sources */,
 				A120815B20CDBCA600C57360 /* YandexTranslate.swift in Sources */,

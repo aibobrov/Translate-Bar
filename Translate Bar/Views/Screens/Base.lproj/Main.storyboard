@@ -819,7 +819,7 @@
                                                                         <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XVo-v2-Mo0">
                                                                             <rect key="frame" x="8" y="8" width="362" height="184"/>
                                                                             <subviews>
-                                                                                <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e7X-Jl-M5j">
+                                                                                <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e7X-Jl-M5j" customClass="ScrollView" customModule="Translate_Bar" customModuleProvider="target">
                                                                                     <rect key="frame" x="0.0" y="24" width="362" height="160"/>
                                                                                     <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="Ica-wc-TKs">
                                                                                         <rect key="frame" x="0.0" y="0.0" width="362" height="160"/>
@@ -913,7 +913,7 @@
                                                                 <customView translatesAutoresizingMaskIntoConstraints="NO" id="OPu-tJ-95g" customClass="View" customModule="Translate_Bar" customModuleProvider="target">
                                                                     <rect key="frame" x="386" y="0.0" width="378" height="200"/>
                                                                     <subviews>
-                                                                        <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1sp-PY-XL5">
+                                                                        <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1sp-PY-XL5" customClass="ScrollView" customModule="Translate_Bar" customModuleProvider="target">
                                                                             <rect key="frame" x="8" y="8" width="362" height="184"/>
                                                                             <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="Gcs-Rr-byE">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="362" height="184"/>
