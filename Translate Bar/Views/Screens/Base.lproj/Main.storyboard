@@ -715,7 +715,7 @@
                                                                                 <constraint firstAttribute="height" constant="22" id="I1I-sm-F0h"/>
                                                                             </constraints>
                                                                             <segmentedCell key="cell" borderStyle="border" alignment="left" segmentDistribution="fillEqually" style="capsule" trackingMode="selectOne" id="WlV-aC-tPg" customClass="LeftSideRoundedSegmentedCell" customModule="Translate_Bar" customModuleProvider="target">
-                                                                                <font key="font" size="13" name="Roboto-Regular"/>
+                                                                                <font key="font" metaFont="system"/>
                                                                                 <segments>
                                                                                     <segment label="привет" width="53"/>
                                                                                     <segment label="как" selected="YES" tag="1"/>
@@ -766,7 +766,7 @@
                                                                             </constraints>
                                                                             <buttonCell key="cell" type="bevel" title="▾" bezelStyle="regularSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Dc3-q7-czm" customClass="LeftSideRoundedButtonCell" customModule="Translate_Bar" customModuleProvider="target">
                                                                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
-                                                                                <font key="font" size="15" name="Roboto-Regular"/>
+                                                                                <font key="font" metaFont="system" size="15"/>
                                                                             </buttonCell>
                                                                         </button>
                                                                         <segmentedControl canDrawConcurrently="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Loz-ca-azi">
@@ -776,7 +776,7 @@
                                                                                 <constraint firstAttribute="width" constant="158" id="6sk-dV-Vcd"/>
                                                                             </constraints>
                                                                             <segmentedCell key="cell" borderStyle="border" alignment="left" segmentDistribution="fillEqually" style="capsule" trackingMode="selectOne" id="pAU-21-d4i" customClass="RightSideRoundedSegmentedCell" customModule="Translate_Bar" customModuleProvider="target">
-                                                                                <font key="font" size="13" name="Roboto-Regular"/>
+                                                                                <font key="font" metaFont="system"/>
                                                                                 <segments>
                                                                                     <segment label="привет" width="53"/>
                                                                                     <segment label="как" selected="YES" tag="1"/>
@@ -821,21 +821,21 @@
                                                                             <rect key="frame" x="8" y="8" width="362" height="184"/>
                                                                             <subviews>
                                                                                 <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e7X-Jl-M5j" customClass="ScrollView" customModule="Translate_Bar" customModuleProvider="target">
-                                                                                    <rect key="frame" x="0.0" y="24" width="362" height="160"/>
+                                                                                    <rect key="frame" x="0.0" y="26" width="362" height="158"/>
                                                                                     <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="Ica-wc-TKs">
-                                                                                        <rect key="frame" x="0.0" y="0.0" width="362" height="160"/>
+                                                                                        <rect key="frame" x="0.0" y="0.0" width="362" height="158"/>
                                                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                                         <subviews>
                                                                                             <textView drawsBackground="NO" importsGraphics="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="QxF-x0-7F8" customClass="LimitedTextView" customModule="Translate_Bar" customModuleProvider="target">
-                                                                                                <rect key="frame" x="0.0" y="0.0" width="362" height="160"/>
+                                                                                                <rect key="frame" x="0.0" y="0.0" width="362" height="158"/>
                                                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                                                                <size key="minSize" width="362" height="160"/>
+                                                                                                <size key="minSize" width="362" height="158"/>
                                                                                                 <size key="maxSize" width="463" height="10000000"/>
                                                                                                 <attributedString key="textStorage">
                                                                                                     <fragment content=" ">
                                                                                                         <attributes>
-                                                                                                            <font key="NSFont" size="14" name="Roboto-Regular"/>
+                                                                                                            <font key="NSFont" size="13" name="Roboto-Regular"/>
                                                                                                             <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                                                         </attributes>
                                                                                                     </fragment>
@@ -860,9 +860,9 @@
                                                                                     </scroller>
                                                                                 </scrollView>
                                                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3T7-pU-Vy3">
-                                                                                    <rect key="frame" x="0.0" y="0.0" width="105" height="16"/>
+                                                                                    <rect key="frame" x="0.0" y="0.0" width="98" height="18"/>
                                                                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Did you mean ... ?" drawsBackground="YES" id="tVy-E3-bEU">
-                                                                                        <font key="font" metaFont="cellTitle"/>
+                                                                                        <font key="font" size="12" name="Roboto-Regular"/>
                                                                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                                         <color key="backgroundColor" red="0.070588235289999995" green="0.070588235289999995" blue="0.070588235289999995" alpha="0.0" colorSpace="calibratedRGB"/>
                                                                                     </textFieldCell>
@@ -885,9 +885,9 @@
                                                                             </customSpacing>
                                                                         </stackView>
                                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="GCV-JS-fTG">
-                                                                            <rect key="frame" x="324" y="8" width="46" height="16"/>
+                                                                            <rect key="frame" x="327" y="8" width="43" height="18"/>
                                                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="0/5000" drawsBackground="YES" id="RQX-ZA-Ulm">
-                                                                                <font key="font" metaFont="cellTitle"/>
+                                                                                <font key="font" size="12" name="Roboto-Regular"/>
                                                                                 <color key="textColor" name="controlShadowColor" catalog="System" colorSpace="catalog"/>
                                                                                 <color key="backgroundColor" red="0.070588235289999995" green="0.070588235289999995" blue="0.070588235289999995" alpha="0.0" colorSpace="calibratedRGB"/>
                                                                             </textFieldCell>
@@ -954,7 +954,7 @@
                                                                                         <attributedString key="textStorage">
                                                                                             <fragment content=" ">
                                                                                                 <attributes>
-                                                                                                    <font key="NSFont" size="14" name="Roboto-Regular"/>
+                                                                                                    <font key="NSFont" size="13" name="Roboto-Regular"/>
                                                                                                     <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                                                 </attributes>
                                                                                             </fragment>

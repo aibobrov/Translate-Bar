@@ -14,12 +14,20 @@ import Moya
 class TranslateViewModel {
 	private let disposeBag = DisposeBag()
     private (set) var maxCharactersCount = 5000
-	var inputText = BehaviorRelay<String?>(value: nil)
-	var outputText = BehaviorRelay<String?>(value: nil)
-
 	private let translateProvider = MoyaProvider<YandexTranslate>()
 
+    var inputText = BehaviorRelay<String?>(value: nil)
+    var outputText = BehaviorRelay<String?>(value: nil)
+
+    lazy var traslatePreferences: Observable<TranslationPreferences> = {
+        return translateProvider.rx
+            .request(.getSupportedLanguages, callbackQueue: .global(qos: .userInteractive))
+            .Rmap(to: TranslationPreferences.self)
+            .asObservable()
+    }()
+
 	init() {
+
 		inputText
 			.filter({$0 == nil || $0!.count == 0})
 			.subscribe { [unowned self] _ in
@@ -60,10 +68,16 @@ class TranslateViewModel {
             .asObservable()
     }
 
+    var clearButtonHidden: Observable<Bool> {
+        return inputText
+            .map { $0?.count == 0 }
+            .asObservable()
+    }
+
     func translate(text: String, source: Language, target: Language) -> Observable<Translation> {
         return translateProvider
                 .rx
-                .request(.translate(from: source, to: target, text: text), callbackQueue: DispatchQueue.global(qos: .userInteractive))
+                .request(.translate(from: source, to: target, text: text), callbackQueue: .global(qos: .userInteractive))
                 .Rmap(to: Translation.self)
                 .filter { $0.text != nil }
                 .asObservable()

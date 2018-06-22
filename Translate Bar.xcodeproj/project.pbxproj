@@ -36,6 +36,9 @@
 		D04AE06D20D7FF5D00FED056 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04AE06A20D7FF5D00FED056 /* TextView.swift */; };
 		D04AE06E20D7FF5D00FED056 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04AE06B20D7FF5D00FED056 /* View.swift */; };
 		D05E4CF720DB9A0C0059ACB0 /* ScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05E4CF620DB9A0C0059ACB0 /* ScrollView.swift */; };
+		D05E4D1020DD07890059ACB0 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A125BD8120DC45E100C2BAE2 /* Roboto-Regular.ttf */; };
+		D05E4D1120DD07B10059ACB0 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A125BD8120DC45E100C2BAE2 /* Roboto-Regular.ttf */; };
+		D05E4D1220DD07B20059ACB0 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A125BD8120DC45E100C2BAE2 /* Roboto-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -450,6 +453,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D05E4D1020DD07890059ACB0 /* Roboto-Regular.ttf in Resources */,
 				A174EDE620CC798E00465A42 /* Assets.xcassets in Resources */,
 				A120816320CDBF3500C57360 /* Main.storyboard in Resources */,
 			);
@@ -459,6 +463,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D05E4D1120DD07B10059ACB0 /* Roboto-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -466,6 +471,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D05E4D1220DD07B20059ACB0 /* Roboto-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

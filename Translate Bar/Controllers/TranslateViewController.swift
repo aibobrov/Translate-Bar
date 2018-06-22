@@ -53,6 +53,9 @@ class TranslateViewController: NSViewController {
 			.disposed(by: disposeBag)
 	}
     private func setupViewModelBindings() {
+        translateVM.clearButtonHidden
+            .bind(to: self.clearButton.rx.isHidden)
+            .disposed(by: disposeBag)
         translateVM.isSuggestNeeded
             .bind(to: self.suggestTextLabel.rx.isHidden)
             .disposed(by: disposeBag)
