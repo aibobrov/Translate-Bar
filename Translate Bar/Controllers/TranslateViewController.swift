@@ -22,6 +22,8 @@ class TranslateViewController: NSViewController {
 	@IBOutlet weak var textContainerHeightConstraint: NSLayoutConstraint!
 
     @IBOutlet weak var sourceLanguageSegmentedControl: NSSegmentedControl!
+    @IBOutlet weak var targetLanguageSegmentedControl: NSSegmentedControl!
+
     let translateVM = TranslateViewModel()
 	private let disposeBag = DisposeBag()
 
@@ -38,22 +40,28 @@ class TranslateViewController: NSViewController {
 
 	private func setupUIBindings() {
 		inputTextView.rx.text
-            .distinctUntilChanged()
-            .filter({$0 != nil && $0!.count > 0})
-            .map { $0! }
-            .bind(to: translateVM.inputText)
+            .bind(to: translateVM.rawInput)
 			.disposed(by: disposeBag)
-		translateVM.inputText
-			.bind(to: inputTextView.rx.text)
-			.disposed(by: disposeBag)
-		translateVM.outputText
+        translateVM.rawInput
+            .bind(to: inputTextView.rx.text)
+            .disposed(by: disposeBag)
+		translateVM.rawOutput
 			.bind(to: outputTextView.rx.text)
 			.disposed(by: disposeBag)
 
 		clearButton.rx
-			.controlEvent.map {""}
-			.bind(to: translateVM.inputText)
+			.controlEvent.map { "" }
+			.bind(to: translateVM.rawInput)
 			.disposed(by: disposeBag)
+
+        sourceLanguageSegmentedControl.rx.value
+            .distinctUntilChanged()
+            .bind(to: translateVM.sourceLanguageIndex)
+            .disposed(by: disposeBag)
+        targetLanguageSegmentedControl.rx.value
+            .distinctUntilChanged()
+            .bind(to: translateVM.targetLanguageIndex)
+            .disposed(by: disposeBag)
 	}
     private func setupViewModelBindings() {
         translateVM.clearButtonHidden
@@ -68,6 +76,7 @@ class TranslateViewController: NSViewController {
             .disposed(by: disposeBag)
 
         translateVM.text
+            .observeOn(MainScheduler.asyncInstance)
             .subscribe { [unowned self] _ in
                 self.resizeAccordingToContent()
             }
