@@ -13,15 +13,15 @@ import Moya
 
 class TranslateViewModel {
 	private let disposeBag = DisposeBag()
-    private (set) var maxCharactersCount = 5000
+    let maxCharactersCount = 5000
 	private let translateProvider = MoyaProvider<YandexTranslate>()
 
     var rawInput = BehaviorRelay<String?>(value: nil)
     var rawOutput = BehaviorRelay<String?>(value: nil)
     var sourceLanguageIndex = BehaviorRelay<Int>(value: 0)
     var targetLanguageIndex = BehaviorRelay<Int>(value: 0)
-    var sourceLanguagesQueue = Queue<Language>(.russian, .english, .german)
-    var targetLanguagesQueue = Queue<Language>(.russian, .english, .german)
+    var sourceLanguagesQueue = BehaviorRelay<Queue<Language>>(value: Queue<Language>(.russian, .english, .german))
+    var targetLanguagesQueue = BehaviorRelay<Queue<Language>>(value: Queue<Language>(.english, .russian, .german))
 
     private var inputText = BehaviorRelay<String>(value: "")
     private var outputText = BehaviorRelay<String>(value: "")
@@ -87,12 +87,12 @@ class TranslateViewModel {
 
     var sourceLanguage: Observable<Language?> {
         return sourceLanguageIndex
-            .map { self.sourceLanguagesQueue[$0] }
+            .map { self.sourceLanguagesQueue.value[$0] }
             .asObservable()
     }
     var targetLanguage: Observable<Language?> {
         return targetLanguageIndex
-            .map { self.targetLanguagesQueue[$0] }
+            .map { self.targetLanguagesQueue.value[$0] }
             .asObservable()
     }
 

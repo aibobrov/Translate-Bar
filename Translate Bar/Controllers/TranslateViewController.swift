@@ -29,6 +29,8 @@ class TranslateViewController: NSViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        inputTextView.maxCharactersCount = translateVM.maxCharactersCount
+
 		setupUIBindings()
         setupViewModelBindings()
     }
@@ -42,10 +44,12 @@ class TranslateViewController: NSViewController {
 		inputTextView.rx.text
             .bind(to: translateVM.rawInput)
 			.disposed(by: disposeBag)
+
         translateVM.rawInput
             .bind(to: inputTextView.rx.text)
             .disposed(by: disposeBag)
-		translateVM.rawOutput
+
+        translateVM.rawOutput
 			.bind(to: outputTextView.rx.text)
 			.disposed(by: disposeBag)
 
@@ -58,6 +62,7 @@ class TranslateViewController: NSViewController {
             .distinctUntilChanged()
             .bind(to: translateVM.sourceLanguageIndex)
             .disposed(by: disposeBag)
+
         targetLanguageSegmentedControl.rx.value
             .distinctUntilChanged()
             .bind(to: translateVM.targetLanguageIndex)
@@ -67,6 +72,7 @@ class TranslateViewController: NSViewController {
         translateVM.clearButtonHidden
             .bind(to: self.clearButton.rx.isHidden)
             .disposed(by: disposeBag)
+
         translateVM.isSuggestNeeded
             .bind(to: self.suggestTextLabel.rx.isHidden)
             .disposed(by: disposeBag)
@@ -80,6 +86,14 @@ class TranslateViewController: NSViewController {
             .subscribe { [unowned self] _ in
                 self.resizeAccordingToContent()
             }
+            .disposed(by: disposeBag)
+        translateVM.sourceLanguagesQueue
+            .map { $0.map { $0?.fullName ?? "" }  }
+            .bind(to: sourceLanguageSegmentedControl.rx.labels)
+            .disposed(by: disposeBag)
+        translateVM.targetLanguagesQueue
+            .map { $0.map { $0?.fullName ?? "" } }
+            .bind(to: targetLanguageSegmentedControl.rx.labels)
             .disposed(by: disposeBag)
     }
 

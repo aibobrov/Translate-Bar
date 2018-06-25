@@ -40,6 +40,7 @@
 		D05E4D1220DD07B20059ACB0 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A125BD8120DC45E100C2BAE2 /* Roboto-Regular.ttf */; };
 		D05E4D1D20E112D80059ACB0 /* NSSegmentedControl+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05E4D1C20E112D80059ACB0 /* NSSegmentedControl+Rx.swift */; };
 		D05E4D2020E11B2C0059ACB0 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05E4D1F20E11B2C0059ACB0 /* Queue.swift */; };
+		D05E4D2220E139A70059ACB0 /* CustomNSSegmentedControl+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05E4D2120E139A70059ACB0 /* CustomNSSegmentedControl+Rx.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,6 +103,7 @@
 		D05E4CF620DB9A0C0059ACB0 /* ScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollView.swift; sourceTree = "<group>"; };
 		D05E4D1C20E112D80059ACB0 /* NSSegmentedControl+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSSegmentedControl+Rx.swift"; sourceTree = "<group>"; };
 		D05E4D1F20E11B2C0059ACB0 /* Queue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
+		D05E4D2120E139A70059ACB0 /* CustomNSSegmentedControl+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CustomNSSegmentedControl+Rx.swift"; sourceTree = "<group>"; };
 		D12A2F364991FE0E85D2D3AF /* Pods_Translate_Bar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Translate_Bar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0AE73213BC271F12033EF1C /* Pods_Translate_BarTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Translate_BarTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -348,6 +350,7 @@
 			children = (
 				D04AE06920D7FF5D00FED056 /* NSTextView+Rx.swift */,
 				D05E4D1C20E112D80059ACB0 /* NSSegmentedControl+Rx.swift */,
+				D05E4D2120E139A70059ACB0 /* CustomNSSegmentedControl+Rx.swift */,
 			);
 			path = Rx;
 			sourceTree = "<group>";
@@ -617,6 +620,7 @@
 				A1E7181420D7229B0080A546 /* NSRectExtensions.swift in Sources */,
 				A1E7180A20D576FD0080A546 /* SidedRoundedButtonCell.swift in Sources */,
 				A1E7180820D56E4C0080A546 /* BaseRoundedButtonCell.swift in Sources */,
+				D05E4D2220E139A70059ACB0 /* CustomNSSegmentedControl+Rx.swift in Sources */,
 				A125BD8320DC4A8800C2BAE2 /* Button.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
