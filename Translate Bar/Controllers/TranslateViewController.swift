@@ -38,6 +38,9 @@ class TranslateViewController: NSViewController {
 
 	private func setupUIBindings() {
 		inputTextView.rx.text
+            .distinctUntilChanged()
+            .filter({$0 != nil && $0!.count > 0})
+            .map { $0! }
             .bind(to: translateVM.inputText)
 			.disposed(by: disposeBag)
 		translateVM.inputText

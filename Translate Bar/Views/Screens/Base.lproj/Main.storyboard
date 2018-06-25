@@ -1089,6 +1089,7 @@
                         <outlet property="outputTextView" destination="UOH-YB-up1" id="ddd-nn-LFz"/>
                         <outlet property="sourceLanguageSegmentedControl" destination="qNU-8T-Nww" id="Sf5-AG-SKW"/>
                         <outlet property="suggestTextLabel" destination="3T7-pU-Vy3" id="V10-Mf-f01"/>
+                        <outlet property="targetLanguageSegmentedControl" destination="Loz-ca-azi" id="bzj-Lu-04a"/>
                         <outlet property="textContainerHeightConstraint" destination="cOj-Jb-uiG" id="s33-vo-bfw"/>
                     </connections>
                 </viewController>

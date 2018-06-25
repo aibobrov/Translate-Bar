@@ -16,8 +16,8 @@ class TranslateViewModel {
     private (set) var maxCharactersCount = 5000
 	private let translateProvider = MoyaProvider<YandexTranslate>()
 
-    var inputText = BehaviorRelay<String?>(value: nil)
-    var outputText = BehaviorRelay<String?>(value: nil)
+    var inputText = BehaviorRelay<String>(value: "")
+    var outputText = BehaviorRelay<String>(value: "")
 
     lazy var traslatePreferences: Observable<TranslationPreferences> = {
         return translateProvider.rx
@@ -27,18 +27,8 @@ class TranslateViewModel {
     }()
 
 	init() {
-
 		inputText
-			.filter({$0 == nil || $0!.count == 0})
-			.subscribe { [unowned self] _ in
-				self.outputText.accept("")
-			}
-			.disposed(by: disposeBag)
-
-		inputText
-            .distinctUntilChanged()
-            .filter({$0 != nil && $0!.count > 0})
-            .map { $0! }
+            .filter { !$0.isEmpty }
             .debounce(1, scheduler: ConcurrentDispatchQueueScheduler(qos: .userInitiated))
 			.subscribe(onNext: { [unowned self] value in
                 self.translate(text: value, source: Language(shortName: "en"), target: Language(shortName: "ru"))
@@ -51,11 +41,11 @@ class TranslateViewModel {
 
     var isSuggestNeeded: Observable<Bool> {
         return inputText
-                .map { $0?.contains(" ") ?? false }
+                .map { $0.contains(" ") }
                 .asObservable()
     }
 
-    var text: Observable<String?> {
+    var text: Observable<String> {
         return Observable
                 .of(inputText, outputText)
                 .merge()
@@ -63,14 +53,14 @@ class TranslateViewModel {
 
     var limitationText: Observable<String> {
         return inputText
-            .map { $0?.count ?? 0 }
+            .map { $0.count }
             .map {"\($0)/\(self.maxCharactersCount)"}
             .asObservable()
     }
 
     var clearButtonHidden: Observable<Bool> {
         return inputText
-            .map { $0?.count == 0 }
+            .map { $0.isEmpty }
             .asObservable()
     }
 

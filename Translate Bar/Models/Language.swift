@@ -10,6 +10,9 @@ import Foundation
 import EVReflection
 
 class Language: Hashable {
+    static let english = Language(shortName: "en", fullName: "английский")
+    static let russian = Language(shortName: "ru", fullName: "русский")
+    static let german = Language(shortName: "de", fullName: "немецкий")
 
 	var shortName: String = ""
 	var fullName: String?
