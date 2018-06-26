@@ -33,6 +33,10 @@ class TranslateViewController: NSViewController {
 
 		setupUIBindings()
         setupViewModelBindings()
+
+        sourceLanguageSegmentedControl.rx.controlEvent.subscribe { (event) in
+            debugPrint(event)
+        }.disposed(by: disposeBag)
     }
 
     override func viewDidAppear() {

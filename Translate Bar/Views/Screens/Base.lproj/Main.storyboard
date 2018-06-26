@@ -687,49 +687,47 @@
             <objects>
                 <viewController storyboardIdentifier="MainVCID" id="XfG-lQ-9wD" customClass="TranslateViewController" customModule="Translate_Bar" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" wantsLayer="YES" id="4jx-xl-g3l">
-                        <rect key="frame" x="0.0" y="0.0" width="780" height="298"/>
+                        <rect key="frame" x="0.0" y="0.0" width="914" height="298"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e4b-td-Aei">
-                                <rect key="frame" x="0.0" y="0.0" width="780" height="298"/>
+                                <rect key="frame" x="0.0" y="0.0" width="914" height="298"/>
                                 <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="Vx7-10-C05">
-                                    <rect key="frame" x="0.0" y="0.0" width="780" height="298"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="914" height="298"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <customView translatesAutoresizingMaskIntoConstraints="NO" id="gQE-pN-nWF">
-                                            <rect key="frame" x="0.0" y="2" width="780" height="296"/>
+                                            <rect key="frame" x="0.0" y="2" width="914" height="296"/>
                                             <subviews>
                                                 <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="plg-2b-sUw">
-                                                    <rect key="frame" x="8" y="8" width="764" height="268"/>
+                                                    <rect key="frame" x="8" y="8" width="898" height="268"/>
                                                     <subviews>
                                                         <stackView distribution="equalSpacing" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oZe-dF-xuw">
-                                                            <rect key="frame" x="0.0" y="246" width="764" height="22"/>
+                                                            <rect key="frame" x="0.0" y="246" width="898" height="22"/>
                                                             <subviews>
                                                                 <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mhb-Q1-4t4">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="177" height="22"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="129" height="22"/>
                                                                     <subviews>
                                                                         <segmentedControl canDrawConcurrently="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qNU-8T-Nww">
-                                                                            <rect key="frame" x="0.0" y="-1" width="158" height="23"/>
+                                                                            <rect key="frame" x="0.0" y="-1" width="103" height="23"/>
                                                                             <constraints>
-                                                                                <constraint firstAttribute="width" constant="158" id="A5l-dW-vFV"/>
                                                                                 <constraint firstAttribute="height" constant="22" id="I1I-sm-F0h"/>
                                                                             </constraints>
-                                                                            <segmentedCell key="cell" borderStyle="border" alignment="left" segmentDistribution="fillEqually" style="capsule" trackingMode="selectOne" id="WlV-aC-tPg" customClass="LeftSideRoundedSegmentedCell" customModule="Translate_Bar" customModuleProvider="target">
+                                                                            <segmentedCell key="cell" borderStyle="border" alignment="left" segmentDistribution="fill" style="capsule" trackingMode="selectAny" id="WlV-aC-tPg">
                                                                                 <font key="font" metaFont="system"/>
                                                                                 <segments>
-                                                                                    <segment label="привет" width="53"/>
-                                                                                    <segment label="как" selected="YES" tag="1"/>
-                                                                                    <segment label="ты" width="52"/>
+                                                                                    <segment label="a"/>
+                                                                                    <segment label="b" selected="YES" tag="1"/>
+                                                                                    <segment label="c"/>
                                                                                 </segments>
                                                                             </segmentedCell>
                                                                         </segmentedControl>
                                                                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="oyx-zJ-pae">
-                                                                            <rect key="frame" x="156" y="-1" width="23" height="23"/>
+                                                                            <rect key="frame" x="101" y="-3" width="30" height="27"/>
                                                                             <constraints>
-                                                                                <constraint firstAttribute="width" constant="19" id="rZR-Lx-5r9"/>
-                                                                                <constraint firstAttribute="height" constant="18" id="skB-G2-8WF"/>
+                                                                                <constraint firstAttribute="width" constant="26" id="rZR-Lx-5r9"/>
                                                                             </constraints>
-                                                                            <buttonCell key="cell" type="bevel" title="▾" bezelStyle="regularSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="fHd-4D-Jq3" customClass="RightSideRoundedButtonCell" customModule="Translate_Bar" customModuleProvider="target">
+                                                                            <buttonCell key="cell" type="bevel" title="▾" bezelStyle="regularSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="fHd-4D-Jq3">
                                                                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
                                                                                 <font key="font" metaFont="system" size="15"/>
                                                                             </buttonCell>
@@ -745,42 +743,40 @@
                                                                     </customSpacing>
                                                                 </stackView>
                                                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xGI-FN-2D9">
-                                                                    <rect key="frame" x="367" y="-1" width="30" height="23"/>
+                                                                    <rect key="frame" x="434" y="-1" width="30" height="23"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="26" id="AYt-YU-R0f"/>
                                                                         <constraint firstAttribute="height" constant="18" id="S3P-yE-62G"/>
                                                                     </constraints>
-                                                                    <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="swap" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="beB-oC-A97" customClass="RoundedButtonCell" customModule="Translate_Bar" customModuleProvider="target">
+                                                                    <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="swap" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="beB-oC-A97">
                                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                                         <font key="font" metaFont="system" size="15"/>
                                                                     </buttonCell>
                                                                 </button>
                                                                 <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UHi-ji-HrT">
-                                                                    <rect key="frame" x="587" y="0.0" width="177" height="22"/>
+                                                                    <rect key="frame" x="769" y="0.0" width="129" height="22"/>
                                                                     <subviews>
                                                                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cAY-tG-QQc">
-                                                                            <rect key="frame" x="-2" y="-1" width="23" height="23"/>
+                                                                            <rect key="frame" x="-2" y="-3" width="30" height="27"/>
                                                                             <constraints>
-                                                                                <constraint firstAttribute="height" constant="18" id="MPb-Yh-MN0"/>
-                                                                                <constraint firstAttribute="width" constant="19" id="e5B-bB-zDw"/>
+                                                                                <constraint firstAttribute="width" constant="26" id="e5B-bB-zDw"/>
                                                                             </constraints>
-                                                                            <buttonCell key="cell" type="bevel" title="▾" bezelStyle="regularSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Dc3-q7-czm" customClass="LeftSideRoundedButtonCell" customModule="Translate_Bar" customModuleProvider="target">
+                                                                            <buttonCell key="cell" type="bevel" title="▾" bezelStyle="regularSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Dc3-q7-czm">
                                                                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
                                                                                 <font key="font" metaFont="system" size="15"/>
                                                                             </buttonCell>
                                                                         </button>
                                                                         <segmentedControl canDrawConcurrently="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Loz-ca-azi">
-                                                                            <rect key="frame" x="19" y="-1" width="158" height="23"/>
+                                                                            <rect key="frame" x="26" y="-1" width="103" height="23"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="height" constant="22" id="4L4-Lc-9Kh"/>
-                                                                                <constraint firstAttribute="width" constant="158" id="6sk-dV-Vcd"/>
                                                                             </constraints>
-                                                                            <segmentedCell key="cell" borderStyle="border" alignment="left" segmentDistribution="fillEqually" style="capsule" trackingMode="selectOne" id="pAU-21-d4i" customClass="RightSideRoundedSegmentedCell" customModule="Translate_Bar" customModuleProvider="target">
+                                                                            <segmentedCell key="cell" borderStyle="border" alignment="left" segmentDistribution="fill" style="capsule" trackingMode="selectOne" id="pAU-21-d4i">
                                                                                 <font key="font" metaFont="system"/>
                                                                                 <segments>
-                                                                                    <segment label="привет" width="53"/>
-                                                                                    <segment label="как" selected="YES" tag="1"/>
-                                                                                    <segment label="ты" width="52"/>
+                                                                                    <segment label="a"/>
+                                                                                    <segment label="b" selected="YES" tag="1"/>
+                                                                                    <segment label="c"/>
                                                                                 </segments>
                                                                             </segmentedCell>
                                                                         </segmentedControl>
@@ -812,25 +808,25 @@
                                                             </customSpacing>
                                                         </stackView>
                                                         <stackView distribution="fillEqually" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="llx-mB-Obq">
-                                                            <rect key="frame" x="0.0" y="38" width="764" height="200"/>
+                                                            <rect key="frame" x="0.0" y="38" width="898" height="200"/>
                                                             <subviews>
                                                                 <customView translatesAutoresizingMaskIntoConstraints="NO" id="qoz-Fu-fvj" customClass="View" customModule="Translate_Bar" customModuleProvider="target">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="378" height="200"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="445" height="200"/>
                                                                     <subviews>
                                                                         <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XVo-v2-Mo0">
-                                                                            <rect key="frame" x="8" y="8" width="362" height="184"/>
+                                                                            <rect key="frame" x="8" y="8" width="429" height="184"/>
                                                                             <subviews>
                                                                                 <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e7X-Jl-M5j" customClass="ScrollView" customModule="Translate_Bar" customModuleProvider="target">
-                                                                                    <rect key="frame" x="0.0" y="26" width="362" height="158"/>
+                                                                                    <rect key="frame" x="0.0" y="26" width="429" height="158"/>
                                                                                     <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="Ica-wc-TKs">
-                                                                                        <rect key="frame" x="0.0" y="0.0" width="362" height="158"/>
+                                                                                        <rect key="frame" x="0.0" y="0.0" width="429" height="158"/>
                                                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                                         <subviews>
                                                                                             <textView drawsBackground="NO" importsGraphics="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="QxF-x0-7F8" customClass="LimitedTextView" customModule="Translate_Bar" customModuleProvider="target">
-                                                                                                <rect key="frame" x="0.0" y="0.0" width="362" height="158"/>
+                                                                                                <rect key="frame" x="0.0" y="0.0" width="429" height="158"/>
                                                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                                                                <size key="minSize" width="362" height="158"/>
+                                                                                                <size key="minSize" width="429" height="158"/>
                                                                                                 <size key="maxSize" width="463" height="10000000"/>
                                                                                                 <attributedString key="textStorage">
                                                                                                     <fragment content=" ">
@@ -885,7 +881,7 @@
                                                                             </customSpacing>
                                                                         </stackView>
                                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="GCV-JS-fTG">
-                                                                            <rect key="frame" x="327" y="8" width="43" height="18"/>
+                                                                            <rect key="frame" x="394" y="8" width="43" height="18"/>
                                                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="0/5000" drawsBackground="YES" id="RQX-ZA-Ulm">
                                                                                 <font key="font" size="12" name="Roboto-Regular"/>
                                                                                 <color key="textColor" name="controlShadowColor" catalog="System" colorSpace="catalog"/>
@@ -893,7 +889,7 @@
                                                                             </textFieldCell>
                                                                         </textField>
                                                                         <button focusRingType="none" verticalHuggingPriority="750" springLoaded="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bEf-wb-qhD" customClass="Button" customModule="Translate_Bar" customModuleProvider="target">
-                                                                            <rect key="frame" x="355" y="175" width="15" height="18"/>
+                                                                            <rect key="frame" x="422" y="175" width="15" height="18"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="height" constant="15" id="O2A-bD-e1j"/>
                                                                                 <constraint firstAttribute="width" secondItem="bEf-wb-qhD" secondAttribute="height" multiplier="1:1" id="rJ3-KH-Pbl"/>
@@ -937,19 +933,19 @@
                                                                     </userDefinedRuntimeAttributes>
                                                                 </customView>
                                                                 <customView translatesAutoresizingMaskIntoConstraints="NO" id="OPu-tJ-95g" customClass="View" customModule="Translate_Bar" customModuleProvider="target">
-                                                                    <rect key="frame" x="386" y="0.0" width="378" height="200"/>
+                                                                    <rect key="frame" x="453" y="0.0" width="445" height="200"/>
                                                                     <subviews>
                                                                         <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1sp-PY-XL5" customClass="ScrollView" customModule="Translate_Bar" customModuleProvider="target">
-                                                                            <rect key="frame" x="8" y="8" width="362" height="184"/>
+                                                                            <rect key="frame" x="8" y="8" width="429" height="184"/>
                                                                             <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="Gcs-Rr-byE">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="362" height="184"/>
+                                                                                <rect key="frame" x="0.0" y="0.0" width="429" height="184"/>
                                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                                 <subviews>
                                                                                     <textView editable="NO" drawsBackground="NO" importsGraphics="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="UOH-YB-up1" customClass="TextView" customModule="Translate_Bar" customModuleProvider="target">
-                                                                                        <rect key="frame" x="0.0" y="-1" width="362" height="184"/>
+                                                                                        <rect key="frame" x="0.0" y="-1" width="429" height="184"/>
                                                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                                                        <size key="minSize" width="362" height="184"/>
+                                                                                        <size key="minSize" width="429" height="184"/>
                                                                                         <size key="maxSize" width="463" height="10000000"/>
                                                                                         <attributedString key="textStorage">
                                                                                             <fragment content=" ">
@@ -1012,7 +1008,7 @@
                                                             </customSpacing>
                                                         </stackView>
                                                         <customView translatesAutoresizingMaskIntoConstraints="NO" id="AOl-6f-zdl" customClass="View" customModule="Translate_Bar" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="0.0" width="764" height="30"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="898" height="30"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="30" id="bw0-LK-2yd"/>
                                                             </constraints>
@@ -1095,7 +1091,7 @@
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="96" y="882"/>
+            <point key="canvasLocation" x="29" y="882"/>
         </scene>
     </scenes>
     <resources>

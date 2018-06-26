@@ -23,11 +23,6 @@
 		A174EE0020CC798E00465A42 /* TranslateBarUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A174EDFF20CC798E00465A42 /* TranslateBarUITests.swift */; };
 		A1E717C520D07F540080A546 /* TranslateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E717C420D07F540080A546 /* TranslateViewModel.swift */; };
 		A1E717C820D07F9A0080A546 /* TranslateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E717C720D07F9A0080A546 /* TranslateViewController.swift */; };
-		A1E717F920D4644B0080A546 /* HalfRoundedBezierPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E717F820D4644B0080A546 /* HalfRoundedBezierPath.swift */; };
-		A1E717FE20D479A70080A546 /* BaseRoundedSegmentedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E717FD20D479A70080A546 /* BaseRoundedSegmentedCell.swift */; };
-		A1E7180020D480F80080A546 /* SidedRoundedSegmentedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E717FF20D480F70080A546 /* SidedRoundedSegmentedCell.swift */; };
-		A1E7180820D56E4C0080A546 /* BaseRoundedButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E7180720D56E4C0080A546 /* BaseRoundedButtonCell.swift */; };
-		A1E7180A20D576FD0080A546 /* SidedRoundedButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E7180920D576FD0080A546 /* SidedRoundedButtonCell.swift */; };
 		A1E7181220D71FD10080A546 /* NSImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E7181120D71FD10080A546 /* NSImageExtension.swift */; };
 		A1E7181420D7229B0080A546 /* NSRectExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E7181320D7229B0080A546 /* NSRectExtensions.swift */; };
 		AFD708C7E1973F659988BE13 /* Pods_Translate_Bar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D12A2F364991FE0E85D2D3AF /* Pods_Translate_Bar.framework */; };
@@ -41,6 +36,7 @@
 		D05E4D1D20E112D80059ACB0 /* NSSegmentedControl+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05E4D1C20E112D80059ACB0 /* NSSegmentedControl+Rx.swift */; };
 		D05E4D2020E11B2C0059ACB0 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05E4D1F20E11B2C0059ACB0 /* Queue.swift */; };
 		D05E4D2220E139A70059ACB0 /* CustomNSSegmentedControl+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05E4D2120E139A70059ACB0 /* CustomNSSegmentedControl+Rx.swift */; };
+		D05E4D2620E25A5A0059ACB0 /* NSSegmentedControlExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05E4D2520E25A5A0059ACB0 /* NSSegmentedControlExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,11 +83,6 @@
 		A174EE0120CC798E00465A42 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A1E717C420D07F540080A546 /* TranslateViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TranslateViewModel.swift; sourceTree = "<group>"; };
 		A1E717C720D07F9A0080A546 /* TranslateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateViewController.swift; sourceTree = "<group>"; };
-		A1E717F820D4644B0080A546 /* HalfRoundedBezierPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HalfRoundedBezierPath.swift; sourceTree = "<group>"; };
-		A1E717FD20D479A70080A546 /* BaseRoundedSegmentedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRoundedSegmentedCell.swift; sourceTree = "<group>"; };
-		A1E717FF20D480F70080A546 /* SidedRoundedSegmentedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SidedRoundedSegmentedCell.swift; sourceTree = "<group>"; };
-		A1E7180720D56E4C0080A546 /* BaseRoundedButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRoundedButtonCell.swift; sourceTree = "<group>"; };
-		A1E7180920D576FD0080A546 /* SidedRoundedButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidedRoundedButtonCell.swift; sourceTree = "<group>"; };
 		A1E7181120D71FD10080A546 /* NSImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSImageExtension.swift; sourceTree = "<group>"; };
 		A1E7181320D7229B0080A546 /* NSRectExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSRectExtensions.swift; sourceTree = "<group>"; };
 		ACE1539EC81D8C984F059186 /* Pods-Translate BarTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Translate BarTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Translate BarTests/Pods-Translate BarTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -104,6 +95,7 @@
 		D05E4D1C20E112D80059ACB0 /* NSSegmentedControl+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSSegmentedControl+Rx.swift"; sourceTree = "<group>"; };
 		D05E4D1F20E11B2C0059ACB0 /* Queue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
 		D05E4D2120E139A70059ACB0 /* CustomNSSegmentedControl+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CustomNSSegmentedControl+Rx.swift"; sourceTree = "<group>"; };
+		D05E4D2520E25A5A0059ACB0 /* NSSegmentedControlExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSSegmentedControlExtension.swift; sourceTree = "<group>"; };
 		D12A2F364991FE0E85D2D3AF /* Pods_Translate_Bar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Translate_Bar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0AE73213BC271F12033EF1C /* Pods_Translate_BarTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Translate_BarTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -255,9 +247,6 @@
 			isa = PBXGroup;
 			children = (
 				D04AE06820D7FF5D00FED056 /* Base */,
-				A1E7180620D56E360080A546 /* ButtonCell */,
-				A1E7180320D483510080A546 /* SegmentedCell */,
-				A1E717FC20D475C00080A546 /* BezierPath */,
 				A120815C20CDBCF100C57360 /* Screens */,
 			);
 			path = Views;
@@ -269,6 +258,7 @@
 				A1521FD620CD6CD50048EC26 /* NSStoryboardExtensions.swift */,
 				A1E7181120D71FD10080A546 /* NSImageExtension.swift */,
 				A1E7181320D7229B0080A546 /* NSRectExtensions.swift */,
+				D05E4D2520E25A5A0059ACB0 /* NSSegmentedControlExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -289,23 +279,6 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
-		A1E717FC20D475C00080A546 /* BezierPath */ = {
-			isa = PBXGroup;
-			children = (
-				A1E717F820D4644B0080A546 /* HalfRoundedBezierPath.swift */,
-			);
-			path = BezierPath;
-			sourceTree = "<group>";
-		};
-		A1E7180320D483510080A546 /* SegmentedCell */ = {
-			isa = PBXGroup;
-			children = (
-				A1E717FD20D479A70080A546 /* BaseRoundedSegmentedCell.swift */,
-				A1E717FF20D480F70080A546 /* SidedRoundedSegmentedCell.swift */,
-			);
-			path = SegmentedCell;
-			sourceTree = "<group>";
-		};
 		A1E7180420D485100080A546 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -321,15 +294,6 @@
 				A174EDE520CC798E00465A42 /* Assets.xcassets */,
 			);
 			path = Assets;
-			sourceTree = "<group>";
-		};
-		A1E7180620D56E360080A546 /* ButtonCell */ = {
-			isa = PBXGroup;
-			children = (
-				A1E7180720D56E4C0080A546 /* BaseRoundedButtonCell.swift */,
-				A1E7180920D576FD0080A546 /* SidedRoundedButtonCell.swift */,
-			);
-			path = ButtonCell;
 			sourceTree = "<group>";
 		};
 		D04AE06820D7FF5D00FED056 /* Base */ = {
@@ -599,10 +563,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				A120815820CDB31F00C57360 /* TranslationPreferences.swift in Sources */,
+				D05E4D2620E25A5A0059ACB0 /* NSSegmentedControlExtension.swift in Sources */,
 				A125BD7E20D8511300C2BAE2 /* LimitedTextView.swift in Sources */,
 				D05E4D1D20E112D80059ACB0 /* NSSegmentedControl+Rx.swift in Sources */,
-				A1E7180020D480F80080A546 /* SidedRoundedSegmentedCell.swift in Sources */,
-				A1E717F920D4644B0080A546 /* HalfRoundedBezierPath.swift in Sources */,
 				A174EDE420CC798B00465A42 /* Translate_Bar.xcdatamodeld in Sources */,
 				D04AE06C20D7FF5D00FED056 /* NSTextView+Rx.swift in Sources */,
 				A1521FD720CD6CD50048EC26 /* NSStoryboardExtensions.swift in Sources */,
@@ -611,15 +574,12 @@
 				A120816A20CEC17C00C57360 /* Language.swift in Sources */,
 				A1E717C820D07F9A0080A546 /* TranslateViewController.swift in Sources */,
 				A120815B20CDBCA600C57360 /* YandexTranslate.swift in Sources */,
-				A1E717FE20D479A70080A546 /* BaseRoundedSegmentedCell.swift in Sources */,
 				D04AE06D20D7FF5D00FED056 /* TextView.swift in Sources */,
 				A174EDDF20CC798B00465A42 /* AppDelegate.swift in Sources */,
 				A1E7181220D71FD10080A546 /* NSImageExtension.swift in Sources */,
 				D04AE06E20D7FF5D00FED056 /* View.swift in Sources */,
 				D05E4D2020E11B2C0059ACB0 /* Queue.swift in Sources */,
 				A1E7181420D7229B0080A546 /* NSRectExtensions.swift in Sources */,
-				A1E7180A20D576FD0080A546 /* SidedRoundedButtonCell.swift in Sources */,
-				A1E7180820D56E4C0080A546 /* BaseRoundedButtonCell.swift in Sources */,
 				D05E4D2220E139A70059ACB0 /* CustomNSSegmentedControl+Rx.swift in Sources */,
 				A125BD8320DC4A8800C2BAE2 /* Button.swift in Sources */,
 			);
