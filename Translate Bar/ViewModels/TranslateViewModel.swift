@@ -80,8 +80,8 @@ class TranslateViewModel {
     }
 
     var clearButtonHidden: Observable<Bool> {
-        return inputText
-            .map { $0.isEmpty }
+        return rawInput
+            .map { $0?.isEmpty ?? true }
             .asObservable()
     }
 
