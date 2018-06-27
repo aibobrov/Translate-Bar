@@ -10,11 +10,14 @@ import RxSwift
 import RxCocoa
 
 extension Reactive where Base: NSSegmentedControl {
-    public var labels: Binder<[String?]> {
+    public func labels(for segments: CountableRange<Int>) -> Binder<[String?]> {
+        return self.labels(for: segments.map { $0 })
+    }
+
+    public func labels(for segments: [Int]) -> Binder<[String?]> {
         return Binder(self.base) { (segmentedControl, labels) in
-            segmentedControl.segmentCount = labels.count
             for (index, label) in labels.enumerated() {
-                segmentedControl.setLabel(label ?? "", forSegment: index)
+                segmentedControl.setLabel(label ?? "", forSegment: segments[index])
             }
         }
     }

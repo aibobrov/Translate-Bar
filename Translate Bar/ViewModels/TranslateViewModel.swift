@@ -20,8 +20,8 @@ class TranslateViewModel {
     var rawOutput = BehaviorRelay<String?>(value: nil)
     var sourceLanguageIndex = BehaviorRelay<Int>(value: 0)
     var targetLanguageIndex = BehaviorRelay<Int>(value: 0)
-    var sourceLanguagesQueue = BehaviorRelay<Queue<Language>>(value: Queue<Language>(.russian, .english, .german))
-    var targetLanguagesQueue = BehaviorRelay<Queue<Language>>(value: Queue<Language>(.english, .russian, .german))
+    var sourceLanguagesQueue = BehaviorRelay<FixedQueue<Language>>(value: FixedQueue<Language>(.russian, .english, .german))
+    var targetLanguagesQueue = BehaviorRelay<FixedQueue<Language>>(value: FixedQueue<Language>(.english, .russian, .german))
 
     private var inputText = BehaviorRelay<String>(value: "")
     private var outputText = BehaviorRelay<String>(value: "")
