@@ -43,6 +43,7 @@ class TranslateViewController: NSViewController {
     }
 
 	private func setupUIBindings() {
+
 		inputTextView.rx.text
             .bind(to: translateVM.rawInput)
 			.disposed(by: disposeBag)
@@ -55,9 +56,9 @@ class TranslateViewController: NSViewController {
 			.bind(to: outputTextView.rx.text)
 			.disposed(by: disposeBag)
 
-		clearButton.rx
-			.controlEvent.map { "" }
-			.bind(to: translateVM.rawInput)
+		clearButton.rx.controlEvent
+            .map { "" }
+            .bind(to: translateVM.rawInput)
 			.disposed(by: disposeBag)
 
         sourceLanguageSegmentedControl.rx.value
@@ -106,11 +107,8 @@ class TranslateViewController: NSViewController {
         let maxTextContentHeight = max(self.inputTextView.intrinsicContentSize.height, self.outputTextView.intrinsicContentSize.height)
         let maxTextContainerHeight = maxTextContentHeight + extraSpace
         self.textContainerHeightConstraint.constant = max(200, maxTextContainerHeight)
-
-        DispatchQueue.main.async {
-            let appDelegate = NSApplication.shared.delegate as! AppDelegate // swiftlint:disable:this force_cast
-            appDelegate.popover.contentSize.height = self.contentView.frame.height
-            self.view.layoutSubtreeIfNeeded()
-        }
+        let appDelegate = NSApplication.shared.delegate as! AppDelegate // swiftlint:disable:this force_cast
+        appDelegate.popover.contentSize.height = self.contentView.frame.height
+        self.view.layoutSubtreeIfNeeded()
     }
 }

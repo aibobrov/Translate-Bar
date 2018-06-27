@@ -706,12 +706,12 @@
                                                             <rect key="frame" x="0.0" y="246" width="898" height="22"/>
                                                             <subviews>
                                                                 <segmentedControl canDrawConcurrently="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qNU-8T-Nww" customClass="SegmentedControl" customModule="Translate_Bar" customModuleProvider="target">
-                                                                    <rect key="frame" x="0.0" y="-1" width="135" height="23"/>
+                                                                    <rect key="frame" x="0.0" y="-1" width="137" height="23"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="22" id="I1I-sm-F0h"/>
                                                                     </constraints>
                                                                     <segmentedCell key="cell" borderStyle="border" alignment="left" segmentDistribution="fill" style="capsule" trackingMode="selectAny" id="WlV-aC-tPg" customClass="SegmentedCell" customModule="Translate_Bar" customModuleProvider="target">
-                                                                        <font key="font" metaFont="system"/>
+                                                                        <font key="font" size="13" name="Roboto-Regular"/>
                                                                         <segments>
                                                                             <segment label="a" selected="YES"/>
                                                                             <segment label="b" tag="1"/>
@@ -721,22 +721,22 @@
                                                                     </segmentedCell>
                                                                 </segmentedControl>
                                                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xGI-FN-2D9">
-                                                                    <rect key="frame" x="432" y="-3" width="36" height="27"/>
+                                                                    <rect key="frame" x="431" y="-3" width="36" height="27"/>
                                                                     <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="swap" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="beB-oC-A97">
                                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                                         <font key="font" metaFont="system" size="15"/>
                                                                     </buttonCell>
                                                                 </button>
                                                                 <segmentedControl canDrawConcurrently="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Loz-ca-azi" customClass="SegmentedControl" customModule="Translate_Bar" customModuleProvider="target">
-                                                                    <rect key="frame" x="764" y="-1" width="134" height="23"/>
+                                                                    <rect key="frame" x="761" y="-1" width="137" height="23"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="22" id="4L4-Lc-9Kh"/>
                                                                     </constraints>
                                                                     <segmentedCell key="cell" borderStyle="border" alignment="left" segmentDistribution="fill" style="capsule" trackingMode="selectAny" id="pAU-21-d4i" customClass="SegmentedCell" customModule="Translate_Bar" customModuleProvider="target">
-                                                                        <font key="font" metaFont="system"/>
+                                                                        <font key="font" size="13" name="Roboto-Regular"/>
                                                                         <segments>
-                                                                            <segment label="a"/>
-                                                                            <segment label="b" selected="YES" tag="1"/>
+                                                                            <segment label="a" selected="YES"/>
+                                                                            <segment label="b" tag="1"/>
                                                                             <segment label="c"/>
                                                                             <segment label="▾"/>
                                                                         </segments>
@@ -774,7 +774,7 @@
                                                                                         <rect key="frame" x="0.0" y="0.0" width="429" height="158"/>
                                                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                                         <subviews>
-                                                                                            <textView drawsBackground="NO" importsGraphics="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="QxF-x0-7F8" customClass="LimitedTextView" customModule="Translate_Bar" customModuleProvider="target">
+                                                                                            <textView drawsBackground="NO" importsGraphics="NO" verticallyResizable="YES" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" spellingCorrection="YES" smartInsertDelete="YES" id="QxF-x0-7F8" customClass="LimitedTextView" customModule="Translate_Bar" customModuleProvider="target">
                                                                                                 <rect key="frame" x="0.0" y="0.0" width="429" height="158"/>
                                                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -893,7 +893,7 @@
                                                                                 <rect key="frame" x="0.0" y="0.0" width="429" height="184"/>
                                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                                 <subviews>
-                                                                                    <textView editable="NO" drawsBackground="NO" importsGraphics="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="UOH-YB-up1" customClass="TextView" customModule="Translate_Bar" customModuleProvider="target">
+                                                                                    <textView editable="NO" drawsBackground="NO" importsGraphics="NO" verticallyResizable="YES" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" spellingCorrection="YES" smartInsertDelete="YES" id="UOH-YB-up1" customClass="TextView" customModule="Translate_Bar" customModuleProvider="target">
                                                                                         <rect key="frame" x="0.0" y="-1" width="429" height="184"/>
                                                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

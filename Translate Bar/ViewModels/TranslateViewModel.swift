@@ -40,6 +40,11 @@ class TranslateViewModel {
             .bind(to: outputText)
             .disposed(by: disposeBag)
         rawInput
+            .filter { $0?.isEmpty ?? true }
+            .map { _ in "" }
+            .bind(to: inputText)
+            .disposed(by: disposeBag)
+        rawInput
             .distinctUntilChanged()
             .debounce(1, scheduler: ConcurrentDispatchQueueScheduler(qos: .userInitiated))
             .filter({$0 != nil && $0!.count > 0})
@@ -61,8 +66,8 @@ class TranslateViewModel {
 	}
 
     var isSuggestNeeded: Observable<Bool> {
-        return inputText
-                .map { $0.contains(" ") }
+        return rawInput
+                .map { $0?.contains(" ") ?? false }
                 .asObservable()
     }
 

@@ -57,7 +57,7 @@ class Translation: EVObject {
 						return
 					}
 					self.text = translation.first
-					Log.verbose("Decoding translation END")
+                    Log.verbose("Decoding translation ended with string count \(self.text?.count)")
 				},
 				encodeConverter: { return nil }
 			),
@@ -71,7 +71,7 @@ class Translation: EVObject {
 					let langs = translation.split(separator: "-")
 					self.from = Language(shortName: String(langs.first!))
 					self.to = Language(shortName: String(langs.last!))
-					Log.verbose("Decoding translation language END")
+                    Log.verbose("Decoding translation language ended with value \(self.from!.shortName)-\(self.to!.shortName)")
 				},
 				encodeConverter: { return nil }
 			),
@@ -79,7 +79,7 @@ class Translation: EVObject {
 				key: "code",
 				decodeConverter: { value in
 					guard let code = value as? Int else {
-						Log.error("Unexpected code response: \(String(describing: value))")
+						Log.error("Unexpected response: \(String(describing: value))")
 						return
 					}
 					if code != 200 {
