@@ -1,19 +1,19 @@
 //
-//  Queue.swift
+//  FixedQueue.swift
 //  Translate Bar
 //
-//  Created by abobrov on 25/06/2018.
+//  Created by abobrov on 27/06/2018.
 //  Copyright © 2018 Artem Bobrov. All rights reserved.
 //
 
 import Foundation
 
-public struct Queue<T> {
+public struct FixedQueue<T> {
     public typealias QueueType = [T?]
     public typealias Index = QueueType.Index
     public typealias Element = QueueType.Element
 
-    fileprivate var array = [T?]()
+    fileprivate var array: [T?] = []
     fileprivate var head = 0
 
     public init(_ values: T...) {
@@ -30,11 +30,21 @@ public struct Queue<T> {
         return array.count - head
     }
 
-    public mutating func enqueue(_ element: T) {
+    public var front: T? {
+        return isEmpty ? nil : array[head]
+    }
+
+    public mutating func push(_ element: T) {
+        dequeue()
+        enqueue(element)
+    }
+
+    fileprivate mutating func enqueue(_ element: T) {
         array.append(element)
     }
 
-    public mutating func dequeue() -> T? {
+    @discardableResult
+    fileprivate mutating func dequeue() -> T? {
         guard head < array.count, let element = array[head] else { return nil }
 
         array[head] = nil
@@ -48,14 +58,11 @@ public struct Queue<T> {
 
         return element
     }
-
-    public var front: T? {
-        return isEmpty ? nil : array[head]
-    }
 }
-extension Queue: Collection {
-    public func index(after i: Index) -> Index {
-        return array.index(after: i)
+
+extension FixedQueue: Collection {
+    public func index(after index: Index) -> Index {
+        return array.index(after: index)
     }
 
     public subscript(position: Index) -> Element {

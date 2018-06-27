@@ -21,8 +21,8 @@ class TranslateViewController: NSViewController {
 	@IBOutlet weak var suggestTextLabel: NSTextField!
 	@IBOutlet weak var textContainerHeightConstraint: NSLayoutConstraint!
 
-    @IBOutlet weak var sourceLanguageSegmentedControl: NSSegmentedControl!
-    @IBOutlet weak var targetLanguageSegmentedControl: NSSegmentedControl!
+    @IBOutlet weak var sourceLanguageSegmentedControl: SegmentedControl!
+    @IBOutlet weak var targetLanguageSegmentedControl: SegmentedControl!
 
     let translateVM = TranslateViewModel()
 	private let disposeBag = DisposeBag()
@@ -30,13 +30,11 @@ class TranslateViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         inputTextView.maxCharactersCount = translateVM.maxCharactersCount
+        sourceLanguageSegmentedControl.singleSelectionSegments = (0..<sourceLanguageSegmentedControl.segmentCount - 1).map { $0 }
+        targetLanguageSegmentedControl.singleSelectionSegments = (0..<targetLanguageSegmentedControl.segmentCount - 1).map { $0 }
 
 		setupUIBindings()
         setupViewModelBindings()
-
-        sourceLanguageSegmentedControl.rx.controlEvent.subscribe { (event) in
-            debugPrint(event)
-        }.disposed(by: disposeBag)
     }
 
     override func viewDidAppear() {
@@ -64,11 +62,13 @@ class TranslateViewController: NSViewController {
 
         sourceLanguageSegmentedControl.rx.value
             .distinctUntilChanged()
+            .filter { $0 != self.sourceLanguageSegmentedControl.segmentCount - 1 }
             .bind(to: translateVM.sourceLanguageIndex)
             .disposed(by: disposeBag)
 
         targetLanguageSegmentedControl.rx.value
             .distinctUntilChanged()
+            .filter { $0 != self.targetLanguageSegmentedControl.segmentCount - 1 }
             .bind(to: translateVM.targetLanguageIndex)
             .disposed(by: disposeBag)
 	}
@@ -93,11 +93,11 @@ class TranslateViewController: NSViewController {
             .disposed(by: disposeBag)
         translateVM.sourceLanguagesQueue
             .map { $0.map { $0?.fullName ?? "" }  }
-            .bind(to: sourceLanguageSegmentedControl.rx.labels)
+            .bind(to: sourceLanguageSegmentedControl.rx.labels(for: 0..<sourceLanguageSegmentedControl.segmentCount - 1))
             .disposed(by: disposeBag)
         translateVM.targetLanguagesQueue
             .map { $0.map { $0?.fullName ?? "" } }
-            .bind(to: targetLanguageSegmentedControl.rx.labels)
+            .bind(to: targetLanguageSegmentedControl.rx.labels(for: 0..<targetLanguageSegmentedControl.segmentCount - 1))
             .disposed(by: disposeBag)
     }
 

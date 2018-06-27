@@ -705,95 +705,47 @@
                                                         <stackView distribution="equalSpacing" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oZe-dF-xuw">
                                                             <rect key="frame" x="0.0" y="246" width="898" height="22"/>
                                                             <subviews>
-                                                                <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mhb-Q1-4t4">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="129" height="22"/>
-                                                                    <subviews>
-                                                                        <segmentedControl canDrawConcurrently="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qNU-8T-Nww">
-                                                                            <rect key="frame" x="0.0" y="-1" width="103" height="23"/>
-                                                                            <constraints>
-                                                                                <constraint firstAttribute="height" constant="22" id="I1I-sm-F0h"/>
-                                                                            </constraints>
-                                                                            <segmentedCell key="cell" borderStyle="border" alignment="left" segmentDistribution="fill" style="capsule" trackingMode="selectAny" id="WlV-aC-tPg">
-                                                                                <font key="font" metaFont="system"/>
-                                                                                <segments>
-                                                                                    <segment label="a"/>
-                                                                                    <segment label="b" selected="YES" tag="1"/>
-                                                                                    <segment label="c"/>
-                                                                                </segments>
-                                                                            </segmentedCell>
-                                                                        </segmentedControl>
-                                                                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="oyx-zJ-pae">
-                                                                            <rect key="frame" x="101" y="-3" width="30" height="27"/>
-                                                                            <constraints>
-                                                                                <constraint firstAttribute="width" constant="26" id="rZR-Lx-5r9"/>
-                                                                            </constraints>
-                                                                            <buttonCell key="cell" type="bevel" title="▾" bezelStyle="regularSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="fHd-4D-Jq3">
-                                                                                <behavior key="behavior" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
-                                                                                <font key="font" metaFont="system" size="15"/>
-                                                                            </buttonCell>
-                                                                        </button>
-                                                                    </subviews>
-                                                                    <visibilityPriorities>
-                                                                        <integer value="1000"/>
-                                                                        <integer value="1000"/>
-                                                                    </visibilityPriorities>
-                                                                    <customSpacing>
-                                                                        <real value="3.4028234663852886e+38"/>
-                                                                        <real value="3.4028234663852886e+38"/>
-                                                                    </customSpacing>
-                                                                </stackView>
-                                                                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xGI-FN-2D9">
-                                                                    <rect key="frame" x="434" y="-1" width="30" height="23"/>
+                                                                <segmentedControl canDrawConcurrently="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qNU-8T-Nww" customClass="SegmentedControl" customModule="Translate_Bar" customModuleProvider="target">
+                                                                    <rect key="frame" x="0.0" y="-1" width="135" height="23"/>
                                                                     <constraints>
-                                                                        <constraint firstAttribute="width" constant="26" id="AYt-YU-R0f"/>
-                                                                        <constraint firstAttribute="height" constant="18" id="S3P-yE-62G"/>
+                                                                        <constraint firstAttribute="height" constant="22" id="I1I-sm-F0h"/>
                                                                     </constraints>
+                                                                    <segmentedCell key="cell" borderStyle="border" alignment="left" segmentDistribution="fill" style="capsule" trackingMode="selectAny" id="WlV-aC-tPg" customClass="SegmentedCell" customModule="Translate_Bar" customModuleProvider="target">
+                                                                        <font key="font" metaFont="system"/>
+                                                                        <segments>
+                                                                            <segment label="a" selected="YES"/>
+                                                                            <segment label="b" tag="1"/>
+                                                                            <segment label="c"/>
+                                                                            <segment label="▾"/>
+                                                                        </segments>
+                                                                    </segmentedCell>
+                                                                </segmentedControl>
+                                                                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xGI-FN-2D9">
+                                                                    <rect key="frame" x="432" y="-3" width="36" height="27"/>
                                                                     <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="swap" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="beB-oC-A97">
                                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                                         <font key="font" metaFont="system" size="15"/>
                                                                     </buttonCell>
                                                                 </button>
-                                                                <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UHi-ji-HrT">
-                                                                    <rect key="frame" x="769" y="0.0" width="129" height="22"/>
-                                                                    <subviews>
-                                                                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cAY-tG-QQc">
-                                                                            <rect key="frame" x="-2" y="-3" width="30" height="27"/>
-                                                                            <constraints>
-                                                                                <constraint firstAttribute="width" constant="26" id="e5B-bB-zDw"/>
-                                                                            </constraints>
-                                                                            <buttonCell key="cell" type="bevel" title="▾" bezelStyle="regularSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Dc3-q7-czm">
-                                                                                <behavior key="behavior" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
-                                                                                <font key="font" metaFont="system" size="15"/>
-                                                                            </buttonCell>
-                                                                        </button>
-                                                                        <segmentedControl canDrawConcurrently="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Loz-ca-azi">
-                                                                            <rect key="frame" x="26" y="-1" width="103" height="23"/>
-                                                                            <constraints>
-                                                                                <constraint firstAttribute="height" constant="22" id="4L4-Lc-9Kh"/>
-                                                                            </constraints>
-                                                                            <segmentedCell key="cell" borderStyle="border" alignment="left" segmentDistribution="fill" style="capsule" trackingMode="selectOne" id="pAU-21-d4i">
-                                                                                <font key="font" metaFont="system"/>
-                                                                                <segments>
-                                                                                    <segment label="a"/>
-                                                                                    <segment label="b" selected="YES" tag="1"/>
-                                                                                    <segment label="c"/>
-                                                                                </segments>
-                                                                            </segmentedCell>
-                                                                        </segmentedControl>
-                                                                    </subviews>
-                                                                    <visibilityPriorities>
-                                                                        <integer value="1000"/>
-                                                                        <integer value="1000"/>
-                                                                    </visibilityPriorities>
-                                                                    <customSpacing>
-                                                                        <real value="3.4028234663852886e+38"/>
-                                                                        <real value="3.4028234663852886e+38"/>
-                                                                    </customSpacing>
-                                                                </stackView>
+                                                                <segmentedControl canDrawConcurrently="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Loz-ca-azi" customClass="SegmentedControl" customModule="Translate_Bar" customModuleProvider="target">
+                                                                    <rect key="frame" x="764" y="-1" width="134" height="23"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="22" id="4L4-Lc-9Kh"/>
+                                                                    </constraints>
+                                                                    <segmentedCell key="cell" borderStyle="border" alignment="left" segmentDistribution="fill" style="capsule" trackingMode="selectAny" id="pAU-21-d4i" customClass="SegmentedCell" customModule="Translate_Bar" customModuleProvider="target">
+                                                                        <font key="font" metaFont="system"/>
+                                                                        <segments>
+                                                                            <segment label="a"/>
+                                                                            <segment label="b" selected="YES" tag="1"/>
+                                                                            <segment label="c"/>
+                                                                            <segment label="▾"/>
+                                                                        </segments>
+                                                                    </segmentedCell>
+                                                                </segmentedControl>
                                                             </subviews>
                                                             <constraints>
-                                                                <constraint firstItem="UHi-ji-HrT" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="xGI-FN-2D9" secondAttribute="trailing" id="G5E-Wn-oiy"/>
-                                                                <constraint firstItem="xGI-FN-2D9" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Mhb-Q1-4t4" secondAttribute="trailing" id="rVf-yM-BTm"/>
+                                                                <constraint firstItem="Loz-ca-azi" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="xGI-FN-2D9" secondAttribute="trailing" id="0vG-MB-5eK"/>
+                                                                <constraint firstItem="xGI-FN-2D9" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="qNU-8T-Nww" secondAttribute="trailing" id="Lif-Sh-Wws"/>
                                                                 <constraint firstAttribute="height" constant="22" id="u4K-dL-mvl"/>
                                                             </constraints>
                                                             <visibilityPriorities>
