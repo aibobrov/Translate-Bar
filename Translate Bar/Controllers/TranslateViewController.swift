@@ -43,7 +43,6 @@ class TranslateViewController: NSViewController {
     }
 
 	private func setupUIBindings() {
-
 		inputTextView.rx.text
             .bind(to: translateVM.rawInput)
 			.disposed(by: disposeBag)
@@ -72,7 +71,16 @@ class TranslateViewController: NSViewController {
             .filter { $0 != self.targetLanguageSegmentedControl.segmentCount - 1 }
             .bind(to: translateVM.targetLanguageIndex)
             .disposed(by: disposeBag)
+
+        sourceLanguageSegmentedControl.rx.value
+            .distinctUntilChanged()
+            .filter { $0 == self.sourceLanguageSegmentedControl.segmentCount - 1 }
+            .subscribe { [unowned self] _ in
+                self.openLanguagePicker()
+            }
+            .disposed(by: disposeBag)
 	}
+
     private func setupViewModelBindings() {
         translateVM.clearButtonHidden
             .bind(to: self.clearButton.rx.isHidden)
@@ -110,5 +118,9 @@ class TranslateViewController: NSViewController {
         let appDelegate = NSApplication.shared.delegate as! AppDelegate // swiftlint:disable:this force_cast
         appDelegate.popover.contentSize.height = self.contentView.frame.height
         self.view.layoutSubtreeIfNeeded()
+    }
+
+    private func openLanguagePicker() {
+
     }
 }
