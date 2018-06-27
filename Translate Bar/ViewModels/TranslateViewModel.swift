@@ -80,7 +80,7 @@ class TranslateViewModel {
     var limitationText: Observable<String> {
         return rawInput
             .map { $0?.count ?? 0 }
-            .map {"\($0)/\(self.maxCharactersCount)"}
+            .map { "\($0)/\(self.maxCharactersCount)" }
             .asObservable()
     }
 

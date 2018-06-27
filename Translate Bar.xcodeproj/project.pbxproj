@@ -37,7 +37,7 @@
 		D05E4D2220E139A70059ACB0 /* CustomNSSegmentedControl+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05E4D2120E139A70059ACB0 /* CustomNSSegmentedControl+Rx.swift */; };
 		D05E4D2620E25A5A0059ACB0 /* NSSegmentedControlExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05E4D2520E25A5A0059ACB0 /* NSSegmentedControlExtension.swift */; };
 		D094693920E3902000533152 /* FixedQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = D094693820E3902000533152 /* FixedQueue.swift */; };
-		D094693D20E3941300533152 /* SegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = D094693C20E3941300533152 /* SegmentedControl.swift */; };
+		D094693D20E3941300533152 /* SegmentedControl+Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D094693C20E3941300533152 /* SegmentedControl+Cell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,7 +97,7 @@
 		D05E4D2120E139A70059ACB0 /* CustomNSSegmentedControl+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CustomNSSegmentedControl+Rx.swift"; sourceTree = "<group>"; };
 		D05E4D2520E25A5A0059ACB0 /* NSSegmentedControlExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSSegmentedControlExtension.swift; sourceTree = "<group>"; };
 		D094693820E3902000533152 /* FixedQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FixedQueue.swift; sourceTree = "<group>"; };
-		D094693C20E3941300533152 /* SegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedControl.swift; sourceTree = "<group>"; };
+		D094693C20E3941300533152 /* SegmentedControl+Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SegmentedControl+Cell.swift"; sourceTree = "<group>"; };
 		D12A2F364991FE0E85D2D3AF /* Pods_Translate_Bar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Translate_Bar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0AE73213BC271F12033EF1C /* Pods_Translate_BarTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Translate_BarTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -248,7 +248,7 @@
 		A1E45D8E20CD465100FD8198 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				D094693C20E3941300533152 /* SegmentedControl.swift */,
+				D094693C20E3941300533152 /* SegmentedControl+Cell.swift */,
 				A125BD7D20D8511300C2BAE2 /* LimitedTextView.swift */,
 				D094693A20E393C300533152 /* Rx */,
 				D04AE06820D7FF5D00FED056 /* Base */,
@@ -589,7 +589,7 @@
 				D04AE06D20D7FF5D00FED056 /* TextView.swift in Sources */,
 				A174EDDF20CC798B00465A42 /* AppDelegate.swift in Sources */,
 				A1E7181220D71FD10080A546 /* NSImageExtension.swift in Sources */,
-				D094693D20E3941300533152 /* SegmentedControl.swift in Sources */,
+				D094693D20E3941300533152 /* SegmentedControl+Cell.swift in Sources */,
 				D04AE06E20D7FF5D00FED056 /* View.swift in Sources */,
 				A1E7181420D7229B0080A546 /* NSRectExtensions.swift in Sources */,
 				D05E4D2220E139A70059ACB0 /* CustomNSSegmentedControl+Rx.swift in Sources */,

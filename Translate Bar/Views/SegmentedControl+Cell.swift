@@ -1,5 +1,5 @@
 //
-//  SegmentedControl.swift
+//  SegmentedControl+Cell.swift
 //  Translate Bar
 //
 //  Created by abobrov on 27/06/2018.
@@ -12,11 +12,16 @@ class SegmentedCell: NSSegmentedCell {
     var singleSelectionSegments: [Int] = []
 
     override func setSelected(_ selected: Bool, forSegment segment: Int) {
-        if singleSelectionSegments.contains(segment),
-            let selectedSegment = singleSelectionSegments.first(where: { self.isSelected(forSegment: $0) }) {
-            super.setSelected(false, forSegment: selectedSegment)
-        }
-        super.setSelected(selected, forSegment: segment)
+		guard singleSelectionSegments.contains(segment) else {
+			super.setSelected(selected, forSegment: segment)
+			return
+		}
+
+		let selectedSegments = singleSelectionSegments.filter { self.isSelected(forSegment: $0) && $0 != segment }
+		if selectedSegments.count == 1 {
+			selectedSegments.forEach { super.setSelected(false, forSegment: $0) }
+			super.setSelected(selected, forSegment: segment)
+		}
     }
 }
 
