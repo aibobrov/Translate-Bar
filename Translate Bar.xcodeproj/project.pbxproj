@@ -38,6 +38,7 @@
 		D05E4D2620E25A5A0059ACB0 /* NSSegmentedControlExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05E4D2520E25A5A0059ACB0 /* NSSegmentedControlExtension.swift */; };
 		D094693920E3902000533152 /* FixedQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = D094693820E3902000533152 /* FixedQueue.swift */; };
 		D094693D20E3941300533152 /* SegmentedControl+Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D094693C20E3941300533152 /* SegmentedControl+Cell.swift */; };
+		D0EA236E20E6424800527288 /* CollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EA236D20E6424800527288 /* CollectionViewDataSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,6 +99,7 @@
 		D05E4D2520E25A5A0059ACB0 /* NSSegmentedControlExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSSegmentedControlExtension.swift; sourceTree = "<group>"; };
 		D094693820E3902000533152 /* FixedQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FixedQueue.swift; sourceTree = "<group>"; };
 		D094693C20E3941300533152 /* SegmentedControl+Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SegmentedControl+Cell.swift"; sourceTree = "<group>"; };
+		D0EA236D20E6424800527288 /* CollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewDataSource.swift; sourceTree = "<group>"; };
 		D12A2F364991FE0E85D2D3AF /* Pods_Translate_Bar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Translate_Bar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0AE73213BC271F12033EF1C /* Pods_Translate_BarTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Translate_BarTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -241,6 +243,7 @@
 			isa = PBXGroup;
 			children = (
 				A1E717C420D07F540080A546 /* TranslateViewModel.swift */,
+				D0EA236D20E6424800527288 /* CollectionViewDataSource.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -574,6 +577,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A120815820CDB31F00C57360 /* TranslationPreferences.swift in Sources */,
+				D0EA236E20E6424800527288 /* CollectionViewDataSource.swift in Sources */,
 				D05E4D2620E25A5A0059ACB0 /* NSSegmentedControlExtension.swift in Sources */,
 				A125BD7E20D8511300C2BAE2 /* LimitedTextView.swift in Sources */,
 				D05E4D1D20E112D80059ACB0 /* NSSegmentedControl+Rx.swift in Sources */,
