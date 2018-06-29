@@ -26,14 +26,10 @@ class TranslateViewModel {
     private var inputText = BehaviorRelay<String>(value: "")
     private var outputText = BehaviorRelay<String>(value: "")
 
-    lazy var traslatePreferences: Observable<TranslationPreferences> = {
-        return translateProvider.rx
-            .request(.getSupportedLanguages, callbackQueue: .global(qos: .userInteractive))
-            .Rmap(to: TranslationPreferences.self)
-            .asObservable()
-    }()
+    lazy var traslatePreferences = BehaviorRelay<TranslationPreferences>(value: TranslationPreferences())
 
 	init() {
+
         rawInput
             .filter { $0?.isEmpty ?? true }
             .map { _ in "" }
@@ -99,6 +95,15 @@ class TranslateViewModel {
         return targetLanguageIndex
             .map { self.targetLanguagesQueue.value[$0] }
             .asObservable()
+    }
+
+    private func updateTranslationPreferences() {
+        translateProvider.rx
+            .request(.getSupportedLanguages, callbackQueue: .global(qos: .userInteractive))
+            .Rmap(to: TranslationPreferences.self)
+            .asObservable()
+            .bind(to: traslatePreferences)
+            .disposed(by: disposeBag)
     }
 
     private func translate(text: String, source: Language, target: Language) -> Observable<Translation> {

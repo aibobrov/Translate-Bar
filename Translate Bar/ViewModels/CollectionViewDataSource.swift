@@ -7,6 +7,8 @@
 //
 
 import Cocoa
+import RxSwift
+import RxCocoa
 
 protocol CollectionViewDataSourceProtocol: NSCollectionViewDataSource {
     associatedtype Data: Collection where Data.Index == Int
@@ -26,6 +28,7 @@ class CollectionViewDataSource<DataType: Collection, CellType: NSCollectionViewI
     var items: DataType
     var identifier: String
     var configure: (DataType.Element, Int, CellType) -> Void
+
     private var collectionItemClickedHandler: ((CellType, IndexPath) -> Void)?
     init(identifier: String, items: DataType, configure: @escaping (DataType.Element, Int, CellType) -> Void) {
         self.identifier = identifier
@@ -46,5 +49,23 @@ class CollectionViewDataSource<DataType: Collection, CellType: NSCollectionViewI
 
     func onCollectionItemClicked(_ handler:  @escaping (CellType, IndexPath) -> Void) {
         self.collectionItemClickedHandler = handler
+    }
+
+    func data(for collectionView: NSCollectionView) -> Binder<DataType> {
+        return Binder(collectionView) { collectionView, data in
+            self.items = data
+            collectionView.reloadData()
+        }
+    }
+}
+
+extension Reactive where Base: NSCollectionView {
+    func data<DataType: Collection, DataSourceType: CollectionViewDataSourceProtocol>(dataSourceType: DataSourceType.Type) -> Binder<DataType> where DataType.Index == Int {
+        return Binder(self.base) { collectionView, data in
+            if let dataSource = collectionView.dataSource as? DataSourceType {
+                dataSource.items = data as! DataSourceType.Data // swiftlint:disable:this force_cast
+                collectionView.reloadData()
+            }
+        }
     }
 }

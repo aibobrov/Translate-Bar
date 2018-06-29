@@ -42,6 +42,17 @@ class TranslateViewController: NSViewController {
         NSApplication.shared.activate(ignoringOtherApps: true)
     }
 
+    private func setupCollecionView() {
+
+        let dataSource = CollectionViewDataSource(identifier: "String", items: translateVM.traslatePreferences.value.languages) { _, _, _ in
+        }
+//        translateVM.traslatePreferences.bind(to: dataSource.data(for: NSCollectionView())).disposed(by: disposeBag)
+//        dataSource.data(for: NSCollectionView())
+//        translateVM.traslatePreferences.asObservable().map({$0.languages}).map(dataSource.items)
+//        NSCollectionView()
+
+    }
+
 	private func setupUIBindings() {
 		inputTextView.rx.text
             .bind(to: translateVM.rawInput)
