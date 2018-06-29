@@ -11,7 +11,9 @@ import RxCocoa
 import RxSwift
 
 class TranslateViewController: NSViewController {
-    @IBOutlet weak var contentView: NSView!
+	@IBOutlet weak var textContentStackView: NSStackView!
+	@IBOutlet weak var pickerContentView: View!
+	@IBOutlet weak var contentView: NSView!
     @IBOutlet weak var mainScrollView: NSScrollView!
     @IBOutlet weak var inputTextView: LimitedTextView!
 	@IBOutlet weak var outputTextView: NSTextView!
@@ -35,6 +37,14 @@ class TranslateViewController: NSViewController {
 
 		setupUIBindings()
         setupViewModelBindings()
+
+		translateVM.isLanguagePickerNeeded
+			.map { !$0 }
+			.bind(to: pickerContentView.rx.isHidden)
+			.disposed(by: disposeBag)
+		translateVM.isLanguagePickerNeeded
+			.bind(to: textContentStackView.rx.isHidden)
+			.disposed(by: disposeBag)
     }
 
     override func viewDidAppear() {
@@ -43,9 +53,8 @@ class TranslateViewController: NSViewController {
     }
 
     private func setupCollecionView() {
-
-        let dataSource = CollectionViewDataSource(identifier: "String", items: translateVM.traslatePreferences.value.languages) { _, _, _ in
-        }
+//        let dataSource = CollectionViewDataSource(identifier: "String", items: translateVM.traslatePreferences.value.languages) { _, _, _ in
+//        }
 //        translateVM.traslatePreferences.bind(to: dataSource.data(for: NSCollectionView())).disposed(by: disposeBag)
 //        dataSource.data(for: NSCollectionView())
 //        translateVM.traslatePreferences.asObservable().map({$0.languages}).map(dataSource.items)
@@ -83,13 +92,28 @@ class TranslateViewController: NSViewController {
             .bind(to: translateVM.targetLanguageIndex)
             .disposed(by: disposeBag)
 
-        sourceLanguageSegmentedControl.rx.value
-            .distinctUntilChanged()
-            .filter { $0 == self.sourceLanguageSegmentedControl.segmentCount - 1 }
-            .subscribe { [unowned self] _ in
-                self.openLanguagePicker()
-            }
-            .disposed(by: disposeBag)
+		setupPickerBehaviour()
+	}
+
+	private func setupPickerBehaviour() {
+		sourceLanguageSegmentedControl.rx
+			.isSelected(for: sourceLanguageSegmentedControl.segmentCount - 1)
+			.bind(to: translateVM.isSourceLanguagePickerActive)
+			.disposed(by: disposeBag)
+		targetLanguageSegmentedControl.rx
+			.isSelected(for: targetLanguageSegmentedControl.segmentCount - 1)
+			.bind(to: translateVM.isTargetLanguagePickerActive)
+			.disposed(by: disposeBag)
+		translateVM.isTargetLanguagePickerActive
+			.bind(to: targetLanguageSegmentedControl.rx
+				.isSelected(for: targetLanguageSegmentedControl.segmentCount - 1)
+			)
+			.disposed(by: disposeBag)
+		translateVM.isSourceLanguagePickerActive
+			.bind(to: sourceLanguageSegmentedControl.rx
+				.isSelected(for: targetLanguageSegmentedControl.segmentCount - 1)
+			)
+			.disposed(by: disposeBag)
 	}
 
     private func setupViewModelBindings() {

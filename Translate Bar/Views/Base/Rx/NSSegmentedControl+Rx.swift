@@ -19,11 +19,19 @@ extension Reactive where Base: NSSegmentedControl {
         return base.rx.controlProperty(
             getter: { segmentedControl in
                 segmentedControl.selectedSegment
-            }, setter: {segmentedControl, value in
+            }, setter: { segmentedControl, value in
                 segmentedControl.selectedSegment = value
             }
         )
     }
+
+	public func isSelected(for segment: Int) -> ControlProperty<Bool> {
+		return base.rx.controlProperty(getter: { segmentedControl in
+			segmentedControl.isSelected(forSegment: segment)
+		}, setter: { segmentedControl, value in
+			segmentedControl.setSelected(value, forSegment: segment)
+		})
+	}
 
     public func enabledForSegment(at index: Int) -> Binder<Bool> {
         return Binder(self.base) { (segmentedControl, segmentEnabled) -> Void in

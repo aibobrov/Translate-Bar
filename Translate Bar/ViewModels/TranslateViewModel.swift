@@ -22,6 +22,8 @@ class TranslateViewModel {
     var targetLanguageIndex = BehaviorRelay<Int>(value: 0)
     var sourceLanguagesQueue = BehaviorRelay<FixedQueue<Language>>(value: FixedQueue<Language>(.russian, .english, .german))
     var targetLanguagesQueue = BehaviorRelay<FixedQueue<Language>>(value: FixedQueue<Language>(.english, .russian, .german))
+	var isSourceLanguagePickerActive = BehaviorRelay<Bool>(value: false)
+	var isTargetLanguagePickerActive = BehaviorRelay<Bool>(value: false)
 
     private var inputText = BehaviorRelay<String>(value: "")
     private var outputText = BehaviorRelay<String>(value: "")
@@ -59,6 +61,25 @@ class TranslateViewModel {
                     .disposed(by: self.disposeBag)
             })
             .disposed(by: disposeBag)
+
+		setupPickersActivity()
+	}
+
+	private func setupPickersActivity() {
+		isSourceLanguagePickerActive
+			.subscribe { value in
+				if value.element! && self.isTargetLanguagePickerActive.value {
+					self.isTargetLanguagePickerActive.accept(false)
+				}
+			}
+			.disposed(by: disposeBag)
+		isTargetLanguagePickerActive
+			.subscribe { value in
+				if value.element! && self.isSourceLanguagePickerActive.value {
+					self.isSourceLanguagePickerActive.accept(false)
+				}
+			}
+			.disposed(by: disposeBag)
 	}
 
     var isSuggestNeeded: Observable<Bool> {
@@ -66,6 +87,12 @@ class TranslateViewModel {
                 .map { $0?.contains(" ") ?? false }
                 .asObservable()
     }
+
+	var isLanguagePickerNeeded: Observable<Bool> {
+		return Observable.combineLatest(isTargetLanguagePickerActive, isSourceLanguagePickerActive)
+			.map { $0 || $1 }
+			.distinctUntilChanged()
+	}
 
     var text: Observable<String?> {
         return Observable
