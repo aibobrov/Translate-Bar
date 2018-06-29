@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14113" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14113"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+        <capability name="stacking Non-gravity area distributions on NSStackView" minToolsVersion="7.0" minSystemVersion="10.11"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="LanguageCollectionViewItem" customModule="Translate_Bar" customModuleProvider="target">
+            <connections>
+                <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="Hz6-mo-xeY">
+            <rect key="frame" x="0.0" y="0.0" width="95" height="17"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bBV-wc-Dup"/>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="glh-hZ-vCl">
+                    <rect key="frame" x="-2" y="0.0" width="99" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" allowsUndo="NO" sendsActionOnEndEditing="YES" alignment="center" title="Language" id="XcI-mB-9uJ">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </textFieldCell>
+                </textField>
+            </subviews>
+            <constraints>
+                <constraint firstItem="bBV-wc-Dup" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="3hN-uz-bGi"/>
+                <constraint firstAttribute="trailing" secondItem="glh-hZ-vCl" secondAttribute="trailing" id="Dcn-zo-org"/>
+                <constraint firstAttribute="bottom" secondItem="glh-hZ-vCl" secondAttribute="bottom" id="MXa-xw-N4y"/>
+                <constraint firstItem="glh-hZ-vCl" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="R7F-u4-eFv"/>
+                <constraint firstItem="glh-hZ-vCl" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="Wyo-DS-qfX"/>
+                <constraint firstAttribute="bottom" secondItem="bBV-wc-Dup" secondAttribute="bottom" id="Ytq-oY-nF4"/>
+            </constraints>
+            <point key="canvasLocation" x="-793.5" y="672"/>
+        </customView>
+        <collectionViewItem nibName="LanguageCollectionViewItem" id="04D-eF-aG3" customClass="LanguageCollectionViewItem" customModule="Translate_Bar" customModuleProvider="target">
+            <connections>
+                <outlet property="textLabel" destination="glh-hZ-vCl" id="NF4-ww-GkH"/>
+            </connections>
+        </collectionViewItem>
+    </objects>
+</document>

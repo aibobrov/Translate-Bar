@@ -10,7 +10,7 @@ import Cocoa
 import RxSwift
 import RxCocoa
 
-protocol CollectionViewDataSourceProtocol: NSCollectionViewDataSource {
+protocol CollectionViewDataSourceProtocol: class where Self: NSCollectionViewDataSource {
     associatedtype Data: Collection where Data.Index == Int
     associatedtype Cell: NSCollectionViewItem
 
@@ -21,7 +21,8 @@ protocol CollectionViewDataSourceProtocol: NSCollectionViewDataSource {
     func onCollectionItemClicked(_ handler: @escaping (Cell, IndexPath) -> Void)
 }
 
-class CollectionViewDataSource<DataType: Collection, CellType: NSCollectionViewItem>: NSObject, CollectionViewDataSourceProtocol where DataType.Index == Int {
+class CollectionViewDataSource<DataType: Collection, CellType: NSCollectionViewItem>:
+	NSObject, NSCollectionViewDataSource, CollectionViewDataSourceProtocol where DataType.Index == Int {
     typealias Data = DataType
     typealias Cell = CellType
 

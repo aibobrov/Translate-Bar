@@ -25,6 +25,7 @@ class TranslateViewController: NSViewController {
 
     @IBOutlet weak var sourceLanguageSegmentedControl: SegmentedControl!
     @IBOutlet weak var targetLanguageSegmentedControl: SegmentedControl!
+	@IBOutlet weak var languagesCollectionView: NSCollectionView!
 
     let translateVM = TranslateViewModel()
 	private let disposeBag = DisposeBag()
@@ -45,6 +46,8 @@ class TranslateViewController: NSViewController {
 		translateVM.isLanguagePickerNeeded
 			.bind(to: textContentStackView.rx.isHidden)
 			.disposed(by: disposeBag)
+
+		setupCollecionView()
     }
 
     override func viewDidAppear() {
@@ -53,14 +56,13 @@ class TranslateViewController: NSViewController {
     }
 
     private func setupCollecionView() {
-//        let dataSource = CollectionViewDataSource(identifier: "String", items: translateVM.traslatePreferences.value.languages) { _, _, _ in
-//        }
-//        translateVM.traslatePreferences.bind(to: dataSource.data(for: NSCollectionView())).disposed(by: disposeBag)
-//        dataSource.data(for: NSCollectionView())
-//        translateVM.traslatePreferences.asObservable().map({$0.languages}).map(dataSource.items)
-//        NSCollectionView()
-
-    }
+		languagesCollectionView.dataSource = self
+		translateVM.traslatePreferences
+			.subscribe { _ in
+				self.languagesCollectionView.reloadData()
+			}
+			.disposed(by: disposeBag)
+	}
 
 	private func setupUIBindings() {
 		inputTextView.rx.text
@@ -154,8 +156,17 @@ class TranslateViewController: NSViewController {
         appDelegate.popover.contentSize.height = self.contentView.frame.height
         self.view.layoutSubtreeIfNeeded()
     }
+}
 
-    private func openLanguagePicker() {
+extension TranslateViewController: NSCollectionViewDataSource {
+	func collectionView(_ collectionView: NSCollectionView, numberOfItemsInSection section: Int) -> Int {
+		return translateVM.traslatePreferences.value.languages.count
+	}
 
-    }
+	func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
+		let cell = collectionView.makeItem(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "LanguageCollectionViewItem"), for: indexPath) as! LanguageCollectionViewItem
+		let language = translateVM.traslatePreferences.value.languages[indexPath.item]
+		cell.textLabel.stringValue = language.fullName ?? ""
+		return cell
+	}
 }

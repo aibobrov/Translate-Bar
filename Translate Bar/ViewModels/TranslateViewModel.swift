@@ -31,7 +31,6 @@ class TranslateViewModel {
     lazy var traslatePreferences = BehaviorRelay<TranslationPreferences>(value: TranslationPreferences())
 
 	init() {
-
         rawInput
             .filter { $0?.isEmpty ?? true }
             .map { _ in "" }
@@ -63,6 +62,7 @@ class TranslateViewModel {
             .disposed(by: disposeBag)
 
 		setupPickersActivity()
+		updateTranslationPreferences()
 	}
 
 	private func setupPickersActivity() {
