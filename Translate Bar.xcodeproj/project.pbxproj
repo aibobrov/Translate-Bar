@@ -15,6 +15,7 @@
 		A120816A20CEC17C00C57360 /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = A120816920CEC17C00C57360 /* Language.swift */; };
 		A125BD7E20D8511300C2BAE2 /* LimitedTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A125BD7D20D8511300C2BAE2 /* LimitedTextView.swift */; };
 		A125BD8320DC4A8800C2BAE2 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = A125BD8220DC4A8800C2BAE2 /* Button.swift */; };
+		A1279FE820E6CF5D00C99FD9 /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1279FE720E6CF5D00C99FD9 /* ImageView.swift */; };
 		A1521FD720CD6CD50048EC26 /* NSStoryboardExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1521FD620CD6CD50048EC26 /* NSStoryboardExtensions.swift */; };
 		A174EDDF20CC798B00465A42 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A174EDDE20CC798B00465A42 /* AppDelegate.swift */; };
 		A174EDE420CC798B00465A42 /* Translate_Bar.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A174EDE220CC798B00465A42 /* Translate_Bar.xcdatamodeld */; };
@@ -70,6 +71,7 @@
 		A125BD7D20D8511300C2BAE2 /* LimitedTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LimitedTextView.swift; sourceTree = "<group>"; };
 		A125BD8120DC45E100C2BAE2 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		A125BD8220DC4A8800C2BAE2 /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
+		A1279FE720E6CF5D00C99FD9 /* ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
 		A1521FD620CD6CD50048EC26 /* NSStoryboardExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSStoryboardExtensions.swift; sourceTree = "<group>"; };
 		A174EDDB20CC798B00465A42 /* Translate Bar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Translate Bar.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A174EDDE20CC798B00465A42 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -311,6 +313,7 @@
 				D04AE06A20D7FF5D00FED056 /* TextView.swift */,
 				D04AE06B20D7FF5D00FED056 /* View.swift */,
 				D05E4CF620DB9A0C0059ACB0 /* ScrollView.swift */,
+				A1279FE720E6CF5D00C99FD9 /* ImageView.swift */,
 				A125BD8220DC4A8800C2BAE2 /* Button.swift */,
 			);
 			path = Base;
@@ -588,6 +591,7 @@
 				A1E717C520D07F540080A546 /* TranslateViewModel.swift in Sources */,
 				D05E4CF720DB9A0C0059ACB0 /* ScrollView.swift in Sources */,
 				A120816A20CEC17C00C57360 /* Language.swift in Sources */,
+				A1279FE820E6CF5D00C99FD9 /* ImageView.swift in Sources */,
 				A1E717C820D07F9A0080A546 /* TranslateViewController.swift in Sources */,
 				A120815B20CDBCA600C57360 /* YandexTranslate.swift in Sources */,
 				D04AE06D20D7FF5D00FED056 /* TextView.swift in Sources */,
