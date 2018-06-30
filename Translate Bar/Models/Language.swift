@@ -57,7 +57,7 @@ class Translation: EVObject {
 						return
 					}
 					self.text = translation.first
-                    Log.verbose("Decoding translation ended with string count \(self.text?.count)")
+					Log.verbose("Decoding translation ended with string count \(String(describing: self.text?.count))")
 				},
 				encodeConverter: { return nil }
 			),

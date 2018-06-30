@@ -21,7 +21,7 @@ class TranslateViewController: NSViewController {
 	@IBOutlet weak var inputTextViewLimitationLabel: NSTextField!
 	@IBOutlet weak var clearButton: NSButton!
 	@IBOutlet weak var suggestTextLabel: NSTextField!
-	@IBOutlet weak var textContainerHeightConstraint: NSLayoutConstraint!
+	@IBOutlet weak var contentContainerHeightConstraint: NSLayoutConstraint!
 
     @IBOutlet weak var sourceLanguageSegmentedControl: SegmentedControl!
     @IBOutlet weak var targetLanguageSegmentedControl: SegmentedControl!
@@ -39,16 +39,8 @@ class TranslateViewController: NSViewController {
 		setupUIBindings()
         setupViewModelBindings()
 
-		translateVM.isLanguagePickerNeeded
-			.map { !$0 }
-			.bind(to: pickerContentView.rx.isHidden)
-			.disposed(by: disposeBag)
-		translateVM.isLanguagePickerNeeded
-			.bind(to: textContentStackView.rx.isHidden)
-			.disposed(by: disposeBag)
-
 		setupCollecionView()
-    }
+	}
 
     override func viewDidAppear() {
         super.viewDidAppear()
@@ -145,17 +137,53 @@ class TranslateViewController: NSViewController {
             .map { $0.map { $0?.fullName ?? "" } }
             .bind(to: targetLanguageSegmentedControl.rx.labels(for: 0..<targetLanguageSegmentedControl.segmentCount - 1))
             .disposed(by: disposeBag)
+
+		translateVM.isLanguagePickerNeeded
+			.map { !$0 }
+			.bind(to: pickerContentView.rx.isHidden)
+			.disposed(by: disposeBag)
+		translateVM.isLanguagePickerNeeded
+			.bind(to: textContentStackView.rx.isHidden)
+			.disposed(by: disposeBag)
+		translateVM.isLanguagePickerNeeded
+			.observeOn(MainScheduler.asyncInstance)
+			.subscribe { _ in
+				self.resizeAccordingToContent()
+			}
+			.disposed(by: disposeBag)
     }
 
     private func resizeAccordingToContent() {
-		let extraSpace = self.textContainerHeightConstraint.constant + self.inputTextViewLimitationLabel.frame.height - min(self.inputTextView.frame.height, self.outputTextView.frame.height) // swiftlint:disable:this trailing_whitespace
-        let maxTextContentHeight = max(self.inputTextView.intrinsicContentSize.height, self.outputTextView.intrinsicContentSize.height)
-        let maxTextContainerHeight = maxTextContentHeight + extraSpace
-        self.textContainerHeightConstraint.constant = max(200, maxTextContainerHeight)
-        let appDelegate = NSApplication.shared.delegate as! AppDelegate // swiftlint:disable:this force_cast
-        appDelegate.popover.contentSize.height = self.contentView.frame.height
-        self.view.layoutSubtreeIfNeeded()
+		view.layoutSubtreeIfNeeded()
+
+		if !textContentStackView.isHidden {
+			resizeAccordingToTextContent()
+		} else if !pickerContentView.isHidden {
+			resizeAccordingToPickerContent()
+		}
+
+		view.layoutSubtreeIfNeeded()
+		let appDelegate = NSApplication.shared.delegate as! AppDelegate // swiftlint:disable:this force_cast
+		appDelegate.popover.contentSize.height = self.contentView.frame.height
     }
+
+	private func resizeAccordingToTextContent() {
+		let maxExtraSpace = textContentStackView.frame.height + inputTextViewLimitationLabel.frame.height - min(self.inputTextView.frame.height, self.outputTextView.frame.height)
+//		debugPrint("\(maxExtraSpace) = \(textContentStackView.frame.height) + \(inputTextViewLimitationLabel.frame.height) - min(\(self.inputTextView.frame.height), \(self.outputTextView.frame.height))")
+		let maxTextContentHeight = max(self.inputTextView.intrinsicContentSize.height, self.outputTextView.intrinsicContentSize.height)
+
+		let maxTextContainerHeight = maxTextContentHeight + maxExtraSpace
+		self.contentContainerHeightConstraint.constant = max(200, maxTextContainerHeight)
+//		debugPrint("\(contentContainerHeightConstraint.constant) = \(maxTextContentHeight) + \(maxExtraSpace)")
+	}
+
+	private func resizeAccordingToPickerContent() {
+		let languageViewHeight = languagesCollectionView.enclosingScrollView?.frame.height ?? 0
+		let extraSpace = contentContainerHeightConstraint.constant - languageViewHeight
+		let contentHeight = languagesCollectionView.collectionViewLayout?.collectionViewContentSize.height ?? 0
+		let pickerContainerHeight = contentHeight + extraSpace
+		contentContainerHeightConstraint.constant = max(200, pickerContainerHeight)
+	}
 }
 
 extension TranslateViewController: NSCollectionViewDataSource {
@@ -164,9 +192,10 @@ extension TranslateViewController: NSCollectionViewDataSource {
 	}
 
 	func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
-		let cell = collectionView.makeItem(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "LanguageCollectionViewItem"), for: indexPath) as! LanguageCollectionViewItem
+		let cell = collectionView.makeItem(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "LanguageCollectionViewItem"), for: indexPath) as! LanguageCollectionViewItem // swiftlint:disable:this force_cast
 		let language = translateVM.traslatePreferences.value.languages[indexPath.item]
-		cell.textLabel.stringValue = language.fullName ?? ""
+		cell.imageView!.image = NSImage(named: NSImage.Name(rawValue: language.shortName))
+		cell.textField!.stringValue = language.fullName!
 		return cell
 	}
 }
