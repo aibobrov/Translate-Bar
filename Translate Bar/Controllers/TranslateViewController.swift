@@ -28,6 +28,14 @@ class TranslateViewController: NSViewController {
     @IBOutlet weak var targetLanguageSegmentedControl: SegmentedControl!
 	@IBOutlet weak var languagesCollectionView: NSCollectionView!
 
+	let languagesDataSource: CollectionViewDataSource<[Language], LanguageCollectionViewItem> = {
+		let dataSource = CollectionViewDataSource(identifier: "LanguageCollectionViewItem", items: []) { (language: Language, _: Int, cell: LanguageCollectionViewItem) in
+			cell.imageView!.image = NSImage(named: NSImage.Name(rawValue: language.shortName))
+			cell.textField!.stringValue = language.fullName!
+		}
+		return dataSource
+	}()
+
     let translateVM = TranslateViewModel()
 	private let disposeBag = DisposeBag()
 
@@ -49,11 +57,11 @@ class TranslateViewController: NSViewController {
     }
 
     private func setupCollecionView() {
-		languagesCollectionView.dataSource = self
+		languagesCollectionView.dataSource = languagesDataSource
 		translateVM.traslatePreferences
-			.subscribe { _ in
-				self.languagesCollectionView.reloadData()
-			}
+			.map { $0.languages }
+			.observeOn(MainScheduler.asyncInstance)
+			.bind(to: languagesCollectionView.rx.data(dataSourceType: CollectionViewDataSource<[Language], LanguageCollectionViewItem>.self))
 			.disposed(by: disposeBag)
 	}
 
@@ -126,7 +134,7 @@ class TranslateViewController: NSViewController {
 
         translateVM.text
             .observeOn(MainScheduler.asyncInstance)
-            .subscribe { [unowned self] _ in
+            .subscribe { _ in
                 self.resizeAccordingToContent()
             }
             .disposed(by: disposeBag)
@@ -182,19 +190,5 @@ class TranslateViewController: NSViewController {
 		let contentHeight = languagesCollectionView.collectionViewLayout?.collectionViewContentSize.height ?? 0
 		let pickerContainerHeight = contentHeight + extraSpace
 		pickerContainerHeightConstraint.constant = max(200, pickerContainerHeight)
-	}
-}
-
-extension TranslateViewController: NSCollectionViewDataSource {
-	func collectionView(_ collectionView: NSCollectionView, numberOfItemsInSection section: Int) -> Int {
-		return translateVM.traslatePreferences.value.languages.count
-	}
-
-	func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
-		let cell = collectionView.makeItem(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "LanguageCollectionViewItem"), for: indexPath) as! LanguageCollectionViewItem // swiftlint:disable:this force_cast
-		let language = translateVM.traslatePreferences.value.languages[indexPath.item]
-		cell.imageView!.image = NSImage(named: NSImage.Name(rawValue: language.shortName))
-		cell.textField!.stringValue = language.fullName!
-		return cell
 	}
 }

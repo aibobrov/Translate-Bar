@@ -51,13 +51,6 @@ class CollectionViewDataSource<DataType: Collection, CellType: NSCollectionViewI
     func onCollectionItemClicked(_ handler:  @escaping (CellType, IndexPath) -> Void) {
         self.collectionItemClickedHandler = handler
     }
-
-    func data(for collectionView: NSCollectionView) -> Binder<DataType> {
-        return Binder(collectionView) { collectionView, data in
-            self.items = data
-            collectionView.reloadData()
-        }
-    }
 }
 
 extension Reactive where Base: NSCollectionView {
