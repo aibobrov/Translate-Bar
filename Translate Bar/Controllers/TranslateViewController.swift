@@ -21,7 +21,8 @@ class TranslateViewController: NSViewController {
 	@IBOutlet weak var inputTextViewLimitationLabel: NSTextField!
 	@IBOutlet weak var clearButton: NSButton!
 	@IBOutlet weak var suggestTextLabel: NSTextField!
-	@IBOutlet weak var contentContainerHeightConstraint: NSLayoutConstraint!
+	@IBOutlet weak var pickerContainerHeightConstraint: NSLayoutConstraint!
+	@IBOutlet weak var textContainerHeightConstraint: NSLayoutConstraint!
 
     @IBOutlet weak var sourceLanguageSegmentedControl: SegmentedControl!
     @IBOutlet weak var targetLanguageSegmentedControl: SegmentedControl!
@@ -169,20 +170,18 @@ class TranslateViewController: NSViewController {
 
 	private func resizeAccordingToTextContent() {
 		let maxExtraSpace = textContentStackView.frame.height + inputTextViewLimitationLabel.frame.height - min(self.inputTextView.frame.height, self.outputTextView.frame.height)
-//		debugPrint("\(maxExtraSpace) = \(textContentStackView.frame.height) + \(inputTextViewLimitationLabel.frame.height) - min(\(self.inputTextView.frame.height), \(self.outputTextView.frame.height))")
 		let maxTextContentHeight = max(self.inputTextView.intrinsicContentSize.height, self.outputTextView.intrinsicContentSize.height)
 
 		let maxTextContainerHeight = maxTextContentHeight + maxExtraSpace
-		self.contentContainerHeightConstraint.constant = max(200, maxTextContainerHeight)
-//		debugPrint("\(contentContainerHeightConstraint.constant) = \(maxTextContentHeight) + \(maxExtraSpace)")
+		textContainerHeightConstraint.constant = max(200, maxTextContainerHeight)
 	}
 
 	private func resizeAccordingToPickerContent() {
 		let languageViewHeight = languagesCollectionView.enclosingScrollView?.frame.height ?? 0
-		let extraSpace = contentContainerHeightConstraint.constant - languageViewHeight
+		let extraSpace = pickerContainerHeightConstraint.constant - languageViewHeight
 		let contentHeight = languagesCollectionView.collectionViewLayout?.collectionViewContentSize.height ?? 0
 		let pickerContainerHeight = contentHeight + extraSpace
-		contentContainerHeightConstraint.constant = max(200, pickerContainerHeight)
+		pickerContainerHeightConstraint.constant = max(200, pickerContainerHeight)
 	}
 }
 

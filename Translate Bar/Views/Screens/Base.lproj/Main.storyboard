@@ -721,7 +721,7 @@
                                                                     </segmentedCell>
                                                                 </segmentedControl>
                                                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xGI-FN-2D9">
-                                                                    <rect key="frame" x="408" y="-3" width="138" height="27"/>
+                                                                    <rect key="frame" x="459" y="-3" width="36" height="27"/>
                                                                     <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="swap" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="beB-oC-A97">
                                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                                         <font key="font" metaFont="system" size="15"/>
@@ -1003,7 +1003,7 @@
                                                                         </stackView>
                                                                         <scrollView wantsLayer="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" horizontalScrollElasticity="none" verticalScrollElasticity="none" translatesAutoresizingMaskIntoConstraints="NO" id="8fy-ex-3Wt">
                                                                             <rect key="frame" x="0.0" y="0.0" width="937" height="146"/>
-                                                                            <clipView key="contentView" id="8eC-tp-Ldh">
+                                                                            <clipView key="contentView" drawsBackground="NO" id="8eC-tp-Ldh">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="937" height="146"/>
                                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                                 <subviews>
@@ -1045,6 +1045,7 @@
                                                             </subviews>
                                                             <constraints>
                                                                 <constraint firstItem="UfV-gY-cUG" firstAttribute="top" secondItem="iQf-xi-JTI" secondAttribute="top" constant="8" id="0Ak-Ey-n68"/>
+                                                                <constraint firstAttribute="height" constant="200" id="6QA-It-R5W"/>
                                                                 <constraint firstAttribute="trailing" secondItem="UfV-gY-cUG" secondAttribute="trailing" constant="8" id="V41-1v-F8l"/>
                                                                 <constraint firstAttribute="bottom" secondItem="UfV-gY-cUG" secondAttribute="bottom" constant="8" id="Wov-py-Z8h"/>
                                                                 <constraint firstItem="UfV-gY-cUG" firstAttribute="leading" secondItem="iQf-xi-JTI" secondAttribute="leading" constant="8" id="d3N-mU-o7C"/>
@@ -1078,7 +1079,6 @@
                                                         <constraint firstItem="AOl-6f-zdl" firstAttribute="leading" secondItem="plg-2b-sUw" secondAttribute="leading" id="Nuq-xR-ykN"/>
                                                         <constraint firstItem="AOl-6f-zdl" firstAttribute="centerX" secondItem="plg-2b-sUw" secondAttribute="centerX" id="O4x-d5-wfE"/>
                                                         <constraint firstAttribute="trailing" secondItem="oZe-dF-xuw" secondAttribute="trailing" id="PWe-am-S4t"/>
-                                                        <constraint firstItem="iQf-xi-JTI" firstAttribute="height" secondItem="llx-mB-Obq" secondAttribute="height" id="YaV-M3-fJa"/>
                                                         <constraint firstAttribute="trailing" secondItem="AOl-6f-zdl" secondAttribute="trailing" id="Zpe-Q6-Z9u"/>
                                                         <constraint firstItem="oZe-dF-xuw" firstAttribute="leading" secondItem="plg-2b-sUw" secondAttribute="leading" id="bJe-iA-XAd"/>
                                                         <constraint firstItem="iQf-xi-JTI" firstAttribute="leading" secondItem="plg-2b-sUw" secondAttribute="leading" id="bPr-tm-kKk"/>
@@ -1119,7 +1119,7 @@
                                     <rect key="frame" x="-100" y="-100" width="731" height="15"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
-                                <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="0.79611650485436891" horizontal="NO" id="Qbp-GB-0cN">
+                                <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="0.96116504854368934" horizontal="NO" id="Qbp-GB-0cN">
                                     <rect key="frame" x="969" y="0.0" width="15" height="298"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
@@ -1134,17 +1134,18 @@
                     </view>
                     <connections>
                         <outlet property="clearButton" destination="bEf-wb-qhD" id="udM-xU-an6"/>
-                        <outlet property="contentContainerHeightConstraint" destination="cOj-Jb-uiG" id="s33-vo-bfw"/>
                         <outlet property="contentView" destination="gQE-pN-nWF" id="vSt-x1-03A"/>
                         <outlet property="inputTextView" destination="QxF-x0-7F8" id="1Qq-h3-dY4"/>
                         <outlet property="inputTextViewLimitationLabel" destination="GCV-JS-fTG" id="vuq-fZ-ODf"/>
                         <outlet property="languagesCollectionView" destination="2vc-9c-JbW" id="vYK-ED-e49"/>
                         <outlet property="mainScrollView" destination="e4b-td-Aei" id="SE8-Hl-enb"/>
                         <outlet property="outputTextView" destination="UOH-YB-up1" id="ddd-nn-LFz"/>
+                        <outlet property="pickerContainerHeightConstraint" destination="6QA-It-R5W" id="fPv-0s-Ue2"/>
                         <outlet property="pickerContentView" destination="iQf-xi-JTI" id="zb3-vp-RCB"/>
                         <outlet property="sourceLanguageSegmentedControl" destination="qNU-8T-Nww" id="Sf5-AG-SKW"/>
                         <outlet property="suggestTextLabel" destination="3T7-pU-Vy3" id="V10-Mf-f01"/>
                         <outlet property="targetLanguageSegmentedControl" destination="Loz-ca-azi" id="HNh-qc-bZd"/>
+                        <outlet property="textContainerHeightConstraint" destination="cOj-Jb-uiG" id="s33-vo-bfw"/>
                         <outlet property="textContentStackView" destination="llx-mB-Obq" id="7L3-ns-j2h"/>
                     </connections>
                 </viewController>
