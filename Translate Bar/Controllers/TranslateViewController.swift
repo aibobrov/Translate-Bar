@@ -30,6 +30,9 @@ class TranslateViewController: NSViewController {
 	@IBOutlet weak var languagesCollectionView: NSCollectionView!
 	@IBOutlet weak var searchTextField: NSTextField!
 
+	@IBOutlet weak var refreshButton: NSButton!
+	@IBOutlet weak var settingsButton: NSButton!
+
 	let languageCollectionViewManager: LanguageCollectionViewManager = {
 		let manager = LanguageCollectionViewManager(identifier: "LanguageCollectionViewItem", items: []) { (language, _, cell) in
 			cell.imageView!.image = NSImage(named: NSImage.Name(rawValue: language.shortName))
@@ -56,6 +59,10 @@ class TranslateViewController: NSViewController {
 	override func viewDidAppear() {
 		super.viewDidAppear()
 		NSApplication.shared.activate(ignoringOtherApps: true)
+
+		let appDelegate = NSApplication.shared.delegate as! AppDelegate // swiftlint:disable:this force_cast
+		let popoverWindow = appDelegate.popover.contentViewController!.view.window!
+		popoverWindow.parent?.removeChildWindow(popoverWindow)
 	}
 
 	private func setupCollecionView() {
@@ -76,22 +83,7 @@ class TranslateViewController: NSViewController {
 	}
 
 	private func setupUIBindings() {
-		inputTextView.rx.text
-			.bind(to: translateVM.rawInput)
-			.disposed(by: disposeBag)
-
-		translateVM.rawInput
-			.bind(to: inputTextView.rx.text)
-			.disposed(by: disposeBag)
-
-		translateVM.rawOutput
-			.bind(to: outputTextView.rx.text)
-			.disposed(by: disposeBag)
-
-		clearButton.rx.controlEvent
-			.map { "" }
-			.bind(to: translateVM.rawInput)
-			.disposed(by: disposeBag)
+		setupTextBindings()
 
 		sourceLanguageSegmentedControl.rx.value
 			.distinctUntilChanged()
@@ -112,9 +104,6 @@ class TranslateViewController: NSViewController {
 			.bind(to: sourceLanguageSegmentedControl.rx.selectSegment)
 			.disposed(by: disposeBag)
 
-		inputTextView.rx.words
-			.bind(to: translateVM.inputWords)
-			.disposed(by: disposeBag)
 		swapButton.rx
 			.controlEvent
 			.subscribe { _ in
@@ -123,6 +112,39 @@ class TranslateViewController: NSViewController {
 			.disposed(by: disposeBag)
 
 		setupPickerBehaviour()
+		setupBottomBar()
+	}
+
+	private func setupBottomBar() {
+		refreshButton.rx
+			.controlEvent
+			.subscribe { _ in
+				self.resizeAccordingToContent()
+			}
+			.disposed(by: disposeBag)
+	}
+
+	private func setupTextBindings() {
+		inputTextView.rx.text
+			.bind(to: translateVM.rawInput)
+			.disposed(by: disposeBag)
+
+		translateVM.rawInput
+			.bind(to: inputTextView.rx.text)
+			.disposed(by: disposeBag)
+
+		translateVM.rawOutput
+			.bind(to: outputTextView.rx.text)
+			.disposed(by: disposeBag)
+
+		inputTextView.rx.words
+			.bind(to: translateVM.inputWords)
+			.disposed(by: disposeBag)
+
+		clearButton.rx.controlEvent
+			.map { "" }
+			.bind(to: translateVM.rawInput)
+			.disposed(by: disposeBag)
 	}
 
 	private func setupPickerBehaviour() {
