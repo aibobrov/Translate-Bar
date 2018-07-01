@@ -13,11 +13,11 @@ import SwiftyBeaver
 import Moya
 import EVReflection
 
-let Log = SwiftyBeaver.self
+let Log = SwiftyBeaver.self // swiftlint:disable:this variable_name 
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
-	private let (mainImage, alternateImage) = (#imageLiteral(resourceName: "language"), #imageLiteral(resourceName: "language_filled"))
+	private let statusItemImages: [NSImage] = [#imageLiteral(resourceName: "language"), #imageLiteral(resourceName: "language_filled")]
 	private let disposeBag = DisposeBag()
 
 	let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
@@ -25,8 +25,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 	let popover: NSPopover = {
 		let popover = NSPopover()
 		popover.animates = true
-		popover.behavior = NSPopover.Behavior.transient
-		popover.appearance = NSAppearance(named: NSAppearance.Name.vibrantLight)
+		popover.behavior = .transient
+		popover.appearance = NSAppearance(named: .vibrantLight)
 		return popover
 	}()
 
@@ -34,18 +34,18 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		Log.addDestination(ConsoleDestination())
 
 		if let button = statusItem.button {
-			button.image = mainImage
-			button.alternateImage = alternateImage
+			button.image = statusItemImages.first
 			button.action = #selector(togglePopover(_:))
 		}
 
 		popover.contentViewController = NSStoryboard.instantiateController(from: "Main", withIdentifier: "MainVCID")
 
 		popover.rx.observe(Bool.self, #keyPath(NSPopover.isShown))
-			.map({ $0 ?? false })
+			.observeOn(MainScheduler.asyncInstance)
+			.map { $0 ?? false }
+			.map { $0 ? 1 : 0 }
 			.subscribe { [unowned self] event in
-
-				self.statusItem.button?.image = event.element! ? self.alternateImage : self.mainImage
+				self.statusItem.button?.image = self.statusItemImages[event.element!]
 			}
 			.disposed(by: disposeBag)
 	}
@@ -53,15 +53,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 	func applicationWillTerminate(_ aNotification: Notification) {
 	}
 
-	func showPopover(_ sender: AnyObject?) {
-		popover.show(relativeTo: sender!.bounds, of: sender! as! NSView, preferredEdge: .maxY)
+	func showPopover(_ sender: NSView) {
+		popover.show(relativeTo: sender.bounds, of: sender, preferredEdge: .maxY)
 	}
 
-	func closePopover(_ sender: AnyObject?) {
+	func closePopover(_ sender: NSView) {
 		popover.performClose(sender)
 	}
 
-	@objc func togglePopover(_ sender: AnyObject) {
+	@objc func togglePopover(_ sender: NSView) {
 		if popover.isShown {
 			closePopover(sender)
 		} else {
@@ -121,7 +121,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 	        let nserror = error as NSError
 
 	        let result = sender.presentError(nserror)
-	        if (result) {
+	        if result {
 	            return .terminateCancel
 	        }
 

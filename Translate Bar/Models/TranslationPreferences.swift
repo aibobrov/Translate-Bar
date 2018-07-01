@@ -32,7 +32,8 @@ class TranslationPreferences: EVObject {
 						Log.error("Unexpected langs response \(String(describing: value))")
 						return
 					}
-					langs.forEach { self.languages.append(Language(shortName: $0.key, fullName: $0.value)) }
+					self.languages = langs.map { Language(shortName: $0.key, fullName: $0.value) }
+										  .sorted(by: { $0.fullName! < $1.fullName! })
 					Log.verbose("Decoding languages END")
 					if let dirs = self._directions {
 						for pair in dirs {
@@ -43,13 +44,12 @@ class TranslationPreferences: EVObject {
 							self.directions.updateValue(value + [to], forKey: from)
 						}
 					}
-					print(self.directions.map({($0.key.shortName, $0.value.map({$0.shortName}))}))
 					self._directions = nil
-					Log.verbose("Decoding directions from languages END")
+					Log.verbose("Decoding directions from languages END with direction count \(self.directions.count)")
 				},
 				encodeConverter: {
 					var dict: [String: String] = [:]
-					self.languages.forEach({dict.updateValue($0.fullName ?? "", forKey: $0.shortName)})
+					self.languages.forEach { dict.updateValue($0.fullName ?? "", forKey: $0.shortName) }
 					return dict
 				}
 			),
@@ -67,11 +67,11 @@ class TranslationPreferences: EVObject {
 
 			},
 				encodeConverter: {
-					Array(self.directions.map({ pair -> [String] in
-						pair.value.map ({ lang -> String in
+					Array(self.directions.map { pair -> [String] in
+						pair.value.map { lang -> String in
 							pair.key.shortName + "-" + lang.shortName
-						})
-					}).joined())
+						}
+					}.joined())
 				}
 			)
 		]

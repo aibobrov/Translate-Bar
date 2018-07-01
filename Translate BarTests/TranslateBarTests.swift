@@ -1,5 +1,5 @@
 //
-//  Translate_BarTests.swift
+//  TranslateBarTests.swift
 //  Translate BarTests
 //
 //  Created by Artem Bobrov on 09.06.2018.
@@ -13,11 +13,11 @@ import EVReflection
 
 @testable import Translate_Bar
 
-class Translate_BarTests: XCTestCase {
+class TranslateBarTests: XCTestCase {
     override func setUp() {
         super.setUp()
     }
-    
+
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
@@ -42,8 +42,8 @@ class Translate_BarTests: XCTestCase {
 		XCTAssert(pref.directions.count > 0, "There must be several directions")
 		XCTAssertEqual(pref.languages.count, 3)
 		XCTAssertEqual(pref.directions.count, 3)
-		XCTAssertEqual(pref.languages.first(where: {$0.shortName == "en"})!.fullName, "Английский")
-		XCTAssertEqual(pref.directions[Language(shortName: "ru", fullName: "Русский")], [Language(shortName: "uk", fullName: "Украинский")])
+		XCTAssertEqual(pref.languages.first(where: {$0.shortName == "en"})!.fullName, "английский")
+		XCTAssertEqual(pref.directions[Language(shortName: "ru", fullName: "русский")], [Language(shortName: "uk", fullName: "украинский")])
 	}
 
 	func testDecodeTextParsing() {
