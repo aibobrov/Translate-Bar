@@ -42,8 +42,8 @@ class TranslateBarTests: XCTestCase {
 		XCTAssert(pref.directions.count > 0, "There must be several directions")
 		XCTAssertEqual(pref.languages.count, 3)
 		XCTAssertEqual(pref.directions.count, 3)
-		XCTAssertEqual(pref.languages.first(where: {$0.shortName == "en"})!.fullName, "Английский")
-		XCTAssertEqual(pref.directions[Language(shortName: "ru", fullName: "Русский")], [Language(shortName: "uk", fullName: "Украинский")])
+		XCTAssertEqual(pref.languages.first(where: {$0.shortName == "en"})!.fullName, "английский")
+		XCTAssertEqual(pref.directions[Language(shortName: "ru", fullName: "русский")], [Language(shortName: "uk", fullName: "украинский")])
 	}
 
 	func testDecodeTextParsing() {

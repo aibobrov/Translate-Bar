@@ -33,6 +33,17 @@ extension Reactive where Base: NSSegmentedControl {
 		})
 	}
 
+	public var selectSegment: Binder<Int> {
+		return Binder(self.base) { segmentedControl, value in
+			segmentedControl.setSelected(true, forSegment: value)
+		}
+	}
+	public var deselectSegment: Binder<Int> {
+		return Binder(self.base) { segmentedControl, value in
+			segmentedControl.setSelected(false, forSegment: value)
+		}
+	}
+
     public func enabledForSegment(at index: Int) -> Binder<Bool> {
         return Binder(self.base) { (segmentedControl, segmentEnabled) -> Void in
             segmentedControl.setEnabled(segmentEnabled, forSegment: index)

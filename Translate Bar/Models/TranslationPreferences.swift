@@ -49,7 +49,7 @@ class TranslationPreferences: EVObject {
 				},
 				encodeConverter: {
 					var dict: [String: String] = [:]
-					self.languages.forEach({dict.updateValue($0.fullName ?? "", forKey: $0.shortName)})
+					self.languages.forEach { dict.updateValue($0.fullName ?? "", forKey: $0.shortName) }
 					return dict
 				}
 			),
@@ -67,11 +67,11 @@ class TranslationPreferences: EVObject {
 
 			},
 				encodeConverter: {
-					Array(self.directions.map({ pair -> [String] in
-						pair.value.map ({ lang -> String in
+					Array(self.directions.map { pair -> [String] in
+						pair.value.map { lang -> String in
 							pair.key.shortName + "-" + lang.shortName
-						})
-					}).joined())
+						}
+					}.joined())
 				}
 			)
 		]

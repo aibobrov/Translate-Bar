@@ -44,7 +44,7 @@ class TranslateViewModel {
         rawInput
             .distinctUntilChanged()
             .debounce(1, scheduler: ConcurrentDispatchQueueScheduler(qos: .userInitiated))
-            .filter({$0 != nil && $0!.count > 0})
+            .filter { $0 != nil && $0!.count > 0 }
             .map { $0! }
             .bind(to: inputText)
             .disposed(by: disposeBag)
@@ -80,6 +80,30 @@ class TranslateViewModel {
 				}
 			}
 			.disposed(by: disposeBag)
+	}
+
+	func pick(language: Language) {
+		if isSourceLanguagePickerActive.value {
+			sourceLanguagesPush(language: language)
+		} else if isTargetLanguagePickerActive.value {
+			targetLanguagesPush(language: language)
+		}
+	}
+
+	func targetLanguagesPush(language: Language) {
+		var queue = targetLanguagesQueue.value
+		let (index, _) = queue.push(language)
+		targetLanguageIndex.accept(index)
+		targetLanguagesQueue.accept(queue)
+		isTargetLanguagePickerActive.accept(false)
+	}
+
+	func sourceLanguagesPush(language: Language) {
+		var queue = sourceLanguagesQueue.value
+		let (index, _) = queue.push(language)
+		sourceLanguageIndex.accept(index)
+		sourceLanguagesQueue.accept(queue)
+		isSourceLanguagePickerActive.accept(false)
 	}
 
     var isSuggestNeeded: Observable<Bool> {

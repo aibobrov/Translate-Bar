@@ -63,19 +63,7 @@ class TranslateViewController: NSViewController {
 		languageCollectionViewManager.rx
 			.selectedItem
 			.subscribe(onNext: { (language, _, _) in
-				if self.sourceLanguageSegmentedControl.isSelected(forSegment: self.sourceLanguageSegmentedControl.segmentCount - 1) {
-					var queue = self.translateVM.sourceLanguagesQueue.value
-					let (index, _) = queue.push(language)
-					self.sourceLanguageSegmentedControl.setSelected(true, forSegment: index)
-					self.translateVM.sourceLanguagesQueue.accept(queue)
-				} else if self.targetLanguageSegmentedControl.isSelected(forSegment: self.targetLanguageSegmentedControl.segmentCount - 1) {
-					var queue = self.translateVM.targetLanguagesQueue.value
-					let (index, _) = queue.push(language)
-					self.targetLanguageSegmentedControl.setSelected(true, forSegment: index)
-					self.translateVM.targetLanguagesQueue.accept(queue)
-				}
-				self.translateVM.isSourceLanguagePickerActive.accept(false)
-				self.translateVM.isTargetLanguagePickerActive.accept(false)
+				self.translateVM.pick(language: language)
 			})
 			.disposed(by: disposeBag)
 
@@ -115,6 +103,13 @@ class TranslateViewController: NSViewController {
             .filter { $0 != self.targetLanguageSegmentedControl.segmentCount - 1 }
             .bind(to: translateVM.targetLanguageIndex)
             .disposed(by: disposeBag)
+
+		translateVM.targetLanguageIndex
+			.bind(to: targetLanguageSegmentedControl.rx.selectSegment)
+			.disposed(by: disposeBag)
+		translateVM.sourceLanguageIndex
+			.bind(to: sourceLanguageSegmentedControl.rx.selectSegment)
+			.disposed(by: disposeBag)
 
 		setupPickerBehaviour()
 	}

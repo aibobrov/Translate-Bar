@@ -44,9 +44,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 			.observeOn(MainScheduler.asyncInstance)
 			.map { $0 ?? false }
 			.map { $0 ? 1 : 0 }
-			.subscribe({ [unowned self] event in
+			.subscribe { [unowned self] event in
 				self.statusItem.button?.image = self.statusItemImages[event.element!]
-			})
+			}
 			.disposed(by: disposeBag)
 	}
 
