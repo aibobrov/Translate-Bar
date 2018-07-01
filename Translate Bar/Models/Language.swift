@@ -9,14 +9,17 @@
 import Foundation
 import EVReflection
 
-class Language: Hashable {
+class Language: Hashable, Equatable {
+    static let english = Language(shortName: "en", fullName: "английский")
+    static let russian = Language(shortName: "ru", fullName: "русский")
+    static let german = Language(shortName: "de", fullName: "немецкий")
 
 	var shortName: String = ""
 	var fullName: String?
 
 	init(shortName: String, fullName: String? = nil) {
-		self.shortName = shortName
-		self.fullName = fullName
+		self.shortName = shortName.lowercased()
+		self.fullName = fullName?.lowercased()
 	}
 
 	static func == (lhs: Language, rhs: Language) -> Bool {
@@ -54,7 +57,7 @@ class Translation: EVObject {
 						return
 					}
 					self.text = translation.first
-					Log.verbose("Decoding translation END")
+					Log.verbose("Decoding translation ended with string count \(String(describing: self.text?.count))")
 				},
 				encodeConverter: { return nil }
 			),
@@ -68,7 +71,7 @@ class Translation: EVObject {
 					let langs = translation.split(separator: "-")
 					self.from = Language(shortName: String(langs.first!))
 					self.to = Language(shortName: String(langs.last!))
-					Log.verbose("Decoding translation language END")
+                    Log.verbose("Decoding translation language ended with value \(self.from!.shortName)-\(self.to!.shortName)")
 				},
 				encodeConverter: { return nil }
 			),
@@ -76,7 +79,7 @@ class Translation: EVObject {
 				key: "code",
 				decodeConverter: { value in
 					guard let code = value as? Int else {
-						Log.error("Unexpected code response: \(String(describing: value))")
+						Log.error("Unexpected response: \(String(describing: value))")
 						return
 					}
 					if code != 200 {
