@@ -55,7 +55,12 @@ extension FixedQueue: Collection {
     }
 
     public subscript(position: Index) -> Element {
-        return array[position]
+		get {
+			return array[position]
+		}
+		set {
+			array[position] = newValue
+		}
     }
 
     public var startIndex: Index {

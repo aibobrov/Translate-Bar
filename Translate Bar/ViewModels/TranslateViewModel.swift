@@ -82,6 +82,51 @@ class TranslateViewModel {
 			.disposed(by: disposeBag)
 	}
 
+	func swap() {
+		rx_swap(rawInput, rawOutput)
+
+		swapLanguages()
+	}
+	private func swapLanguages() {
+		let sourceLanguage = sourceLanguagesQueue.value[sourceLanguageIndex.value]
+		let targetLanguage = targetLanguagesQueue.value[targetLanguageIndex.value]
+
+		if !targetLanguagesQueue.value.contains(sourceLanguage) && !sourceLanguagesQueue.value.contains(targetLanguage) {
+			naiveSwapLanguages()
+			return
+		}
+
+		if let index = sourceLanguagesQueue.value.index(of: targetLanguage) {
+			sourceLanguageIndex.accept(index)
+		} else {
+			var queue = sourceLanguagesQueue.value
+			let (index, _) = queue.push(targetLanguage)
+			sourceLanguagesQueue.accept(queue)
+			sourceLanguageIndex.accept(index)
+		}
+
+		if let index = targetLanguagesQueue.value.index(of: sourceLanguage) {
+			targetLanguageIndex.accept(index)
+		} else {
+			var queue = targetLanguagesQueue.value
+			let (index, _) = queue.push(sourceLanguage)
+			targetLanguagesQueue.accept(queue)
+			targetLanguageIndex.accept(index)
+		}
+	}
+
+	private func naiveSwapLanguages() {
+		var lhs = sourceLanguagesQueue.value
+		var rhs = targetLanguagesQueue.value
+
+		let tmp = lhs[sourceLanguageIndex.value]
+		lhs[sourceLanguageIndex.value] = rhs[targetLanguageIndex.value]
+		rhs[targetLanguageIndex.value] = tmp
+
+		sourceLanguagesQueue.accept(lhs)
+		targetLanguagesQueue.accept(rhs)
+	}
+
 	func pick(language: Language) {
 		if isSourceLanguagePickerActive.value {
 			sourceLanguagesPush(language: language)

@@ -14,8 +14,8 @@ class TranslateViewController: NSViewController {
 	@IBOutlet weak var textContentStackView: NSStackView!
 	@IBOutlet weak var pickerContentView: View!
 	@IBOutlet weak var contentView: NSView!
-    @IBOutlet weak var mainScrollView: NSScrollView!
-    @IBOutlet weak var inputTextView: LimitedTextView!
+	@IBOutlet weak var mainScrollView: NSScrollView!
+	@IBOutlet weak var inputTextView: LimitedTextView!
 	@IBOutlet weak var outputTextView: NSTextView!
 
 	@IBOutlet weak var inputTextViewLimitationLabel: NSTextField!
@@ -24,39 +24,46 @@ class TranslateViewController: NSViewController {
 	@IBOutlet weak var pickerContainerHeightConstraint: NSLayoutConstraint!
 	@IBOutlet weak var textContainerHeightConstraint: NSLayoutConstraint!
 
-    @IBOutlet weak var sourceLanguageSegmentedControl: SegmentedControl!
-    @IBOutlet weak var targetLanguageSegmentedControl: SegmentedControl!
+	@IBOutlet weak var sourceLanguageSegmentedControl: SegmentedControl!
+	@IBOutlet weak var targetLanguageSegmentedControl: SegmentedControl!
+	@IBOutlet weak var swapButton: NSButton!
 	@IBOutlet weak var languagesCollectionView: NSCollectionView!
 
-	let languageCollectionViewManager: CollectionViewManager<[Language], LanguageCollectionViewItem> = {
-		let manager = CollectionViewManager(identifier: "LanguageCollectionViewItem", items: []) { (language: Language, _: Int, cell: LanguageCollectionViewItem) in
+	let languageCollectionViewManager: LanguageCollectionViewManager = {
+		let manager = LanguageCollectionViewManager(identifier: "LanguageCollectionViewItem", items: []) { (language, _, cell) in
 			cell.imageView!.image = NSImage(named: NSImage.Name(rawValue: language.shortName))
 			cell.textField!.stringValue = language.fullName!
 		}
 		return manager
 	}()
 
-    let translateVM = TranslateViewModel()
+	let translateVM = TranslateViewModel()
 	private let disposeBag = DisposeBag()
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        inputTextView.maxCharactersCount = translateVM.maxCharactersCount
-        sourceLanguageSegmentedControl.singleSelectionSegments = (0..<sourceLanguageSegmentedControl.segmentCount - 1).map { $0 }
-        targetLanguageSegmentedControl.singleSelectionSegments = (0..<targetLanguageSegmentedControl.segmentCount - 1).map { $0 }
+	override func viewDidLoad() {
+		super.viewDidLoad()
+		inputTextView.maxCharactersCount = translateVM.maxCharactersCount
+		sourceLanguageSegmentedControl.singleSelectionSegments = (0..<sourceLanguageSegmentedControl.segmentCount - 1).map { $0 }
+		targetLanguageSegmentedControl.singleSelectionSegments = (0..<targetLanguageSegmentedControl.segmentCount - 1).map { $0 }
 
+		swapButton.rx
+			.controlEvent
+			.subscribe { _ in
+				self.translateVM.swap()
+			}
+			.disposed(by: disposeBag)
 		setupUIBindings()
-        setupViewModelBindings()
+		setupViewModelBindings()
 
 		setupCollecionView()
 	}
 
-    override func viewDidAppear() {
-        super.viewDidAppear()
-        NSApplication.shared.activate(ignoringOtherApps: true)
-    }
+	override func viewDidAppear() {
+		super.viewDidAppear()
+		NSApplication.shared.activate(ignoringOtherApps: true)
+	}
 
-    private func setupCollecionView() {
+	private func setupCollecionView() {
 		languagesCollectionView.dataSource = languageCollectionViewManager
 		languagesCollectionView.delegate = languageCollectionViewManager
 
@@ -76,33 +83,33 @@ class TranslateViewController: NSViewController {
 
 	private func setupUIBindings() {
 		inputTextView.rx.text
-            .bind(to: translateVM.rawInput)
+			.bind(to: translateVM.rawInput)
 			.disposed(by: disposeBag)
 
-        translateVM.rawInput
-            .bind(to: inputTextView.rx.text)
-            .disposed(by: disposeBag)
+		translateVM.rawInput
+			.bind(to: inputTextView.rx.text)
+			.disposed(by: disposeBag)
 
-        translateVM.rawOutput
+		translateVM.rawOutput
 			.bind(to: outputTextView.rx.text)
 			.disposed(by: disposeBag)
 
 		clearButton.rx.controlEvent
-            .map { "" }
-            .bind(to: translateVM.rawInput)
+			.map { "" }
+			.bind(to: translateVM.rawInput)
 			.disposed(by: disposeBag)
 
-        sourceLanguageSegmentedControl.rx.value
-            .distinctUntilChanged()
-            .filter { $0 != self.sourceLanguageSegmentedControl.segmentCount - 1 }
-            .bind(to: translateVM.sourceLanguageIndex)
-            .disposed(by: disposeBag)
+		sourceLanguageSegmentedControl.rx.value
+			.distinctUntilChanged()
+			.filter { $0 != self.sourceLanguageSegmentedControl.segmentCount - 1 }
+			.bind(to: translateVM.sourceLanguageIndex)
+			.disposed(by: disposeBag)
 
-        targetLanguageSegmentedControl.rx.value
-            .distinctUntilChanged()
-            .filter { $0 != self.targetLanguageSegmentedControl.segmentCount - 1 }
-            .bind(to: translateVM.targetLanguageIndex)
-            .disposed(by: disposeBag)
+		targetLanguageSegmentedControl.rx.value
+			.distinctUntilChanged()
+			.filter { $0 != self.targetLanguageSegmentedControl.segmentCount - 1 }
+			.bind(to: translateVM.targetLanguageIndex)
+			.disposed(by: disposeBag)
 
 		translateVM.targetLanguageIndex
 			.bind(to: targetLanguageSegmentedControl.rx.selectSegment)
@@ -135,34 +142,33 @@ class TranslateViewController: NSViewController {
 			.disposed(by: disposeBag)
 	}
 
-    private func setupViewModelBindings() {
-        translateVM.clearButtonHidden
-            .bind(to: self.clearButton.rx.isHidden)
-            .disposed(by: disposeBag)
+	private func setupViewModelBindings() {
+		translateVM.clearButtonHidden
+			.bind(to: self.clearButton.rx.isHidden)
+			.disposed(by: disposeBag)
 
-        translateVM.isSuggestNeeded
-            .bind(to: self.suggestTextLabel.rx.isHidden)
-            .disposed(by: disposeBag)
+		translateVM.isSuggestNeeded
+			.bind(to: self.suggestTextLabel.rx.isHidden)
+			.disposed(by: disposeBag)
 
-        translateVM.limitationText
-            .bind(to: self.inputTextViewLimitationLabel.rx.text)
-            .disposed(by: disposeBag)
+		translateVM.limitationText
+			.bind(to: self.inputTextViewLimitationLabel.rx.text)
+			.disposed(by: disposeBag)
 
-        translateVM.text
-            .observeOn(MainScheduler.asyncInstance)
-            .subscribe { _ in
-                self.resizeAccordingToContent()
-            }
-            .disposed(by: disposeBag)
-        translateVM.sourceLanguagesQueue
-			.debug()
-            .map { $0.map { $0.fullName ?? "" }  }
-            .bind(to: sourceLanguageSegmentedControl.rx.labels(for: 0..<sourceLanguageSegmentedControl.segmentCount - 1))
-            .disposed(by: disposeBag)
-        translateVM.targetLanguagesQueue
-            .map { $0.map { $0.fullName ?? "" } }
-            .bind(to: targetLanguageSegmentedControl.rx.labels(for: 0..<targetLanguageSegmentedControl.segmentCount - 1))
-            .disposed(by: disposeBag)
+		translateVM.text
+			.observeOn(MainScheduler.asyncInstance)
+			.subscribe { _ in
+				self.resizeAccordingToContent()
+			}
+			.disposed(by: disposeBag)
+		translateVM.sourceLanguagesQueue
+			.map { $0.map { $0.fullName ?? "" }  }
+			.bind(to: sourceLanguageSegmentedControl.rx.labels(for: 0..<sourceLanguageSegmentedControl.segmentCount - 1))
+			.disposed(by: disposeBag)
+		translateVM.targetLanguagesQueue
+			.map { $0.map { $0.fullName ?? "" } }
+			.bind(to: targetLanguageSegmentedControl.rx.labels(for: 0..<targetLanguageSegmentedControl.segmentCount - 1))
+			.disposed(by: disposeBag)
 
 		translateVM.isLanguagePickerNeeded
 			.map { !$0 }
@@ -177,9 +183,9 @@ class TranslateViewController: NSViewController {
 				self.resizeAccordingToContent()
 			}
 			.disposed(by: disposeBag)
-    }
+	}
 
-    private func resizeAccordingToContent() {
+	private func resizeAccordingToContent() {
 		view.layoutSubtreeIfNeeded()
 
 		if !textContentStackView.isHidden {
@@ -191,7 +197,7 @@ class TranslateViewController: NSViewController {
 		view.layoutSubtreeIfNeeded()
 		let appDelegate = NSApplication.shared.delegate as! AppDelegate // swiftlint:disable:this force_cast
 		appDelegate.popover.contentSize.height = self.contentView.frame.height
-    }
+	}
 
 	private func resizeAccordingToTextContent() {
 		let maxExtraSpace = textContentStackView.frame.height + inputTextViewLimitationLabel.frame.height - min(self.inputTextView.frame.height, self.outputTextView.frame.height)

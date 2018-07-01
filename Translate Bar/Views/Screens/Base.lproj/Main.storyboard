@@ -1155,6 +1155,7 @@
                         <outlet property="pickerContentView" destination="iQf-xi-JTI" id="zb3-vp-RCB"/>
                         <outlet property="sourceLanguageSegmentedControl" destination="qNU-8T-Nww" id="Sf5-AG-SKW"/>
                         <outlet property="suggestTextLabel" destination="3T7-pU-Vy3" id="V10-Mf-f01"/>
+                        <outlet property="swapButton" destination="xGI-FN-2D9" id="Y2H-0W-RcL"/>
                         <outlet property="targetLanguageSegmentedControl" destination="Loz-ca-azi" id="HNh-qc-bZd"/>
                         <outlet property="textContainerHeightConstraint" destination="cOj-Jb-uiG" id="s33-vo-bfw"/>
                         <outlet property="textContentStackView" destination="llx-mB-Obq" id="7L3-ns-j2h"/>
