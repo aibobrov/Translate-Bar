@@ -112,6 +112,9 @@ class TranslateViewController: NSViewController {
 			.bind(to: sourceLanguageSegmentedControl.rx.selectSegment)
 			.disposed(by: disposeBag)
 
+		inputTextView.rx.words
+			.bind(to: translateVM.inputWords)
+			.disposed(by: disposeBag)
 		swapButton.rx
 			.controlEvent
 			.subscribe { _ in
@@ -153,7 +156,7 @@ class TranslateViewController: NSViewController {
 			.bind(to: self.clearButton.rx.isHidden)
 			.disposed(by: disposeBag)
 
-		translateVM.isSuggestNeeded
+		translateVM.isSuggestHidden
 			.bind(to: self.suggestTextLabel.rx.isHidden)
 			.disposed(by: disposeBag)
 

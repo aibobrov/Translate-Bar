@@ -25,6 +25,7 @@ class TranslateViewModel {
 	var searchQueryString = BehaviorRelay<String?>(value: nil)
 	var isSourceLanguagePickerActive = BehaviorRelay<Bool>(value: false)
 	var isTargetLanguagePickerActive = BehaviorRelay<Bool>(value: false)
+	var inputWords = BehaviorRelay<[String]>(value: [])
 
     private var inputText = BehaviorRelay<String>(value: "")
     private var outputText = BehaviorRelay<String>(value: "")
@@ -152,10 +153,14 @@ class TranslateViewModel {
 		isSourceLanguagePickerActive.accept(false)
 	}
 
-    var isSuggestNeeded: Observable<Bool> {
-        return rawInput
-                .map { $0?.contains(" ") ?? false }
-                .asObservable()
+    var isSuggestHidden: Observable<Bool> {
+        return inputWords
+			.map { words in
+				guard words.count == 1, let word = words.first else {
+					return true
+				}
+				return word.letterCount == 0
+			}
     }
 
 	var isLanguagePickerNeeded: Observable<Bool> {

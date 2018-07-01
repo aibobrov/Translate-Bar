@@ -61,4 +61,9 @@ extension Reactive where Base: NSTextView {
 
 		return ControlProperty(values: source, valueSink: observer.asObserver())
 	}
+
+	public var words: Observable<[String]> {
+		return text
+			.map { _ in self.base.textStorage?.words.map { $0.string } ?? []  }
+	}
 }
