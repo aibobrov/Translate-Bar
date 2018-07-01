@@ -22,6 +22,7 @@ class TranslateViewModel {
     var targetLanguageIndex = BehaviorRelay<Int>(value: 0)
     var sourceLanguagesQueue = BehaviorRelay<FixedQueue<Language>>(value: FixedQueue<Language>(.russian, .english, .german))
     var targetLanguagesQueue = BehaviorRelay<FixedQueue<Language>>(value: FixedQueue<Language>(.english, .russian, .german))
+	var searchQueryString = BehaviorRelay<String?>(value: nil)
 	var isSourceLanguagePickerActive = BehaviorRelay<Bool>(value: false)
 	var isTargetLanguagePickerActive = BehaviorRelay<Bool>(value: false)
 
@@ -192,6 +193,16 @@ class TranslateViewModel {
             .map { self.targetLanguagesQueue.value[$0] }
             .asObservable()
     }
+
+	var allLanguages: Observable<[Language]> {
+		return Observable.combineLatest(traslatePreferences, searchQueryString, isLanguagePickerNeeded)
+			.map { (traslatePreferences, searchQueryString, isLanguagePickerNeeded) -> [Language] in
+				guard isLanguagePickerNeeded, let query = searchQueryString?.lowercased(), !query.isEmpty else {
+					return traslatePreferences.languages
+				}
+				return traslatePreferences.languages.filter { $0.fullName?.contains(query) ?? false }
+			}
+	}
 
     private func updateTranslationPreferences() {
         translateProvider.rx

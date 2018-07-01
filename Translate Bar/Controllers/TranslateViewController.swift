@@ -28,6 +28,7 @@ class TranslateViewController: NSViewController {
 	@IBOutlet weak var targetLanguageSegmentedControl: SegmentedControl!
 	@IBOutlet weak var swapButton: NSButton!
 	@IBOutlet weak var languagesCollectionView: NSCollectionView!
+	@IBOutlet weak var searchTextField: NSTextField!
 
 	let languageCollectionViewManager: LanguageCollectionViewManager = {
 		let manager = LanguageCollectionViewManager(identifier: "LanguageCollectionViewItem", items: []) { (language, _, cell) in
@@ -46,12 +47,6 @@ class TranslateViewController: NSViewController {
 		sourceLanguageSegmentedControl.singleSelectionSegments = (0..<sourceLanguageSegmentedControl.segmentCount - 1).map { $0 }
 		targetLanguageSegmentedControl.singleSelectionSegments = (0..<targetLanguageSegmentedControl.segmentCount - 1).map { $0 }
 
-		swapButton.rx
-			.controlEvent
-			.subscribe { _ in
-				self.translateVM.swap()
-			}
-			.disposed(by: disposeBag)
 		setupUIBindings()
 		setupViewModelBindings()
 
@@ -74,8 +69,7 @@ class TranslateViewController: NSViewController {
 			})
 			.disposed(by: disposeBag)
 
-		translateVM.traslatePreferences
-			.map { $0.languages }
+		translateVM.allLanguages
 			.observeOn(MainScheduler.asyncInstance)
 			.bind(to: languagesCollectionView.rx.data(dataSourceType: CollectionViewManager<[Language], LanguageCollectionViewItem>.self))
 			.disposed(by: disposeBag)
@@ -118,10 +112,22 @@ class TranslateViewController: NSViewController {
 			.bind(to: sourceLanguageSegmentedControl.rx.selectSegment)
 			.disposed(by: disposeBag)
 
+		swapButton.rx
+			.controlEvent
+			.subscribe { _ in
+				self.translateVM.swap()
+			}
+			.disposed(by: disposeBag)
+
 		setupPickerBehaviour()
 	}
 
 	private func setupPickerBehaviour() {
+		searchTextField.rx
+			.text
+			.bind(to: translateVM.searchQueryString)
+			.disposed(by: disposeBag)
+
 		sourceLanguageSegmentedControl.rx
 			.isSelected(for: sourceLanguageSegmentedControl.segmentCount - 1)
 			.bind(to: translateVM.isSourceLanguagePickerActive)

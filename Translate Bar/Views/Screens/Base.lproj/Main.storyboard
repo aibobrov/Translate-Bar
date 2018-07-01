@@ -1153,6 +1153,7 @@
                         <outlet property="outputTextView" destination="UOH-YB-up1" id="ddd-nn-LFz"/>
                         <outlet property="pickerContainerHeightConstraint" destination="6QA-It-R5W" id="fPv-0s-Ue2"/>
                         <outlet property="pickerContentView" destination="iQf-xi-JTI" id="zb3-vp-RCB"/>
+                        <outlet property="searchTextField" destination="C9o-3Q-fA6" id="X6Z-mp-ykX"/>
                         <outlet property="sourceLanguageSegmentedControl" destination="qNU-8T-Nww" id="Sf5-AG-SKW"/>
                         <outlet property="suggestTextLabel" destination="3T7-pU-Vy3" id="V10-Mf-f01"/>
                         <outlet property="swapButton" destination="xGI-FN-2D9" id="Y2H-0W-RcL"/>
