@@ -1073,25 +1073,50 @@
                                                         <customView translatesAutoresizingMaskIntoConstraints="NO" id="AOl-6f-zdl" customClass="View" customModule="Translate_Bar" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="0.0" width="985" height="15"/>
                                                             <subviews>
-                                                                <stackView distribution="fill" orientation="horizontal" alignment="top" spacing="12" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fvz-un-McS">
-                                                                    <rect key="frame" x="8" y="1" width="37" height="15"/>
+                                                                <stackView distribution="equalSpacing" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Iei-fK-6yh">
+                                                                    <rect key="frame" x="8" y="0.0" width="969" height="15"/>
                                                                     <subviews>
-                                                                        <button focusRingType="none" verticalHuggingPriority="750" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4fL-Ud-tPz">
-                                                                            <rect key="frame" x="0.0" y="1" width="14" height="14"/>
-                                                                            <buttonCell key="cell" type="squareTextured" bezelStyle="texturedSquare" image="NSActionTemplate" imagePosition="only" alignment="center" focusRingType="none" imageScaling="proportionallyDown" inset="2" id="IGN-ia-ENY">
-                                                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                                                <font key="font" metaFont="system"/>
-                                                                            </buttonCell>
-                                                                            <userDefinedRuntimeAttributes>
-                                                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                                    <real key="value" value="0.0"/>
-                                                                                </userDefinedRuntimeAttribute>
-                                                                            </userDefinedRuntimeAttributes>
-                                                                        </button>
-                                                                        <button focusRingType="none" verticalHuggingPriority="750" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OeN-nz-JnD">
-                                                                            <rect key="frame" x="26" y="0.0" width="11" height="15"/>
-                                                                            <buttonCell key="cell" type="squareTextured" bezelStyle="texturedSquare" image="NSRefreshTemplate" imagePosition="only" alignment="center" focusRingType="none" imageScaling="proportionallyDown" inset="2" id="xCn-O7-aWf">
-                                                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                                        <stackView distribution="fill" orientation="horizontal" alignment="top" spacing="12" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fvz-un-McS">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="37" height="15"/>
+                                                                            <subviews>
+                                                                                <button focusRingType="none" verticalHuggingPriority="750" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4fL-Ud-tPz">
+                                                                                    <rect key="frame" x="0.0" y="1" width="14" height="14"/>
+                                                                                    <buttonCell key="cell" type="squareTextured" bezelStyle="texturedSquare" image="NSActionTemplate" imagePosition="only" alignment="center" focusRingType="none" imageScaling="proportionallyDown" inset="2" id="IGN-ia-ENY">
+                                                                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                                                        <font key="font" metaFont="system"/>
+                                                                                    </buttonCell>
+                                                                                    <userDefinedRuntimeAttributes>
+                                                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                                            <real key="value" value="0.0"/>
+                                                                                        </userDefinedRuntimeAttribute>
+                                                                                    </userDefinedRuntimeAttributes>
+                                                                                </button>
+                                                                                <button focusRingType="none" verticalHuggingPriority="750" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OeN-nz-JnD">
+                                                                                    <rect key="frame" x="26" y="0.0" width="11" height="15"/>
+                                                                                    <buttonCell key="cell" type="squareTextured" bezelStyle="texturedSquare" image="NSRefreshTemplate" imagePosition="only" alignment="center" focusRingType="none" imageScaling="proportionallyDown" inset="2" id="xCn-O7-aWf">
+                                                                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                                                        <font key="font" metaFont="system"/>
+                                                                                    </buttonCell>
+                                                                                    <userDefinedRuntimeAttributes>
+                                                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                                            <real key="value" value="0.0"/>
+                                                                                        </userDefinedRuntimeAttribute>
+                                                                                    </userDefinedRuntimeAttributes>
+                                                                                </button>
+                                                                            </subviews>
+                                                                            <visibilityPriorities>
+                                                                                <integer value="1000"/>
+                                                                                <integer value="1000"/>
+                                                                            </visibilityPriorities>
+                                                                            <customSpacing>
+                                                                                <real value="3.4028234663852886e+38"/>
+                                                                                <real value="3.4028234663852886e+38"/>
+                                                                            </customSpacing>
+                                                                        </stackView>
+                                                                        <button focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="A1v-Lc-jzZ">
+                                                                            <rect key="frame" x="956" y="1" width="13" height="13"/>
+                                                                            <buttonCell key="cell" type="squareTextured" bezelStyle="texturedSquare" image="pin-off" imagePosition="only" alignment="center" alternateImage="pin-on" focusRingType="none" transparent="YES" imageScaling="proportionallyDown" inset="2" id="Xew-WP-mhb">
+                                                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                                                 <font key="font" metaFont="system"/>
                                                                             </buttonCell>
                                                                             <userDefinedRuntimeAttributes>
@@ -1101,6 +1126,12 @@
                                                                             </userDefinedRuntimeAttributes>
                                                                         </button>
                                                                     </subviews>
+                                                                    <constraints>
+                                                                        <constraint firstItem="fvz-un-McS" firstAttribute="centerY" secondItem="Iei-fK-6yh" secondAttribute="centerY" id="0Su-Wd-OfB"/>
+                                                                        <constraint firstItem="A1v-Lc-jzZ" firstAttribute="centerY" secondItem="Iei-fK-6yh" secondAttribute="centerY" id="Sak-35-1o4"/>
+                                                                        <constraint firstAttribute="trailing" secondItem="A1v-Lc-jzZ" secondAttribute="trailing" id="TEz-Po-6dA"/>
+                                                                        <constraint firstItem="fvz-un-McS" firstAttribute="leading" secondItem="Iei-fK-6yh" secondAttribute="leading" id="awV-VD-Jnp"/>
+                                                                    </constraints>
                                                                     <visibilityPriorities>
                                                                         <integer value="1000"/>
                                                                         <integer value="1000"/>
@@ -1112,9 +1143,10 @@
                                                                 </stackView>
                                                             </subviews>
                                                             <constraints>
-                                                                <constraint firstItem="fvz-un-McS" firstAttribute="leading" secondItem="AOl-6f-zdl" secondAttribute="leading" constant="8" id="5FF-HC-zSX"/>
+                                                                <constraint firstItem="Iei-fK-6yh" firstAttribute="centerY" secondItem="AOl-6f-zdl" secondAttribute="centerY" id="2IU-wy-ana"/>
+                                                                <constraint firstAttribute="trailing" secondItem="Iei-fK-6yh" secondAttribute="trailing" constant="8" id="HfO-6R-b7M"/>
+                                                                <constraint firstItem="Iei-fK-6yh" firstAttribute="leading" secondItem="AOl-6f-zdl" secondAttribute="leading" constant="8" id="WN7-es-MVW"/>
                                                                 <constraint firstAttribute="height" constant="15" id="bw0-LK-2yd"/>
-                                                                <constraint firstItem="fvz-un-McS" firstAttribute="centerY" secondItem="AOl-6f-zdl" secondAttribute="centerY" id="fFM-4s-ebv"/>
                                                             </constraints>
                                                             <userDefinedRuntimeAttributes>
                                                                 <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -1212,6 +1244,8 @@
         <image name="NSRefreshTemplate" width="11" height="15"/>
         <image name="NSStopProgressTemplate" width="11" height="11"/>
         <image name="NSTouchBarSearchTemplate" width="19" height="30"/>
+        <image name="pin-off" width="12.800000190734863" height="12.800000190734863"/>
+        <image name="pin-on" width="12.800000190734863" height="12.800000190734863"/>
         <image name="swap" width="25.600000381469727" height="25.600000381469727"/>
     </resources>
 </document>
