@@ -8,17 +8,18 @@
 
 import Foundation
 
-public struct FixedQueue<T> {
-    public typealias QueueType = [T?]
+public struct FixedQueue<T: Equatable> {
+    public typealias QueueType = [T]
     public typealias Index = QueueType.Index
     public typealias Element = QueueType.Element
 
-    fileprivate var array: [T?] = []
-    fileprivate var head = 0
+    fileprivate var array: [T] = []
+	fileprivate var indexToPush: Int
 
     public init(_ values: T...) {
+		indexToPush = values.count - 1
         for value in values {
-            enqueue(value)
+            array.append(value)
         }
     }
 
@@ -27,36 +28,24 @@ public struct FixedQueue<T> {
     }
 
     public var count: Int {
-        return array.count - head
+        return array.count
     }
 
     public var front: T? {
-        return isEmpty ? nil : array[head]
+        return array[indexToPush]
     }
 
-    public mutating func push(_ element: T) {
-        dequeue()
-        enqueue(element)
-    }
+	@discardableResult
+    public mutating func push(_ element: T) -> (Int, T) {
+		defer {
+			array[indexToPush] = element
 
-    fileprivate mutating func enqueue(_ element: T) {
-        array.append(element)
-    }
-
-    @discardableResult
-    fileprivate mutating func dequeue() -> T? {
-        guard head < array.count, let element = array[head] else { return nil }
-
-        array[head] = nil
-        head += 1
-
-        let percentage = Double(head)/Double(array.count)
-        if array.count > 50 && percentage > 0.25 {
-            array.removeFirst(head)
-            head = 0
-        }
-
-        return element
+			indexToPush -= 1
+			if indexToPush < 0 {
+				indexToPush = array.count - 1
+			}
+		}
+		return (indexToPush, array[indexToPush])
     }
 }
 

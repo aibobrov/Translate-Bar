@@ -28,12 +28,12 @@ class TranslateViewController: NSViewController {
     @IBOutlet weak var targetLanguageSegmentedControl: SegmentedControl!
 	@IBOutlet weak var languagesCollectionView: NSCollectionView!
 
-	let languagesDataSource: CollectionViewDataSource<[Language], LanguageCollectionViewItem> = {
-		let dataSource = CollectionViewDataSource(identifier: "LanguageCollectionViewItem", items: []) { (language: Language, _: Int, cell: LanguageCollectionViewItem) in
+	let languageCollectionViewManager: CollectionViewManager<[Language], LanguageCollectionViewItem> = {
+		let manager = CollectionViewManager(identifier: "LanguageCollectionViewItem", items: []) { (language: Language, _: Int, cell: LanguageCollectionViewItem) in
 			cell.imageView!.image = NSImage(named: NSImage.Name(rawValue: language.shortName))
 			cell.textField!.stringValue = language.fullName!
 		}
-		return dataSource
+		return manager
 	}()
 
     let translateVM = TranslateViewModel()
@@ -57,11 +57,32 @@ class TranslateViewController: NSViewController {
     }
 
     private func setupCollecionView() {
-		languagesCollectionView.dataSource = languagesDataSource
+		languagesCollectionView.dataSource = languageCollectionViewManager
+		languagesCollectionView.delegate = languageCollectionViewManager
+
+		languageCollectionViewManager.rx
+			.selectedItem
+			.subscribe(onNext: { (language, _, _) in
+				if self.sourceLanguageSegmentedControl.isSelected(forSegment: self.sourceLanguageSegmentedControl.segmentCount - 1) {
+					var queue = self.translateVM.sourceLanguagesQueue.value
+					let (index, _) = queue.push(language)
+					self.sourceLanguageSegmentedControl.setSelected(true, forSegment: index)
+					self.translateVM.sourceLanguagesQueue.accept(queue)
+				} else if self.targetLanguageSegmentedControl.isSelected(forSegment: self.targetLanguageSegmentedControl.segmentCount - 1) {
+					var queue = self.translateVM.targetLanguagesQueue.value
+					let (index, _) = queue.push(language)
+					self.targetLanguageSegmentedControl.setSelected(true, forSegment: index)
+					self.translateVM.targetLanguagesQueue.accept(queue)
+				}
+				self.translateVM.isSourceLanguagePickerActive.accept(false)
+				self.translateVM.isTargetLanguagePickerActive.accept(false)
+			})
+			.disposed(by: disposeBag)
+
 		translateVM.traslatePreferences
 			.map { $0.languages }
 			.observeOn(MainScheduler.asyncInstance)
-			.bind(to: languagesCollectionView.rx.data(dataSourceType: CollectionViewDataSource<[Language], LanguageCollectionViewItem>.self))
+			.bind(to: languagesCollectionView.rx.data(dataSourceType: CollectionViewManager<[Language], LanguageCollectionViewItem>.self))
 			.disposed(by: disposeBag)
 	}
 
@@ -139,11 +160,12 @@ class TranslateViewController: NSViewController {
             }
             .disposed(by: disposeBag)
         translateVM.sourceLanguagesQueue
-            .map { $0.map { $0?.fullName ?? "" }  }
+			.debug()
+            .map { $0.map { $0.fullName ?? "" }  }
             .bind(to: sourceLanguageSegmentedControl.rx.labels(for: 0..<sourceLanguageSegmentedControl.segmentCount - 1))
             .disposed(by: disposeBag)
         translateVM.targetLanguagesQueue
-            .map { $0.map { $0?.fullName ?? "" } }
+            .map { $0.map { $0.fullName ?? "" } }
             .bind(to: targetLanguageSegmentedControl.rx.labels(for: 0..<targetLanguageSegmentedControl.segmentCount - 1))
             .disposed(by: disposeBag)
 

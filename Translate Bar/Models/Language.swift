@@ -9,7 +9,7 @@
 import Foundation
 import EVReflection
 
-class Language: Hashable {
+class Language: Hashable, Equatable {
     static let english = Language(shortName: "en", fullName: "английский")
     static let russian = Language(shortName: "ru", fullName: "русский")
     static let german = Language(shortName: "de", fullName: "немецкий")
@@ -18,8 +18,8 @@ class Language: Hashable {
 	var fullName: String?
 
 	init(shortName: String, fullName: String? = nil) {
-		self.shortName = shortName
-		self.fullName = fullName
+		self.shortName = shortName.lowercased()
+		self.fullName = fullName?.lowercased()
 	}
 
 	static func == (lhs: Language, rhs: Language) -> Bool {
