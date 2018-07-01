@@ -702,11 +702,11 @@
                                                 <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="plg-2b-sUw">
                                                     <rect key="frame" x="8" y="8" width="969" height="268"/>
                                                     <subviews>
-                                                        <stackView distribution="equalSpacing" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oZe-dF-xuw">
+                                                        <stackView orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oZe-dF-xuw">
                                                             <rect key="frame" x="0.0" y="246" width="969" height="22"/>
-                                                            <subviews>
+                                                            <beginningViews>
                                                                 <segmentedControl canDrawConcurrently="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qNU-8T-Nww" customClass="SegmentedControl" customModule="Translate_Bar" customModuleProvider="target">
-                                                                    <rect key="frame" x="0.0" y="-1" width="138" height="23"/>
+                                                                    <rect key="frame" x="0.0" y="-1" width="137" height="23"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="22" id="I1I-sm-F0h"/>
                                                                     </constraints>
@@ -720,6 +720,8 @@
                                                                         </segments>
                                                                     </segmentedCell>
                                                                 </segmentedControl>
+                                                            </beginningViews>
+                                                            <middleViews>
                                                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xGI-FN-2D9">
                                                                     <rect key="frame" x="467" y="-3" width="36" height="27"/>
                                                                     <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="swap" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="beB-oC-A97">
@@ -727,6 +729,8 @@
                                                                         <font key="font" metaFont="system" size="15"/>
                                                                     </buttonCell>
                                                                 </button>
+                                                            </middleViews>
+                                                            <endViews>
                                                                 <segmentedControl canDrawConcurrently="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Loz-ca-azi" customClass="SegmentedControl" customModule="Translate_Bar" customModuleProvider="target">
                                                                     <rect key="frame" x="832" y="-1" width="137" height="23"/>
                                                                     <constraints>
@@ -742,11 +746,17 @@
                                                                         </segments>
                                                                     </segmentedCell>
                                                                 </segmentedControl>
-                                                            </subviews>
+                                                            </endViews>
                                                             <constraints>
                                                                 <constraint firstItem="Loz-ca-azi" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="xGI-FN-2D9" secondAttribute="trailing" id="0vG-MB-5eK"/>
                                                                 <constraint firstItem="xGI-FN-2D9" firstAttribute="centerX" secondItem="oZe-dF-xuw" secondAttribute="centerX" id="6XM-R2-0Lv"/>
+                                                                <constraint firstItem="Loz-ca-azi" firstAttribute="top" secondItem="oZe-dF-xuw" secondAttribute="top" id="LMQ-vB-D6G"/>
                                                                 <constraint firstItem="xGI-FN-2D9" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="qNU-8T-Nww" secondAttribute="trailing" id="Lif-Sh-Wws"/>
+                                                                <constraint firstAttribute="bottom" secondItem="Loz-ca-azi" secondAttribute="bottom" id="P5S-ml-L8K"/>
+                                                                <constraint firstItem="qNU-8T-Nww" firstAttribute="leading" secondItem="oZe-dF-xuw" secondAttribute="leading" id="mXg-FE-5ho"/>
+                                                                <constraint firstItem="qNU-8T-Nww" firstAttribute="top" secondItem="oZe-dF-xuw" secondAttribute="top" id="oJX-nx-ZWw"/>
+                                                                <constraint firstAttribute="bottom" secondItem="qNU-8T-Nww" secondAttribute="bottom" id="phD-4C-TqO"/>
+                                                                <constraint firstAttribute="trailing" secondItem="Loz-ca-azi" secondAttribute="trailing" id="tQh-hb-WTs"/>
                                                                 <constraint firstAttribute="height" constant="22" id="u4K-dL-mvl"/>
                                                             </constraints>
                                                             <visibilityPriorities>
@@ -971,7 +981,7 @@
                                                                     <rect key="frame" x="8" y="8" width="953" height="184"/>
                                                                     <subviews>
                                                                         <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="twO-3w-Qjq">
-                                                                            <rect key="frame" x="0.0" y="154" width="937" height="30"/>
+                                                                            <rect key="frame" x="0.0" y="154" width="953" height="30"/>
                                                                             <subviews>
                                                                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bVD-4s-Whp">
                                                                                     <rect key="frame" x="0.0" y="-2" width="30" height="33"/>
@@ -985,7 +995,7 @@
                                                                                     </buttonCell>
                                                                                 </button>
                                                                                 <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="C9o-3Q-fA6">
-                                                                                    <rect key="frame" x="38" y="6" width="899" height="19"/>
+                                                                                    <rect key="frame" x="38" y="6" width="915" height="19"/>
                                                                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" focusRingType="none" placeholderString="Search..." drawsBackground="YES" id="kbB-io-yIZ">
                                                                                         <font key="font" size="13" name="Roboto-Regular"/>
                                                                                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
