@@ -17,6 +17,8 @@ let Log = SwiftyBeaver.self // swiftlint:disable:this variable_name
 class AppDelegate: NSObject, NSApplicationDelegate, NSPopoverDelegate {
 	private let statusItemImages: (NSImage, NSImage) = (#imageLiteral(resourceName: "language"), #imageLiteral(resourceName: "language_filled"))
 	private let disposeBag = DisposeBag()
+
+	var parentWindow: NSWindow?
 	let statusItem: NSStatusItem = {
         let item = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
         item.highlightMode = true

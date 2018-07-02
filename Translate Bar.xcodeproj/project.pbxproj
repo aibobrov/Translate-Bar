@@ -24,6 +24,7 @@
 		A1279FFE20E8EC9C00C99FD9 /* LanguageCollectionViewManager+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1279FFD20E8EC9C00C99FD9 /* LanguageCollectionViewManager+Rx.swift */; };
 		A127A00320E9523800C99FD9 /* RxSupportUtls.swift in Sources */ = {isa = PBXBuildFile; fileRef = A127A00220E9523800C99FD9 /* RxSupportUtls.swift */; };
 		A147B2F120EAC9D7006B427E /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A147B2F020EAC9D7006B427E /* SettingsViewModel.swift */; };
+		A147B2F520EADA68006B427E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A147B2F420EADA68006B427E /* ViewController.swift */; };
 		A1521FD720CD6CD50048EC26 /* NSStoryboardExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1521FD620CD6CD50048EC26 /* NSStoryboardExtensions.swift */; };
 		A174EDDF20CC798B00465A42 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A174EDDE20CC798B00465A42 /* AppDelegate.swift */; };
 		A174EDE420CC798B00465A42 /* Translate_Bar.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A174EDE220CC798B00465A42 /* Translate_Bar.xcdatamodeld */; };
@@ -96,6 +97,7 @@
 		A1279FFD20E8EC9C00C99FD9 /* LanguageCollectionViewManager+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LanguageCollectionViewManager+Rx.swift"; sourceTree = "<group>"; };
 		A127A00220E9523800C99FD9 /* RxSupportUtls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxSupportUtls.swift; sourceTree = "<group>"; };
 		A147B2F020EAC9D7006B427E /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		A147B2F420EADA68006B427E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		A1521FD620CD6CD50048EC26 /* NSStoryboardExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSStoryboardExtensions.swift; sourceTree = "<group>"; };
 		A174EDDB20CC798B00465A42 /* Translate Bar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Translate Bar.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A174EDDE20CC798B00465A42 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -233,6 +235,14 @@
 			path = DataStructures;
 			sourceTree = "<group>";
 		};
+		A147B2F620EADA6D006B427E /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				A147B2F420EADA68006B427E /* ViewController.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
 		A174EDD220CC798A00465A42 = {
 			isa = PBXGroup;
 			children = (
@@ -343,6 +353,7 @@
 			children = (
 				A1E717C720D07F9A0080A546 /* TranslateViewController.swift */,
 				D0EA237B20EA391000527288 /* SettingsViewController.swift */,
+				A147B2F620EADA6D006B427E /* Base */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -675,6 +686,7 @@
 				D04AE06C20D7FF5D00FED056 /* NSTextView+Rx.swift in Sources */,
 				D094693920E3902000533152 /* FixedQueue.swift in Sources */,
 				D0EA238720EA61C800527288 /* SettingsService.swift in Sources */,
+				A147B2F520EADA68006B427E /* ViewController.swift in Sources */,
 				A1521FD720CD6CD50048EC26 /* NSStoryboardExtensions.swift in Sources */,
 				A1E717C520D07F540080A546 /* TranslateViewModel.swift in Sources */,
 				D05E4CF720DB9A0C0059ACB0 /* ScrollView.swift in Sources */,

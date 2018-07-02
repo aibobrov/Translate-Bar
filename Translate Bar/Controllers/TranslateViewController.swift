@@ -10,7 +10,7 @@ import Cocoa
 import RxCocoa
 import RxSwift
 
-class TranslateViewController: NSViewController {
+class TranslateViewController: ViewController {
 	@IBOutlet weak var textContentStackView: NSStackView!
 	@IBOutlet weak var pickerContentView: View!
 	@IBOutlet weak var contentView: NSView!
@@ -60,14 +60,9 @@ class TranslateViewController: NSViewController {
 		super.viewWillAppear()
 		translateVM.translateFromClipboard()
 	}
-
 	override func viewDidAppear() {
 		super.viewDidAppear()
-		NSApplication.shared.activate(ignoringOtherApps: true)
-
-		let appDelegate = NSApplication.shared.delegate as! AppDelegate // swiftlint:disable:this force_cast
-		let popoverWindow = appDelegate.popover.contentViewController!.view.window!
-		popoverWindow.parent?.removeChildWindow(popoverWindow)
+		self.removeFromParentWindow()
 	}
 
 	private func setupCollecionView() {

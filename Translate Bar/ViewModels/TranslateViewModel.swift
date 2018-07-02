@@ -48,10 +48,8 @@ class TranslateViewModel {
 	}
 
 	func translateFromClipboard() {
-		guard SettingsService.shared.isAutomaticallyTranslateClipboard else {
-				Log.verbose("Translation from clipboard not needed")
-				return
-		}
+		guard SettingsService.shared.isAutomaticallyTranslateClipboard else { return }
+		Log.verbose("Translation from clipboard needed")
 		let clipboard = NSPasteboard.clipboard
 		rawInput.accept(clipboard)
 	}

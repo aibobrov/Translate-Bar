@@ -11,7 +11,7 @@ import RxSwift
 import RxCocoa
 import ITSwitch
 
-class SettingsViewController: NSViewController {
+class SettingsViewController: ViewController {
     @IBOutlet weak var closeButton: NSButton!
     @IBOutlet weak var launchAtLoginSwitcher: ITSwitch!
     @IBOutlet weak var showInDockSwitcher: ITSwitch!
@@ -29,7 +29,11 @@ class SettingsViewController: NSViewController {
 		super.viewWillAppear()
 		updateSettingUI()
 	}
-
+	override func viewDidAppear() {
+		super.viewDidAppear()
+		self.addToParentWindow()
+	}
+	
 	private func updateSettingUI() {
 		let settings = SettingsService.shared
 		launchAtLoginSwitcher.checked = settings.isLaunchedAtLogin
