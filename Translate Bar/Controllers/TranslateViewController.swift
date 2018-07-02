@@ -128,6 +128,11 @@ class TranslateViewController: NSViewController {
             .map { $0 == .on }
             .bind(to: translateVM.isPopoverPinned)
             .disposed(by: disposeBag)
+
+        settingsButton.rx.controlEvent.subscribe(onNext: { _ in
+            self.showSettings()
+        })
+        .disposed(by: disposeBag)
 	}
 
 	private func setupTextBindings() {
@@ -221,6 +226,11 @@ class TranslateViewController: NSViewController {
 			}
 			.disposed(by: disposeBag)
 	}
+
+    private func showSettings() {
+        let appDelegate = NSApplication.shared.delegate as! AppDelegate // swiftlint:disable:this force_cast
+        appDelegate.popover.contentViewController = appDelegate.settingsViewController
+    }
 
 	private func resizeAccordingToContent() {
 		view.layoutSubtreeIfNeeded()

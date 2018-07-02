@@ -685,7 +685,7 @@
         <!--Translate View Controller-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
-                <viewController storyboardIdentifier="MainVCID" id="XfG-lQ-9wD" customClass="TranslateViewController" customModule="Translate_Bar" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TranslateVCID" id="XfG-lQ-9wD" customClass="TranslateViewController" customModule="Translate_Bar" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" wantsLayer="YES" id="4jx-xl-g3l">
                         <rect key="frame" x="0.0" y="0.0" width="1001" height="298"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1238,6 +1238,119 @@
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="28.5" y="882"/>
+        </scene>
+        <!--Settings View Controller-->
+        <scene sceneID="1YQ-hh-bHd">
+            <objects>
+                <viewController storyboardIdentifier="SettingsVCID" id="31k-VZ-lcM" customClass="SettingsViewController" customModule="Translate_Bar" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="Xf5-Cf-LTR">
+                        <rect key="frame" x="0.0" y="0.0" width="453" height="459"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="RGm-HL-CCz">
+                                <rect key="frame" x="199" y="432" width="55" height="17"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="17" id="Udy-0Q-JaB"/>
+                                </constraints>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Settings" id="Qco-Yc-cMY">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WTD-LS-GZm">
+                                <rect key="frame" x="15" y="16" width="423" height="408"/>
+                                <subviews>
+                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="2zm-Og-vKq" customClass="View" customModule="Translate_Bar" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="312" width="423" height="96"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="backgroundColor">
+                                                <color key="value" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </customView>
+                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="vpj-5C-Wsk" customClass="View" customModule="Translate_Bar" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="208" width="423" height="96"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="backgroundColor">
+                                                <color key="value" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </customView>
+                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="ot0-tJ-w1g" customClass="View" customModule="Translate_Bar" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="104" width="423" height="96"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="backgroundColor">
+                                                <color key="value" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </customView>
+                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="2ZV-d3-cgU" customClass="View" customModule="Translate_Bar" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="423" height="96"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="backgroundColor">
+                                                <color key="value" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </customView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="ot0-tJ-w1g" firstAttribute="height" secondItem="2zm-Og-vKq" secondAttribute="height" id="T9M-U8-PH9"/>
+                                    <constraint firstItem="2ZV-d3-cgU" firstAttribute="height" secondItem="2zm-Og-vKq" secondAttribute="height" id="kVD-nW-ftY"/>
+                                    <constraint firstItem="vpj-5C-Wsk" firstAttribute="height" secondItem="2zm-Og-vKq" secondAttribute="height" id="tRa-n3-IpU"/>
+                                </constraints>
+                                <visibilityPriorities>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
+                            </stackView>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="d2p-Ex-Bjq">
+                                <rect key="frame" x="399" y="432" width="39" height="17"/>
+                                <buttonCell key="cell" type="bevel" title="Close" bezelStyle="rounded" alignment="center" imageScaling="proportionallyDown" inset="2" id="T8l-Gy-ctR">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="WTD-LS-GZm" firstAttribute="top" secondItem="RGm-HL-CCz" secondAttribute="bottom" constant="8" id="5nE-xc-xEa"/>
+                            <constraint firstAttribute="bottom" secondItem="WTD-LS-GZm" secondAttribute="bottom" constant="16" id="9Pa-J4-v4J"/>
+                            <constraint firstItem="d2p-Ex-Bjq" firstAttribute="top" secondItem="RGm-HL-CCz" secondAttribute="top" id="IfI-u4-fqz"/>
+                            <constraint firstItem="d2p-Ex-Bjq" firstAttribute="trailing" secondItem="WTD-LS-GZm" secondAttribute="trailing" id="MQL-lm-FvO"/>
+                            <constraint firstItem="WTD-LS-GZm" firstAttribute="leading" secondItem="Xf5-Cf-LTR" secondAttribute="leading" constant="15" id="P77-Jg-EUD"/>
+                            <constraint firstItem="RGm-HL-CCz" firstAttribute="top" secondItem="Xf5-Cf-LTR" secondAttribute="top" constant="10" id="dex-bk-cYk"/>
+                            <constraint firstItem="d2p-Ex-Bjq" firstAttribute="height" secondItem="RGm-HL-CCz" secondAttribute="height" id="eT8-Rk-kux"/>
+                            <constraint firstItem="RGm-HL-CCz" firstAttribute="centerX" secondItem="Xf5-Cf-LTR" secondAttribute="centerX" id="p7W-xv-gZD"/>
+                            <constraint firstAttribute="trailing" secondItem="WTD-LS-GZm" secondAttribute="trailing" constant="15" id="r0u-WU-Amj"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="closeButton" destination="d2p-Ex-Bjq" id="Jz9-iq-JPL"/>
+                    </connections>
+                </viewController>
+                <customObject id="e6D-t4-Z93" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-245.5" y="1339.5"/>
         </scene>
     </scenes>
     <resources>

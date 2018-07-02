@@ -50,6 +50,7 @@
 		D0EA237420EA183A00527288 /* NSButton+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EA237320EA183A00527288 /* NSButton+Rx.swift */; };
 		D0EA237620EA190600527288 /* SwiftExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EA237520EA190600527288 /* SwiftExtensions.swift */; };
 		D0EA237820EA303900527288 /* NSPopover+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EA237720EA303900527288 /* NSPopover+Rx.swift */; };
+		D0EA237C20EA391000527288 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EA237B20EA391000527288 /* SettingsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -122,6 +123,7 @@
 		D0EA237320EA183A00527288 /* NSButton+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSButton+Rx.swift"; sourceTree = "<group>"; };
 		D0EA237520EA190600527288 /* SwiftExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftExtensions.swift; sourceTree = "<group>"; };
 		D0EA237720EA303900527288 /* NSPopover+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSPopover+Rx.swift"; sourceTree = "<group>"; };
+		D0EA237B20EA391000527288 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		D12A2F364991FE0E85D2D3AF /* Pods_Translate_Bar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Translate_Bar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0AE73213BC271F12033EF1C /* Pods_Translate_BarTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Translate_BarTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -327,6 +329,7 @@
 			isa = PBXGroup;
 			children = (
 				A1E717C720D07F9A0080A546 /* TranslateViewController.swift */,
+				D0EA237B20EA391000527288 /* SettingsViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -628,6 +631,7 @@
 			files = (
 				A120815820CDB31F00C57360 /* TranslationPreferences.swift in Sources */,
 				D0EA236E20E6424800527288 /* CollectionViewDataSource.swift in Sources */,
+				D0EA237C20EA391000527288 /* SettingsViewController.swift in Sources */,
 				A1279FF420E7B3FF00C99FD9 /* LanguageCollectionViewItem.swift in Sources */,
 				D05E4D2620E25A5A0059ACB0 /* NSSegmentedControlExtension.swift in Sources */,
 				A1279FFE20E8EC9C00C99FD9 /* LanguageCollectionViewManager+Rx.swift in Sources */,
