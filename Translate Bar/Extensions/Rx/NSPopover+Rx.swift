@@ -6,13 +6,19 @@
 //  Copyright © 2018 Artem Bobrov. All rights reserved.
 //
 
-import RxSwift
-import RxCocoa
 import Cocoa
+import RxCocoa
+import RxSwift
 
 extension Reactive where Base: NSPopover {
     var isShown: Observable<Bool> {
         return observe(Bool.self, #keyPath(NSPopover.isShown))
             .map { $0 ?? false }
+    }
+
+    var contentViewController: Binder<NSViewController?> {
+        return Binder(self.base) { popover, viewController in
+            popover.contentViewController = viewController
+        }
     }
 }

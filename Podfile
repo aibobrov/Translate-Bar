@@ -13,6 +13,7 @@ target 'Translate Bar' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
 
+  # Pods for Translate Bar
   pod 'SwiftyBeaver'
 
   pod 'RxSwift',    '~> 4.0'
@@ -22,7 +23,8 @@ target 'Translate Bar' do
 
   pod 'EVReflection/MoyaRxSwift'
   
-  # Pods for Translate Bar
+  # UI
+  pod 'ITSwitch'
 
   target 'Translate BarTests' do
     inherit! :search_paths

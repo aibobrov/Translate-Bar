@@ -49,8 +49,9 @@
 		D0EA236E20E6424800527288 /* CollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EA236D20E6424800527288 /* CollectionViewDataSource.swift */; };
 		D0EA237420EA183A00527288 /* NSButton+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EA237320EA183A00527288 /* NSButton+Rx.swift */; };
 		D0EA237620EA190600527288 /* SwiftExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EA237520EA190600527288 /* SwiftExtensions.swift */; };
-		D0EA237820EA303900527288 /* NSPopover+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EA237720EA303900527288 /* NSPopover+Rx.swift */; };
 		D0EA237C20EA391000527288 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EA237B20EA391000527288 /* SettingsViewController.swift */; };
+		D0EA237F20EA578B00527288 /* ITSwitch+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EA237E20EA578B00527288 /* ITSwitch+Rx.swift */; };
+		D0EA238120EA588900527288 /* NSPopover+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EA238020EA588900527288 /* NSPopover+Rx.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -122,8 +123,9 @@
 		D0EA236D20E6424800527288 /* CollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewDataSource.swift; sourceTree = "<group>"; };
 		D0EA237320EA183A00527288 /* NSButton+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSButton+Rx.swift"; sourceTree = "<group>"; };
 		D0EA237520EA190600527288 /* SwiftExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftExtensions.swift; sourceTree = "<group>"; };
-		D0EA237720EA303900527288 /* NSPopover+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSPopover+Rx.swift"; sourceTree = "<group>"; };
 		D0EA237B20EA391000527288 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		D0EA237E20EA578B00527288 /* ITSwitch+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ITSwitch+Rx.swift"; sourceTree = "<group>"; };
+		D0EA238020EA588900527288 /* NSPopover+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSPopover+Rx.swift"; sourceTree = "<group>"; };
 		D12A2F364991FE0E85D2D3AF /* Pods_Translate_Bar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Translate_Bar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0AE73213BC271F12033EF1C /* Pods_Translate_BarTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Translate_BarTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -375,14 +377,23 @@
 		D05E4D1E20E115720059ACB0 /* Rx */ = {
 			isa = PBXGroup;
 			children = (
-				D0EA237720EA303900527288 /* NSPopover+Rx.swift */,
+				D0EA237D20EA576700527288 /* Base */,
+				D05E4D2120E139A70059ACB0 /* CustomNSSegmentedControl+Rx.swift */,
+				A1279FFD20E8EC9C00C99FD9 /* LanguageCollectionViewManager+Rx.swift */,
+				D0EA237E20EA578B00527288 /* ITSwitch+Rx.swift */,
+				D0EA238020EA588900527288 /* NSPopover+Rx.swift */,
+			);
+			path = Rx;
+			sourceTree = "<group>";
+		};
+		D0EA237D20EA576700527288 /* Base */ = {
+			isa = PBXGroup;
+			children = (
 				D04AE06920D7FF5D00FED056 /* NSTextView+Rx.swift */,
 				D05E4D1C20E112D80059ACB0 /* NSSegmentedControl+Rx.swift */,
 				D0EA237320EA183A00527288 /* NSButton+Rx.swift */,
-				D05E4D2120E139A70059ACB0 /* CustomNSSegmentedControl+Rx.swift */,
-				A1279FFD20E8EC9C00C99FD9 /* LanguageCollectionViewManager+Rx.swift */,
 			);
-			path = Rx;
+			path = Base;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -599,6 +610,7 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-Translate Bar/Pods-Translate Bar-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/EVReflection/EVReflection.framework",
+				"${BUILT_PRODUCTS_DIR}/ITSwitch/ITSwitch.framework",
 				"${BUILT_PRODUCTS_DIR}/Keys/Keys.framework",
 				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
 				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
@@ -610,6 +622,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/EVReflection.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ITSwitch.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Keys.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
@@ -644,7 +657,6 @@
 				A1279FFC20E8377600C99FD9 /* CollectionViewManager.swift in Sources */,
 				A1279FF720E8258F00C99FD9 /* Highlightable.swift in Sources */,
 				D0EA237620EA190600527288 /* SwiftExtensions.swift in Sources */,
-				D0EA237820EA303900527288 /* NSPopover+Rx.swift in Sources */,
 				D04AE06C20D7FF5D00FED056 /* NSTextView+Rx.swift in Sources */,
 				D094693920E3902000533152 /* FixedQueue.swift in Sources */,
 				A1521FD720CD6CD50048EC26 /* NSStoryboardExtensions.swift in Sources */,
@@ -661,6 +673,8 @@
 				D04AE06E20D7FF5D00FED056 /* View.swift in Sources */,
 				A1E7181420D7229B0080A546 /* NSRectExtensions.swift in Sources */,
 				D05E4D2220E139A70059ACB0 /* CustomNSSegmentedControl+Rx.swift in Sources */,
+				D0EA238120EA588900527288 /* NSPopover+Rx.swift in Sources */,
+				D0EA237F20EA578B00527288 /* ITSwitch+Rx.swift in Sources */,
 				A125BD8320DC4A8800C2BAE2 /* Button.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
