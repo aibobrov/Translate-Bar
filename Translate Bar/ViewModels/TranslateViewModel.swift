@@ -26,6 +26,7 @@ class TranslateViewModel {
 	var isSourceLanguagePickerActive = BehaviorRelay<Bool>(value: false)
 	var isTargetLanguagePickerActive = BehaviorRelay<Bool>(value: false)
 	var inputWords = BehaviorRelay<[String]>(value: [])
+    var isPopoverPinned = BehaviorRelay<Bool>(value: false)
 
     private var inputText = BehaviorRelay<String>(value: "")
     private var outputText = BehaviorRelay<String>(value: "")
@@ -33,6 +34,18 @@ class TranslateViewModel {
     lazy var traslatePreferences = BehaviorRelay<TranslationPreferences>(value: TranslationPreferences())
 
 	init() {
+        setupTranslation()
+		setupPickersActivity()
+		updateTranslationPreferences()
+        let appDelegate = NSApplication.shared.delegate as! AppDelegate // swiftlint:disable:this force_cast
+        isPopoverPinned
+            .subscribe(onNext: { isPinned in
+                appDelegate.popover.behavior = isPinned ? .applicationDefined : .transient
+            })
+            .disposed(by: disposeBag)
+	}
+
+    private func setupTranslation() {
         rawInput
             .filter { $0?.isEmpty ?? true }
             .map { _ in "" }
@@ -62,10 +75,7 @@ class TranslateViewModel {
                     .disposed(by: self.disposeBag)
             })
             .disposed(by: disposeBag)
-
-		setupPickersActivity()
-		updateTranslationPreferences()
-	}
+    }
 
 	private func setupPickersActivity() {
 		isSourceLanguagePickerActive

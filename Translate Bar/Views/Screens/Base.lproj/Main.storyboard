@@ -981,7 +981,7 @@
                                                                     <rect key="frame" x="8" y="8" width="969" height="184"/>
                                                                     <subviews>
                                                                         <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="twO-3w-Qjq">
-                                                                            <rect key="frame" x="0.0" y="154" width="953" height="30"/>
+                                                                            <rect key="frame" x="0.0" y="154" width="969" height="30"/>
                                                                             <subviews>
                                                                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bVD-4s-Whp">
                                                                                     <rect key="frame" x="0.0" y="-2" width="30" height="33"/>
@@ -995,7 +995,7 @@
                                                                                     </buttonCell>
                                                                                 </button>
                                                                                 <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="C9o-3Q-fA6">
-                                                                                    <rect key="frame" x="38" y="6" width="915" height="19"/>
+                                                                                    <rect key="frame" x="38" y="6" width="931" height="19"/>
                                                                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" focusRingType="none" placeholderString="Search..." drawsBackground="YES" id="kbB-io-yIZ">
                                                                                         <font key="font" size="13" name="Roboto-Regular"/>
                                                                                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -1223,6 +1223,7 @@
                         <outlet property="outputTextView" destination="UOH-YB-up1" id="ddd-nn-LFz"/>
                         <outlet property="pickerContainerHeightConstraint" destination="6QA-It-R5W" id="fPv-0s-Ue2"/>
                         <outlet property="pickerContentView" destination="iQf-xi-JTI" id="zb3-vp-RCB"/>
+                        <outlet property="pinButton" destination="A1v-Lc-jzZ" id="VVp-L0-6EO"/>
                         <outlet property="refreshButton" destination="OeN-nz-JnD" id="ENs-Ai-1PB"/>
                         <outlet property="searchTextField" destination="C9o-3Q-fA6" id="X6Z-mp-ykX"/>
                         <outlet property="settingsButton" destination="4fL-Ud-tPz" id="faI-rz-fw6"/>

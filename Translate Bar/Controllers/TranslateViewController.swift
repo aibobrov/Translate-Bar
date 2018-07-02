@@ -32,6 +32,7 @@ class TranslateViewController: NSViewController {
 
 	@IBOutlet weak var refreshButton: NSButton!
 	@IBOutlet weak var settingsButton: NSButton!
+    @IBOutlet weak var pinButton: NSButton!
 
 	let languageCollectionViewManager: LanguageCollectionViewManager = {
 		let manager = LanguageCollectionViewManager(identifier: "LanguageCollectionViewItem", items: []) { (language, _, cell) in
@@ -122,6 +123,11 @@ class TranslateViewController: NSViewController {
 				self.resizeAccordingToContent()
 			}
 			.disposed(by: disposeBag)
+        pinButton.rx
+            .state
+            .map { $0 == .on }
+            .bind(to: translateVM.isPopoverPinned)
+            .disposed(by: disposeBag)
 	}
 
 	private func setupTextBindings() {

@@ -10,17 +10,19 @@ import Cocoa
 import RxSwift
 import RxCocoa
 import SwiftyBeaver
-import Moya
-import EVReflection
 
 let Log = SwiftyBeaver.self // swiftlint:disable:this variable_name 
 
 @NSApplicationMain
-class AppDelegate: NSObject, NSApplicationDelegate {
-	private let statusItemImages: [NSImage] = [#imageLiteral(resourceName: "language"), #imageLiteral(resourceName: "language_filled")]
+class AppDelegate: NSObject, NSApplicationDelegate, NSPopoverDelegate {
+	private let statusItemImages: (NSImage, NSImage) = (#imageLiteral(resourceName: "language"), #imageLiteral(resourceName: "language_filled"))
 	private let disposeBag = DisposeBag()
 
-	let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
+    let statusItem: NSStatusItem = {
+        let item = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
+        item.highlightMode = true
+        return item
+    }()
 
 	let popover: NSPopover = {
 		let popover = NSPopover()
@@ -34,20 +36,20 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		Log.addDestination(ConsoleDestination())
 
 		if let button = statusItem.button {
-			button.image = statusItemImages.first
+			button.image = statusItemImages.0
+            button.alternateImage = statusItemImages.1
 			button.action = #selector(togglePopover(_:))
 		}
 
 		popover.contentViewController = NSStoryboard.instantiateController(from: "Main", withIdentifier: "MainVCID")
 
-		popover.rx.observe(Bool.self, #keyPath(NSPopover.isShown))
-			.observeOn(MainScheduler.asyncInstance)
-			.map { $0 ?? false }
-			.map { $0 ? 1 : 0 }
-			.subscribe { [unowned self] event in
-				self.statusItem.button?.image = self.statusItemImages[event.element!]
-			}
-			.disposed(by: disposeBag)
+        popover.rx
+            .isShown
+            .map { $0 ? self.statusItemImages.1 : self.statusItemImages.0 }
+            .subscribe { event in
+                self.statusItem.button?.image = event.element
+            }
+            .disposed(by: disposeBag)
 	}
 
 	func applicationWillTerminate(_ aNotification: Notification) {
