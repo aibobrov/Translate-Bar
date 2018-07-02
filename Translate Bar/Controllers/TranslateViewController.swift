@@ -120,7 +120,7 @@ class TranslateViewController: NSViewController {
 		refreshButton.rx
 			.controlEvent
 			.subscribe { _ in
-				self.resizeAccordingToContent()
+                self.resizeAccordingToContent()
 			}
 			.disposed(by: disposeBag)
         pinButton.rx

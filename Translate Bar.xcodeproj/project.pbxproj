@@ -52,6 +52,9 @@
 		D0EA237C20EA391000527288 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EA237B20EA391000527288 /* SettingsViewController.swift */; };
 		D0EA237F20EA578B00527288 /* ITSwitch+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EA237E20EA578B00527288 /* ITSwitch+Rx.swift */; };
 		D0EA238120EA588900527288 /* NSPopover+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EA238020EA588900527288 /* NSPopover+Rx.swift */; };
+		D0EA238720EA61C800527288 /* SettingsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EA238620EA61C800527288 /* SettingsService.swift */; };
+		D0EA238920EA643400527288 /* SettingsService+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EA238820EA643400527288 /* SettingsService+Rx.swift */; };
+		D0EA238B20EA718700527288 /* NSPasteboardExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EA238A20EA718700527288 /* NSPasteboardExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -126,6 +129,9 @@
 		D0EA237B20EA391000527288 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		D0EA237E20EA578B00527288 /* ITSwitch+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ITSwitch+Rx.swift"; sourceTree = "<group>"; };
 		D0EA238020EA588900527288 /* NSPopover+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSPopover+Rx.swift"; sourceTree = "<group>"; };
+		D0EA238620EA61C800527288 /* SettingsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsService.swift; sourceTree = "<group>"; };
+		D0EA238820EA643400527288 /* SettingsService+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingsService+Rx.swift"; sourceTree = "<group>"; };
+		D0EA238A20EA718700527288 /* NSPasteboardExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSPasteboardExtension.swift; sourceTree = "<group>"; };
 		D12A2F364991FE0E85D2D3AF /* Pods_Translate_Bar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Translate_Bar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0AE73213BC271F12033EF1C /* Pods_Translate_BarTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Translate_BarTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -185,6 +191,7 @@
 			isa = PBXGroup;
 			children = (
 				A120815A20CDBCA600C57360 /* YandexTranslate.swift */,
+				D0EA238620EA61C800527288 /* SettingsService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -323,6 +330,7 @@
 				D05E4D2520E25A5A0059ACB0 /* NSSegmentedControlExtension.swift */,
 				A127A00220E9523800C99FD9 /* RxSupportUtls.swift */,
 				D05E4D1E20E115720059ACB0 /* Rx */,
+				D0EA238A20EA718700527288 /* NSPasteboardExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -382,6 +390,7 @@
 				A1279FFD20E8EC9C00C99FD9 /* LanguageCollectionViewManager+Rx.swift */,
 				D0EA237E20EA578B00527288 /* ITSwitch+Rx.swift */,
 				D0EA238020EA588900527288 /* NSPopover+Rx.swift */,
+				D0EA238820EA643400527288 /* SettingsService+Rx.swift */,
 			);
 			path = Rx;
 			sourceTree = "<group>";
@@ -651,14 +660,17 @@
 				A127A00320E9523800C99FD9 /* RxSupportUtls.swift in Sources */,
 				A125BD7E20D8511300C2BAE2 /* LimitedTextView.swift in Sources */,
 				D05E4D1D20E112D80059ACB0 /* NSSegmentedControl+Rx.swift in Sources */,
+				D0EA238B20EA718700527288 /* NSPasteboardExtension.swift in Sources */,
 				A174EDE420CC798B00465A42 /* Translate_Bar.xcdatamodeld in Sources */,
 				A1279FF920E8313600C99FD9 /* CollectionViewDelegate.swift in Sources */,
 				D0EA237420EA183A00527288 /* NSButton+Rx.swift in Sources */,
 				A1279FFC20E8377600C99FD9 /* CollectionViewManager.swift in Sources */,
 				A1279FF720E8258F00C99FD9 /* Highlightable.swift in Sources */,
+				D0EA238920EA643400527288 /* SettingsService+Rx.swift in Sources */,
 				D0EA237620EA190600527288 /* SwiftExtensions.swift in Sources */,
 				D04AE06C20D7FF5D00FED056 /* NSTextView+Rx.swift in Sources */,
 				D094693920E3902000533152 /* FixedQueue.swift in Sources */,
+				D0EA238720EA61C800527288 /* SettingsService.swift in Sources */,
 				A1521FD720CD6CD50048EC26 /* NSStoryboardExtensions.swift in Sources */,
 				A1E717C520D07F540080A546 /* TranslateViewModel.swift in Sources */,
 				D05E4CF720DB9A0C0059ACB0 /* ScrollView.swift in Sources */,

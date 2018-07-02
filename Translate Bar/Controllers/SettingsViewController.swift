@@ -29,5 +29,21 @@ class SettingsViewController: NSViewController {
             .map { appDelegate.translateViewController }
             .bind(to: appDelegate.popover.rx.contentViewController)
             .disposed(by: disposeBag)
+        setupSettingsUI()
+    }
+
+    private func setupSettingsUI() {
+        launchAtLoginSwitcher.rx
+            .isChecked
+            .bind(to: SettingsService.shared.rx.isLaunchedAtLogin)
+            .disposed(by: disposeBag)
+        showInDockSwitcher.rx
+            .isChecked
+            .bind(to: SettingsService.shared.rx.isShowIconInDock)
+            .disposed(by: disposeBag)
+        translateFromClipboardSwitcher.rx
+            .isChecked
+            .bind(to: SettingsService.shared.rx.isAutomaticallyTranslateClipboard)
+            .disposed(by: disposeBag)
     }
 }
