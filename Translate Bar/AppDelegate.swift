@@ -17,7 +17,7 @@ let Log = SwiftyBeaver.self // swiftlint:disable:this variable_name
 class AppDelegate: NSObject, NSApplicationDelegate, NSPopoverDelegate {
 	private let statusItemImages: (NSImage, NSImage) = (#imageLiteral(resourceName: "language"), #imageLiteral(resourceName: "language_filled"))
 	private let disposeBag = DisposeBag()
-    private let statusItem: NSStatusItem = {
+	let statusItem: NSStatusItem = {
         let item = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
         item.highlightMode = true
         return item
@@ -50,6 +50,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSPopoverDelegate {
             .map { $0 ? self.statusItemImages.1 : self.statusItemImages.0 }
             .bind(to: statusItem.button!.rx.image)
             .disposed(by: disposeBag)
+
+		applyApplicationSettings()
 	}
 
 	func applicationWillTerminate(_ aNotification: Notification) {
@@ -69,6 +71,11 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSPopoverDelegate {
 		} else {
 			showPopover(sender)
 		}
+	}
+
+	private func applyApplicationSettings() {
+		let settings = SettingsService.shared
+		NSApplication.shared.setActivationPolicy(settings.isShowIconInDock ? .regular: .accessory)
 	}
 
 	// MARK: - Core Data stack

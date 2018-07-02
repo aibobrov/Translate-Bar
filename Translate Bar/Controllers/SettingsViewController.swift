@@ -18,6 +18,8 @@ class SettingsViewController: NSViewController {
     @IBOutlet weak var translateFromClipboardSwitcher: ITSwitch!
 
     private let disposeBag = DisposeBag()
+	let settingsVM = SettingsViewModel()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -48,15 +50,15 @@ class SettingsViewController: NSViewController {
     private func setupSettingsUI() {
         launchAtLoginSwitcher.rx
             .isChecked
-            .bind(to: SettingsService.shared.rx.isLaunchedAtLogin)
+            .bind(to: settingsVM.isLaunchedAtLogin)
             .disposed(by: disposeBag)
         showInDockSwitcher.rx
             .isChecked
-            .bind(to: SettingsService.shared.rx.isShowIconInDock)
+            .bind(to: settingsVM.isShowIconInDock)
             .disposed(by: disposeBag)
         translateFromClipboardSwitcher.rx
             .isChecked
-            .bind(to: SettingsService.shared.rx.isAutomaticallyTranslateClipboard)
+            .bind(to: settingsVM.isAutomaticallyTranslateClipboard)
             .disposed(by: disposeBag)
     }
 }
