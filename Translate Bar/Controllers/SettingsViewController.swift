@@ -22,6 +22,19 @@ class SettingsViewController: NSViewController {
         super.viewDidLoad()
         setupUI()
     }
+
+	override func viewWillAppear() {
+		super.viewWillAppear()
+		updateSettingUI()
+	}
+
+	private func updateSettingUI() {
+		let settings = SettingsService.shared
+		launchAtLoginSwitcher.checked = settings.isLaunchedAtLogin
+		showInDockSwitcher.checked = settings.isShowIconInDock
+		translateFromClipboardSwitcher.checked = settings.isAutomaticallyTranslateClipboard
+	}
+
     private func setupUI() {
         let appDelegate = NSApplication.shared.delegate as! AppDelegate // swiftlint:disable:this force_cast
         closeButton.rx

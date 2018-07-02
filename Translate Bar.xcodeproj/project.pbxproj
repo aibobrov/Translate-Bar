@@ -329,8 +329,8 @@
 				A1E7181320D7229B0080A546 /* NSRectExtensions.swift */,
 				D05E4D2520E25A5A0059ACB0 /* NSSegmentedControlExtension.swift */,
 				A127A00220E9523800C99FD9 /* RxSupportUtls.swift */,
-				D05E4D1E20E115720059ACB0 /* Rx */,
 				D0EA238A20EA718700527288 /* NSPasteboardExtension.swift */,
+				D05E4D1E20E115720059ACB0 /* Rx */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";

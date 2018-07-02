@@ -56,6 +56,10 @@ class TranslateViewController: NSViewController {
 
 		setupCollecionView()
 	}
+	override func viewWillAppear() {
+		super.viewWillAppear()
+		translateVM.translateFromClipboard()
+	}
 
 	override func viewDidAppear() {
 		super.viewDidAppear()
