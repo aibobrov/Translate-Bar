@@ -18,4 +18,10 @@ extension Reactive where Base: NSButton {
             button.state = state
         })
     }
+    
+    var image: Binder<NSImage?> {
+        return Binder(self.base) { button, image in
+            button.image = image
+        }
+    }
 }

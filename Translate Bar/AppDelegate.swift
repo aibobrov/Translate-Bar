@@ -46,9 +46,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSPopoverDelegate {
         popover.rx
             .isShown
             .map { $0 ? self.statusItemImages.1 : self.statusItemImages.0 }
-            .subscribe { event in
-                self.statusItem.button?.image = event.element
-            }
+            .bind(to: statusItem.button!.rx.image)
             .disposed(by: disposeBag)
 	}
 
