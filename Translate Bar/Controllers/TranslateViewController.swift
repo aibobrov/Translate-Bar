@@ -60,10 +60,6 @@ class TranslateViewController: ViewController {
 		super.viewWillAppear()
 		translateVM.translateFromClipboard()
 	}
-	override func viewDidAppear() {
-		super.viewDidAppear()
-		self.removeFromParentWindow()
-	}
 
 	private func setupCollecionView() {
 		languagesCollectionView.dataSource = languageCollectionViewManager

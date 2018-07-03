@@ -29,11 +29,7 @@ class SettingsViewController: ViewController {
 		super.viewWillAppear()
 		updateSettingUI()
 	}
-	override func viewDidAppear() {
-		super.viewDidAppear()
-		self.addToParentWindow()
-	}
-	
+
 	private func updateSettingUI() {
 		let settings = SettingsService.shared
 		launchAtLoginSwitcher.checked = settings.isLaunchedAtLogin

@@ -43,6 +43,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSPopoverDelegate {
 			button.image = statusItemImages.0
             button.alternateImage = statusItemImages.1
 			button.action = #selector(togglePopover(_:))
+            button.appearsDisabled = false
 		}
 
 		popover.contentViewController = translateViewController
