@@ -18,7 +18,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSPopoverDelegate {
 	private let statusItemImages: (NSImage, NSImage) = (#imageLiteral(resourceName: "language"), #imageLiteral(resourceName: "language_filled"))
 	private let disposeBag = DisposeBag()
 
-	var parentWindow: NSWindow?
 	let statusItem: NSStatusItem = {
         let item = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
         item.highlightMode = true
@@ -33,8 +32,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSPopoverDelegate {
 		return popover
 	}()
 
-    lazy var translateViewController = NSStoryboard.instantiateController(from: "Main", withIdentifier: "TranslateVCID")
-    lazy var settingsViewController = NSStoryboard.instantiateController(from: "Main", withIdentifier: "SettingsVCID")
+    lazy var translateViewController = NSStoryboard.instantiateController(from: "Main", withIdentifier: "TranslateVCID")!
+    lazy var settingsViewController = NSStoryboard.instantiateController(from: "Main", withIdentifier: "SettingsVCID")!
 
 	func applicationDidFinishLaunching(_ aNotification: Notification) {
 		Log.addDestination(ConsoleDestination())
