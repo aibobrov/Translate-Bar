@@ -10,6 +10,7 @@ PODS:
   - EVReflection/MoyaRxSwift (5.6.1):
     - EVReflection/Moya
     - Moya/RxSwift
+  - ITSwitch (1.0)
   - Keys (1.0.1)
   - Moya (11.0.2):
     - Moya/Core (= 11.0.2)
@@ -27,6 +28,7 @@ PODS:
 
 DEPENDENCIES:
   - EVReflection/MoyaRxSwift
+  - ITSwitch
   - Keys (from `Pods/CocoaPodsKeys`)
   - Moya/RxSwift (~> 11.0)
   - RxCocoa (~> 4.0)
@@ -37,6 +39,7 @@ SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
     - EVReflection
+    - ITSwitch
     - Moya
     - Result
     - RxCocoa
@@ -50,6 +53,7 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   Alamofire: e4fa87002c137ba2d8d634d2c51fabcda0d5c223
   EVReflection: d05ebbafc851b7a4cd3d625182662463a5819ab8
+  ITSwitch: 7ff745d6f2a6910e9194b23e4eab9a843258a478
   Keys: a576f4c9c1c641ca913a959a9c62ed3f215a8de9
   Moya: a725035953bc1c0eb1be505ab903984501d82440
   Result: d2d07204ce72856f1fd9130bbe42c35a7b0fea10
@@ -57,6 +61,6 @@ SPEC CHECKSUMS:
   RxSwift: e49536837d9901277638493ea537394d4b55f570
   SwiftyBeaver: e45759613e50b522b0e6f53b1f0f14389b45ca34
 
-PODFILE CHECKSUM: 8df66aade1fc219e7f9b1745bb36cba74e06181e
+PODFILE CHECKSUM: 3c9ca144576739e75ff6e97c0340ff2f8b290abb
 
 COCOAPODS: 1.5.3

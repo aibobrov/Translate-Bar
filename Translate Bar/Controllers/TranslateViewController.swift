@@ -10,7 +10,7 @@ import Cocoa
 import RxCocoa
 import RxSwift
 
-class TranslateViewController: NSViewController {
+class TranslateViewController: ViewController {
 	@IBOutlet weak var textContentStackView: NSStackView!
 	@IBOutlet weak var pickerContentView: View!
 	@IBOutlet weak var contentView: NSView!
@@ -56,14 +56,9 @@ class TranslateViewController: NSViewController {
 
 		setupCollecionView()
 	}
-
-	override func viewDidAppear() {
-		super.viewDidAppear()
-		NSApplication.shared.activate(ignoringOtherApps: true)
-
-		let appDelegate = NSApplication.shared.delegate as! AppDelegate // swiftlint:disable:this force_cast
-		let popoverWindow = appDelegate.popover.contentViewController!.view.window!
-		popoverWindow.parent?.removeChildWindow(popoverWindow)
+	override func viewWillAppear() {
+		super.viewWillAppear()
+		translateVM.translateFromClipboard()
 	}
 
 	private func setupCollecionView() {
@@ -120,13 +115,20 @@ class TranslateViewController: NSViewController {
 		refreshButton.rx
 			.controlEvent
 			.subscribe { _ in
-				self.resizeAccordingToContent()
+                self.resizeAccordingToContent()
 			}
 			.disposed(by: disposeBag)
         pinButton.rx
             .state
             .map { $0 == .on }
             .bind(to: translateVM.isPopoverPinned)
+            .disposed(by: disposeBag)
+
+        let appDelegate = NSApplication.shared.delegate as! AppDelegate // swiftlint:disable:this force_cast
+        settingsButton.rx
+            .controlEvent
+            .map { appDelegate.settingsViewController }
+            .bind(to: appDelegate.popover.rx.contentViewController)
             .disposed(by: disposeBag)
 	}
 
@@ -221,6 +223,11 @@ class TranslateViewController: NSViewController {
 			}
 			.disposed(by: disposeBag)
 	}
+
+    private func showSettings() {
+        let appDelegate = NSApplication.shared.delegate as! AppDelegate // swiftlint:disable:this force_cast
+        appDelegate.popover.contentViewController = appDelegate.settingsViewController
+    }
 
 	private func resizeAccordingToContent() {
 		view.layoutSubtreeIfNeeded()

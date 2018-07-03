@@ -23,6 +23,8 @@
 		A1279FFC20E8377600C99FD9 /* CollectionViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1279FFB20E8377600C99FD9 /* CollectionViewManager.swift */; };
 		A1279FFE20E8EC9C00C99FD9 /* LanguageCollectionViewManager+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1279FFD20E8EC9C00C99FD9 /* LanguageCollectionViewManager+Rx.swift */; };
 		A127A00320E9523800C99FD9 /* RxSupportUtls.swift in Sources */ = {isa = PBXBuildFile; fileRef = A127A00220E9523800C99FD9 /* RxSupportUtls.swift */; };
+		A147B2F120EAC9D7006B427E /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A147B2F020EAC9D7006B427E /* SettingsViewModel.swift */; };
+		A147B2F520EADA68006B427E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A147B2F420EADA68006B427E /* ViewController.swift */; };
 		A1521FD720CD6CD50048EC26 /* NSStoryboardExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1521FD620CD6CD50048EC26 /* NSStoryboardExtensions.swift */; };
 		A174EDDF20CC798B00465A42 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A174EDDE20CC798B00465A42 /* AppDelegate.swift */; };
 		A174EDE420CC798B00465A42 /* Translate_Bar.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A174EDE220CC798B00465A42 /* Translate_Bar.xcdatamodeld */; };
@@ -49,7 +51,12 @@
 		D0EA236E20E6424800527288 /* CollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EA236D20E6424800527288 /* CollectionViewDataSource.swift */; };
 		D0EA237420EA183A00527288 /* NSButton+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EA237320EA183A00527288 /* NSButton+Rx.swift */; };
 		D0EA237620EA190600527288 /* SwiftExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EA237520EA190600527288 /* SwiftExtensions.swift */; };
-		D0EA237820EA303900527288 /* NSPopover+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EA237720EA303900527288 /* NSPopover+Rx.swift */; };
+		D0EA237C20EA391000527288 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EA237B20EA391000527288 /* SettingsViewController.swift */; };
+		D0EA237F20EA578B00527288 /* ITSwitch+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EA237E20EA578B00527288 /* ITSwitch+Rx.swift */; };
+		D0EA238120EA588900527288 /* NSPopover+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EA238020EA588900527288 /* NSPopover+Rx.swift */; };
+		D0EA238720EA61C800527288 /* SettingsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EA238620EA61C800527288 /* SettingsService.swift */; };
+		D0EA238920EA643400527288 /* SettingsService+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EA238820EA643400527288 /* SettingsService+Rx.swift */; };
+		D0EA238B20EA718700527288 /* NSPasteboardExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EA238A20EA718700527288 /* NSPasteboardExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +96,8 @@
 		A1279FFB20E8377600C99FD9 /* CollectionViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewManager.swift; sourceTree = "<group>"; };
 		A1279FFD20E8EC9C00C99FD9 /* LanguageCollectionViewManager+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LanguageCollectionViewManager+Rx.swift"; sourceTree = "<group>"; };
 		A127A00220E9523800C99FD9 /* RxSupportUtls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxSupportUtls.swift; sourceTree = "<group>"; };
+		A147B2F020EAC9D7006B427E /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		A147B2F420EADA68006B427E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		A1521FD620CD6CD50048EC26 /* NSStoryboardExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSStoryboardExtensions.swift; sourceTree = "<group>"; };
 		A174EDDB20CC798B00465A42 /* Translate Bar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Translate Bar.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A174EDDE20CC798B00465A42 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -121,7 +130,12 @@
 		D0EA236D20E6424800527288 /* CollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewDataSource.swift; sourceTree = "<group>"; };
 		D0EA237320EA183A00527288 /* NSButton+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSButton+Rx.swift"; sourceTree = "<group>"; };
 		D0EA237520EA190600527288 /* SwiftExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftExtensions.swift; sourceTree = "<group>"; };
-		D0EA237720EA303900527288 /* NSPopover+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSPopover+Rx.swift"; sourceTree = "<group>"; };
+		D0EA237B20EA391000527288 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		D0EA237E20EA578B00527288 /* ITSwitch+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ITSwitch+Rx.swift"; sourceTree = "<group>"; };
+		D0EA238020EA588900527288 /* NSPopover+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSPopover+Rx.swift"; sourceTree = "<group>"; };
+		D0EA238620EA61C800527288 /* SettingsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsService.swift; sourceTree = "<group>"; };
+		D0EA238820EA643400527288 /* SettingsService+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingsService+Rx.swift"; sourceTree = "<group>"; };
+		D0EA238A20EA718700527288 /* NSPasteboardExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSPasteboardExtension.swift; sourceTree = "<group>"; };
 		D12A2F364991FE0E85D2D3AF /* Pods_Translate_Bar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Translate_Bar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0AE73213BC271F12033EF1C /* Pods_Translate_BarTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Translate_BarTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -181,6 +195,7 @@
 			isa = PBXGroup;
 			children = (
 				A120815A20CDBCA600C57360 /* YandexTranslate.swift */,
+				D0EA238620EA61C800527288 /* SettingsService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -218,6 +233,14 @@
 				D094693820E3902000533152 /* FixedQueue.swift */,
 			);
 			path = DataStructures;
+			sourceTree = "<group>";
+		};
+		A147B2F620EADA6D006B427E /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				A147B2F420EADA68006B427E /* ViewController.swift */,
+			);
+			path = Base;
 			sourceTree = "<group>";
 		};
 		A174EDD220CC798A00465A42 = {
@@ -293,6 +316,7 @@
 			isa = PBXGroup;
 			children = (
 				A1E717C420D07F540080A546 /* TranslateViewModel.swift */,
+				A147B2F020EAC9D7006B427E /* SettingsViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -318,6 +342,7 @@
 				A1E7181320D7229B0080A546 /* NSRectExtensions.swift */,
 				D05E4D2520E25A5A0059ACB0 /* NSSegmentedControlExtension.swift */,
 				A127A00220E9523800C99FD9 /* RxSupportUtls.swift */,
+				D0EA238A20EA718700527288 /* NSPasteboardExtension.swift */,
 				D05E4D1E20E115720059ACB0 /* Rx */,
 			);
 			path = Extensions;
@@ -327,6 +352,8 @@
 			isa = PBXGroup;
 			children = (
 				A1E717C720D07F9A0080A546 /* TranslateViewController.swift */,
+				D0EA237B20EA391000527288 /* SettingsViewController.swift */,
+				A147B2F620EADA6D006B427E /* Base */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -372,14 +399,24 @@
 		D05E4D1E20E115720059ACB0 /* Rx */ = {
 			isa = PBXGroup;
 			children = (
-				D0EA237720EA303900527288 /* NSPopover+Rx.swift */,
+				D0EA237D20EA576700527288 /* Base */,
+				D05E4D2120E139A70059ACB0 /* CustomNSSegmentedControl+Rx.swift */,
+				A1279FFD20E8EC9C00C99FD9 /* LanguageCollectionViewManager+Rx.swift */,
+				D0EA237E20EA578B00527288 /* ITSwitch+Rx.swift */,
+				D0EA238020EA588900527288 /* NSPopover+Rx.swift */,
+				D0EA238820EA643400527288 /* SettingsService+Rx.swift */,
+			);
+			path = Rx;
+			sourceTree = "<group>";
+		};
+		D0EA237D20EA576700527288 /* Base */ = {
+			isa = PBXGroup;
+			children = (
 				D04AE06920D7FF5D00FED056 /* NSTextView+Rx.swift */,
 				D05E4D1C20E112D80059ACB0 /* NSSegmentedControl+Rx.swift */,
 				D0EA237320EA183A00527288 /* NSButton+Rx.swift */,
-				D05E4D2120E139A70059ACB0 /* CustomNSSegmentedControl+Rx.swift */,
-				A1279FFD20E8EC9C00C99FD9 /* LanguageCollectionViewManager+Rx.swift */,
 			);
-			path = Rx;
+			path = Base;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -596,6 +633,7 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-Translate Bar/Pods-Translate Bar-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/EVReflection/EVReflection.framework",
+				"${BUILT_PRODUCTS_DIR}/ITSwitch/ITSwitch.framework",
 				"${BUILT_PRODUCTS_DIR}/Keys/Keys.framework",
 				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
 				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
@@ -607,6 +645,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/EVReflection.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ITSwitch.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Keys.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
@@ -628,21 +667,26 @@
 			files = (
 				A120815820CDB31F00C57360 /* TranslationPreferences.swift in Sources */,
 				D0EA236E20E6424800527288 /* CollectionViewDataSource.swift in Sources */,
+				D0EA237C20EA391000527288 /* SettingsViewController.swift in Sources */,
 				A1279FF420E7B3FF00C99FD9 /* LanguageCollectionViewItem.swift in Sources */,
 				D05E4D2620E25A5A0059ACB0 /* NSSegmentedControlExtension.swift in Sources */,
+				A147B2F120EAC9D7006B427E /* SettingsViewModel.swift in Sources */,
 				A1279FFE20E8EC9C00C99FD9 /* LanguageCollectionViewManager+Rx.swift in Sources */,
 				A127A00320E9523800C99FD9 /* RxSupportUtls.swift in Sources */,
 				A125BD7E20D8511300C2BAE2 /* LimitedTextView.swift in Sources */,
 				D05E4D1D20E112D80059ACB0 /* NSSegmentedControl+Rx.swift in Sources */,
+				D0EA238B20EA718700527288 /* NSPasteboardExtension.swift in Sources */,
 				A174EDE420CC798B00465A42 /* Translate_Bar.xcdatamodeld in Sources */,
 				A1279FF920E8313600C99FD9 /* CollectionViewDelegate.swift in Sources */,
 				D0EA237420EA183A00527288 /* NSButton+Rx.swift in Sources */,
 				A1279FFC20E8377600C99FD9 /* CollectionViewManager.swift in Sources */,
 				A1279FF720E8258F00C99FD9 /* Highlightable.swift in Sources */,
+				D0EA238920EA643400527288 /* SettingsService+Rx.swift in Sources */,
 				D0EA237620EA190600527288 /* SwiftExtensions.swift in Sources */,
-				D0EA237820EA303900527288 /* NSPopover+Rx.swift in Sources */,
 				D04AE06C20D7FF5D00FED056 /* NSTextView+Rx.swift in Sources */,
 				D094693920E3902000533152 /* FixedQueue.swift in Sources */,
+				D0EA238720EA61C800527288 /* SettingsService.swift in Sources */,
+				A147B2F520EADA68006B427E /* ViewController.swift in Sources */,
 				A1521FD720CD6CD50048EC26 /* NSStoryboardExtensions.swift in Sources */,
 				A1E717C520D07F540080A546 /* TranslateViewModel.swift in Sources */,
 				D05E4CF720DB9A0C0059ACB0 /* ScrollView.swift in Sources */,
@@ -657,6 +701,8 @@
 				D04AE06E20D7FF5D00FED056 /* View.swift in Sources */,
 				A1E7181420D7229B0080A546 /* NSRectExtensions.swift in Sources */,
 				D05E4D2220E139A70059ACB0 /* CustomNSSegmentedControl+Rx.swift in Sources */,
+				D0EA238120EA588900527288 /* NSPopover+Rx.swift in Sources */,
+				D0EA237F20EA578B00527288 /* ITSwitch+Rx.swift in Sources */,
 				A125BD8320DC4A8800C2BAE2 /* Button.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

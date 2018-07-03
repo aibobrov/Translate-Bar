@@ -6,8 +6,6 @@
 	<array>
 		<string>Roboto-Regular.ttf</string>
 	</array>
-	<key>LSUIElement</key>
-	<true/>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
