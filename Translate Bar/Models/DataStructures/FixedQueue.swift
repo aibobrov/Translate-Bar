@@ -36,7 +36,8 @@ public struct FixedQueue<T: Equatable> {
     }
 
 	@discardableResult
-    public mutating func push(_ element: T) -> (Int, T) {
+    public mutating func push(_ element: T) -> (Int, T?) {
+        guard !isEmpty else { return (-1, nil) }
 		defer {
 			array[indexToPush] = element
 

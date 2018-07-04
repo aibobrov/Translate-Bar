@@ -76,4 +76,31 @@ class TranslateBarTests: XCTestCase {
 		XCTAssertEqual(object.to, Language(shortName: "ru"))
 		XCTAssertEqual(object.text, "Здравствуй, Мир!")
 	}
+
+    func testFixedQueuePush() {
+        var queue = FixedQueue(1, 2, 3, 4)
+        XCTAssertEqual(queue.front, 4)
+        queue.push(5)
+        XCTAssertEqual(queue.count, 4)
+        XCTAssertEqual(queue.front, 3)
+    }
+
+    func testFixedQueueEmpty() {
+        var queue = FixedQueue<Int>()
+        queue.push(1)
+        XCTAssertTrue(queue.isEmpty)
+        XCTAssertEqual(queue.count, 0)
+    }
+    
+    func testFixedQueueCollection() {
+        var queue = FixedQueue("a", "b", "c", "d")
+        queue.push("x")
+        queue.push("w")
+        queue.push("p")
+        XCTAssertEqual(queue.count, 4)
+        XCTAssertEqual(queue[0], "a")
+        XCTAssertEqual(queue[1], "p")
+        XCTAssertEqual(queue[2], "w")
+        XCTAssertEqual(queue[3], "x")
+    }
 }
