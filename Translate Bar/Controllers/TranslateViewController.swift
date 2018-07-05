@@ -34,6 +34,8 @@ class TranslateViewController: ViewController {
 	@IBOutlet weak var settingsButton: NSButton!
     @IBOutlet weak var pinButton: NSButton!
 
+    private let disposeBag = DisposeBag()
+
 	let languageCollectionViewManager: LanguageCollectionViewManager = {
 		let manager = LanguageCollectionViewManager(identifier: "LanguageCollectionViewItem", items: []) { (language, _, cell) in
 			cell.imageView!.image = NSImage(named: NSImage.Name(rawValue: language.shortName))
@@ -43,13 +45,21 @@ class TranslateViewController: ViewController {
 	}()
 
 	let translateVM = TranslateViewModel()
-	private let disposeBag = DisposeBag()
+    lazy var settingsMenu: NSMenu = {
+        let menu = NSMenu()
+        let settings = NSMenuItem(title: "Settings...", action: #selector(self.showSettings), keyEquivalent: ",")
+        let exit = NSMenuItem(title: "Quit Translate Bar", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q")
+        menu.addItem(settings)
+        menu.addItem(exit)
+        return menu
+    }()
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		inputTextView.maxCharactersCount = translateVM.maxCharactersCount
 		sourceLanguageSegmentedControl.singleSelectionSegments = (0..<sourceLanguageSegmentedControl.segmentCount - 1).map { $0 }
 		targetLanguageSegmentedControl.singleSelectionSegments = (0..<targetLanguageSegmentedControl.segmentCount - 1).map { $0 }
+        settingsButton.menu = settingsMenu
 
 		setupUIBindings()
 		setupViewModelBindings()
@@ -124,11 +134,11 @@ class TranslateViewController: ViewController {
             .bind(to: translateVM.isPopoverPinned)
             .disposed(by: disposeBag)
 
-        let appDelegate = NSApplication.shared.delegate as! AppDelegate // swiftlint:disable:this force_cast
         settingsButton.rx
             .controlEvent
-            .map { appDelegate.settingsViewController }
-            .bind(to: appDelegate.popover.rx.contentViewController)
+            .subscribe(onNext: { _ in
+                NSMenu.popUpContextMenu(self.settingsButton.menu!, with: NSApp.currentEvent!, for: self.settingsButton)
+            })
             .disposed(by: disposeBag)
 	}
 
@@ -224,7 +234,7 @@ class TranslateViewController: ViewController {
 			.disposed(by: disposeBag)
 	}
 
-    private func showSettings() {
+    @objc private func showSettings() {
         let appDelegate = NSApplication.shared.delegate as! AppDelegate // swiftlint:disable:this force_cast
         appDelegate.popover.contentViewController = appDelegate.settingsViewController
     }
