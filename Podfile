@@ -22,7 +22,7 @@ target 'Translate Bar' do
   pod 'Moya/RxSwift', '~> 11.0'
 
   pod 'EVReflection/MoyaRxSwift'
-  
+  pod 'KeyHolder'  
   # UI
   pod 'ITSwitch'
 

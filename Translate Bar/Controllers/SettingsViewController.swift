@@ -10,12 +10,15 @@ import Cocoa
 import RxSwift
 import RxCocoa
 import ITSwitch
+import KeyHolder
+import Magnet
 
 class SettingsViewController: ViewController {
     @IBOutlet weak var closeButton: NSButton!
     @IBOutlet weak var launchAtLoginSwitcher: ITSwitch!
     @IBOutlet weak var showInDockSwitcher: ITSwitch!
     @IBOutlet weak var translateFromClipboardSwitcher: ITSwitch!
+	@IBOutlet weak var shortcutRecordView: RecordView!
 
     private let disposeBag = DisposeBag()
 	let settingsVM = SettingsViewModel()
