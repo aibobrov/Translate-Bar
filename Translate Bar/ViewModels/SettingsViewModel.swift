@@ -9,16 +9,19 @@
 import RxSwift
 import RxCocoa
 import Cocoa
+import Magnet
 
 class SettingsViewModel {
 	private let disposeBag = DisposeBag()
 
-	var isLaunchedAtLogin = BehaviorRelay<Bool>(value: false)
-	var isShowIconInDock = BehaviorRelay<Bool>(value: false)
-	var isAutomaticallyTranslateClipboard = BehaviorRelay<Bool>(value: false)
+	public var isLaunchedAtLogin = BehaviorRelay<Bool>(value: false)
+	public var isShowIconInDock = BehaviorRelay<Bool>(value: false)
+	public var isAutomaticallyTranslateClipboard = BehaviorRelay<Bool>(value: false)
+	public var shortcutToggleApp = BehaviorRelay<KeyCombo?>(value: nil)
+
 	init() {
 		setupStoreBindings()
-		setupActions()
+		updateSettings()
 	}
 
 	private func setupStoreBindings() {
@@ -31,9 +34,14 @@ class SettingsViewModel {
 		isAutomaticallyTranslateClipboard
 			.bind(to: SettingsService.shared.rx.isAutomaticallyTranslateClipboard)
 			.disposed(by: disposeBag)
+		shortcutToggleApp
+			.bind(to: SettingsService.shared.rx.toggleAppShortcut)
+			.disposed(by: disposeBag)
 	}
 
-	private func setupActions() {
+	private func updateSettings() {
+		let appDelegate = NSApplication.shared.delegate as! AppDelegate
+
 		isShowIconInDock
 			.debounce(0.3, scheduler: MainScheduler.asyncInstance)
 			.map { value -> NSApplication.ActivationPolicy in
@@ -43,5 +51,17 @@ class SettingsViewModel {
 				NSApplication.shared.setActivationPolicy(policy)
 			})
 			.disposed(by: disposeBag)
+
+		shortcutToggleApp.subscribe(onNext: { keyCombo in
+			if let combo = keyCombo {
+				appDelegate.toggleAppHotKey = HotKey(identifier: "SomeStuff", keyCombo: combo)
+				appDelegate.toggleAppHotKey?.action = #selector(AppDelegate.togglePopoverFromMenuBar)
+				appDelegate.toggleAppHotKey?.register()
+			} else {
+				appDelegate.toggleAppHotKey?.unregister()
+				appDelegate.toggleAppHotKey = nil
+			}
+		})
+		.disposed(by: disposeBag)
 	}
 }

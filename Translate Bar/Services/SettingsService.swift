@@ -7,37 +7,54 @@
 //
 
 import Foundation
+import Magnet
 
 class SettingsService: NSObject {
-    private override init() {
-        super.init()
-    }
-    static let shared = SettingsService()
+	static let shared = SettingsService()
+
+	private var store = UserDefaults.standard
+    private override init() { super.init() }
 
     var isLaunchedAtLogin: Bool {
         get {
-            return UserDefaults.standard.bool(forKey: #function)
+            return store.bool(forKey: #function)
         }
         set {
-            UserDefaults.standard.set(newValue, forKey: #function)
+            store.set(newValue, forKey: #function)
         }
     }
 
     var isShowIconInDock: Bool {
         get {
-            return UserDefaults.standard.bool(forKey: #function)
+            return store.bool(forKey: #function)
         }
         set {
-            UserDefaults.standard.set(newValue, forKey: #function)
+            store.set(newValue, forKey: #function)
         }
     }
 
     var isAutomaticallyTranslateClipboard: Bool {
         get {
-            return UserDefaults.standard.bool(forKey: #function)
+            return store.bool(forKey: #function)
         }
         set {
-            UserDefaults.standard.set(newValue, forKey: #function)
+            store.set(newValue, forKey: #function)
         }
     }
+
+	var toggleAppShortcut: KeyCombo? {
+		get {
+			guard let data = store.data(forKey: #function) else { return nil }
+
+			let unarchiver = NSKeyedUnarchiver(forReadingWith: data)
+			return KeyCombo(coder: unarchiver)
+		}
+		set {
+			guard let keyCombo = newValue else { return }
+			let data = NSMutableData()
+			let archiver = NSKeyedArchiver(forWritingWith: data)
+			keyCombo.encode(with: archiver)
+			store.set(archiver.encodedData, forKey: #function)
+		}
+	}
 }

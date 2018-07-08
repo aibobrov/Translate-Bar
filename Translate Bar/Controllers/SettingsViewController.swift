@@ -38,6 +38,8 @@ class SettingsViewController: ViewController {
 		launchAtLoginSwitcher.checked = settings.isLaunchedAtLogin
 		showInDockSwitcher.checked = settings.isShowIconInDock
 		translateFromClipboardSwitcher.checked = settings.isAutomaticallyTranslateClipboard
+		debugPrint("settings.toggleAppShortcut \(settings.toggleAppShortcut?.characters)")
+		shortcutRecordView.keyCombo = settings.toggleAppShortcut
 	}
 
     private func setupUI() {
@@ -63,5 +65,10 @@ class SettingsViewController: ViewController {
             .isChecked
             .bind(to: settingsVM.isAutomaticallyTranslateClipboard)
             .disposed(by: disposeBag)
+		shortcutRecordView.rx
+			.keyCombo
+			.map { $0.1 }
+			.bind(to: settingsVM.shortcutToggleApp)
+			.disposed(by: disposeBag)
     }
 }

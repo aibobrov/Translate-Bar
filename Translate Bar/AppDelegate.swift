@@ -10,6 +10,7 @@ import Cocoa
 import RxSwift
 import RxCocoa
 import SwiftyBeaver
+import Magnet
 
 let Log = SwiftyBeaver.self // swiftlint:disable:this variable_name 
 
@@ -31,6 +32,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSPopoverDelegate {
 		popover.appearance = NSAppearance(named: .vibrantLight)
 		return popover
 	}()
+
+	var toggleAppHotKey: HotKey? = nil
 
     lazy var translateViewController = NSStoryboard.instantiateController(from: "Main", withIdentifier: "TranslateVCID")!
     lazy var settingsViewController = NSStoryboard.instantiateController(from: "Main", withIdentifier: "SettingsVCID")!
@@ -75,9 +78,20 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSPopoverDelegate {
 		}
 	}
 
+	@objc func togglePopoverFromMenuBar() {
+		if let button = statusItem.button {
+			self.togglePopover(button)
+		}
+	}
+
 	private func applyApplicationSettings() {
 		let settings = SettingsService.shared
 		NSApplication.shared.setActivationPolicy(settings.isShowIconInDock ? .regular: .accessory)
+		if let keyCombo = settings.toggleAppShortcut {
+			toggleAppHotKey = HotKey(identifier: "ToggleAppHotKey", keyCombo: keyCombo)
+			toggleAppHotKey!.action = #selector(togglePopoverFromMenuBar)
+			toggleAppHotKey!.register()
+		}
 	}
 
 	// MARK: - Core Data stack

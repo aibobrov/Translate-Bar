@@ -338,7 +338,6 @@
 		A1E45D8F20CD66DB00FD8198 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				A147B33020F16E28006B427E /* KeyHolderExtension+Rx.swift */,
 				D0EA237520EA190600527288 /* SwiftExtensions.swift */,
 				A1521FD620CD6CD50048EC26 /* NSStoryboardExtensions.swift */,
 				A1E7181120D71FD10080A546 /* NSImageExtension.swift */,
@@ -408,6 +407,7 @@
 				D0EA237E20EA578B00527288 /* ITSwitch+Rx.swift */,
 				D0EA238020EA588900527288 /* NSPopover+Rx.swift */,
 				D0EA238820EA643400527288 /* SettingsService+Rx.swift */,
+				A147B33020F16E28006B427E /* KeyHolderExtension+Rx.swift */,
 			);
 			path = Rx;
 			sourceTree = "<group>";
