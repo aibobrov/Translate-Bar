@@ -33,7 +33,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSPopoverDelegate {
 		return popover
 	}()
 
-	var toggleAppHotKey: HotKey? = nil
+	var toggleAppHotKey: HotKey?
 
     lazy var translateViewController = NSStoryboard.instantiateController(from: "Main", withIdentifier: "TranslateVCID")!
     lazy var settingsViewController = NSStoryboard.instantiateController(from: "Main", withIdentifier: "SettingsVCID")!
@@ -84,13 +84,22 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSPopoverDelegate {
 		}
 	}
 
+    public func setupToggleShortcut(with combo: KeyCombo?) {
+        if let hotKey = toggleAppHotKey {
+            hotKey.unregister()
+            toggleAppHotKey = nil
+        }
+        if let combo = combo {
+            toggleAppHotKey = HotKey(identifier: "ToggleAppHotKey", keyCombo: combo, target: self, action: #selector(togglePopoverFromMenuBar), actionQueue: .main)
+            toggleAppHotKey!.register()
+        }
+    }
+
 	private func applyApplicationSettings() {
 		let settings = SettingsService.shared
 		NSApplication.shared.setActivationPolicy(settings.isShowIconInDock ? .regular: .accessory)
 		if let keyCombo = settings.toggleAppShortcut {
-			toggleAppHotKey = HotKey(identifier: "ToggleAppHotKey", keyCombo: keyCombo)
-			toggleAppHotKey!.action = #selector(togglePopoverFromMenuBar)
-			toggleAppHotKey!.register()
+			setupToggleShortcut(with: keyCombo)
 		}
 	}
 

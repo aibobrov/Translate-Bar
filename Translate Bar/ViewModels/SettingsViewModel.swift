@@ -18,6 +18,7 @@ class SettingsViewModel {
 	public var isShowIconInDock = BehaviorRelay<Bool?>(value: nil)
 	public var isAutomaticallyTranslateClipboard = BehaviorRelay<Bool?>(value: nil)
 	public var shortcutToggleApp = BehaviorRelay<KeyCombo?>(value: nil)
+    public var shortcutDidClear = BehaviorRelay<()?>(value: nil)
 
 	init() {
 		setupStoreBindings()
@@ -48,7 +49,7 @@ class SettingsViewModel {
 	}
 
 	private func updateSettings() {
-		let appDelegate = NSApplication.shared.delegate as! AppDelegate
+        let appDelegate = NSApplication.shared.delegate as! AppDelegate //swiftlint:disable:this force_cast
 
 		isShowIconInDock
             .filter { $0 != nil }
@@ -62,16 +63,20 @@ class SettingsViewModel {
 			})
 			.disposed(by: disposeBag)
 
-		shortcutToggleApp.subscribe(onNext: { keyCombo in
-			if let combo = keyCombo {
-				appDelegate.toggleAppHotKey = HotKey(identifier: "SomeStuff", keyCombo: combo)
-				appDelegate.toggleAppHotKey?.action = #selector(AppDelegate.togglePopoverFromMenuBar)
-				appDelegate.toggleAppHotKey?.register()
-			} else {
-				appDelegate.toggleAppHotKey?.unregister()
-				appDelegate.toggleAppHotKey = nil
-			}
-		})
-		.disposed(by: disposeBag)
+		shortcutToggleApp
+            .filter { $0 != nil }
+            .map { $0! }
+            .subscribe(onNext: { keyCombo in
+                appDelegate.setupToggleShortcut(with: keyCombo)
+            })
+            .disposed(by: disposeBag)
+        shortcutDidClear
+            .filter { $0 != nil }
+            .map { $0! }
+            .subscribe(onNext: { _ in
+                SettingsService.shared.toggleAppShortcut = nil
+                appDelegate.setupToggleShortcut(with: nil)
+            })
+            .disposed(by: disposeBag)
 	}
 }

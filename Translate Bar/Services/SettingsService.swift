@@ -50,7 +50,10 @@ class SettingsService: NSObject {
 			return KeyCombo(coder: unarchiver)
 		}
 		set {
-			guard let keyCombo = newValue else { return }
+			guard let keyCombo = newValue else {
+                store.set(nil, forKey: #function)
+                return
+            }
 			let data = NSMutableData()
 			let archiver = NSKeyedArchiver(forWritingWith: data)
 			keyCombo.encode(with: archiver)

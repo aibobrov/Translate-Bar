@@ -67,8 +67,11 @@ class SettingsViewController: ViewController {
             .disposed(by: disposeBag)
 		shortcutRecordView.rx
 			.keyCombo
-			.map { $0.1 }
 			.bind(to: settingsVM.shortcutToggleApp)
 			.disposed(by: disposeBag)
+        shortcutRecordView.rx
+            .didClearShortcut
+            .bind(to: settingsVM.shortcutDidClear)
+            .disposed(by: disposeBag)
     }
 }

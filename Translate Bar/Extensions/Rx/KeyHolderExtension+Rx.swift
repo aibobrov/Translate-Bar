@@ -67,15 +67,15 @@ extension Reactive where Base: RecordView {
 		return RxRecordViewDelegateProxy.proxy(for: self.base)
 	}
 
-	var keyCombo: Observable<(RecordView, KeyCombo)> {
-		return delegateProxy.keyCombo.asObservable()
+	var keyCombo: Observable<KeyCombo> {
+		return delegateProxy.keyCombo.map { $0.1 }.asObservable()
 	}
 
-	var didEndRecording: Observable<RecordView> {
-		return delegateProxy.viewDidEndRecording.asObservable()
+	var didEndRecording: Observable<()> {
+        return delegateProxy.viewDidEndRecording.map { _ in () }.asObservable()
 	}
 
-	var didClearShortcut: Observable<RecordView> {
-		return delegateProxy.viewDidClearShortcut.asObservable()
+	var didClearShortcut: Observable<()> {
+        return delegateProxy.viewDidClearShortcut.map { _ in () }.asObservable()
 	}
 }
