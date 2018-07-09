@@ -25,6 +25,7 @@ class SettingsViewController: ViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        updateSettingUI()
         setupUI()
     }
 
@@ -38,7 +39,6 @@ class SettingsViewController: ViewController {
 		launchAtLoginSwitcher.checked = settings.isLaunchedAtLogin
 		showInDockSwitcher.checked = settings.isShowIconInDock
 		translateFromClipboardSwitcher.checked = settings.isAutomaticallyTranslateClipboard
-		debugPrint("settings.toggleAppShortcut \(settings.toggleAppShortcut?.characters)")
 		shortcutRecordView.keyCombo = settings.toggleAppShortcut
 	}
 

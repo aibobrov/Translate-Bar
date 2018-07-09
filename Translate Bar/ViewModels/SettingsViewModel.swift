@@ -14,9 +14,9 @@ import Magnet
 class SettingsViewModel {
 	private let disposeBag = DisposeBag()
 
-	public var isLaunchedAtLogin = BehaviorRelay<Bool>(value: false)
-	public var isShowIconInDock = BehaviorRelay<Bool>(value: false)
-	public var isAutomaticallyTranslateClipboard = BehaviorRelay<Bool>(value: false)
+	public var isLaunchedAtLogin = BehaviorRelay<Bool?>(value: nil)
+	public var isShowIconInDock = BehaviorRelay<Bool?>(value: nil)
+	public var isAutomaticallyTranslateClipboard = BehaviorRelay<Bool?>(value: nil)
 	public var shortcutToggleApp = BehaviorRelay<KeyCombo?>(value: nil)
 
 	init() {
@@ -26,15 +26,23 @@ class SettingsViewModel {
 
 	private func setupStoreBindings() {
 		isLaunchedAtLogin
+            .filter { $0 != nil }
+            .map { $0! }
 			.bind(to: SettingsService.shared.rx.isLaunchedAtLogin)
 			.disposed(by: disposeBag)
-		isShowIconInDock
+        isShowIconInDock
+            .filter { $0 != nil }
+            .map { $0! }
 			.bind(to: SettingsService.shared.rx.isShowIconInDock)
 			.disposed(by: disposeBag)
-		isAutomaticallyTranslateClipboard
+        isAutomaticallyTranslateClipboard
+            .filter { $0 != nil }
+            .map { $0! }
 			.bind(to: SettingsService.shared.rx.isAutomaticallyTranslateClipboard)
 			.disposed(by: disposeBag)
-		shortcutToggleApp
+        shortcutToggleApp
+            .filter { $0 != nil }
+            .map { $0! }
 			.bind(to: SettingsService.shared.rx.toggleAppShortcut)
 			.disposed(by: disposeBag)
 	}
@@ -43,6 +51,8 @@ class SettingsViewModel {
 		let appDelegate = NSApplication.shared.delegate as! AppDelegate
 
 		isShowIconInDock
+            .filter { $0 != nil }
+            .map { $0! }
 			.debounce(0.3, scheduler: MainScheduler.asyncInstance)
 			.map { value -> NSApplication.ActivationPolicy in
 				value ? .regular : .accessory
