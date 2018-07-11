@@ -11,4 +11,4 @@ Translate Bar is an macOS app that allows you to translate text directly from yo
 * ITSwitch
 * KeyHolder
 
-Translation implemented via [Yandex Translate API](https://tech.yandex.com/translate/)
+Translation was implemented via [Yandex Translate API](https://tech.yandex.com/translate/)
