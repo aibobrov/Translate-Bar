@@ -14,7 +14,6 @@ import Magnet
 class SettingsViewModel {
 	private let disposeBag = DisposeBag()
 
-	public var isLaunchedAtLogin = BehaviorRelay<Bool?>(value: nil)
 	public var isShowIconInDock = BehaviorRelay<Bool?>(value: nil)
 	public var isAutomaticallyTranslateClipboard = BehaviorRelay<Bool?>(value: nil)
 	public var shortcutToggleApp = BehaviorRelay<KeyCombo?>(value: nil)
@@ -26,11 +25,6 @@ class SettingsViewModel {
 	}
 
 	private func setupStoreBindings() {
-		isLaunchedAtLogin
-            .filter { $0 != nil }
-            .map { $0! }
-			.bind(to: SettingsService.shared.rx.isLaunchedAtLogin)
-			.disposed(by: disposeBag)
         isShowIconInDock
             .filter { $0 != nil }
             .map { $0! }

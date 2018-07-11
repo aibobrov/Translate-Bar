@@ -15,7 +15,6 @@ import Magnet
 
 class SettingsViewController: ViewController {
     @IBOutlet weak var closeButton: NSButton!
-    @IBOutlet weak var launchAtLoginSwitcher: ITSwitch!
     @IBOutlet weak var showInDockSwitcher: ITSwitch!
     @IBOutlet weak var translateFromClipboardSwitcher: ITSwitch!
 	@IBOutlet weak var shortcutRecordView: RecordView!
@@ -36,7 +35,6 @@ class SettingsViewController: ViewController {
 
 	private func updateSettingUI() {
 		let settings = SettingsService.shared
-		launchAtLoginSwitcher.checked = settings.isLaunchedAtLogin
 		showInDockSwitcher.checked = settings.isShowIconInDock
 		translateFromClipboardSwitcher.checked = settings.isAutomaticallyTranslateClipboard
 		shortcutRecordView.keyCombo = settings.toggleAppShortcut
@@ -53,10 +51,6 @@ class SettingsViewController: ViewController {
     }
 
     private func setupSettingsUI() {
-        launchAtLoginSwitcher.rx
-            .isChecked
-            .bind(to: settingsVM.isLaunchedAtLogin)
-            .disposed(by: disposeBag)
         showInDockSwitcher.rx
             .isChecked
             .bind(to: settingsVM.isShowIconInDock)

@@ -11,12 +11,6 @@ import RxCocoa
 import Magnet
 
 extension Reactive where Base: SettingsService {
-    var isLaunchedAtLogin: Binder<Bool> {
-        return Binder(self.base) { service, value in
-            service.isLaunchedAtLogin = value
-        }
-    }
-
     var isShowIconInDock: Binder<Bool> {
         return Binder(self.base) { service, value in
             service.isShowIconInDock = value

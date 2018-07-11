@@ -15,15 +15,6 @@ class SettingsService: NSObject {
 	private var store = UserDefaults.standard
     private override init() { super.init() }
 
-    var isLaunchedAtLogin: Bool {
-        get {
-            return store.bool(forKey: #function)
-        }
-        set {
-            store.set(newValue, forKey: #function)
-        }
-    }
-
     var isShowIconInDock: Bool {
         get {
             return store.bool(forKey: #function)
