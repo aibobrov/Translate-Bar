@@ -135,7 +135,7 @@ class TranslateViewModel {
 	}
 
 	private func setupPopoverBehaviour() {
-		let appDelegate = NSApplication.shared.delegate as! AppDelegate // swiftlint:disable:this force_cast
+		let appDelegate = NSApplication.shared.appDelegate
 		isPopoverPinned
 			.subscribe(onNext: { isPinned in
 				appDelegate.popover.behavior = isPinned ? .applicationDefined : .transient
@@ -249,4 +249,5 @@ class TranslateViewModel {
                 .filter { $0.text != nil }
                 .asObservable()
     }
+
 }

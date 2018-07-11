@@ -10,6 +10,7 @@ import RxSwift
 import RxCocoa
 
 extension Reactive where Base: NSSegmentedControl {
+
     public func labels(for segments: CountableRange<Int>) -> Binder<[String?]> {
         return self.labels(for: segments.map { $0 })
     }
@@ -21,4 +22,5 @@ extension Reactive where Base: NSSegmentedControl {
             }
         }
     }
+
 }

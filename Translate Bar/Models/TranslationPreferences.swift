@@ -10,7 +10,7 @@ import Foundation
 import EVReflection
 
 class TranslationPreferences: EVObject {
-	private var _directions: [(String, String)]?
+	private var rawDirections: [(String, String)]?
 
 	var directions: [Language: [Language]] = [:]
 	var languages: [Language] = []
@@ -35,7 +35,7 @@ class TranslationPreferences: EVObject {
 					self.languages = langs.map { Language(shortName: $0.key, fullName: $0.value) }
 										  .sorted(by: { $0.fullName! < $1.fullName! })
 					Log.verbose("Decoding languages END")
-					if let dirs = self._directions {
+					if let dirs = self.rawDirections {
 						for pair in dirs {
 							let from = self.languages.first(where: { $0.shortName == pair.0 })!
 							let to = self.languages.first(where: { $0.shortName == pair.1 })!
@@ -44,7 +44,7 @@ class TranslationPreferences: EVObject {
 							self.directions.updateValue(value + [to], forKey: from)
 						}
 					}
-					self._directions = nil
+					self.rawDirections = nil
 					Log.verbose("Decoding directions from languages END with direction count \(self.directions.count)")
 				},
 				encodeConverter: {
@@ -60,7 +60,7 @@ class TranslationPreferences: EVObject {
 						Log.error("Unexpected dirs response: \(String(describing: value))")
 						return
 					}
-					self._directions = dirs.map { $0.split(separator: "-")}
+					self.rawDirections = dirs.map { $0.split(separator: "-")}
 										   .map { (String($0.first!), String($0.last!)) }
 
 					Log.verbose("Decoding raw translation directions END")
@@ -76,4 +76,5 @@ class TranslationPreferences: EVObject {
 			)
 		]
 	}
+
 }

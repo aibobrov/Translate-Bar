@@ -66,6 +66,7 @@ class TranslateViewController: ViewController {
 
 		setupCollecionView()
 	}
+
 	override func viewWillAppear() {
 		super.viewWillAppear()
 		translateVM.translateFromClipboard()
@@ -235,7 +236,7 @@ class TranslateViewController: ViewController {
 	}
 
     @objc private func showSettings() {
-        let appDelegate = NSApplication.shared.delegate as! AppDelegate // swiftlint:disable:this force_cast
+        let appDelegate = NSApplication.shared.appDelegate
         appDelegate.popover.contentViewController = appDelegate.settingsViewController
     }
 
@@ -249,7 +250,7 @@ class TranslateViewController: ViewController {
 		}
 
 		view.layoutSubtreeIfNeeded()
-		let appDelegate = NSApplication.shared.delegate as! AppDelegate // swiftlint:disable:this force_cast
+		let appDelegate = NSApplication.shared.appDelegate
 		appDelegate.popover.contentSize.height = self.contentView.frame.height
 	}
 
@@ -268,4 +269,5 @@ class TranslateViewController: ViewController {
 		let pickerContainerHeight = contentHeight + extraSpace
 		pickerContainerHeightConstraint.constant = max(200, pickerContainerHeight)
 	}
+
 }

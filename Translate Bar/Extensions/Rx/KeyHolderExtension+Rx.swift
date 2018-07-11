@@ -27,6 +27,7 @@ private class RxRecordViewDelegateProxy: DelegateProxy<RecordView, RecordViewDel
 			RxRecordViewDelegateProxy(parentObject: parent)
 		}
 	}
+
 	init(parentObject: RecordView) {
 		super.init(parentObject: parentObject, delegateProxy: RxRecordViewDelegateProxy.self)
 	}
@@ -60,6 +61,7 @@ private class RxRecordViewDelegateProxy: DelegateProxy<RecordView, RecordViewDel
 	func recordViewDidEndRecording(_ recordView: RecordView) {
 		viewDidEndRecording.onNext(recordView)
 	}
+
 }
 
 extension Reactive where Base: RecordView {

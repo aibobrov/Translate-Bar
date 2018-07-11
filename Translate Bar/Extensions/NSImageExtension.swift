@@ -9,6 +9,7 @@
 import Cocoa
 
 extension NSImage {
+
 	func tinted(by color: NSColor) -> NSImage {
 		guard let tinted = self.copy() as? NSImage else { return self }
 		tinted.lockFocus()
@@ -19,4 +20,5 @@ extension NSImage {
 		tinted.unlockFocus()
 		return tinted
 	}
+
 }

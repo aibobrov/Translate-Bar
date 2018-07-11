@@ -44,4 +44,5 @@ class View: NSView {
 		self.layer?.cornerRadius = cornerRadius
 		self.layer?.backgroundColor = backgroundColor.cgColor
 	}
+
 }

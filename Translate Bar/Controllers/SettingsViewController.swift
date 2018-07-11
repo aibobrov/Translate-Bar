@@ -41,7 +41,7 @@ class SettingsViewController: ViewController {
 	}
 
     private func setupUI() {
-        let appDelegate = NSApplication.shared.delegate as! AppDelegate // swiftlint:disable:this force_cast
+        let appDelegate = NSApplication.shared.appDelegate
         closeButton.rx
             .controlEvent
             .map { appDelegate.translateViewController }
@@ -68,4 +68,5 @@ class SettingsViewController: ViewController {
             .bind(to: settingsVM.shortcutDidClear)
             .disposed(by: disposeBag)
     }
+
 }

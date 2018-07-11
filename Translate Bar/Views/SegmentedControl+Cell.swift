@@ -23,6 +23,7 @@ class SegmentedCell: NSSegmentedCell {
 			super.setSelected(selected, forSegment: segment)
 		}
     }
+
 }
 
 class SegmentedControl: NSSegmentedControl {

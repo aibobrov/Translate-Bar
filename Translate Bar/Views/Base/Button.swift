@@ -41,4 +41,5 @@ class Button: NSButton {
 		self.layer?.cornerRadius = cornerRadius
 		self.layer?.backgroundColor = backgroundColor.cgColor
 	}
+
 }

@@ -41,6 +41,7 @@ class RxTextViewDelegateProxy: DelegateProxy<NSTextView, NSTextViewDelegate>,
 		self.textSubject.on(.next(nextValue))
 		_forwardToDelegate?.controlTextDidChange?(notification)
 	}
+
 }
 
 extension Reactive where Base: NSTextView {

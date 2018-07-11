@@ -54,8 +54,8 @@ class TranslateBarTests: XCTestCase {
     "lang": "en"
 }
 """
-		let shortName = EVReflection.dictionaryFromJson(json) as! [String: Any]
-		let lang = Language(shortName: shortName["lang"] as! String)
+		let shortName = EVReflection.dictionaryFromJson(json) as! [String: Any] // swiftlint:disable:this force_cast
+		let lang = Language(shortName: shortName["lang"] as! String) // swiftlint:disable:this force_cast
 		XCTAssertEqual(lang.shortName, "en")
 		XCTAssertNil(lang.fullName)
 	}
@@ -91,7 +91,7 @@ class TranslateBarTests: XCTestCase {
         XCTAssertTrue(queue.isEmpty)
         XCTAssertEqual(queue.count, 0)
     }
-    
+
     func testFixedQueueCollection() {
         var queue = FixedQueue("a", "b", "c", "d")
         queue.push("x")

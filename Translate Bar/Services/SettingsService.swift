@@ -13,7 +13,9 @@ class SettingsService: NSObject {
 	static let shared = SettingsService()
 
 	private var store = UserDefaults.standard
-    private override init() { super.init() }
+    private override init() {
+		super.init()
+	}
 
     var isShowIconInDock: Bool {
         get {

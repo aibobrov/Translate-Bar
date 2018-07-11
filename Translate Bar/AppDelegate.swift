@@ -12,7 +12,7 @@ import RxCocoa
 import SwiftyBeaver
 import Magnet
 
-let Log = SwiftyBeaver.self // swiftlint:disable:this variable_name 
+let Log = SwiftyBeaver.self // swiftlint:disable:this variable_name
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate, NSPopoverDelegate {
@@ -97,7 +97,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSPopoverDelegate {
 
 	private func applyApplicationSettings() {
 		let settings = SettingsService.shared
-		NSApplication.shared.setActivationPolicy(settings.isShowIconInDock ? .regular: .accessory)
+		NSApplication.shared.setActivationPolicy(settings.isShowIconInDock ? .regular : .accessory)
 		if let keyCombo = settings.toggleAppShortcut {
 			setupToggleShortcut(with: keyCombo)
 		}
@@ -177,4 +177,5 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSPopoverDelegate {
 
 	    return .terminateNow
 	}
+
 }

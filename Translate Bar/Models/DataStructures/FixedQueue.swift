@@ -48,9 +48,11 @@ public struct FixedQueue<T: Equatable> {
 		}
 		return (indexToPush, array[indexToPush])
     }
+
 }
 
 extension FixedQueue: Collection {
+
     public func index(after index: Index) -> Index {
         return array.index(after: index)
     }

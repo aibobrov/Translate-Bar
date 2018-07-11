@@ -57,4 +57,5 @@ CollectionViewDelegateProtocol where DataType.Index == Int {
 		let item = items[indexPath.item]
 		collectionItemClickedHandler?(cell, indexPath, item)
 	}
+
 }

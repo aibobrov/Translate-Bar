@@ -53,4 +53,5 @@ class LanguageCollectionViewItem: NSCollectionViewItem, Highlightable {
 		mouseTrackingArea = NSTrackingArea(rect: view.bounds, options: [.activeInActiveApp, .mouseEnteredAndExited], owner: self, userInfo: nil)
 		view.addTrackingArea(mouseTrackingArea)
 	}
+
 }

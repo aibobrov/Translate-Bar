@@ -25,7 +25,7 @@ extension Reactive where Base: LanguageCollectionViewManager {
 			.map { (collectionView, indexPaths) in
 				let indexPath = indexPaths.first!
 				let cell = collectionView.item(at: indexPath) as! LanguageCollectionViewManager.Cell // swiftlint:disable:this force_cast
-				let item = self.base.items[indexPath.item] // swiftlint:disable:this force_cast
+				let item = self.base.items[indexPath.item]
 				return (item, indexPath, cell)
 			}
 	}

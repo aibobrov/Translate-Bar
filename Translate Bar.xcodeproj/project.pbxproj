@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		30090B3768830A75C90A0DC3 /* Pods_Translate_BarUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A734AC9282BDEAA47371E74 /* Pods_Translate_BarUITests.framework */; };
 		82570FE5BE5D388B580F8E1F /* Pods_Translate_BarTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0AE73213BC271F12033EF1C /* Pods_Translate_BarTests.framework */; };
+		A1024EDC20F6AED20044B485 /* NSApplictionExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1024EDB20F6AED20044B485 /* NSApplictionExtensions.swift */; };
 		A120815820CDB31F00C57360 /* TranslationPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = A120815720CDB31F00C57360 /* TranslationPreferences.swift */; };
 		A120815B20CDBCA600C57360 /* YandexTranslate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A120815A20CDBCA600C57360 /* YandexTranslate.swift */; };
 		A120816320CDBF3500C57360 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A120816120CDBF3500C57360 /* Main.storyboard */; };
@@ -82,6 +83,7 @@
 		1A734AC9282BDEAA47371E74 /* Pods_Translate_BarUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Translate_BarUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		20347A8182194E6A8D310529 /* Pods-Translate BarUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Translate BarUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Translate BarUITests/Pods-Translate BarUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		69F5CC24EA2B2FFBD0A53786 /* Pods-Translate Bar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Translate Bar.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Translate Bar/Pods-Translate Bar.debug.xcconfig"; sourceTree = "<group>"; };
+		A1024EDB20F6AED20044B485 /* NSApplictionExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSApplictionExtensions.swift; sourceTree = "<group>"; };
 		A120815720CDB31F00C57360 /* TranslationPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationPreferences.swift; sourceTree = "<group>"; };
 		A120815A20CDBCA600C57360 /* YandexTranslate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YandexTranslate.swift; sourceTree = "<group>"; };
 		A120816220CDBF3500C57360 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -339,6 +341,7 @@
 			isa = PBXGroup;
 			children = (
 				D0EA237520EA190600527288 /* SwiftExtensions.swift */,
+				A1024EDB20F6AED20044B485 /* NSApplictionExtensions.swift */,
 				A1521FD620CD6CD50048EC26 /* NSStoryboardExtensions.swift */,
 				A1E7181120D71FD10080A546 /* NSImageExtension.swift */,
 				A1E7181320D7229B0080A546 /* NSRectExtensions.swift */,
@@ -435,6 +438,7 @@
 				A174EDD920CC798B00465A42 /* Resources */,
 				CDAA7D3DCF72044FA4451143 /* [CP] Embed Pods Frameworks */,
 				A1E717C020D064ED0080A546 /* ShellScript */,
+				A1024ED920F6AB2B0044B485 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -596,6 +600,19 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		A1024ED920F6AB2B0044B485 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which iblinter >/dev/null; then\n    iblinter lint\nelse\n    echo \"warning: IBLinter not installed, download from https://github.com/IBDecodable/IBLinter\"\nfi";
+		};
 		A1E717C020D064ED0080A546 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -700,6 +717,7 @@
 				D05E4CF720DB9A0C0059ACB0 /* ScrollView.swift in Sources */,
 				A120816A20CEC17C00C57360 /* Language.swift in Sources */,
 				A1279FE820E6CF5D00C99FD9 /* ImageView.swift in Sources */,
+				A1024EDC20F6AED20044B485 /* NSApplictionExtensions.swift in Sources */,
 				A1E717C820D07F9A0080A546 /* TranslateViewController.swift in Sources */,
 				A120815B20CDBCA600C57360 /* YandexTranslate.swift in Sources */,
 				D04AE06D20D7FF5D00FED056 /* TextView.swift in Sources */,

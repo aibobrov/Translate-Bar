@@ -28,4 +28,5 @@ extension NSRect {
 		rect.center = oldCenter
 		return rect
 	}
+
 }

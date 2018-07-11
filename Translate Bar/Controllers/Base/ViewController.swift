@@ -9,8 +9,10 @@
 import Cocoa
 
 class ViewController: NSViewController {
+
 	override func viewDidAppear() {
 		super.viewDidAppear()
 		NSApplication.shared.activate(ignoringOtherApps: true)
 	}
+
 }

@@ -43,7 +43,7 @@ class SettingsViewModel {
 	}
 
 	private func updateSettings() {
-        let appDelegate = NSApplication.shared.delegate as! AppDelegate //swiftlint:disable:this force_cast
+        let appDelegate = NSApplication.shared.appDelegate
 
 		isShowIconInDock
             .filter { $0 != nil }
@@ -73,4 +73,5 @@ class SettingsViewModel {
             })
             .disposed(by: disposeBag)
 	}
+
 }
