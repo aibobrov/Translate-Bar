@@ -1,5 +1,7 @@
 # Translate Bar
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/8bed2ddda5094f688e579ff3060157a8)](https://app.codacy.com/app/artbobrov/Translate-Bar?utm_source=github.com&utm_medium=referral&utm_content=artbobrov/Translate-Bar&utm_campaign=badger)
+
 <p align="center">
   <img width="128" height="128" src="./img/icon.png">
 </p>
