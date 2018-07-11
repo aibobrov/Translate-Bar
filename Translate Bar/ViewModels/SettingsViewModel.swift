@@ -9,32 +9,45 @@
 import RxSwift
 import RxCocoa
 import Cocoa
+import Magnet
 
 class SettingsViewModel {
 	private let disposeBag = DisposeBag()
 
-	var isLaunchedAtLogin = BehaviorRelay<Bool>(value: false)
-	var isShowIconInDock = BehaviorRelay<Bool>(value: false)
-	var isAutomaticallyTranslateClipboard = BehaviorRelay<Bool>(value: false)
+	public var isShowIconInDock = BehaviorRelay<Bool?>(value: nil)
+	public var isAutomaticallyTranslateClipboard = BehaviorRelay<Bool?>(value: nil)
+	public var shortcutToggleApp = BehaviorRelay<KeyCombo?>(value: nil)
+    public var shortcutDidClear = BehaviorRelay<()?>(value: nil)
+
 	init() {
 		setupStoreBindings()
-		setupActions()
+		updateSettings()
 	}
 
 	private func setupStoreBindings() {
-		isLaunchedAtLogin
-			.bind(to: SettingsService.shared.rx.isLaunchedAtLogin)
-			.disposed(by: disposeBag)
-		isShowIconInDock
+        isShowIconInDock
+            .filter { $0 != nil }
+            .map { $0! }
 			.bind(to: SettingsService.shared.rx.isShowIconInDock)
 			.disposed(by: disposeBag)
-		isAutomaticallyTranslateClipboard
+        isAutomaticallyTranslateClipboard
+            .filter { $0 != nil }
+            .map { $0! }
 			.bind(to: SettingsService.shared.rx.isAutomaticallyTranslateClipboard)
+			.disposed(by: disposeBag)
+        shortcutToggleApp
+            .filter { $0 != nil }
+            .map { $0! }
+			.bind(to: SettingsService.shared.rx.toggleAppShortcut)
 			.disposed(by: disposeBag)
 	}
 
-	private func setupActions() {
+	private func updateSettings() {
+        let appDelegate = NSApplication.shared.delegate as! AppDelegate //swiftlint:disable:this force_cast
+
 		isShowIconInDock
+            .filter { $0 != nil }
+            .map { $0! }
 			.debounce(0.3, scheduler: MainScheduler.asyncInstance)
 			.map { value -> NSApplication.ActivationPolicy in
 				value ? .regular : .accessory
@@ -43,5 +56,21 @@ class SettingsViewModel {
 				NSApplication.shared.setActivationPolicy(policy)
 			})
 			.disposed(by: disposeBag)
+
+		shortcutToggleApp
+            .filter { $0 != nil }
+            .map { $0! }
+            .subscribe(onNext: { keyCombo in
+                appDelegate.setupToggleShortcut(with: keyCombo)
+            })
+            .disposed(by: disposeBag)
+        shortcutDidClear
+            .filter { $0 != nil }
+            .map { $0! }
+            .subscribe(onNext: { _ in
+                SettingsService.shared.toggleAppShortcut = nil
+                appDelegate.setupToggleShortcut(with: nil)
+            })
+            .disposed(by: disposeBag)
 	}
 }

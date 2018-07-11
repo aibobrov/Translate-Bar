@@ -20,17 +20,17 @@ class TranslateViewModel {
 
 	let maxCharactersCount = 5000
 
-    var rawInput = BehaviorRelay<String?>(value: nil)
-    var rawOutput = BehaviorRelay<String?>(value: nil)
-    var sourceLanguageIndex = BehaviorRelay<Int>(value: 0)
-    var targetLanguageIndex = BehaviorRelay<Int>(value: 0)
-    var sourceLanguagesQueue = BehaviorRelay<FixedQueue<Language>>(value: FixedQueue<Language>(.english, .russian, .german))
-    var targetLanguagesQueue = BehaviorRelay<FixedQueue<Language>>(value: FixedQueue<Language>(.russian, .english, .german))
-	var searchQueryString = BehaviorRelay<String?>(value: nil)
-	var isSourceLanguagePickerActive = BehaviorRelay<Bool>(value: false)
-	var isTargetLanguagePickerActive = BehaviorRelay<Bool>(value: false)
-	var inputWords = BehaviorRelay<[String]>(value: [])
-    var isPopoverPinned = BehaviorRelay<Bool>(value: false)
+    public var rawInput = BehaviorRelay<String?>(value: nil)
+    public var rawOutput = BehaviorRelay<String?>(value: nil)
+    public var sourceLanguageIndex = BehaviorRelay<Int>(value: 0)
+    public var targetLanguageIndex = BehaviorRelay<Int>(value: 0)
+    public var sourceLanguagesQueue = BehaviorRelay<FixedQueue<Language>>(value: FixedQueue<Language>(.english, .russian, .german))
+    public var targetLanguagesQueue = BehaviorRelay<FixedQueue<Language>>(value: FixedQueue<Language>(.russian, .english, .german))
+	public var searchQueryString = BehaviorRelay<String?>(value: nil)
+	public var isSourceLanguagePickerActive = BehaviorRelay<Bool>(value: false)
+	public var isTargetLanguagePickerActive = BehaviorRelay<Bool>(value: false)
+	public var inputWords = BehaviorRelay<[String]>(value: [])
+    public var isPopoverPinned = BehaviorRelay<Bool>(value: false)
 
     lazy var traslatePreferences = BehaviorRelay<TranslationPreferences>(value: TranslationPreferences())
 
@@ -47,14 +47,14 @@ class TranslateViewModel {
 		swapLanguages()
 	}
 
-	func translateFromClipboard() {
+	public func translateFromClipboard() {
 		guard SettingsService.shared.isAutomaticallyTranslateClipboard else { return }
 		Log.verbose("Translation from clipboard needed")
 		let clipboard = NSPasteboard.clipboard
 		rawInput.accept(clipboard)
 	}
 
-	func pick(language: Language) {
+	public func pick(language: Language) {
 		if isSourceLanguagePickerActive.value {
 			sourceLanguagesPush(language: language)
 		} else if isTargetLanguagePickerActive.value {
@@ -62,7 +62,7 @@ class TranslateViewModel {
 		}
 	}
 
-	func targetLanguagesPush(language: Language) {
+	private func targetLanguagesPush(language: Language) {
 		var queue = targetLanguagesQueue.value
 		let (index, _) = queue.push(language)
 		targetLanguageIndex.accept(index)
@@ -70,7 +70,7 @@ class TranslateViewModel {
 		isTargetLanguagePickerActive.accept(false)
 	}
 
-	func sourceLanguagesPush(language: Language) {
+	private func sourceLanguagesPush(language: Language) {
 		var queue = sourceLanguagesQueue.value
 		let (index, _) = queue.push(language)
 		sourceLanguageIndex.accept(index)
@@ -78,7 +78,7 @@ class TranslateViewModel {
 		isSourceLanguagePickerActive.accept(false)
 	}
 
-    var isSuggestHidden: Observable<Bool> {
+    public var isSuggestHidden: Observable<Bool> {
         return inputWords
 			.map { words in
 				guard words.count == 1, let word = words.first else {
@@ -88,43 +88,43 @@ class TranslateViewModel {
 			}
     }
 
-	var isLanguagePickerNeeded: Observable<Bool> {
+	public var isLanguagePickerNeeded: Observable<Bool> {
 		return Observable.combineLatest(isTargetLanguagePickerActive, isSourceLanguagePickerActive)
 			.map { $0 || $1 }
 			.distinctUntilChanged()
 	}
 
-    var text: Observable<String?> {
+    public var text: Observable<String?> {
         return Observable
                 .of(rawInput, rawOutput)
                 .merge()
     }
 
-    var limitationText: Observable<String> {
+    public var limitationText: Observable<String> {
         return rawInput
             .map { $0?.count ?? 0 }
             .map { "\($0)/\(self.maxCharactersCount)" }
             .asObservable()
     }
 
-    var clearButtonHidden: Observable<Bool> {
+    public var clearButtonHidden: Observable<Bool> {
         return rawInput
             .map { $0?.isEmpty ?? true }
             .asObservable()
     }
 
-    var sourceLanguage: Observable<Language?> {
+    public var sourceLanguage: Observable<Language?> {
         return sourceLanguageIndex
             .map { self.sourceLanguagesQueue.value[$0] }
             .asObservable()
     }
-    var targetLanguage: Observable<Language?> {
+    public var targetLanguage: Observable<Language?> {
         return targetLanguageIndex
             .map { self.targetLanguagesQueue.value[$0] }
             .asObservable()
     }
 
-	var allLanguages: Observable<[Language]> {
+	public var allLanguages: Observable<[Language]> {
 		return Observable.combineLatest(traslatePreferences, searchQueryString, isLanguagePickerNeeded)
 			.map { (traslatePreferences, searchQueryString, isLanguagePickerNeeded) -> [Language] in
 				guard isLanguagePickerNeeded, let query = searchQueryString?.lowercased(), !query.isEmpty else {

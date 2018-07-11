@@ -10,18 +10,21 @@ import Cocoa
 import RxSwift
 import RxCocoa
 import ITSwitch
+import KeyHolder
+import Magnet
 
 class SettingsViewController: ViewController {
     @IBOutlet weak var closeButton: NSButton!
-    @IBOutlet weak var launchAtLoginSwitcher: ITSwitch!
     @IBOutlet weak var showInDockSwitcher: ITSwitch!
     @IBOutlet weak var translateFromClipboardSwitcher: ITSwitch!
+	@IBOutlet weak var shortcutRecordView: RecordView!
 
     private let disposeBag = DisposeBag()
 	let settingsVM = SettingsViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        updateSettingUI()
         setupUI()
     }
 
@@ -32,9 +35,9 @@ class SettingsViewController: ViewController {
 
 	private func updateSettingUI() {
 		let settings = SettingsService.shared
-		launchAtLoginSwitcher.checked = settings.isLaunchedAtLogin
 		showInDockSwitcher.checked = settings.isShowIconInDock
 		translateFromClipboardSwitcher.checked = settings.isAutomaticallyTranslateClipboard
+		shortcutRecordView.keyCombo = settings.toggleAppShortcut
 	}
 
     private func setupUI() {
@@ -48,10 +51,6 @@ class SettingsViewController: ViewController {
     }
 
     private func setupSettingsUI() {
-        launchAtLoginSwitcher.rx
-            .isChecked
-            .bind(to: settingsVM.isLaunchedAtLogin)
-            .disposed(by: disposeBag)
         showInDockSwitcher.rx
             .isChecked
             .bind(to: settingsVM.isShowIconInDock)
@@ -59,6 +58,14 @@ class SettingsViewController: ViewController {
         translateFromClipboardSwitcher.rx
             .isChecked
             .bind(to: settingsVM.isAutomaticallyTranslateClipboard)
+            .disposed(by: disposeBag)
+		shortcutRecordView.rx
+			.keyCombo
+			.bind(to: settingsVM.shortcutToggleApp)
+			.disposed(by: disposeBag)
+        shortcutRecordView.rx
+            .didClearShortcut
+            .bind(to: settingsVM.shortcutDidClear)
             .disposed(by: disposeBag)
     }
 }

@@ -1244,11 +1244,11 @@
             <objects>
                 <viewController storyboardIdentifier="SettingsVCID" id="31k-VZ-lcM" customClass="SettingsViewController" customModule="Translate_Bar" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="Xf5-Cf-LTR">
-                        <rect key="frame" x="0.0" y="0.0" width="470" height="402"/>
+                        <rect key="frame" x="0.0" y="0.0" width="470" height="296"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="RGm-HL-CCz">
-                                <rect key="frame" x="209" y="375" width="52" height="17"/>
+                                <rect key="frame" x="209" y="269" width="52" height="17"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="17" id="Udy-0Q-JaB"/>
                                 </constraints>
@@ -1258,53 +1258,18 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="d2p-Ex-Bjq">
+                                <rect key="frame" x="418" y="269" width="37" height="17"/>
+                                <buttonCell key="cell" type="bevel" title="Close" bezelStyle="rounded" alignment="center" imageScaling="proportionallyDown" inset="2" id="T8l-Gy-ctR">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" size="13" name="Roboto-Regular"/>
+                                </buttonCell>
+                            </button>
                             <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WTD-LS-GZm">
-                                <rect key="frame" x="15" y="8" width="440" height="359"/>
+                                <rect key="frame" x="15" y="8" width="440" height="253"/>
                                 <subviews>
-                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="2zm-Og-vKq" customClass="View" customModule="Translate_Bar" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="299" width="440" height="60"/>
-                                        <subviews>
-                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="co8-i2-Tr5">
-                                                <rect key="frame" x="20" y="16" width="134" height="29"/>
-                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Launch at login" drawsBackground="YES" id="v1H-gm-wBe">
-                                                    <font key="font" size="19" name="Roboto-Regular"/>
-                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                </textFieldCell>
-                                            </textField>
-                                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="B6A-Kd-V69" customClass="ITSwitch">
-                                                <rect key="frame" x="367" y="15" width="53" height="30"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="30" id="Lhl-ts-8uA"/>
-                                                    <constraint firstAttribute="width" constant="53" id="q91-YA-stz"/>
-                                                </constraints>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="checked" value="NO"/>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
-                                                        <color key="value" name="controlShadowColor" catalog="System" colorSpace="catalog"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                            </customView>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstItem="B6A-Kd-V69" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="co8-i2-Tr5" secondAttribute="trailing" id="5m0-ZH-ruJ"/>
-                                            <constraint firstItem="B6A-Kd-V69" firstAttribute="centerY" secondItem="2zm-Og-vKq" secondAttribute="centerY" id="Afl-fe-Lfd"/>
-                                            <constraint firstAttribute="height" constant="60" id="HKC-a2-qul"/>
-                                            <constraint firstAttribute="trailing" secondItem="B6A-Kd-V69" secondAttribute="trailing" constant="20" id="NfD-cP-qvd"/>
-                                            <constraint firstItem="co8-i2-Tr5" firstAttribute="centerY" secondItem="2zm-Og-vKq" secondAttribute="centerY" id="aHm-Ti-B0G"/>
-                                            <constraint firstItem="co8-i2-Tr5" firstAttribute="leading" secondItem="2zm-Og-vKq" secondAttribute="leading" constant="20" id="fw9-Kx-r6g"/>
-                                        </constraints>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="backgroundColor">
-                                                <color key="value" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="10"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                    </customView>
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="vpj-5C-Wsk" customClass="View" customModule="Translate_Bar" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="231" width="440" height="60"/>
+                                        <rect key="frame" x="0.0" y="193" width="440" height="60"/>
                                         <subviews>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="G3a-Sy-H9d">
                                                 <rect key="frame" x="20" y="16" width="159" height="29"/>
@@ -1316,6 +1281,10 @@
                                             </textField>
                                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="gDi-62-fEr" customClass="ITSwitch">
                                                 <rect key="frame" x="367" y="15" width="53" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="53" id="Dtv-Xy-TQm"/>
+                                                    <constraint firstAttribute="height" constant="30" id="GTP-lr-XXg"/>
+                                                </constraints>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="checked" value="NO"/>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
@@ -1325,9 +1294,13 @@
                                             </customView>
                                         </subviews>
                                         <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="gDi-62-fEr" secondAttribute="trailing" constant="20" id="0Cq-Ei-Tzf"/>
+                                            <constraint firstItem="gDi-62-fEr" firstAttribute="top" secondItem="G3a-Sy-H9d" secondAttribute="top" id="20e-ma-tqb"/>
+                                            <constraint firstItem="G3a-Sy-H9d" firstAttribute="leading" secondItem="vpj-5C-Wsk" secondAttribute="leading" constant="20" id="9pi-mh-gwC"/>
                                             <constraint firstItem="gDi-62-fEr" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="G3a-Sy-H9d" secondAttribute="trailing" id="My9-Nt-5jS"/>
                                             <constraint firstItem="gDi-62-fEr" firstAttribute="centerY" secondItem="vpj-5C-Wsk" secondAttribute="centerY" id="fxq-Ke-0sv"/>
                                             <constraint firstItem="G3a-Sy-H9d" firstAttribute="centerY" secondItem="vpj-5C-Wsk" secondAttribute="centerY" id="reX-Fg-g9d"/>
+                                            <constraint firstAttribute="height" constant="60" id="rij-vq-PU3"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="color" keyPath="backgroundColor">
@@ -1339,7 +1312,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </customView>
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="ot0-tJ-w1g" customClass="View" customModule="Translate_Bar" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="163" width="440" height="60"/>
+                                        <rect key="frame" x="0.0" y="125" width="440" height="60"/>
                                         <subviews>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="uKB-vA-gA4">
                                                 <rect key="frame" x="20" y="16" width="283" height="29"/>
@@ -1362,6 +1335,7 @@
                                         <constraints>
                                             <constraint firstItem="uKB-vA-gA4" firstAttribute="centerY" secondItem="ot0-tJ-w1g" secondAttribute="centerY" id="EDF-sR-aMg"/>
                                             <constraint firstItem="OCd-yT-LPK" firstAttribute="centerY" secondItem="ot0-tJ-w1g" secondAttribute="centerY" id="O8u-Wg-nao"/>
+                                            <constraint firstItem="OCd-yT-LPK" firstAttribute="top" secondItem="uKB-vA-gA4" secondAttribute="top" id="WeN-ly-X2r"/>
                                             <constraint firstItem="OCd-yT-LPK" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="uKB-vA-gA4" secondAttribute="trailing" id="kTS-b9-eMJ"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
@@ -1374,21 +1348,47 @@
                                         </userDefinedRuntimeAttributes>
                                     </customView>
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="2ZV-d3-cgU" customClass="View" customModule="Translate_Bar" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="440" height="155"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="440" height="117"/>
                                         <subviews>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wKt-kB-x2A">
-                                                <rect key="frame" x="20" y="116" width="320" height="29"/>
+                                                <rect key="frame" x="20" y="78" width="320" height="29"/>
                                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Define shortcut to open Translate Tab" drawsBackground="YES" id="0rk-xQ-YvK">
                                                     <font key="font" size="19" name="Roboto-Regular"/>
                                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </textFieldCell>
                                             </textField>
+                                            <customView focusRingType="none" translatesAutoresizingMaskIntoConstraints="NO" id="0iI-jZ-Hh1" customClass="RecordView" customModule="KeyHolder">
+                                                <rect key="frame" x="20" y="20" width="400" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="Iow-Qn-qWV"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="backgroundColor">
+                                                        <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
+                                                        <color key="value" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                        <color key="value" white="0.80000000000000004" alpha="0.59999999999999998" colorSpace="deviceWhite"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                        <real key="value" value="1"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="showsClearButton" value="YES"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </customView>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstItem="wKt-kB-x2A" firstAttribute="top" secondItem="2ZV-d3-cgU" secondAttribute="top" constant="10" id="5G2-8O-GYO"/>
-                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="wKt-kB-x2A" secondAttribute="trailing" id="JZL-B0-Bxp"/>
-                                            <constraint firstAttribute="height" constant="155" id="kAm-Z6-Yi0"/>
+                                            <constraint firstAttribute="trailing" secondItem="0iI-jZ-Hh1" secondAttribute="trailing" constant="20" id="2aJ-Z5-i7G"/>
+                                            <constraint firstItem="0iI-jZ-Hh1" firstAttribute="top" secondItem="wKt-kB-x2A" secondAttribute="bottom" constant="8" id="FSh-T8-rh4"/>
+                                            <constraint firstAttribute="bottom" secondItem="0iI-jZ-Hh1" secondAttribute="bottom" constant="20" id="HmP-i1-ldT"/>
+                                            <constraint firstAttribute="height" constant="117" id="MBL-Nv-HCy"/>
+                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="wKt-kB-x2A" secondAttribute="trailing" id="X86-5y-jZG"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="color" keyPath="backgroundColor">
@@ -1401,30 +1401,17 @@
                                     </customView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="OCd-yT-LPK" firstAttribute="width" secondItem="B6A-Kd-V69" secondAttribute="width" id="0P9-Hp-Ia8"/>
-                                    <constraint firstItem="gDi-62-fEr" firstAttribute="trailing" secondItem="B6A-Kd-V69" secondAttribute="trailing" id="1vg-YA-IES"/>
-                                    <constraint firstAttribute="trailing" secondItem="2ZV-d3-cgU" secondAttribute="trailing" id="22K-su-scc"/>
-                                    <constraint firstItem="wKt-kB-x2A" firstAttribute="leading" secondItem="co8-i2-Tr5" secondAttribute="leading" id="5Gt-op-7gF"/>
-                                    <constraint firstAttribute="height" constant="359" id="Bhf-E1-m6X"/>
-                                    <constraint firstAttribute="bottom" secondItem="2ZV-d3-cgU" secondAttribute="bottom" id="Jaa-Xx-hZu"/>
-                                    <constraint firstItem="uKB-vA-gA4" firstAttribute="leading" secondItem="co8-i2-Tr5" secondAttribute="leading" id="LvJ-2q-tA6"/>
-                                    <constraint firstItem="2ZV-d3-cgU" firstAttribute="leading" secondItem="WTD-LS-GZm" secondAttribute="leading" id="MSx-IN-dK1"/>
-                                    <constraint firstAttribute="trailing" secondItem="vpj-5C-Wsk" secondAttribute="trailing" id="Qee-tq-ikH"/>
-                                    <constraint firstItem="OCd-yT-LPK" firstAttribute="trailing" secondItem="B6A-Kd-V69" secondAttribute="trailing" id="R6Y-ic-8pD"/>
-                                    <constraint firstItem="2zm-Og-vKq" firstAttribute="leading" secondItem="WTD-LS-GZm" secondAttribute="leading" id="TjR-05-TbJ"/>
-                                    <constraint firstItem="vpj-5C-Wsk" firstAttribute="leading" secondItem="WTD-LS-GZm" secondAttribute="leading" id="UoK-0m-utY"/>
-                                    <constraint firstItem="ot0-tJ-w1g" firstAttribute="height" secondItem="2zm-Og-vKq" secondAttribute="height" id="V03-Wq-a8g"/>
-                                    <constraint firstAttribute="trailing" secondItem="ot0-tJ-w1g" secondAttribute="trailing" id="VPj-vd-GFV"/>
-                                    <constraint firstAttribute="trailing" secondItem="2zm-Og-vKq" secondAttribute="trailing" id="YPs-j5-9MH"/>
-                                    <constraint firstItem="gDi-62-fEr" firstAttribute="width" secondItem="B6A-Kd-V69" secondAttribute="width" id="ZD7-fV-Nox"/>
-                                    <constraint firstItem="vpj-5C-Wsk" firstAttribute="height" secondItem="2zm-Og-vKq" secondAttribute="height" id="gqv-GG-N1W"/>
-                                    <constraint firstItem="OCd-yT-LPK" firstAttribute="height" secondItem="B6A-Kd-V69" secondAttribute="height" id="ik9-QF-rvf"/>
-                                    <constraint firstItem="ot0-tJ-w1g" firstAttribute="leading" secondItem="WTD-LS-GZm" secondAttribute="leading" id="j9O-EB-hTN"/>
-                                    <constraint firstItem="G3a-Sy-H9d" firstAttribute="leading" secondItem="co8-i2-Tr5" secondAttribute="leading" id="jp7-pC-xDR"/>
-                                    <constraint firstItem="gDi-62-fEr" firstAttribute="height" secondItem="B6A-Kd-V69" secondAttribute="height" id="lHd-e0-m2F"/>
+                                    <constraint firstItem="OCd-yT-LPK" firstAttribute="height" secondItem="gDi-62-fEr" secondAttribute="height" id="11A-Ch-J7v"/>
+                                    <constraint firstItem="wKt-kB-x2A" firstAttribute="leading" secondItem="G3a-Sy-H9d" secondAttribute="leading" id="Wm3-6j-7f8"/>
+                                    <constraint firstItem="gDi-62-fEr" firstAttribute="trailing" secondItem="0iI-jZ-Hh1" secondAttribute="trailing" id="XHi-3c-0us"/>
+                                    <constraint firstItem="uKB-vA-gA4" firstAttribute="leading" secondItem="G3a-Sy-H9d" secondAttribute="leading" id="Xpa-mc-Pu9"/>
+                                    <constraint firstAttribute="height" constant="253" id="cJy-VH-zM0"/>
+                                    <constraint firstItem="0iI-jZ-Hh1" firstAttribute="leading" secondItem="G3a-Sy-H9d" secondAttribute="leading" id="da8-7n-N61"/>
+                                    <constraint firstItem="OCd-yT-LPK" firstAttribute="width" secondItem="gDi-62-fEr" secondAttribute="width" id="hfX-yW-j0P"/>
+                                    <constraint firstItem="ot0-tJ-w1g" firstAttribute="height" secondItem="vpj-5C-Wsk" secondAttribute="height" id="isY-Mr-YaY"/>
+                                    <constraint firstItem="OCd-yT-LPK" firstAttribute="trailing" secondItem="0iI-jZ-Hh1" secondAttribute="trailing" id="nNT-ZY-BQY"/>
                                 </constraints>
                                 <visibilityPriorities>
-                                    <integer value="1000"/>
                                     <integer value="1000"/>
                                     <integer value="1000"/>
                                     <integer value="1000"/>
@@ -1433,40 +1420,32 @@
                                     <real value="3.4028234663852886e+38"/>
                                     <real value="3.4028234663852886e+38"/>
                                     <real value="3.4028234663852886e+38"/>
-                                    <real value="3.4028234663852886e+38"/>
                                 </customSpacing>
                             </stackView>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="d2p-Ex-Bjq">
-                                <rect key="frame" x="418" y="375" width="37" height="17"/>
-                                <buttonCell key="cell" type="bevel" title="Close" bezelStyle="rounded" alignment="center" imageScaling="proportionallyDown" inset="2" id="T8l-Gy-ctR">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" size="13" name="Roboto-Regular"/>
-                                </buttonCell>
-                            </button>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="WTD-LS-GZm" firstAttribute="top" secondItem="RGm-HL-CCz" secondAttribute="bottom" constant="8" id="5nE-xc-xEa"/>
+                            <constraint firstAttribute="bottom" secondItem="WTD-LS-GZm" secondAttribute="bottom" constant="8" id="7O0-nW-CKp"/>
                             <constraint firstItem="d2p-Ex-Bjq" firstAttribute="top" secondItem="RGm-HL-CCz" secondAttribute="top" id="IfI-u4-fqz"/>
-                            <constraint firstItem="d2p-Ex-Bjq" firstAttribute="trailing" secondItem="WTD-LS-GZm" secondAttribute="trailing" id="MQL-lm-FvO"/>
-                            <constraint firstItem="WTD-LS-GZm" firstAttribute="leading" secondItem="Xf5-Cf-LTR" secondAttribute="leading" constant="15" id="P77-Jg-EUD"/>
+                            <constraint firstAttribute="trailing" secondItem="d2p-Ex-Bjq" secondAttribute="trailing" constant="15" id="NAc-Zs-xP5"/>
+                            <constraint firstAttribute="trailing" secondItem="WTD-LS-GZm" secondAttribute="trailing" constant="15" id="XHZ-SN-vcg"/>
                             <constraint firstItem="d2p-Ex-Bjq" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="RGm-HL-CCz" secondAttribute="trailing" id="d0D-tu-GAz"/>
                             <constraint firstItem="RGm-HL-CCz" firstAttribute="top" secondItem="Xf5-Cf-LTR" secondAttribute="top" constant="10" id="dex-bk-cYk"/>
                             <constraint firstItem="d2p-Ex-Bjq" firstAttribute="height" secondItem="RGm-HL-CCz" secondAttribute="height" id="eT8-Rk-kux"/>
-                            <constraint firstAttribute="bottom" secondItem="WTD-LS-GZm" secondAttribute="bottom" constant="8" id="h8a-GH-I44"/>
                             <constraint firstItem="RGm-HL-CCz" firstAttribute="centerX" secondItem="Xf5-Cf-LTR" secondAttribute="centerX" id="p7W-xv-gZD"/>
-                            <constraint firstAttribute="trailing" secondItem="WTD-LS-GZm" secondAttribute="trailing" constant="15" id="r0u-WU-Amj"/>
+                            <constraint firstItem="WTD-LS-GZm" firstAttribute="leading" secondItem="Xf5-Cf-LTR" secondAttribute="leading" constant="15" id="sJk-6F-Ux3"/>
+                            <constraint firstItem="WTD-LS-GZm" firstAttribute="top" secondItem="RGm-HL-CCz" secondAttribute="bottom" constant="8" id="voX-uY-2t7"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="closeButton" destination="d2p-Ex-Bjq" id="Jz9-iq-JPL"/>
-                        <outlet property="launchAtLoginSwitcher" destination="B6A-Kd-V69" id="5fm-yI-w0N"/>
+                        <outlet property="shortcutRecordView" destination="0iI-jZ-Hh1" id="PRe-95-s1D"/>
                         <outlet property="showInDockSwitcher" destination="gDi-62-fEr" id="jgM-MG-lQD"/>
                         <outlet property="translateFromClipboardSwitcher" destination="OCd-yT-LPK" id="pk6-OG-P8c"/>
                     </connections>
                 </viewController>
                 <customObject id="e6D-t4-Z93" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-237" y="1293"/>
+            <point key="canvasLocation" x="-237" y="1235.5"/>
         </scene>
     </scenes>
     <resources>

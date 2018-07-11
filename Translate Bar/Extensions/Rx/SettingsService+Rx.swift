@@ -8,14 +8,9 @@
 
 import RxSwift
 import RxCocoa
+import Magnet
 
 extension Reactive where Base: SettingsService {
-    var isLaunchedAtLogin: Binder<Bool> {
-        return Binder(self.base) { service, value in
-            service.isLaunchedAtLogin = value
-        }
-    }
-
     var isShowIconInDock: Binder<Bool> {
         return Binder(self.base) { service, value in
             service.isShowIconInDock = value
@@ -27,4 +22,10 @@ extension Reactive where Base: SettingsService {
             service.isAutomaticallyTranslateClipboard = value
         }
     }
+
+	var toggleAppShortcut: Binder<KeyCombo?> {
+		return Binder(self.base) { service, value in
+			service.toggleAppShortcut = value
+		}
+	}
 }
