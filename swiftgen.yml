@@ -1,0 +1,11 @@
+xcassets:
+  paths:
+   - ./TranslateBar/Resources/Assets/Assets.xcassets
+  templateName: swift4
+  output: ./TranslateBar/Resources/Generated/Images.swift
+
+fonts:
+  paths:
+   - ./TranslateBar/Resources/Fonts
+  templateName: swift4
+  output: ./TranslateBar/Resources/Generated/Fonts.swift
