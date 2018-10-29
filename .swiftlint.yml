@@ -5,7 +5,9 @@ disabled_rules:
   - superfluous_disable_command
   - type_name
   - type_body_length
+  - nesting
 excluded:
+  - Pods
   - TranslateBarTests
   - TranslateBarUITests
 

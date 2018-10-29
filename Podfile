@@ -1,7 +1,7 @@
 platform :osx, '10.13'
 
 plugin 'cocoapods-keys', {
-  :project => "Translate Bar",
+  :project => "TranslateBar",
   :keys => [
     'YandexDictionaryKey',
     'YandexTranslateKey'
