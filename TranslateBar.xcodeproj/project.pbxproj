@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		201EA9123C65855CA392A771 /* Pods_TranslateBar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2EF2583E33E48E9A043C650 /* Pods_TranslateBar.framework */; };
+		A10E12BA2189032100E15C2F /* RxCollectionViewDelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10E12B92189032000E15C2F /* RxCollectionViewDelegateProxy.swift */; };
 		A16D7B4521851C6F00434A7D /* DictionaryProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16D7B4321851C6F00434A7D /* DictionaryProvider.swift */; };
 		A16D7B4621851C6F00434A7D /* TranslateProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16D7B4421851C6F00434A7D /* TranslateProvider.swift */; };
 		A16D7B492185263C00434A7D /* TranslateUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16D7B482185263C00434A7D /* TranslateUseCase.swift */; };
@@ -61,7 +62,6 @@
 		A1A480A3217D2AA7003FF5B8 /* LanguageProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A48097217D2AA7003FF5B8 /* LanguageProtocol.swift */; };
 		A1A480A4217D2AA7003FF5B8 /* AutoDetectedLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A48098217D2AA7003FF5B8 /* AutoDetectedLanguage.swift */; };
 		A1A480A6217D2AA7003FF5B8 /* DictionaryArticle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A4809B217D2AA7003FF5B8 /* DictionaryArticle.swift */; };
-		A1A480A8217D2AA8003FF5B8 /* TranslationPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A4809D217D2AA7003FF5B8 /* TranslationPreferences.swift */; };
 		A1C38D4F217BCE94002B4995 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C38D4E217BCE94002B4995 /* AppDelegate.swift */; };
 		A1C38D54217BCE94002B4995 /* TranslateBar.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A1C38D52217BCE94002B4995 /* TranslateBar.xcdatamodeld */; };
 		A1C38D65217BCE95002B4995 /* TranslateBarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C38D64217BCE95002B4995 /* TranslateBarTests.swift */; };
@@ -96,6 +96,7 @@
 		45D88CE1547694DA55AB519F /* Pods-TranslateBarTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TranslateBarTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TranslateBarTests/Pods-TranslateBarTests.release.xcconfig"; sourceTree = "<group>"; };
 		5603A2F3FB34E27C5EEAD0A8 /* Pods-TranslateBar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TranslateBar.release.xcconfig"; path = "Pods/Target Support Files/Pods-TranslateBar/Pods-TranslateBar.release.xcconfig"; sourceTree = "<group>"; };
 		91D99F40A55F48D092E9961E /* Pods-TranslateBarTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TranslateBarTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TranslateBarTests/Pods-TranslateBarTests.debug.xcconfig"; sourceTree = "<group>"; };
+		A10E12B92189032000E15C2F /* RxCollectionViewDelegateProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxCollectionViewDelegateProxy.swift; sourceTree = "<group>"; };
 		A16D7B4321851C6F00434A7D /* DictionaryProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionaryProvider.swift; sourceTree = "<group>"; };
 		A16D7B4421851C6F00434A7D /* TranslateProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TranslateProvider.swift; sourceTree = "<group>"; };
 		A16D7B482185263C00434A7D /* TranslateUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateUseCase.swift; sourceTree = "<group>"; };
@@ -149,7 +150,6 @@
 		A1A48097217D2AA7003FF5B8 /* LanguageProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageProtocol.swift; sourceTree = "<group>"; };
 		A1A48098217D2AA7003FF5B8 /* AutoDetectedLanguage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoDetectedLanguage.swift; sourceTree = "<group>"; };
 		A1A4809B217D2AA7003FF5B8 /* DictionaryArticle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionaryArticle.swift; sourceTree = "<group>"; };
-		A1A4809D217D2AA7003FF5B8 /* TranslationPreferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TranslationPreferences.swift; sourceTree = "<group>"; };
 		A1C38D4B217BCE94002B4995 /* Translate Bar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Translate Bar.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1C38D4E217BCE94002B4995 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A1C38D53217BCE94002B4995 /* TranslateBar.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TranslateBar.xcdatamodel; sourceTree = "<group>"; };
@@ -238,6 +238,7 @@
 		A17AB1D12184FCD800E14D15 /* NSCollectionView */ = {
 			isa = PBXGroup;
 			children = (
+				A10E12B92189032000E15C2F /* RxCollectionViewDelegateProxy.swift */,
 				A17AB1D22184FCD800E14D15 /* RxCollectionViewDataSource.swift */,
 				A17AB1D32184FCD800E14D15 /* NSCollectionView+Rx.swift */,
 			);
@@ -408,7 +409,6 @@
 				A1A4808F217D2AA7003FF5B8 /* Translation */,
 				A1A48095217D2AA7003FF5B8 /* Language */,
 				A1A48099217D2AA7003FF5B8 /* Dictionary */,
-				A1A4809D217D2AA7003FF5B8 /* TranslationPreferences.swift */,
 				A17AB1CF2184FBA200E14D15 /* SupportedLanguages.swift */,
 			);
 			path = Models;
@@ -808,6 +808,7 @@
 				A1A48061217D2950003FF5B8 /* YandexTranslate.swift in Sources */,
 				A1A48062217D2950003FF5B8 /* YandexDictionary.swift in Sources */,
 				A1A4809F217D2AA7003FF5B8 /* Translation.swift in Sources */,
+				A10E12BA2189032100E15C2F /* RxCollectionViewDelegateProxy.swift in Sources */,
 				A1A4809E217D2AA7003FF5B8 /* TranslateDirection.swift in Sources */,
 				A1A48053217D28A3003FF5B8 /* CustomNSSegmentedControl+Rx.swift in Sources */,
 				A1A480A1217D2AA7003FF5B8 /* FixedQueue.swift in Sources */,
@@ -851,7 +852,6 @@
 				A1A4804B217D28A3003FF5B8 /* SwiftStandartExtensions.swift in Sources */,
 				A1A48075217D2A77003FF5B8 /* Highlightable.swift in Sources */,
 				A1D50B47218650AB00949FC7 /* TranslateViewModel.swift in Sources */,
-				A1A480A8217D2AA8003FF5B8 /* TranslationPreferences.swift in Sources */,
 				A1A48076217D2A77003FF5B8 /* TextView.swift in Sources */,
 				A1A48088217D2A93003FF5B8 /* LanguageCollectionViewItem.swift in Sources */,
 				A1A48089217D2A93003FF5B8 /* SegmentedControl+Cell.swift in Sources */,

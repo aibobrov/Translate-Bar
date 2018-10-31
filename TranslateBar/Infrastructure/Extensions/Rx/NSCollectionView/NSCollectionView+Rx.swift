@@ -10,19 +10,36 @@ import RxCocoa
 import RxSwift
 
 extension Reactive where Base: NSCollectionView {
-    public func dataChanges<E>(_ dataSource: RxCollectionViewDataSource<E>) -> Binder<[E]> {
-        dataSource.collectionView = base
-        base.dataSource = dataSource
-        return Binder(base) { _, items in
-            dataSource.applyChanges(items: items)
+    public func items<
+        DataSource: RxCollectionViewDataSourceType & NSCollectionViewDataSource,
+        O: ObservableType
+    >(dataSource: DataSource) -> (_ source: O) -> Disposable where O.E == [DataSource.Element] {
+        return { source in
+            source.subscribe { [weak collectionView = self.base] event in
+                guard let collectionView = collectionView else { return }
+                dataSource.collectionView(collectionView, observedEvent: event)
+            }
         }
     }
 
+    public func items<E, O: ObservableType>(_ source: O)
+        -> (_ factory: @escaping (RxCollectionViewDataSource<E>, NSCollectionView, IndexPath, E) -> NSCollectionViewItem)
+        -> Disposable where O.E == [E] {
+        return { cellFactory in
+            let ds = RxCollectionViewDataSource<E>.proxy(for: self.base)
+            ds.itemFactory = cellFactory
+            return self.items(dataSource: ds)(source)
+        }
+    }
+}
+
+extension Reactive where Base: NSCollectionView {
+    var delegate: RxCollectionViewDelegateProxy {
+        return RxCollectionViewDelegateProxy.proxy(for: base)
+    }
+
     public var itemSelected: ControlEvent<IndexPath> {
-        let source = base.rx
-            .methodInvoked(#selector(NSCollectionViewDelegate.collectionView(_:didSelectItemsAt:)))
-            .map { $0[1] as! Set<IndexPath> } // swiftlint:disable:this force_cast
-            .map { $0.first! } // swiftlint:disable:this force_cast
+        let source = delegate.didSelectItems.map { $0.first! }.debug()
         return ControlEvent(events: source)
     }
 }

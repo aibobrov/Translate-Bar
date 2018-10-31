@@ -39,6 +39,6 @@ public struct SupportedLanguages: Decodable {
             }
         }
 
-        languages = langs.map { Language(short: $0.key, full: $0.value) }
+        languages = langs.map { Language(short: $0.key, full: $0.value) }.sorted(by: { $0.full! < $1.full! })
     }
 }

@@ -12,6 +12,6 @@ import RxSwift
 
 public extension Reactive where Base: NSResponder {
     var mouseDown: Observable<Base> {
-        return methodInvoked(#selector(NSResponder.mouseDown(with:))).mapTo(base)
+        return methodInvoked(#selector(NSResponder.mouseDown(with:))).map { _ in self.base }
     }
 }

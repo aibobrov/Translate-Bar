@@ -25,7 +25,7 @@ extension Reactive where Base: NSSegmentedControl {
         )
     }
 
-    public func isSelected(for segment: Int) -> ControlProperty<Bool> {
+    public func isSelected(with segment: Int) -> ControlProperty<Bool> {
         return controlProperty(getter: { segmentedControl in
             segmentedControl.isSelected(forSegment: segment)
         }, setter: { segmentedControl, value in

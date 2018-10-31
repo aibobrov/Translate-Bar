@@ -6,33 +6,44 @@
 //
 
 import Cocoa
+import RxCocoa
+import RxSwift
 
-open class RxCollectionViewDataSource<E>: NSObject, NSCollectionViewDataSource {
+extension NSCollectionView: HasDelegate, HasDataSource {}
+
+public protocol RxCollectionViewDataSourceType {
+    associatedtype Element
+    func collectionView(_ collectionView: NSCollectionView, observedEvent: Event<[Element]>)
+}
+
+open class RxCollectionViewDataSource<E>:
+    DelegateProxy<NSCollectionView, NSCollectionViewDataSource>,
+    DelegateProxyType,
+    RxCollectionViewDataSourceType,
+    NSCollectionViewDataSource {
+    public func collectionView(_ collectionView: NSCollectionView, observedEvent: Event<[E]>) {
+        Binder(self) { _, items in
+            self.applyChanges(items: items)
+        }.on(observedEvent)
+    }
+
+    public typealias Element = E
+    public static func registerKnownImplementations() {
+        register(make: { RxCollectionViewDataSource<E>(parentObject: $0) })
+    }
+
     public typealias CollectionItemFactory<E> = (RxCollectionViewDataSource<E>, NSCollectionView, IndexPath, E) -> NSCollectionViewItem
     public typealias CollectionItemConfig<E, ItemType: NSCollectionViewItem> = (ItemType, IndexPath, E) -> Void
 
     public private(set) var items: [E] = []
 
-    public var collectionView: NSCollectionView?
+    public weak var collectionView: NSCollectionView?
 
-    public let itemIdentifier: String
-    public let itemFactory: CollectionItemFactory<E>
+    public var itemFactory: CollectionItemFactory<E>!
 
-    public weak var delegate: NSCollectionViewDelegate?
-    public weak var dataSource: NSCollectionViewDataSource?
-
-    public init(itemIdentifier: String, itemFactory: @escaping CollectionItemFactory<E>) {
-        self.itemIdentifier = itemIdentifier
-        self.itemFactory = itemFactory
-    }
-
-    public init<ItemType>(itemIdentifier: String, itemType: ItemType.Type, itemConfig: @escaping CollectionItemConfig<E, ItemType>) where ItemType: NSCollectionViewItem {
-        self.itemIdentifier = itemIdentifier
-        itemFactory = { _, cv, ip, model in
-            let item = cv.makeItem(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: itemIdentifier), for: ip) as! ItemType // swiftlint:disable:this force_cast
-            itemConfig(item, ip, model)
-            return item
-        }
+    internal init(parentObject: NSCollectionView) {
+        collectionView = parentObject
+        super.init(parentObject: parentObject, delegateProxy: RxCollectionViewDataSource<E>.self)
     }
 
     public func numberOfSections(in collectionView: NSCollectionView) -> Int {
@@ -45,22 +56,6 @@ open class RxCollectionViewDataSource<E>: NSObject, NSCollectionViewDataSource {
 
     public func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
         return itemFactory(self, collectionView, indexPath, items[indexPath.item])
-    }
-
-    open override func responds(to aSelector: Selector!) -> Bool {
-        if RxCollectionViewDataSource.instancesRespond(to: aSelector) {
-            return true
-        } else if let delegate = delegate {
-            return delegate.responds(to: aSelector)
-        } else if let dataSource = dataSource {
-            return dataSource.responds(to: aSelector)
-        } else {
-            return false
-        }
-    }
-
-    open override func forwardingTarget(for aSelector: Selector!) -> Any? {
-        return delegate ?? dataSource
     }
 
     func applyChanges(items: [E]) {
