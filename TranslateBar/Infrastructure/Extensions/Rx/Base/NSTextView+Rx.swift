@@ -56,6 +56,7 @@ extension Reactive where Base: NSTextView {
 
         let observer = Binder(base) { (control, value: String?) in
             control.string = value ?? ""
+            control.invalidateIntrinsicContentSize()
         }
 
         return ControlProperty(values: source, valueSink: observer)

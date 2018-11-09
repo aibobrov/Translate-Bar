@@ -40,7 +40,7 @@ extension Language: ImageRepresentable {
 }
 
 extension Language {
-    static let english = Language(short: "en", full: "Английский")
-    static let russian = Language(short: "ru", full: "Русский")
-    static let german = Language(short: "de", full: "Немецкий")
+    static let english = Language(short: "en", full: "английский")
+    static let russian = Language(short: "ru", full: "русский")
+    static let german = Language(short: "de", full: "немецкий")
 }

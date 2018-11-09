@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class BottomBar: NSView {
+class BottomBar: SVSizedView {
     @IBOutlet var settingsButton: NSButton!
     @IBOutlet var reloadButton: NSButton!
     @IBOutlet var pinButton: NSButton!

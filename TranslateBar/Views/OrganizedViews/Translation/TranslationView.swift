@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class TranslationInput: View {
+class TranslationInput: SVSizedView {
     @IBOutlet var textView: LimitedTextView!
     @IBOutlet var suggestionField: NSTextField!
     @IBOutlet var contentLengthField: NSTextField!

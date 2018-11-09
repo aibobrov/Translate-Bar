@@ -45,3 +45,56 @@ public extension NSImage {
         return tinted
     }
 }
+
+extension NSView {
+    @IBInspectable
+    var backgroundColor: NSColor {
+        get {
+            guard let cgColor = layer!.backgroundColor else { return .clear }
+            return NSColor(cgColor: cgColor) ?? .clear
+        }
+        set {
+            if layer == nil {
+                wantsLayer = true
+            }
+            layer!.backgroundColor = newValue.cgColor
+        }
+    }
+
+    @IBInspectable
+    var cornerRadius: CGFloat {
+        get {
+            return layer!.cornerRadius
+        }
+        set {
+            if layer == nil {
+                wantsLayer = true
+            }
+            layer!.cornerRadius = newValue
+        }
+    }
+
+    open override func prepareForInterfaceBuilder() {
+        super.prepareForInterfaceBuilder()
+        updateView()
+    }
+
+    private func updateView() {
+        layer!.cornerRadius = cornerRadius
+        layer!.backgroundColor = backgroundColor.cgColor
+    }
+}
+
+extension NSScrollView {
+    open override func invalidateIntrinsicContentSize() {
+        super.invalidateIntrinsicContentSize()
+        superview?.invalidateIntrinsicContentSize()
+    }
+}
+
+extension NSStackView {
+    open override func invalidateIntrinsicContentSize() {
+        super.invalidateIntrinsicContentSize()
+        superview?.invalidateIntrinsicContentSize()
+    }
+}

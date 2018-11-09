@@ -34,6 +34,12 @@ final class TranslateViewModel {
             .disposed(by: disposeBag)
         setupPickersActivity()
     }
+
+    var isPickerNeeded: Driver<Bool> {
+        return Driver
+			.merge(isSourceLanguagePickerActive.asDriver(), isTargetLanguagePickerActive.asDriver())
+			.distinctUntilChanged()
+    }
 }
 
 extension TranslateViewModel {
@@ -84,47 +90,35 @@ extension TranslateViewModel: ViewModelType {
     }
 
     func transform(input: Input) -> Output {
-        return Output(
-            translation: translationDrivers(for: input),
-            picker: pickerDrivers(for: input)
-        )
+        return Output(translation: translationDrivers(for: input),
+                      picker: pickerDrivers(for: input))
     }
 }
 
 extension TranslateViewModel {
     private func translationDrivers(for input: Input) -> TranslationDrivers {
         let limitationText = input.inputText.map { "\($0.count)/\(self.maxTextCharactersCount)" }
-        let clearButtonHidden = Driver.merge(
-            input.clearButtonClicked.map { _ in true },
-            input.inputText.map { $0.isEmpty }
-        )
+        let clearButtonHidden = Driver.merge(input.clearButtonClicked.map { _ in true },
+                                             input.inputText.map { $0.isEmpty })
         let autoDetectionLanguageNeeded = input.sourceLanguageIndex.filter { $0 == 3 }.map { _ in () }
-        let autoDetectedLanguage = Driver.merge(
-            .just(AutoDetectedLanguage()),
-            input.inputText.map { _ in AutoDetectedLanguage() },
-            detectLanguage(for: autoDetectionLanguageNeeded.withLatestFrom(input.inputText))
-        )
-        let textTranslation = translation(
-            source: input.sourceLanguageIndex,
-            target: input.targetLanguageIndex,
-            autoDetectedLanguage: autoDetectedLanguage,
-            inputText: input.inputText
-        )
-
-        let outputText = Driver.merge(
-            input.clearButtonClicked.map { _ in "" },
-            input.inputText.map { _ in "" },
-            textTranslation.map { $0.text ?? "" },
-            Driver.merge(input.sourceLanguageIndex, input.targetLanguageIndex).map { _ in "" }
-        )
+        let autoDetectedLanguage = Driver.merge(.just(AutoDetectedLanguage()),
+                                                input.inputText.map { _ in AutoDetectedLanguage() },
+                                                detectLanguage(for: autoDetectionLanguageNeeded.withLatestFrom(input.inputText)))
+        let textTranslation = translation(source: input.sourceLanguageIndex,
+                                          target: input.targetLanguageIndex,
+                                          autoDetectedLanguage: autoDetectedLanguage,
+                                          inputText: input.inputText)
+        let languageChanged = Driver.merge(input.sourceLanguageIndex, input.targetLanguageIndex)
+        let outputText = Driver.merge(input.clearButtonClicked.map { _ in "" },
+                                      input.inputText.filter { $0.isEmpty },
+                                      textTranslation.map { $0.text ?? "" },
+									  languageChanged.map { _ in "" })
         let inputText = input.clearButtonClicked.map { _ in "" }
 
-        return TranslationDrivers(
-            inputText: inputText,
-            outputText: outputText,
-            limitationText: limitationText,
-            clearButtonHidden: clearButtonHidden
-        )
+        return TranslationDrivers(inputText: inputText,
+                                  outputText: outputText,
+                                  limitationText: limitationText,
+                                  clearButtonHidden: clearButtonHidden)
     }
 
     private func translation(source sourceLanguageIndex: Driver<Int>, target targetLanguageIndex: Driver<Int>, autoDetectedLanguage: Driver<AutoDetectedLanguage>, inputText: Driver<String>) -> Driver<Translation> {
@@ -150,17 +144,15 @@ extension TranslateViewModel {
 extension TranslateViewModel {
     private func pickerDrivers(for input: Input) -> PickerDrivers {
         let autoDetectionLanguageNeeded = input.sourceLanguageIndex.filter { $0 == 3 }.map { _ in () }
-        let autoDetectedLanguage = Driver.merge(
-            .just(AutoDetectedLanguage()),
-            input.inputText.map { _ in AutoDetectedLanguage() },
-            detectLanguage(for: autoDetectionLanguageNeeded.withLatestFrom(input.inputText))
-        )
+        let autoDetectedLanguage = Driver.merge(.just(AutoDetectedLanguage()),
+                                                input.inputText.map { _ in AutoDetectedLanguage() },
+                                                detectLanguage(for: autoDetectionLanguageNeeded.withLatestFrom(input.inputText)))
 
         let sourceLanguages: Driver<[LanguageProtocol]> = Driver.combineLatest(sourceLanguagesQueue.asDriver(), autoDetectedLanguage).map { $0.0.array + [$0.1] }
         let targetLanguages: Driver<[LanguageProtocol]> = targetLanguagesQueue.map { $0.array }.asDriver(onErrorJustReturn: [])
 
         let pickSupportedLanguages = Observable
-            .combineLatest(Observable.merge(input.languagePickerQuery.asObservable(), Observable.just("")), supportedLanguages)
+            .combineLatest(Observable.merge(input.languagePickerQuery.asObservable(), isPickerNeeded.filter { $0 }.asObservable().map { _ in "" }), supportedLanguages)
             .observeOn(ConcurrentDispatchQueueScheduler(qos: .default))
             .map { q, supported -> [Language] in
                 let languages = supported?.languages ?? []
@@ -169,23 +161,17 @@ extension TranslateViewModel {
             }
             .asDriver(onErrorJustReturn: [])
 
-        let pickedLanguage = input.languagePickerSelectedIndex.debug()
+        let pickedLanguage = input.languagePickerSelectedIndex
             .withLatestFrom(pickSupportedLanguages) { index, languages in
                 languages[index.item]
             }
-        pickedLanguage.debug()
-            .drive(onNext: { language in
-                self.pick(language: language)
-            })
-            .disposed(by: disposeBag)
-        return PickerDrivers(
-            sourceLanguages: sourceLanguages,
-            targetLanguages: targetLanguages,
-            supportedLanguages: pickSupportedLanguages
-        )
+		pickedLanguage.drive(onNext: pick(language:)).disposed(by: disposeBag)
+        return PickerDrivers(sourceLanguages: sourceLanguages,
+                             targetLanguages: targetLanguages,
+                             supportedLanguages: pickSupportedLanguages)
     }
 
-    public func pick(language: Language) {
+    private func pick(language: Language) {
         if isSourceLanguagePickerActive.value {
             sourceLanguagesPush(language: language)
         } else if isTargetLanguagePickerActive.value {

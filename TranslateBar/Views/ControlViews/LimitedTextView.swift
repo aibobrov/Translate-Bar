@@ -1,6 +1,6 @@
 //
 //  LimitedTextView.swift
-//  TranslateBar
+//  Translate Bar
 //
 //  Created by Artem Bobrov on 18.06.2018.
 //  Copyright © 2018 Artem Bobrov. All rights reserved.
@@ -8,28 +8,9 @@
 
 import Cocoa
 
-class LimitedTextView: TextView, NSTextViewDelegate {
+class LimitedTextView: SelfSizedTextView {
     @IBInspectable
     var maxCharactersCount: Int = .max
-
-    override init(frame frameRect: NSRect) {
-        super.init(frame: frameRect)
-        setup()
-    }
-
-    override init(frame frameRect: NSRect, textContainer container: NSTextContainer?) {
-        super.init(frame: frameRect, textContainer: container)
-        setup()
-    }
-
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        setup()
-    }
-
-    private func setup() {
-        delegate = self
-    }
 
     func textView(_ textView: NSTextView, shouldChangeTextIn affectedCharRange: NSRange, replacementString: String?) -> Bool {
         let text = textView.string

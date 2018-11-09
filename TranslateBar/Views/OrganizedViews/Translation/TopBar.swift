@@ -8,8 +8,8 @@
 
 import Cocoa
 
-class TopBar: NSView {
+class TopBar: SVSizedView {
     @IBOutlet var swapButton: NSButton!
-    @IBOutlet var sourceLanguageSegmentedControl: SegmentedControl!
-    @IBOutlet var targetLanguageSegmentedControl: SegmentedControl!
+    @IBOutlet var sourceLanguageSegmentedControl: SelfSizedSegmentedControl!
+    @IBOutlet var targetLanguageSegmentedControl: SelfSizedSegmentedControl!
 }

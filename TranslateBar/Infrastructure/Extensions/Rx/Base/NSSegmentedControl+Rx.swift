@@ -16,13 +16,11 @@ extension Reactive where Base: NSSegmentedControl {
     }
 
     public var value: ControlProperty<Int> {
-        return controlProperty(
-            getter: { segmentedControl in
-                segmentedControl.selectedSegment
-            }, setter: { segmentedControl, value in
-                segmentedControl.selectedSegment = value
-            }
-        )
+        return controlProperty(getter: { segmentedControl in
+            segmentedControl.selectedSegment
+        }, setter: { segmentedControl, value in
+            segmentedControl.selectedSegment = value
+        })
     }
 
     public func isSelected(with segment: Int) -> ControlProperty<Bool> {

@@ -10,10 +10,8 @@ import RxCocoa
 import RxSwift
 
 extension Reactive where Base: NSCollectionView {
-    public func items<
-        DataSource: RxCollectionViewDataSourceType & NSCollectionViewDataSource,
-        O: ObservableType
-    >(dataSource: DataSource) -> (_ source: O) -> Disposable where O.E == [DataSource.Element] {
+    public func items<DataSource: RxCollectionViewDataSourceType & NSCollectionViewDataSource,
+                      O: ObservableType>(dataSource: DataSource) -> (_ source: O) -> Disposable where O.E == [DataSource.Element] {
         return { source in
             source.subscribe { [weak collectionView = self.base] event in
                 guard let collectionView = collectionView else { return }
@@ -39,7 +37,7 @@ extension Reactive where Base: NSCollectionView {
     }
 
     public var itemSelected: ControlEvent<IndexPath> {
-        let source = delegate.didSelectItems.map { $0.first! }.debug()
+        let source = delegate.didSelectItems.map { $0.first! }
         return ControlEvent(events: source)
     }
 }

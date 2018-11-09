@@ -37,7 +37,7 @@
                 <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qrG-S1-Kxl">
                     <rect key="frame" x="15" y="8" width="440" height="253"/>
                     <subviews>
-                        <customView translatesAutoresizingMaskIntoConstraints="NO" id="4h4-EV-hPR" customClass="View" customModule="Translate_Bar" customModuleProvider="target">
+                        <customView translatesAutoresizingMaskIntoConstraints="NO" id="4h4-EV-hPR">
                             <rect key="frame" x="0.0" y="193" width="440" height="60"/>
                             <subviews>
                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ran-yt-pdA">
@@ -80,7 +80,7 @@
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                         </customView>
-                        <customView translatesAutoresizingMaskIntoConstraints="NO" id="ULB-oJ-rCA" customClass="View" customModule="Translate_Bar" customModuleProvider="target">
+                        <customView translatesAutoresizingMaskIntoConstraints="NO" id="ULB-oJ-rCA">
                             <rect key="frame" x="0.0" y="125" width="440" height="60"/>
                             <subviews>
                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pex-Um-4Lz">
@@ -116,7 +116,7 @@
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                         </customView>
-                        <customView translatesAutoresizingMaskIntoConstraints="NO" id="lYA-ey-WVa" customClass="View" customModule="Translate_Bar" customModuleProvider="target">
+                        <customView translatesAutoresizingMaskIntoConstraints="NO" id="lYA-ey-WVa">
                             <rect key="frame" x="0.0" y="0.0" width="440" height="117"/>
                             <subviews>
                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zUd-EU-lUl">

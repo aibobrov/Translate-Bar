@@ -14,9 +14,9 @@ import RxSwift
 private class RxRecordViewDelegateProxy: DelegateProxy<RecordView, RecordViewDelegate>,
     RecordViewDelegate,
     DelegateProxyType {
-    fileprivate var keyCombo = PublishSubject<(RecordView, KeyCombo)>()
-    fileprivate var viewDidEndRecording = PublishSubject<RecordView>()
-    fileprivate var viewDidClearShortcut = PublishSubject<RecordView>()
+    fileprivate let keyCombo = PublishSubject<KeyCombo>()
+    fileprivate let viewDidEndRecording = PublishSubject<()>()
+    fileprivate let viewDidClearShortcut = PublishSubject<()>()
 
     static func registerKnownImplementations() {
         register { parent -> RxRecordViewDelegateProxy in
@@ -47,15 +47,15 @@ private class RxRecordViewDelegateProxy: DelegateProxy<RecordView, RecordViewDel
     }
 
     func recordViewDidClearShortcut(_ recordView: RecordView) {
-        viewDidClearShortcut.onNext(recordView)
+        viewDidClearShortcut.onNext(())
     }
 
     func recordView(_ recordView: RecordView, didChangeKeyCombo keyCombo: KeyCombo) {
-        self.keyCombo.onNext((recordView, keyCombo))
+        self.keyCombo.onNext(keyCombo)
     }
 
     func recordViewDidEndRecording(_ recordView: RecordView) {
-        viewDidEndRecording.onNext(recordView)
+        viewDidEndRecording.onNext(())
     }
 }
 
@@ -65,14 +65,14 @@ extension Reactive where Base: RecordView {
     }
 
     var keyCombo: Observable<KeyCombo> {
-        return delegateProxy.keyCombo.map { $0.1 }.asObservable()
+        return delegateProxy.keyCombo.asObservable()
     }
 
     var didEndRecording: Observable<()> {
-        return delegateProxy.viewDidEndRecording.map { _ in () }.asObservable()
+        return delegateProxy.viewDidEndRecording.asObservable()
     }
 
     var didClearShortcut: Observable<()> {
-        return delegateProxy.viewDidClearShortcut.map { _ in () }.asObservable()
+        return delegateProxy.viewDidClearShortcut.asObservable()
     }
 }
