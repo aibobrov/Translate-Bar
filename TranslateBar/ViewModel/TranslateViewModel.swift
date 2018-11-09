@@ -12,6 +12,9 @@ import RxSwift
 final class TranslateViewModel {
     let maxTextCharactersCount = 5000
 
+    let inputText = BehaviorRelay<String>(value: "")
+    let outputText = BehaviorRelay<String>(value: "")
+
     let supportedLanguages = BehaviorRelay<SupportedLanguages?>(value: nil)
     let isSourceLanguagePickerActive = BehaviorRelay<Bool>(value: false)
     let sourceLanguageIndex = BehaviorRelay<Int>(value: 0)
@@ -37,8 +40,8 @@ final class TranslateViewModel {
 
     var isPickerNeeded: Driver<Bool> {
         return Driver
-			.merge(isSourceLanguagePickerActive.asDriver(), isTargetLanguagePickerActive.asDriver())
-			.distinctUntilChanged()
+            .merge(isSourceLanguagePickerActive.asDriver(), isTargetLanguagePickerActive.asDriver())
+            .distinctUntilChanged()
     }
 }
 
@@ -63,8 +66,6 @@ extension TranslateViewModel {
 
 extension TranslateViewModel: ViewModelType {
     struct TranslationDrivers {
-        let inputText: Driver<String>
-        let outputText: Driver<String>
         let limitationText: Driver<String>
         let clearButtonHidden: Driver<Bool>
     }
@@ -76,10 +77,8 @@ extension TranslateViewModel: ViewModelType {
     }
 
     struct Input {
-        let inputText: Driver<String>
-        let sourceLanguageIndex: Driver<Int>
-        let targetLanguageIndex: Driver<Int>
         let clearButtonClicked: Driver<()>
+		let swapButtonClicked: Driver<()>
         let languagePickerQuery: Driver<String>
         let languagePickerSelectedIndex: Driver<IndexPath>
     }
@@ -97,27 +96,36 @@ extension TranslateViewModel: ViewModelType {
 
 extension TranslateViewModel {
     private func translationDrivers(for input: Input) -> TranslationDrivers {
-        let limitationText = input.inputText.map { "\($0.count)/\(self.maxTextCharactersCount)" }
-        let clearButtonHidden = Driver.merge(input.clearButtonClicked.map { _ in true },
-                                             input.inputText.map { $0.isEmpty })
-        let autoDetectionLanguageNeeded = input.sourceLanguageIndex.filter { $0 == 3 }.map { _ in () }
-        let autoDetectedLanguage = Driver.merge(.just(AutoDetectedLanguage()),
-                                                input.inputText.map { _ in AutoDetectedLanguage() },
-                                                detectLanguage(for: autoDetectionLanguageNeeded.withLatestFrom(input.inputText)))
-        let textTranslation = translation(source: input.sourceLanguageIndex,
-                                          target: input.targetLanguageIndex,
-                                          autoDetectedLanguage: autoDetectedLanguage,
-                                          inputText: input.inputText)
-        let languageChanged = Driver.merge(input.sourceLanguageIndex, input.targetLanguageIndex)
-        let outputText = Driver.merge(input.clearButtonClicked.map { _ in "" },
-                                      input.inputText.filter { $0.isEmpty },
-                                      textTranslation.map { $0.text ?? "" },
-									  languageChanged.map { _ in "" })
-        let inputText = input.clearButtonClicked.map { _ in "" }
+        let inputTextDriver = inputText.asDriver()
+        let sourceLanguageIndexDriver = sourceLanguageIndex.asDriver()
+        let targetLanguageIndexDriver = targetLanguageIndex.asDriver()
 
-        return TranslationDrivers(inputText: inputText,
-                                  outputText: outputText,
-                                  limitationText: limitationText,
+        let limitationText = inputTextDriver.map { "\($0.count)/\(self.maxTextCharactersCount)" }
+        let clearButtonHidden = Driver.merge(input.clearButtonClicked.map { _ in true },
+                                             inputTextDriver.map { $0.isEmpty })
+		let autoDetectedLanguage = self.autoDetectedLanguage()
+        let textTranslation = translation(source: sourceLanguageIndexDriver,
+                                          target: targetLanguageIndexDriver,
+                                          autoDetectedLanguage: autoDetectedLanguage,
+                                          inputText: inputTextDriver.throttle(1, latest: true))
+        let languageChanged = Driver.merge(sourceLanguageIndexDriver, targetLanguageIndexDriver)
+        Driver.merge(input.clearButtonClicked.map { _ in "" },
+                     inputTextDriver.filter { $0.isEmpty },
+                     textTranslation.map { $0.text ?? "" },
+                     languageChanged.map { _ in "" })
+            .drive(outputText).disposed(by: disposeBag)
+        input.clearButtonClicked.map { _ in "" }.drive(inputText).disposed(by: disposeBag)
+
+		input.swapButtonClicked
+			.withLatestFrom(sourceLanguageIndex.asDriver().map { $0 == 3 })
+			.do(onNext: { _ in
+				rx_swap(self.inputText, self.outputText)
+			})
+			.filter { !$0 }.map { _ in () }
+			.drive(onNext: self.swapLanguages)
+			.disposed(by: disposeBag)
+
+        return TranslationDrivers(limitationText: limitationText,
                                   clearButtonHidden: clearButtonHidden)
     }
 
@@ -139,14 +147,21 @@ extension TranslateViewModel {
             .flatMapLatest { self.translateUseCase.detectLanguage(text: $0).asDriverOnErrorJustComplete() }
             .map { AutoDetectedLanguage(real: $0) }
     }
+
+	private func autoDetectedLanguage() -> Driver<AutoDetectedLanguage> {
+		let autoDetectionLanguageNeeded = sourceLanguageIndex.asDriver().map { $0 == 3 }
+		let autoDetectedText = Driver.combineLatest(autoDetectionLanguageNeeded, inputText.asDriver().throttle(1)).filter { $0.0 }.map { $0.1 }
+		let clearDetectedLanguage = autoDetectionLanguageNeeded.distinctUntilChanged().filter { !$0 }
+		let autoDetectedLanguage = Driver.merge(.just(AutoDetectedLanguage()),
+												clearDetectedLanguage.map { _ in AutoDetectedLanguage() },
+												detectLanguage(for: autoDetectedText))
+		return autoDetectedLanguage
+	}
 }
 
 extension TranslateViewModel {
     private func pickerDrivers(for input: Input) -> PickerDrivers {
-        let autoDetectionLanguageNeeded = input.sourceLanguageIndex.filter { $0 == 3 }.map { _ in () }
-        let autoDetectedLanguage = Driver.merge(.just(AutoDetectedLanguage()),
-                                                input.inputText.map { _ in AutoDetectedLanguage() },
-                                                detectLanguage(for: autoDetectionLanguageNeeded.withLatestFrom(input.inputText)))
+        let autoDetectedLanguage = self.autoDetectedLanguage()
 
         let sourceLanguages: Driver<[LanguageProtocol]> = Driver.combineLatest(sourceLanguagesQueue.asDriver(), autoDetectedLanguage).map { $0.0.array + [$0.1] }
         let targetLanguages: Driver<[LanguageProtocol]> = targetLanguagesQueue.map { $0.array }.asDriver(onErrorJustReturn: [])
@@ -165,7 +180,7 @@ extension TranslateViewModel {
             .withLatestFrom(pickSupportedLanguages) { index, languages in
                 languages[index.item]
             }
-		pickedLanguage.drive(onNext: pick(language:)).disposed(by: disposeBag)
+        pickedLanguage.drive(onNext: pick(language:)).disposed(by: disposeBag)
         return PickerDrivers(sourceLanguages: sourceLanguages,
                              targetLanguages: targetLanguages,
                              supportedLanguages: pickSupportedLanguages)
@@ -194,4 +209,52 @@ extension TranslateViewModel {
         sourceLanguagesQueue.accept(queue)
         isSourceLanguagePickerActive.accept(false)
     }
+}
+
+extension TranslateViewModel {
+	private func swap() {
+		rx_swap(inputText, outputText)
+
+	}
+
+
+	private func swapLanguages() {
+		let sourceLanguage = sourceLanguagesQueue.value[sourceLanguageIndex.value]
+		let targetLanguage = targetLanguagesQueue.value[targetLanguageIndex.value]
+
+		if !targetLanguagesQueue.value.contains(sourceLanguage) && !sourceLanguagesQueue.value.contains(targetLanguage) {
+			naiveSwapLanguages()
+			return
+		}
+
+		if let index = sourceLanguagesQueue.value.index(of: targetLanguage) {
+			sourceLanguageIndex.accept(index)
+		} else {
+			var queue = sourceLanguagesQueue.value
+			let (index, _) = queue.push(targetLanguage)
+			sourceLanguagesQueue.accept(queue)
+			sourceLanguageIndex.accept(index)
+		}
+
+		if let index = targetLanguagesQueue.value.index(of: sourceLanguage) {
+			targetLanguageIndex.accept(index)
+		} else {
+			var queue = targetLanguagesQueue.value
+			let (index, _) = queue.push(sourceLanguage)
+			targetLanguagesQueue.accept(queue)
+			targetLanguageIndex.accept(index)
+		}
+	}
+
+	private func naiveSwapLanguages() {
+		var lhs = sourceLanguagesQueue.value
+		var rhs = targetLanguagesQueue.value
+
+		let tmp = lhs[sourceLanguageIndex.value]
+		lhs[sourceLanguageIndex.value] = rhs[targetLanguageIndex.value]
+		rhs[targetLanguageIndex.value] = tmp
+
+		sourceLanguagesQueue.accept(lhs)
+		targetLanguagesQueue.accept(rhs)
+	}
 }

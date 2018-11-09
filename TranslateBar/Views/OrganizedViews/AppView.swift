@@ -23,7 +23,7 @@ class AppView: NSView {
 
         let translateViewHeight = translationView.bounds.height
         let bottomBarHeight = bottomBar.bounds.height
-		let languagePickerHeight = isPickerNeeded ? languagePick.bounds.height - translateViewHeight: 0
+        let languagePickerHeight = isPickerNeeded ? languagePick.bounds.height - translateViewHeight : 0
 
         return NSSize(
             width: topBarSize.width + 16,

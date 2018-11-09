@@ -36,25 +36,28 @@ class TranslateViewController: NSViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        let input = self.input()
-        let output = viewModel.transform(input: input)
-        apply(output)
-
-        viewModel.isPickerNeeded.map { !$0 }.drive(appView.languagePick.rx.isHidden).disposed(by: disposeBag)
-		viewModel.isPickerNeeded.drive(appView.translationView.rx.isHidden).disposed(by: disposeBag)
+        createBindings()
+        apply(viewModel.transform(input: input()))
     }
 
     private func input() -> TranslateViewModel.Input {
-        let inputText = appView.translationView.input.textView.rx.text.orEmpty
-            .throttle(1, latest: true, scheduler: MainScheduler.asyncInstance)
-
-        let sourceLanguageIndex = appView.sourceLanguageIndex
-        let targetLanguageIndex = appView.targetLanguageIndex
         let languagePickerQuery = appView.languagePick.searchTextField.rx.text.orEmpty
         let languagePickerSelectedIndex = appView.languagePick.contentCollectionView.rx.itemSelected.asDriverOnErrorJustComplete()
+
+        return TranslateViewModel.Input(
+			clearButtonClicked: appView.translationView.input.closeButton.rx.controlEvent.asDriver(),
+			swapButtonClicked: appView.topBar.swapButton.rx.controlEvent.asDriver(),
+			languagePickerQuery: languagePickerQuery.asDriver(),
+			languagePickerSelectedIndex: languagePickerSelectedIndex
+		)
+    }
+
+    private func createBindings() {
+        let sourceLanguageIndex = appView.sourceLanguageIndex
+        let targetLanguageIndex = appView.targetLanguageIndex
         let sourceLanguagePickerNeeded = appView.sourceLanguagePickerNeeded
         let targetLanguagePickerNeeded = appView.targetLanguagePickerNeeded
+
         (sourceLanguagePickerNeeded <-> viewModel.isSourceLanguagePickerActive).disposed(by: disposeBag)
         (targetLanguagePickerNeeded <-> viewModel.isTargetLanguagePickerActive).disposed(by: disposeBag)
 
@@ -63,12 +66,13 @@ class TranslateViewController: NSViewController {
         viewModel.targetLanguageIndex.bind(to: appView.topBar.targetLanguageSegmentedControl.rx.selectSegment).disposed(by: disposeBag)
         viewModel.sourceLanguageIndex.bind(to: appView.topBar.sourceLanguageSegmentedControl.rx.selectSegment).disposed(by: disposeBag)
 
-        return TranslateViewModel.Input(inputText: inputText.asDriver(onErrorJustReturn: ""),
-                                        sourceLanguageIndex: sourceLanguageIndex.asDriver(onErrorJustReturn: 0),
-                                        targetLanguageIndex: targetLanguageIndex.asDriver(onErrorJustReturn: 0),
-                                        clearButtonClicked: appView.translationView.input.closeButton.rx.controlEvent.asDriver(),
-                                        languagePickerQuery: languagePickerQuery.asDriver(),
-                                        languagePickerSelectedIndex: languagePickerSelectedIndex)
+        viewModel.isPickerNeeded.map { !$0 }.drive(appView.languagePick.rx.isHidden).disposed(by: disposeBag)
+        viewModel.isPickerNeeded.drive(appView.translationView.rx.isHidden).disposed(by: disposeBag)
+
+        (appView.translationView.input.textView.rx.text.orEmpty <-> viewModel.inputText).disposed(by: disposeBag)
+        (appView.translationView.output.textView.rx.text.orEmpty <-> viewModel.outputText).disposed(by: disposeBag)
+		viewModel.outputText.map { $0.isEmpty }.distinctUntilChanged()
+			.bind(to: appView.translationView.output.rx.isHidden).disposed(by: disposeBag)
     }
 }
 
@@ -79,10 +83,6 @@ extension TranslateViewController {
     }
 
     private func apply(translationDrivers translation: TranslateViewModel.TranslationDrivers) {
-        translation.inputText.drive(appView.translationView.input.textView.rx.text).disposed(by: disposeBag)
-        translation.outputText.drive(appView.translationView.output.textView.rx.text).disposed(by: disposeBag)
-        translation.outputText.map { $0.isEmpty }.distinctUntilChanged()
-            .drive(appView.translationView.output.rx.isHidden).disposed(by: disposeBag)
         translation.limitationText
             .drive(appView.translationView.input.contentLengthField.rx.text)
             .disposed(by: disposeBag)
