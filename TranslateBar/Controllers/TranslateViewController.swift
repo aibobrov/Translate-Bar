@@ -45,11 +45,11 @@ class TranslateViewController: NSViewController {
         let languagePickerSelectedIndex = appView.languagePick.contentCollectionView.rx.itemSelected.asDriverOnErrorJustComplete()
 
         return TranslateViewModel.Input(
-			clearButtonClicked: appView.translationView.input.closeButton.rx.controlEvent.asDriver(),
-			swapButtonClicked: appView.topBar.swapButton.rx.controlEvent.asDriver(),
-			languagePickerQuery: languagePickerQuery.asDriver(),
-			languagePickerSelectedIndex: languagePickerSelectedIndex
-		)
+            clearButtonClicked: appView.translationView.input.closeButton.rx.controlEvent.asDriver(),
+            swapButtonClicked: appView.topBar.swapButton.rx.controlEvent.asDriver(),
+            languagePickerQuery: languagePickerQuery.asDriver(),
+            languagePickerSelectedIndex: languagePickerSelectedIndex
+        )
     }
 
     private func createBindings() {
@@ -71,8 +71,8 @@ class TranslateViewController: NSViewController {
 
         (appView.translationView.input.textView.rx.text.orEmpty <-> viewModel.inputText).disposed(by: disposeBag)
         (appView.translationView.output.textView.rx.text.orEmpty <-> viewModel.outputText).disposed(by: disposeBag)
-		viewModel.outputText.map { $0.isEmpty }.distinctUntilChanged()
-			.bind(to: appView.translationView.output.rx.isHidden).disposed(by: disposeBag)
+        viewModel.outputText.map { $0.isEmpty }.distinctUntilChanged()
+            .bind(to: appView.translationView.output.rx.isHidden).disposed(by: disposeBag)
     }
 }
 
@@ -101,9 +101,8 @@ extension TranslateViewController {
 
         picker.supportedLanguages
             .drive(appView.languagePick.contentCollectionView.rx.items) { _, cv, ip, language in
-                let item = cv.makeItem(withIdentifier: NSUserInterfaceItemIdentifier("LanguageCollectionViewItem"), for: ip) as! LanguageCollectionViewItem // swiftlint:disable:this force_cast
-                item.imageView!.image = NSImage(named: language.imageName)
-                item.textField!.stringValue = language.description
+                let item = cv.makeItem(ofType: LanguageCollectionViewItem.self, for: ip)
+                item.configure(with: language)
                 return item
             }
             .disposed(by: disposeBag)

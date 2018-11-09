@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class LanguageCollectionViewItem: NSCollectionViewItem, Highlightable, MouseTrackable {
+class LanguageCollectionViewItem: NSCollectionViewItem, Highlightable, MouseTrackable, Configurable {
     var isHighlighted: Bool = false {
         didSet {
             if isHighlighted {
@@ -51,5 +51,10 @@ class LanguageCollectionViewItem: NSCollectionViewItem, Highlightable, MouseTrac
         super.viewDidLayout()
         removeTrackingArea()
         addTrackingArea(with: [.activeInActiveApp, .mouseEnteredAndExited])
+    }
+
+    func configure(with language: Language) {
+        imageView!.image = NSImage(named: language.imageName)
+        textField!.stringValue = language.description
     }
 }
