@@ -43,11 +43,11 @@ open class RxCollectionViewDataSource<E>:
         super.init(parentObject: parentObject, delegateProxy: RxCollectionViewDataSource<E>.self)
     }
 
-    public func numberOfSections(in collectionView: NSCollectionView) -> Int {
+    public func numberOfSections(in _: NSCollectionView) -> Int {
         return 1
     }
 
-    public func collectionView(_ collectionView: NSCollectionView, numberOfItemsInSection section: Int) -> Int {
+    public func collectionView(_: NSCollectionView, numberOfItemsInSection _: Int) -> Int {
         return items.count
     }
 

@@ -101,7 +101,7 @@ extension TranslateViewModel: ViewModelType {
         let languagePickerQuery: Driver<String>
         let languagePickerSelectedIndex: Driver<IndexPath>
         let suggenstionLinkClicked: Driver<String>
-		let translationFromClipboardNeeded: Driver<Void>
+        let translationFromClipboardNeeded: Driver<Void>
     }
 
     struct Output {
@@ -117,6 +117,7 @@ extension TranslateViewModel: ViewModelType {
 
 extension TranslateViewModel {
     private func translationDrivers(for input: Input) -> TranslationDrivers {
+        subscribe(for: input)
         let inputTextDriver = inputText.asDriver()
         let sourceLanguageIndexDriver = sourceLanguageIndex.asDriver()
         let targetLanguageIndexDriver = targetLanguageIndex.asDriver()
@@ -124,44 +125,20 @@ extension TranslateViewModel {
         let limitationText = inputTextDriver.map { "\($0.count)/\(self.maxTextCharactersCount)" }
         let clearButtonHidden = Driver.merge(input.clearButtonClicked.map { _ in true },
                                              inputTextDriver.map { $0.isEmpty })
-		input.translationFromClipboardNeeded
-			.filter { Settings.shared.isAutomaticallyTranslateClipboard }
-			.map { NSPasteboard.clipboard ?? "" }
-			.drive(inputText)
-			.disposed(by: disposeBag)
-        let autoDetectedLanguage = self.autoDetectedLanguage()
-        input.suggenstionLinkClicked
-            .map { text in
-                let result = text.split(separator: TranslateClickAction.separator).map(String.init)
-                let action = TranslateClickAction(rawValue: result.last!)!
-                let query = String(result.dropLast().joined())
-                return OnLinkActionQuery(action: action, query: query)
-            }
 
-            .drive(onNext: { object in
-                NotificationCenter.default.post(name: .linkClicked, object: object)
-            })
-            .disposed(by: disposeBag)
+        let autoDetectedLanguage = self.autoDetectedLanguage()
+
         let textTranslation = translation(source: sourceLanguageIndexDriver,
                                           target: targetLanguageIndexDriver,
                                           autoDetectedLanguage: autoDetectedLanguage,
                                           inputText: inputTextDriver.throttle(1))
-        let languageChanged = Driver.merge(sourceLanguageIndexDriver, targetLanguageIndexDriver)
-        Driver.merge(input.clearButtonClicked.map { _ in "" },
-                     inputTextDriver.filter { $0.isEmpty },
-                     textTranslation.map { $0.text ?? "" },
-                     languageChanged.map { _ in "" })
-            .drive(outputText).disposed(by: disposeBag)
-        input.clearButtonClicked.map { _ in "" }.drive(inputText).disposed(by: disposeBag)
 
-        input.swapButtonClicked
-            .withLatestFrom(sourceLanguageIndex.asDriver().map { $0 == 3 })
-            .do(onNext: { _ in
-                rx_swap(self.inputText, self.outputText)
-            })
-            .filter { !$0 }.map { _ in () }
-            .drive(onNext: swapLanguages)
-            .disposed(by: disposeBag)
+        let languageChanged = Driver.merge(sourceLanguageIndexDriver, targetLanguageIndexDriver)
+        let output = Driver.merge(input.clearButtonClicked.map { _ in "" },
+                                  inputTextDriver.filter { $0.isEmpty },
+                                  textTranslation.map { $0.text ?? "" },
+                                  languageChanged.map { _ in "" })
+        output.drive(outputText).disposed(by: disposeBag)
 
         let sourceLanguage = Driver.combineLatest(sourceLanguageIndex.asDriver(), autoDetectedLanguage.asDriver(), sourceLanguagesQueue.asDriver())
             .map { 0 ..< self.sourceLanguagesQueue.value.count ~= $0.0 ? self.sourceLanguagesQueue.value[$0.0] as LanguageProtocol : $0.1 as LanguageProtocol }
@@ -188,6 +165,38 @@ extension TranslateViewModel {
                                   clearButtonHidden: clearButtonHidden,
                                   dictionaryArticle: article(autoDetectedLanguage: autoDetectedLanguage),
                                   suggestionText: suggestionAttributedString)
+    }
+
+    private func subscribe(for input: Input) {
+        input.clearButtonClicked.map { _ in "" }.drive(inputText).disposed(by: disposeBag)
+
+        input.swapButtonClicked
+            .withLatestFrom(sourceLanguageIndex.asDriver().map { $0 == 3 })
+            .do(onNext: { _ in
+                rx_swap(self.inputText, self.outputText)
+            })
+            .filter { !$0 }.map { _ in () }
+            .drive(onNext: swapLanguages)
+            .disposed(by: disposeBag)
+
+        input.suggenstionLinkClicked
+            .map { text in
+                let result = text.split(separator: TranslateClickAction.separator).map(String.init)
+                let action = TranslateClickAction(rawValue: result.last!)!
+                let query = String(result.dropLast().joined())
+                return OnLinkActionQuery(action: action, query: query)
+            }
+
+            .drive(onNext: { object in
+                NotificationCenter.default.post(name: .linkClicked, object: object)
+            })
+            .disposed(by: disposeBag)
+
+        input.translationFromClipboardNeeded
+            .filter { Settings.shared.isAutomaticallyTranslateClipboard }
+            .map { NSPasteboard.clipboard ?? "" }
+            .drive(inputText)
+            .disposed(by: disposeBag)
     }
 
     private func suggestionsAttributedText(_ value: ([SpellMistake], String)) -> String {

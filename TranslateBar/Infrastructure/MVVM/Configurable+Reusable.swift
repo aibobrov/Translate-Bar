@@ -28,13 +28,13 @@ extension NSCollectionViewItem: Reusable {}
 extension NSTableCellView: Reusable {}
 
 extension NSTableView {
-    func makeView<T: NSTableCellView>(ofType: T.Type) -> T {
+    func makeView<T: NSTableCellView>(ofType _: T.Type) -> T {
         return makeView(withIdentifier: T.identifier, owner: self) as! T
     }
 }
 
 extension NSCollectionView {
-    func makeItem<T: NSCollectionViewItem>(ofType: T.Type, for indexPath: IndexPath) -> T {
+    func makeItem<T: NSCollectionViewItem>(ofType _: T.Type, for indexPath: IndexPath) -> T {
         return makeItem(withIdentifier: T.identifier, for: indexPath) as! T
     }
 }

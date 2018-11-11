@@ -41,7 +41,7 @@ class RxTextViewDelegateProxy: DelegateProxy<NSTextView, NSTextViewDelegate>,
         _forwardToDelegate?.controlTextDidChange?(notification)
     }
 
-    func textView(_ textView: NSTextView, clickedOnLink link: Any, at charIndex: Int) -> Bool {
+    func textView(_: NSTextView, clickedOnLink link: Any, at charIndex: Int) -> Bool {
         lickSubject.onNext((link, charIndex))
         return true
     }

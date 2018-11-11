@@ -79,8 +79,8 @@ class TranslateViewController: NSViewController {
             swapButtonClicked: appView.topBar.swapButton.rx.controlEvent.asDriver(),
             languagePickerQuery: languagePickerQuery.asDriver(),
             languagePickerSelectedIndex: languagePickerSelectedIndex,
-			suggenstionLinkClicked: suggenstionLinkClicked.asDriverOnErrorJustComplete(),
-			translationFromClipboardNeeded: self.rx.viewWillAppear.asDriver()
+            suggenstionLinkClicked: suggenstionLinkClicked.asDriverOnErrorJustComplete(),
+            translationFromClipboardNeeded: rx.viewWillAppear.asDriver()
         )
     }
 

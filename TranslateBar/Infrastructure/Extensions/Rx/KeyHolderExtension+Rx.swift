@@ -38,24 +38,24 @@ private class RxRecordViewDelegateProxy: DelegateProxy<RecordView, RecordViewDel
         recordView.delegate = delegate
     }
 
-    func recordViewShouldBeginRecording(_ recordView: RecordView) -> Bool {
+    func recordViewShouldBeginRecording(_: RecordView) -> Bool {
         return true
     }
 
-    func recordView(_ recordView: RecordView, canRecordKeyCombo keyCombo: KeyCombo) -> Bool {
+    func recordView(_: RecordView, canRecordKeyCombo _: KeyCombo) -> Bool {
         return true
     }
 
-    func recordViewDidClearShortcut(_ recordView: RecordView) {
+    func recordViewDidClearShortcut(_: RecordView) {
         viewDidClearShortcut.onNext(())
         keyCombo.onNext(nil)
     }
 
-    func recordView(_ recordView: RecordView, didChangeKeyCombo keyCombo: KeyCombo) {
+    func recordView(_: RecordView, didChangeKeyCombo keyCombo: KeyCombo) {
         self.keyCombo.onNext(keyCombo)
     }
 
-    func recordViewDidEndRecording(_ recordView: RecordView) {
+    func recordViewDidEndRecording(_: RecordView) {
         viewDidEndRecording.onNext(())
     }
 }

@@ -14,7 +14,7 @@ class TableCellViewAction<Object> {
         self.notification = notification
     }
 
-    public func invoke(on cell: NSTableCellView?, object: Object?) {
+    public func invoke(on _: NSTableCellView?, object: Object?) {
         let center = NotificationCenter.default
         center.post(name: notification, object: object)
     }

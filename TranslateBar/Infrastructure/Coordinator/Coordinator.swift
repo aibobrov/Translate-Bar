@@ -10,7 +10,7 @@ import Cocoa
 
 public class Coordinator<StepType: Step> {
     func start() {}
-    func navigate(to step: StepType) {}
+    func navigate(to _: StepType) {}
 }
 
 public protocol Step {}
@@ -22,7 +22,7 @@ class ViewControllerStore {
         store[String(describing: T.self)] = viewController
     }
 
-    func fetch<T: NSViewController>(byType: T.Type) -> T? {
+    func fetch<T: NSViewController>(byType _: T.Type) -> T? {
         return store[String(describing: T.self)] as? T
     }
 }

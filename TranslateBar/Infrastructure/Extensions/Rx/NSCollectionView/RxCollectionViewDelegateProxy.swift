@@ -32,7 +32,7 @@ open class RxCollectionViewDelegateProxy: DelegateProxy<NSCollectionView, NSColl
         super.init(parentObject: collectionView, delegateProxy: RxCollectionViewDelegateProxy.self)
     }
 
-    public func collectionView(_ collectionView: NSCollectionView, didSelectItemsAt indexPaths: Set<IndexPath>) {
+    public func collectionView(_: NSCollectionView, didSelectItemsAt indexPaths: Set<IndexPath>) {
         didSelectItems.on(.next(indexPaths))
     }
 

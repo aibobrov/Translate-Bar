@@ -68,11 +68,11 @@ class RxTableViewDataSource<E>:
         }.on(observedEvent)
     }
 
-    func numberOfRows(in tableView: NSTableView) -> Int {
+    func numberOfRows(in _: NSTableView) -> Int {
         return items.count
     }
 
-    func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
+    func tableView(_ tableView: NSTableView, viewFor _: NSTableColumn?, row: Int) -> NSView? {
         return viewFactory(self, tableView, row, items[row])
     }
 }

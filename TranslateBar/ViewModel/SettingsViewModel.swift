@@ -50,7 +50,7 @@ extension SettingsViewModel {
                        shortcut: shortcut)
     }
 
-    private func updateSettings(showInDock: Observable<Bool>, translateClipboard: Observable<Bool>, shortcut: Observable<KeyCombo?>) {
+    private func updateSettings(showInDock: Observable<Bool>, translateClipboard _: Observable<Bool>, shortcut: Observable<KeyCombo?>) {
         showInDock
             .map { value -> NSApplication.ActivationPolicy in
                 value ? .regular : .accessory
@@ -70,11 +70,6 @@ extension SettingsViewModel {
 // MARK: - Public API
 
 extension SettingsViewModel {
-    public func clearToggleAppShortcut() {
-        Settings.shared.toggleAppShortcut = nil
-        NSApplication.shared.appDelegate.setupToggleShortcut(with: nil)
-    }
-
     struct Input {
         let closeButtonClicked: Driver<()>
     }

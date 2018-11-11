@@ -40,11 +40,11 @@ class DictionaryArticleCellView: NSTableCellView, Configurable {
 }
 
 extension DictionaryArticleCellView: NSTableViewDelegate, NSTableViewDataSource {
-    func numberOfRows(in tableView: NSTableView) -> Int {
+    func numberOfRows(in _: NSTableView) -> Int {
         return article?.translations.count ?? 0
     }
 
-    func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
+    func tableView(_ tableView: NSTableView, viewFor _: NSTableColumn?, row: Int) -> NSView? {
         let view = tableView.makeView(ofType: TranslationCellView.self)
         view.configure(with: (offset: row, element: article!.translations[row]))
 

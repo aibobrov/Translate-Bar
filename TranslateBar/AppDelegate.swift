@@ -33,7 +33,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var toggleAppHotKey: HotKey?
     var coordinator: AppCoordinator!
 
-    func applicationDidFinishLaunching(_ aNotification: Notification) {
+    func applicationDidFinishLaunching(_: Notification) {
         coordinator = PopoverCoordinator(popover: popover)
         coordinator.start()
         applyApplicationSettings()
@@ -108,7 +108,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     // MARK: - Core Data Saving and Undo support
 
-    @IBAction func saveAction(_ sender: AnyObject?) {
+    @IBAction func saveAction(_: AnyObject?) {
         // Performs the save action for the application, which is to send the save: message to the application's managed object context. Any encountered errors are presented to the user.
         let context = persistentContainer.viewContext
 
@@ -126,7 +126,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
 
-    func windowWillReturnUndoManager(window: NSWindow) -> UndoManager? {
+    func windowWillReturnUndoManager(window _: NSWindow) -> UndoManager? {
         // Returns the NSUndoManager for the application. In this case, the manager returned is that of the managed object context for the application.
         return persistentContainer.viewContext.undoManager
     }
