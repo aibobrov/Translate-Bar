@@ -42,10 +42,11 @@ class TranslateViewController: NSViewController {
         super.viewDidLoad()
         createBindings()
         apply(viewModel.transform(input: input()))
-        appView.bottomBar.reloadButton.rx.tap.subscribe { _ in
-            self.appView.invalidateIntrinsicContentSize()
-            self.appView.layoutSubtreeIfNeeded()
-        }.disposed(by: disposeBag)
+        appView.bottomBar.reloadButton.rx.tap
+			.subscribe { [unowned self] _ in
+				self.appView.invalidateIntrinsicContentSize()
+				self.view.layoutSubtreeIfNeeded()
+			}.disposed(by: disposeBag)
     }
 
     private func input() -> TranslateViewModel.Input {

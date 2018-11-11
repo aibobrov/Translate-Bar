@@ -15,6 +15,7 @@
 		A1134A162198708D000BFBF2 /* YandexSpeller.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1134A152198708D000BFBF2 /* YandexSpeller.swift */; };
 		A1134A19219873E4000BFBF2 /* SpellMistake.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1134A18219873E4000BFBF2 /* SpellMistake.swift */; };
 		A1134A1B219874E9000BFBF2 /* SpellerUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1134A1A219874E9000BFBF2 /* SpellerUseCase.swift */; };
+		A1134A1F2198923A000BFBF2 /* NaturalLanguageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1134A1E2198923A000BFBF2 /* NaturalLanguageExtensions.swift */; };
 		A120EA3321920CAC0063FE14 /* LimitedTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A120EA3221920CAC0063FE14 /* LimitedTextView.swift */; };
 		A120EA35219215480063FE14 /* IgnoreScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A120EA34219215480063FE14 /* IgnoreScrollView.swift */; };
 		A14B2335219642DF00C39CD8 /* Configurable+Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14B2334219642DF00C39CD8 /* Configurable+Reusable.swift */; };
@@ -112,6 +113,7 @@
 		A1134A152198708D000BFBF2 /* YandexSpeller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YandexSpeller.swift; sourceTree = "<group>"; };
 		A1134A18219873E4000BFBF2 /* SpellMistake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpellMistake.swift; sourceTree = "<group>"; };
 		A1134A1A219874E9000BFBF2 /* SpellerUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpellerUseCase.swift; sourceTree = "<group>"; };
+		A1134A1E2198923A000BFBF2 /* NaturalLanguageExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaturalLanguageExtensions.swift; sourceTree = "<group>"; };
 		A120EA3221920CAC0063FE14 /* LimitedTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LimitedTextView.swift; sourceTree = "<group>"; };
 		A120EA34219215480063FE14 /* IgnoreScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IgnoreScrollView.swift; sourceTree = "<group>"; };
 		A14B2334219642DF00C39CD8 /* Configurable+Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Configurable+Reusable.swift"; sourceTree = "<group>"; };
@@ -325,6 +327,7 @@
 				A197F01B2197863700B20C79 /* NSAttributedString.swift */,
 				A17AB1D62184FD9B00E14D15 /* AppKitExtensions.swift */,
 				A1A48033217D28A3003FF5B8 /* SwiftStandartExtensions.swift */,
+				A1134A1E2198923A000BFBF2 /* NaturalLanguageExtensions.swift */,
 				A197F01921975E2E00B20C79 /* ApplyOrHide.swift */,
 				A1A48034217D28A3003FF5B8 /* Rx */,
 			);
@@ -904,6 +907,7 @@
 				A1134A162198708D000BFBF2 /* YandexSpeller.swift in Sources */,
 				A1D9A852218F9DD90051A9D0 /* MouseTrackable.swift in Sources */,
 				A1C38D4F217BCE94002B4995 /* AppDelegate.swift in Sources */,
+				A1134A1F2198923A000BFBF2 /* NaturalLanguageExtensions.swift in Sources */,
 				A1A48054217D28A3003FF5B8 /* RxSupportUtls.swift in Sources */,
 				A1A480A6217D2AA7003FF5B8 /* DictionaryArticle.swift in Sources */,
 				A1A480A4217D2AA7003FF5B8 /* AutoDetectedLanguage.swift in Sources */,

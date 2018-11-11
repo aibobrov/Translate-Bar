@@ -7,11 +7,14 @@
 //
 
 import Moya
+import NaturalLanguage
+import RxCocoa
 import RxSwift
 
 public final class TranslateProvider: TranslateUseCase {
     private let _provider = MoyaProvider<YandexTranslate>()
-    private let _supportedLanguages = BehaviorSubject<SupportedLanguages>(value: SupportedLanguages())
+    private let _supportedLanguages = BehaviorRelay<SupportedLanguages>(value: SupportedLanguages())
+    private let _languageRecognizer = NLLanguageRecognizer()
     private var _supportedLanguagesDisposable: Disposable?
 
     public init() {
@@ -35,8 +38,9 @@ public final class TranslateProvider: TranslateUseCase {
         return _provider.rx
             .request(.detectLanguage(text: text), callbackQueue: .global(qos: .userInteractive))
             .mapString(atKeyPath: "lang")
+            .catchErrorJustReturn(_languageRecognizer.dominantLanguage(for: text) ?? "")
             .map { lang in
-                try self._supportedLanguages.value().languages.first(where: { $0.short == lang })
+                self._supportedLanguages.value.languages.first(where: { $0.short == lang })
             }
             .asObservable()
     }
