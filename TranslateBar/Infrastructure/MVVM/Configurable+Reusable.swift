@@ -28,7 +28,7 @@ extension NSCollectionViewItem: Reusable {}
 extension NSTableCellView: Reusable {}
 
 extension NSTableView {
-    func makeView<T: NSTableCellView>(ofType: T.Type, for indexPath: IndexPath) -> T {
+    func makeView<T: NSTableCellView>(ofType: T.Type) -> T {
         return makeView(withIdentifier: T.identifier, owner: self) as! T // swiftlint:disable:this force_cast
     }
 }

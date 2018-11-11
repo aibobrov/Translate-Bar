@@ -9,9 +9,13 @@
 /* Begin PBXBuildFile section */
 		201EA9123C65855CA392A771 /* Pods_TranslateBar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2EF2583E33E48E9A043C650 /* Pods_TranslateBar.framework */; };
 		A10E12BA2189032100E15C2F /* RxCollectionViewDelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10E12B92189032000E15C2F /* RxCollectionViewDelegateProxy.swift */; };
+		A1134A0F21979C63000BFBF2 /* TableCellViewAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1134A0E21979C63000BFBF2 /* TableCellViewAction.swift */; };
+		A1134A1221979C84000BFBF2 /* TranslationTableCellViewAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1134A1121979C84000BFBF2 /* TranslationTableCellViewAction.swift */; };
 		A120EA3321920CAC0063FE14 /* LimitedTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A120EA3221920CAC0063FE14 /* LimitedTextView.swift */; };
 		A120EA35219215480063FE14 /* IgnoreScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A120EA34219215480063FE14 /* IgnoreScrollView.swift */; };
 		A14B2335219642DF00C39CD8 /* Configurable+Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14B2334219642DF00C39CD8 /* Configurable+Reusable.swift */; };
+		A14B233A21970B8D00C39CD8 /* DictionaryArticleCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14B233921970B8D00C39CD8 /* DictionaryArticleCellView.swift */; };
+		A14B233E219746BD00C39CD8 /* SelfSizedTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14B233D219746BD00C39CD8 /* SelfSizedTableView.swift */; };
 		A14BB0F92194CC0900519B0D /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14BB0F82194CC0900519B0D /* AppView.swift */; };
 		A16488DD2194E7F800C00E4C /* SVSizedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16488DC2194E7F800C00E4C /* SVSizedView.swift */; };
 		A16488DF219616A900C00E4C /* MainScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16488DE219616A900C00E4C /* MainScrollView.swift */; };
@@ -28,6 +32,9 @@
 		A17AB1DD2185094C00E14D15 /* BottomBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17AB1DC2185094C00E14D15 /* BottomBar.swift */; };
 		A17AB1DF21850E6900E14D15 /* LanguageSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17AB1DE21850E6900E14D15 /* LanguageSearch.swift */; };
 		A17AB1E22185136B00E14D15 /* TranslationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17AB1E12185136B00E14D15 /* TranslationView.swift */; };
+		A197F01821974D2500B20C79 /* TranslationCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A197F01721974D2500B20C79 /* TranslationCellView.swift */; };
+		A197F01A21975E2E00B20C79 /* ApplyOrHide.swift in Sources */ = {isa = PBXBuildFile; fileRef = A197F01921975E2E00B20C79 /* ApplyOrHide.swift */; };
+		A197F01C2197863700B20C79 /* NSAttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = A197F01B2197863700B20C79 /* NSAttributedString.swift */; };
 		A1A4804B217D28A3003FF5B8 /* SwiftStandartExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A48033217D28A3003FF5B8 /* SwiftStandartExtensions.swift */; };
 		A1A4804C217D28A3003FF5B8 /* ITSwitch+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A48035217D28A3003FF5B8 /* ITSwitch+Rx.swift */; };
 		A1A4804D217D28A3003FF5B8 /* SettingsService+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A48037217D28A3003FF5B8 /* SettingsService+Rx.swift */; };
@@ -95,9 +102,13 @@
 		5603A2F3FB34E27C5EEAD0A8 /* Pods-TranslateBar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TranslateBar.release.xcconfig"; path = "Pods/Target Support Files/Pods-TranslateBar/Pods-TranslateBar.release.xcconfig"; sourceTree = "<group>"; };
 		91D99F40A55F48D092E9961E /* Pods-TranslateBarTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TranslateBarTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TranslateBarTests/Pods-TranslateBarTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A10E12B92189032000E15C2F /* RxCollectionViewDelegateProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxCollectionViewDelegateProxy.swift; sourceTree = "<group>"; };
+		A1134A0E21979C63000BFBF2 /* TableCellViewAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableCellViewAction.swift; sourceTree = "<group>"; };
+		A1134A1121979C84000BFBF2 /* TranslationTableCellViewAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationTableCellViewAction.swift; sourceTree = "<group>"; };
 		A120EA3221920CAC0063FE14 /* LimitedTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LimitedTextView.swift; sourceTree = "<group>"; };
 		A120EA34219215480063FE14 /* IgnoreScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IgnoreScrollView.swift; sourceTree = "<group>"; };
 		A14B2334219642DF00C39CD8 /* Configurable+Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Configurable+Reusable.swift"; sourceTree = "<group>"; };
+		A14B233921970B8D00C39CD8 /* DictionaryArticleCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryArticleCellView.swift; sourceTree = "<group>"; };
+		A14B233D219746BD00C39CD8 /* SelfSizedTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfSizedTableView.swift; sourceTree = "<group>"; };
 		A14BB0F82194CC0900519B0D /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
 		A16488DC2194E7F800C00E4C /* SVSizedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SVSizedView.swift; sourceTree = "<group>"; };
 		A16488DE219616A900C00E4C /* MainScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScrollView.swift; sourceTree = "<group>"; };
@@ -114,6 +125,9 @@
 		A17AB1DC2185094C00E14D15 /* BottomBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomBar.swift; sourceTree = "<group>"; };
 		A17AB1DE21850E6900E14D15 /* LanguageSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageSearch.swift; sourceTree = "<group>"; };
 		A17AB1E12185136B00E14D15 /* TranslationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationView.swift; sourceTree = "<group>"; };
+		A197F01721974D2500B20C79 /* TranslationCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationCellView.swift; sourceTree = "<group>"; };
+		A197F01921975E2E00B20C79 /* ApplyOrHide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyOrHide.swift; sourceTree = "<group>"; };
+		A197F01B2197863700B20C79 /* NSAttributedString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSAttributedString.swift; sourceTree = "<group>"; };
 		A1A48033217D28A3003FF5B8 /* SwiftStandartExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftStandartExtensions.swift; sourceTree = "<group>"; };
 		A1A48035217D28A3003FF5B8 /* ITSwitch+Rx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ITSwitch+Rx.swift"; sourceTree = "<group>"; };
 		A1A48037217D28A3003FF5B8 /* SettingsService+Rx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SettingsService+Rx.swift"; sourceTree = "<group>"; };
@@ -203,6 +217,23 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		A1134A1021979C6D000BFBF2 /* TableAction */ = {
+			isa = PBXGroup;
+			children = (
+				A1134A0E21979C63000BFBF2 /* TableCellViewAction.swift */,
+				A1134A1121979C84000BFBF2 /* TranslationTableCellViewAction.swift */,
+			);
+			path = TableAction;
+			sourceTree = "<group>";
+		};
+		A14B233821970B6800C39CD8 /* DictionaryArticle */ = {
+			isa = PBXGroup;
+			children = (
+				A14B233921970B8D00C39CD8 /* DictionaryArticleCellView.swift */,
+			);
+			path = DictionaryArticle;
+			sourceTree = "<group>";
+		};
 		A16D7B4121851C6F00434A7D /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
@@ -261,11 +292,21 @@
 			path = Translation;
 			sourceTree = "<group>";
 		};
+		A197F01621974D0900B20C79 /* TranslationItem */ = {
+			isa = PBXGroup;
+			children = (
+				A197F01721974D2500B20C79 /* TranslationCellView.swift */,
+			);
+			path = TranslationItem;
+			sourceTree = "<group>";
+		};
 		A1A4802B217D28A3003FF5B8 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				A197F01B2197863700B20C79 /* NSAttributedString.swift */,
 				A17AB1D62184FD9B00E14D15 /* AppKitExtensions.swift */,
 				A1A48033217D28A3003FF5B8 /* SwiftStandartExtensions.swift */,
+				A197F01921975E2E00B20C79 /* ApplyOrHide.swift */,
 				A1A48034217D28A3003FF5B8 /* Rx */,
 			);
 			path = Extensions;
@@ -340,6 +381,7 @@
 			children = (
 				A1A48065217D2A22003FF5B8 /* ViewModelType.swift */,
 				A14B2334219642DF00C39CD8 /* Configurable+Reusable.swift */,
+				A1134A1021979C6D000BFBF2 /* TableAction */,
 			);
 			path = MVVM;
 			sourceTree = "<group>";
@@ -557,6 +599,7 @@
 				A1D9A84A218F9D530051A9D0 /* SelfSizedTextView.swift */,
 				A1D9A854218F9DF30051A9D0 /* SelfSizedScrollView.swift */,
 				A1D9A8632190F6930051A9D0 /* SelfSizedCollectionView.swift */,
+				A14B233D219746BD00C39CD8 /* SelfSizedTableView.swift */,
 			);
 			path = SelfSized;
 			sourceTree = "<group>";
@@ -584,6 +627,8 @@
 		A1D9A862218FA0120051A9D0 /* Translation */ = {
 			isa = PBXGroup;
 			children = (
+				A197F01621974D0900B20C79 /* TranslationItem */,
+				A14B233821970B6800C39CD8 /* DictionaryArticle */,
 				A1D9A861218FA0050051A9D0 /* SupportedLanguages */,
 			);
 			path = Translation;
@@ -806,6 +851,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1134A1221979C84000BFBF2 /* TranslationTableCellViewAction.swift in Sources */,
 				A16D7B492185263C00434A7D /* TranslateUseCase.swift in Sources */,
 				A16D7B4621851C6F00434A7D /* TranslateProvider.swift in Sources */,
 				A1A4804F217D28A3003FF5B8 /* KeyHolderExtension+Rx.swift in Sources */,
@@ -820,6 +866,7 @@
 				A10E12BA2189032100E15C2F /* RxCollectionViewDelegateProxy.swift in Sources */,
 				A1A4809E217D2AA7003FF5B8 /* TranslateDirection.swift in Sources */,
 				A1A48053217D28A3003FF5B8 /* CustomNSSegmentedControl+Rx.swift in Sources */,
+				A197F01A21975E2E00B20C79 /* ApplyOrHide.swift in Sources */,
 				A1A480A1217D2AA7003FF5B8 /* FixedQueue.swift in Sources */,
 				A1A48055217D28A3003FF5B8 /* NSButton+Rx.swift in Sources */,
 				A17AB1E22185136B00E14D15 /* TranslationView.swift in Sources */,
@@ -850,23 +897,28 @@
 				A1A48050217D28A3003FF5B8 /* NSResponder+Rx.swift in Sources */,
 				A16D7B4B2185268100434A7D /* SupportedLanguagesUseCase.swift in Sources */,
 				A1D9A8642190F6930051A9D0 /* SelfSizedCollectionView.swift in Sources */,
+				A197F01C2197863700B20C79 /* NSAttributedString.swift in Sources */,
 				A17AB1D52184FCD800E14D15 /* NSCollectionView+Rx.swift in Sources */,
 				A120EA35219215480063FE14 /* IgnoreScrollView.swift in Sources */,
+				A1134A0F21979C63000BFBF2 /* TableCellViewAction.swift in Sources */,
 				A1A4804E217D28A3003FF5B8 /* NSPopover+Rx.swift in Sources */,
 				A1A48063217D2950003FF5B8 /* Settings.swift in Sources */,
 				A1A4804D217D28A3003FF5B8 /* SettingsService+Rx.swift in Sources */,
 				A1A48052217D28A3003FF5B8 /* RxTableViewDataSource.swift in Sources */,
 				A17AB1DD2185094C00E14D15 /* BottomBar.swift in Sources */,
+				A14B233A21970B8D00C39CD8 /* DictionaryArticleCellView.swift in Sources */,
 				A1D50B4A21867C6900949FC7 /* ObservableTypeExtension.swift in Sources */,
 				A1A48057217D28A3003FF5B8 /* NSSegmentedControl+Rx.swift in Sources */,
 				A1A480A2217D2AA7003FF5B8 /* Language.swift in Sources */,
 				A17AB1D42184FCD800E14D15 /* RxCollectionViewDataSource.swift in Sources */,
+				A197F01821974D2500B20C79 /* TranslationCellView.swift in Sources */,
 				A1A4804B217D28A3003FF5B8 /* SwiftStandartExtensions.swift in Sources */,
 				A1D50B47218650AB00949FC7 /* TranslateViewModel.swift in Sources */,
 				A1C38D90217BDF0E002B4995 /* Coordinator.swift in Sources */,
 				A17AB1DB2185082B00E14D15 /* TopBar.swift in Sources */,
 				A14B2335219642DF00C39CD8 /* Configurable+Reusable.swift in Sources */,
 				A1A48051217D28A3003FF5B8 /* NSTableView+Rx.swift in Sources */,
+				A14B233E219746BD00C39CD8 /* SelfSizedTableView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

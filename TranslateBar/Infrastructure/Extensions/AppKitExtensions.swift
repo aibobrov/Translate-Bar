@@ -98,3 +98,11 @@ extension NSStackView {
         superview?.invalidateIntrinsicContentSize()
     }
 }
+
+extension NSTableCellView {
+    open override func invalidateIntrinsicContentSize() {
+        super.invalidateIntrinsicContentSize()
+        superview?.invalidateIntrinsicContentSize()
+        enclosingScrollView?.invalidateIntrinsicContentSize()
+    }
+}

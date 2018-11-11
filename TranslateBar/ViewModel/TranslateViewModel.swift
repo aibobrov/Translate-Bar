@@ -38,6 +38,17 @@ final class TranslateViewModel {
             .bind(to: supportedLanguages)
             .disposed(by: disposeBag)
         setupPickersActivity()
+        NotificationCenter.default.rx
+            .notification(.linkClicked)
+            .map { $0.object as! OnLinkActionQuery } // swiftlint:disable:this force_cast
+            .subscribe(onNext: { [unowned self] query in
+                if query.action == .swap {
+                    rx_swap(self.inputText, self.outputText)
+                    self.swapLanguages()
+                }
+                self.inputText.accept(query.query)
+            })
+            .disposed(by: disposeBag)
     }
 
     var isPickerNeeded: Driver<Bool> {
@@ -70,6 +81,7 @@ extension TranslateViewModel: ViewModelType {
     struct TranslationDrivers {
         let limitationText: Driver<String>
         let clearButtonHidden: Driver<Bool>
+        let dictionaryArticle: Driver<[DictionaryArticle]>
     }
 
     struct PickerDrivers {
@@ -109,7 +121,7 @@ extension TranslateViewModel {
         let textTranslation = translation(source: sourceLanguageIndexDriver,
                                           target: targetLanguageIndexDriver,
                                           autoDetectedLanguage: autoDetectedLanguage,
-                                          inputText: inputTextDriver.throttle(1, latest: true))
+                                          inputText: inputTextDriver.throttle(1))
         let languageChanged = Driver.merge(sourceLanguageIndexDriver, targetLanguageIndexDriver)
         Driver.merge(input.clearButtonClicked.map { _ in "" },
                      inputTextDriver.filter { $0.isEmpty },
@@ -128,7 +140,32 @@ extension TranslateViewModel {
             .disposed(by: disposeBag)
 
         return TranslationDrivers(limitationText: limitationText,
-                                  clearButtonHidden: clearButtonHidden)
+                                  clearButtonHidden: clearButtonHidden,
+                                  dictionaryArticle: article(autoDetectedLanguage: autoDetectedLanguage))
+    }
+
+    private func article(autoDetectedLanguage: Driver<AutoDetectedLanguage>) -> Driver<[DictionaryArticle]> {
+        let words = inputText.asDriver().map { $0.words }
+        let word = words.filter { $0.count == 1 }.map { $0.first! }
+        return Driver.merge(
+            inputText.asDriver().map { _ in [] },
+            dictionaryArticle(source: sourceLanguageIndex.asDriver(),
+                              target: targetLanguageIndex.asDriver(),
+                              autoDetectedLanguage: autoDetectedLanguage,
+                              word: word.debounce(0.5))
+        )
+    }
+
+    private func dictionaryArticle(source sourceLanguageIndex: Driver<Int>, target targetLanguageIndex: Driver<Int>, autoDetectedLanguage: Driver<AutoDetectedLanguage>, word: Driver<String>) -> Driver<[DictionaryArticle]> {
+        let sourceLanguage = Driver.combineLatest(sourceLanguageIndex, autoDetectedLanguage, sourceLanguagesQueue.asDriver())
+            .map { 0 ..< self.sourceLanguagesQueue.value.count ~= $0.0 ? self.sourceLanguagesQueue.value[$0.0] as LanguageProtocol : $0.1 as LanguageProtocol }
+            .distinctUntilChanged { $0.short == $1.short }
+        let targetLanguage = Driver.combineLatest(targetLanguageIndex, targetLanguagesQueue.asDriver())
+            .map { self.targetLanguagesQueue.value[$0.0] as LanguageProtocol }
+        return Driver.combineLatest(word, sourceLanguage, targetLanguage)
+            .flatMapLatest { word, source, target in
+                self.dictionaryUseCase.lookup(from: source, to: target, text: word).asDriver(onErrorJustReturn: [])
+            }
     }
 
     private func translation(source sourceLanguageIndex: Driver<Int>, target targetLanguageIndex: Driver<Int>, autoDetectedLanguage: Driver<AutoDetectedLanguage>, inputText: Driver<String>) -> Driver<Translation> {

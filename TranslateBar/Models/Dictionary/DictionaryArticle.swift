@@ -12,6 +12,7 @@ public struct DictionaryArticle: Codable {
     let text: String
     var partOfSpeech: String?
     var transcription: String?
+    var genus: String?
 
     struct DictionaryTranslation: Codable {
         let text: String
@@ -38,5 +39,6 @@ public struct DictionaryArticle: Codable {
         case partOfSpeech = "pos"
         case transcription = "ts"
         case translations = "tr"
+        case genus = "gen"
     }
 }

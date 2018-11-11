@@ -15,9 +15,17 @@ class TranslationInput: SVSizedView {
     @IBOutlet var closeButton: NSButton!
 }
 
-class TranslationOutput: NSStackView {
+class TranslationTextOutput: SVSizedView {
     @IBOutlet var textView: NSTextView!
+}
+
+class TranslationArticleOutput: SVSizedView {
     @IBOutlet var contentTableView: NSTableView!
+}
+
+class TranslationOutput: NSStackView {
+    @IBOutlet var translationText: TranslationTextOutput!
+    @IBOutlet var translationArticle: TranslationArticleOutput!
 }
 
 class TranslationView: NSStackView {

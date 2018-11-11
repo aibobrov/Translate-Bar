@@ -7,62 +7,72 @@
 //
 
 import Cocoa
+import RxCocoa
+import RxSwift
 
-open class RxTableViewDataSource<E>: NSObject, NSTableViewDataSource, NSTableViewDelegate {
-    public typealias TableViewFactory<E> = (RxTableViewDataSource<E>, NSTableView, Int, E) -> NSView?
-    public typealias TableViewConfig<E, ViewType: NSTableCellView> = (ViewType, Int, E) -> Void
+typealias NSTableViewCoordinator = NSTableViewDelegate & NSTableViewDataSource
 
-    public private(set) var items: [E] = []
+extension NSTableView: HasDelegate {}
 
-    public var tableView: NSTableView?
-
-    public let viewIdentifier: String
-    public let viewFactory: TableViewFactory<E>
-
-    public weak var delegate: NSTableViewDelegate?
-    public weak var dataSource: NSTableViewDataSource?
-
-    public init(viewIdentifier: String, viewFactory: @escaping TableViewFactory<E>) {
-        self.viewIdentifier = viewIdentifier
-        self.viewFactory = viewFactory
-    }
-
-    public init<ViewType>(viewIdentifier: String, viewType: ViewType.Type, viewConfig: @escaping TableViewConfig<E, ViewType>) where ViewType: NSTableCellView {
-        self.viewIdentifier = viewIdentifier
-        viewFactory = { ds, tv, ip, model in
-            let view = tv.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: viewIdentifier), owner: ds) as! ViewType // swiftlint:disable:this force_cast
-            viewConfig(view, ip, model)
-            return view
+fileprivate extension NSTableView {
+    var coordinator: NSTableViewCoordinator? {
+        get {
+            return delegate as? NSTableViewCoordinator ?? dataSource as? NSTableViewCoordinator
+        }
+        set {
+            delegate = newValue
+            dataSource = newValue
         }
     }
+}
 
-    public func numberOfRows(in tableView: NSTableView) -> Int {
+public protocol RxTableViewDataSourceType {
+    associatedtype Element
+    func tableView(_ tableView: NSTableView, observedEvent: Event<[Element]>)
+}
+
+class RxTableViewDataSource<E>:
+    DelegateProxy<NSTableView, NSTableViewCoordinator>,
+    DelegateProxyType,
+    RxTableViewDataSourceType, NSTableViewCoordinator {
+    public typealias TableViewFactory<E> = (RxTableViewDataSource<E>, NSTableView, Int, E) -> NSView?
+
+    public typealias Element = E
+    public static func registerKnownImplementations() {
+        register(make: { RxTableViewDataSource<E>(parentObject: $0) })
+    }
+
+    public static func currentDelegate(for object: NSTableView) -> NSTableViewCoordinator? {
+        return object.coordinator
+    }
+
+    public static func setCurrentDelegate(_ delegate: NSTableViewCoordinator?, to object: NSTableView) {
+        object.coordinator = delegate
+    }
+
+    public private(set) var items: [E] = []
+    public var viewFactory: TableViewFactory<E>!
+
+    init(parentObject: NSTableView) {
+        super.init(parentObject: parentObject, delegateProxy: RxTableViewDataSource<E>.self)
+    }
+
+    func applyChanges(_ tableView: NSTableView, items: [E]) {
+        self.items = items
+        tableView.reloadData()
+    }
+
+    func tableView(_ tableView: NSTableView, observedEvent: Event<[E]>) {
+        Binder(self) { ds, items in
+            ds.applyChanges(tableView, items: items)
+        }.on(observedEvent)
+    }
+
+    func numberOfRows(in tableView: NSTableView) -> Int {
         return items.count
     }
 
-    public func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
+    func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
         return viewFactory(self, tableView, row, items[row])
-    }
-
-    open override func responds(to aSelector: Selector!) -> Bool {
-        if RxTableViewDataSource.instancesRespond(to: aSelector) {
-            return true
-        } else if let delegate = delegate {
-            return delegate.responds(to: aSelector)
-        } else if let dataSource = dataSource {
-            return dataSource.responds(to: aSelector)
-        } else {
-            return false
-        }
-    }
-
-    open override func forwardingTarget(for aSelector: Selector!) -> Any? {
-        return delegate ?? dataSource
-    }
-
-    func applyChanges(items: [E]) {
-        guard let tableView = tableView else { return }
-        self.items = items
-        tableView.reloadData()
     }
 }

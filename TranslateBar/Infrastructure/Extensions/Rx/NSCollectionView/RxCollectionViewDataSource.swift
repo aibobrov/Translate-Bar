@@ -22,8 +22,8 @@ open class RxCollectionViewDataSource<E>:
     RxCollectionViewDataSourceType,
     NSCollectionViewDataSource {
     public func collectionView(_ collectionView: NSCollectionView, observedEvent: Event<[E]>) {
-        Binder(self) { _, items in
-            self.applyChanges(items: items)
+        Binder(self) { ds, items in
+            ds.applyChanges(collectionView, items: items)
         }.on(observedEvent)
     }
 
@@ -37,12 +37,9 @@ open class RxCollectionViewDataSource<E>:
 
     public private(set) var items: [E] = []
 
-    public weak var collectionView: NSCollectionView?
-
     public var itemFactory: CollectionItemFactory<E>!
 
-    internal init(parentObject: NSCollectionView) {
-        collectionView = parentObject
+    init(parentObject: NSCollectionView) {
         super.init(parentObject: parentObject, delegateProxy: RxCollectionViewDataSource<E>.self)
     }
 
@@ -58,8 +55,7 @@ open class RxCollectionViewDataSource<E>:
         return itemFactory(self, collectionView, indexPath, items[indexPath.item])
     }
 
-    func applyChanges(items: [E]) {
-        guard let collectionView = collectionView else { return }
+    func applyChanges(_ collectionView: NSCollectionView, items: [E]) {
         self.items = items
         collectionView.reloadData()
     }

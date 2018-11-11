@@ -15,7 +15,7 @@ class RxTextViewDelegateProxy: DelegateProxy<NSTextView, NSTextViewDelegate>,
     NSTextViewDelegate {
     public private(set) weak var textView: NSTextView?
     fileprivate let textSubject = PublishSubject<String?>()
-
+    fileprivate let lickSubject = PublishSubject<(Any, Int)>()
     init(textView: NSTextView) {
         self.textView = textView
         super.init(parentObject: textView, delegateProxy: RxTextViewDelegateProxy.self)
@@ -40,6 +40,11 @@ class RxTextViewDelegateProxy: DelegateProxy<NSTextView, NSTextViewDelegate>,
         textSubject.on(.next(nextValue))
         _forwardToDelegate?.controlTextDidChange?(notification)
     }
+
+    func textView(_ textView: NSTextView, clickedOnLink link: Any, at charIndex: Int) -> Bool {
+        lickSubject.onNext((link, charIndex)) // swiftlint:disable:this force_cast
+        return true
+    }
 }
 
 extension Reactive where Base: NSTextView {
@@ -60,5 +65,10 @@ extension Reactive where Base: NSTextView {
         }
 
         return ControlProperty(values: source, valueSink: observer)
+    }
+
+    public var linkClicked: Observable<(Any, Int)> {
+        let delegate = RxTextViewDelegateProxy.proxy(for: base)
+        return delegate.lickSubject.asObservable()
     }
 }

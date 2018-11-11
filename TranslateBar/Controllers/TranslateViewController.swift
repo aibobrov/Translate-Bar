@@ -31,13 +31,17 @@ class TranslateViewController: NSViewController {
         appView.translationView.input.textView.maxCharactersCount = viewModel.maxTextCharactersCount
 
         appView.translationView.input.textView.font = FontFamily.Roboto.regular.font(size: 13)
-        appView.translationView.output.textView.font = FontFamily.Roboto.regular.font(size: 13)
+        appView.translationView.output.translationText.textView.font = FontFamily.Roboto.regular.font(size: 13)
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         createBindings()
         apply(viewModel.transform(input: input()))
+        appView.bottomBar.reloadButton.rx.tap.subscribe { _ in
+            self.appView.invalidateIntrinsicContentSize()
+            self.appView.layoutSubtreeIfNeeded()
+        }.disposed(by: disposeBag)
     }
 
     private func input() -> TranslateViewModel.Input {
@@ -70,7 +74,7 @@ class TranslateViewController: NSViewController {
         viewModel.isPickerNeeded.drive(appView.translationView.rx.isHidden).disposed(by: disposeBag)
 
         (appView.translationView.input.textView.rx.text.orEmpty <-> viewModel.inputText).disposed(by: disposeBag)
-        (appView.translationView.output.textView.rx.text.orEmpty <-> viewModel.outputText).disposed(by: disposeBag)
+        (appView.translationView.output.translationText.textView.rx.text.orEmpty <-> viewModel.outputText).disposed(by: disposeBag)
         viewModel.outputText.map { $0.isEmpty }.distinctUntilChanged()
             .bind(to: appView.translationView.output.rx.isHidden).disposed(by: disposeBag)
     }
@@ -89,6 +93,14 @@ extension TranslateViewController {
         translation.clearButtonHidden
             .drive(appView.translationView.input.closeButton.rx.isHidden)
             .disposed(by: disposeBag)
+        let article = translation.dictionaryArticle
+        article.map { $0.isEmpty }.drive(appView.translationView.output.translationArticle.rx.isHidden).disposed(by: disposeBag)
+        article.drive(appView.translationView.output.translationArticle.contentTableView.rx.items) { _, tv, _, article in
+            let view = tv.makeView(ofType: DictionaryArticleCellView.self)
+            view.configure(with: article)
+            return view
+        }
+        .disposed(by: disposeBag)
     }
 
     private func apply(pickerDrivers picker: TranslateViewModel.PickerDrivers) {
