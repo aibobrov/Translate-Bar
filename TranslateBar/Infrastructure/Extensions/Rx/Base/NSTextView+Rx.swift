@@ -42,7 +42,7 @@ class RxTextViewDelegateProxy: DelegateProxy<NSTextView, NSTextViewDelegate>,
     }
 
     func textView(_ textView: NSTextView, clickedOnLink link: Any, at charIndex: Int) -> Bool {
-        lickSubject.onNext((link, charIndex)) // swiftlint:disable:this force_cast
+        lickSubject.onNext((link, charIndex))
         return true
     }
 }
@@ -70,5 +70,11 @@ extension Reactive where Base: NSTextView {
     public var linkClicked: Observable<(Any, Int)> {
         let delegate = RxTextViewDelegateProxy.proxy(for: base)
         return delegate.lickSubject.asObservable()
+    }
+
+    public var attributedString: Binder<NSAttributedString> {
+        return Binder(base) { textView, attributedString in
+            textView.textStorage?.setAttributedString(attributedString)
+        }
     }
 }

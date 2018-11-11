@@ -9,7 +9,7 @@
 import Moya
 import RxSwift
 
-public class DictionaryProvider: DictionaryUseCase {
+public final class DictionaryProvider: DictionaryUseCase {
     private let _provider = MoyaProvider<YandexDictionary>()
     private let _supportedLanguages = BehaviorSubject<SupportedLanguages>(value: SupportedLanguages())
     private var _supportedLanguagesDisposable: Disposable?

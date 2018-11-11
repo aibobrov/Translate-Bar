@@ -15,7 +15,11 @@ class TranslateViewController: NSViewController {
     weak var coordinator: AppCoordinator?
 
     private let disposeBag = DisposeBag()
-    private let viewModel = TranslateViewModel(translateUseCase: TranslateProvider(), dictionaryUseCase: DictionaryProvider())
+    private let viewModel = TranslateViewModel(
+        translateUseCase: TranslateProvider(),
+        dictionaryUseCase: DictionaryProvider(),
+        spellerUseCase: SpellerProvider()
+    )
 
     convenience init(coordinator: AppCoordinator) {
         self.init()
@@ -47,12 +51,13 @@ class TranslateViewController: NSViewController {
     private func input() -> TranslateViewModel.Input {
         let languagePickerQuery = appView.languagePick.searchTextField.rx.text.orEmpty
         let languagePickerSelectedIndex = appView.languagePick.contentCollectionView.rx.itemSelected.asDriverOnErrorJustComplete()
-
+        let suggenstionLinkClicked = appView.translationView.input.suggestionTextView.rx.linkClicked.map { $0.0 as! String }
         return TranslateViewModel.Input(
             clearButtonClicked: appView.translationView.input.closeButton.rx.controlEvent.asDriver(),
             swapButtonClicked: appView.topBar.swapButton.rx.controlEvent.asDriver(),
             languagePickerQuery: languagePickerQuery.asDriver(),
-            languagePickerSelectedIndex: languagePickerSelectedIndex
+            languagePickerSelectedIndex: languagePickerSelectedIndex,
+            suggenstionLinkClicked: suggenstionLinkClicked.asDriverOnErrorJustComplete()
         )
     }
 
@@ -101,6 +106,13 @@ extension TranslateViewController {
             return view
         }
         .disposed(by: disposeBag)
+        let suggestion = translation.suggestionText
+        suggestion
+            .map { $0.string.isEmpty }
+            .distinctUntilChanged()
+            .drive(appView.translationView.input.suggestionTextView.rx.isHidden)
+            .disposed(by: disposeBag)
+        suggestion.filter { !$0.string.isEmpty }.drive(appView.translationView.input.suggestionTextView.rx.attributedString).disposed(by: disposeBag)
     }
 
     private func apply(pickerDrivers picker: TranslateViewModel.PickerDrivers) {

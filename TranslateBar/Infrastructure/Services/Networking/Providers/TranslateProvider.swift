@@ -9,7 +9,7 @@
 import Moya
 import RxSwift
 
-public class TranslateProvider: TranslateUseCase {
+public final class TranslateProvider: TranslateUseCase {
     private let _provider = MoyaProvider<YandexTranslate>()
     private let _supportedLanguages = BehaviorSubject<SupportedLanguages>(value: SupportedLanguages())
     private var _supportedLanguagesDisposable: Disposable?

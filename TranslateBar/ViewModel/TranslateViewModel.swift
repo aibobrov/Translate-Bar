@@ -28,10 +28,14 @@ final class TranslateViewModel {
     private let sourceLanguagesQueue = BehaviorRelay<FixedQueue<Language>>(value: FixedQueue<Language>(.english, .russian, .german))
     private let translateUseCase: TranslateUseCase
     private let dictionaryUseCase: DictionaryUseCase
+    private let spellerUseCase: SpellerUseCase
 
-    init(translateUseCase: TranslateUseCase, dictionaryUseCase: DictionaryUseCase) {
+    init(translateUseCase: TranslateUseCase,
+         dictionaryUseCase: DictionaryUseCase,
+         spellerUseCase: SpellerUseCase) {
         self.translateUseCase = translateUseCase
         self.dictionaryUseCase = dictionaryUseCase
+        self.spellerUseCase = spellerUseCase
 
         translateUseCase
             .supportedLanguages()
@@ -40,7 +44,7 @@ final class TranslateViewModel {
         setupPickersActivity()
         NotificationCenter.default.rx
             .notification(.linkClicked)
-            .map { $0.object as! OnLinkActionQuery } // swiftlint:disable:this force_cast
+            .map { $0.object as! OnLinkActionQuery }
             .subscribe(onNext: { [unowned self] query in
                 if query.action == .swap {
                     rx_swap(self.inputText, self.outputText)
@@ -82,6 +86,7 @@ extension TranslateViewModel: ViewModelType {
         let limitationText: Driver<String>
         let clearButtonHidden: Driver<Bool>
         let dictionaryArticle: Driver<[DictionaryArticle]>
+        let suggestionText: Driver<NSAttributedString>
     }
 
     struct PickerDrivers {
@@ -95,6 +100,7 @@ extension TranslateViewModel: ViewModelType {
         let swapButtonClicked: Driver<()>
         let languagePickerQuery: Driver<String>
         let languagePickerSelectedIndex: Driver<IndexPath>
+        let suggenstionLinkClicked: Driver<String>
     }
 
     struct Output {
@@ -118,6 +124,18 @@ extension TranslateViewModel {
         let clearButtonHidden = Driver.merge(input.clearButtonClicked.map { _ in true },
                                              inputTextDriver.map { $0.isEmpty })
         let autoDetectedLanguage = self.autoDetectedLanguage()
+        input.suggenstionLinkClicked
+            .map { text in
+                let result = text.split(separator: TranslateClickAction.separator).map(String.init)
+                let action = TranslateClickAction(rawValue: result.last!)!
+                let query = String(result.dropLast().joined())
+                return OnLinkActionQuery(action: action, query: query)
+            }
+
+            .drive(onNext: { object in
+                NotificationCenter.default.post(name: .linkClicked, object: object)
+            })
+            .disposed(by: disposeBag)
         let textTranslation = translation(source: sourceLanguageIndexDriver,
                                           target: targetLanguageIndexDriver,
                                           autoDetectedLanguage: autoDetectedLanguage,
@@ -139,9 +157,42 @@ extension TranslateViewModel {
             .drive(onNext: swapLanguages)
             .disposed(by: disposeBag)
 
+        let sourceLanguage = Driver.combineLatest(sourceLanguageIndex.asDriver(), autoDetectedLanguage.asDriver(), sourceLanguagesQueue.asDriver())
+            .map { 0 ..< self.sourceLanguagesQueue.value.count ~= $0.0 ? self.sourceLanguagesQueue.value[$0.0] as LanguageProtocol : $0.1 as LanguageProtocol }
+            .distinctUntilChanged { $0.short == $1.short }
+
+        let mistakes = Driver.combineLatest(inputTextDriver.throttle(1.5), sourceLanguage).filter { $0.0.count <= 60 }.flatMapLatest { text, language in
+            return self.spellerUseCase.mistakes(for: text, language: language).asDriver(onErrorJustReturn: [])
+        }
+        let suggestion = mistakes.filter { !$0.isEmpty }
+            .withLatestFrom(inputTextDriver) { (mistakes: [SpellMistake], text: String) -> String in
+                var string = text
+                for mistake in mistakes.reversed() {
+                    guard let suggestion = mistake.values.first else { continue }
+                    let start = string.index(string.startIndex, offsetBy: mistake.position)
+                    let end = string.index(start, offsetBy: mistake.length)
+                    string.replaceSubrange(start ..< end, with: suggestion)
+                }
+                return string
+            }
+            .map { NSAttributedString(string: $0).applying(.link("\($0)\(TranslateClickAction.separator)\(TranslateClickAction.keep.rawValue)")) }
+            .map { NSAttributedString(string: "Did you mean ") + $0 + NSAttributedString(string: "?") }
+        let suggestionAttributedString = Driver.merge(inputTextDriver.map { _ in NSAttributedString(string: "") }, suggestion)
         return TranslationDrivers(limitationText: limitationText,
                                   clearButtonHidden: clearButtonHidden,
-                                  dictionaryArticle: article(autoDetectedLanguage: autoDetectedLanguage))
+                                  dictionaryArticle: article(autoDetectedLanguage: autoDetectedLanguage),
+                                  suggestionText: suggestionAttributedString)
+    }
+
+    private func suggestionsAttributedText(_ value: ([SpellMistake], String)) -> String {
+        var string = value.1
+        for mistake in value.0 {
+            guard let suggestion = mistake.values.first else { continue }
+            let start = string.index(string.startIndex, offsetBy: mistake.position)
+            let end = string.index(start, offsetBy: mistake.length)
+            string.replaceSubrange(start ..< end, with: suggestion)
+        }
+        return string
     }
 
     private func article(autoDetectedLanguage: Driver<AutoDetectedLanguage>) -> Driver<[DictionaryArticle]> {

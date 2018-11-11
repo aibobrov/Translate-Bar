@@ -11,6 +11,10 @@
 		A10E12BA2189032100E15C2F /* RxCollectionViewDelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10E12B92189032000E15C2F /* RxCollectionViewDelegateProxy.swift */; };
 		A1134A0F21979C63000BFBF2 /* TableCellViewAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1134A0E21979C63000BFBF2 /* TableCellViewAction.swift */; };
 		A1134A1221979C84000BFBF2 /* TranslationTableCellViewAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1134A1121979C84000BFBF2 /* TranslationTableCellViewAction.swift */; };
+		A1134A142198707D000BFBF2 /* SpellerProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1134A132198707D000BFBF2 /* SpellerProvider.swift */; };
+		A1134A162198708D000BFBF2 /* YandexSpeller.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1134A152198708D000BFBF2 /* YandexSpeller.swift */; };
+		A1134A19219873E4000BFBF2 /* SpellMistake.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1134A18219873E4000BFBF2 /* SpellMistake.swift */; };
+		A1134A1B219874E9000BFBF2 /* SpellerUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1134A1A219874E9000BFBF2 /* SpellerUseCase.swift */; };
 		A120EA3321920CAC0063FE14 /* LimitedTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A120EA3221920CAC0063FE14 /* LimitedTextView.swift */; };
 		A120EA35219215480063FE14 /* IgnoreScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A120EA34219215480063FE14 /* IgnoreScrollView.swift */; };
 		A14B2335219642DF00C39CD8 /* Configurable+Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14B2334219642DF00C39CD8 /* Configurable+Reusable.swift */; };
@@ -104,6 +108,10 @@
 		A10E12B92189032000E15C2F /* RxCollectionViewDelegateProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxCollectionViewDelegateProxy.swift; sourceTree = "<group>"; };
 		A1134A0E21979C63000BFBF2 /* TableCellViewAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableCellViewAction.swift; sourceTree = "<group>"; };
 		A1134A1121979C84000BFBF2 /* TranslationTableCellViewAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationTableCellViewAction.swift; sourceTree = "<group>"; };
+		A1134A132198707D000BFBF2 /* SpellerProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpellerProvider.swift; sourceTree = "<group>"; };
+		A1134A152198708D000BFBF2 /* YandexSpeller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YandexSpeller.swift; sourceTree = "<group>"; };
+		A1134A18219873E4000BFBF2 /* SpellMistake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpellMistake.swift; sourceTree = "<group>"; };
+		A1134A1A219874E9000BFBF2 /* SpellerUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpellerUseCase.swift; sourceTree = "<group>"; };
 		A120EA3221920CAC0063FE14 /* LimitedTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LimitedTextView.swift; sourceTree = "<group>"; };
 		A120EA34219215480063FE14 /* IgnoreScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IgnoreScrollView.swift; sourceTree = "<group>"; };
 		A14B2334219642DF00C39CD8 /* Configurable+Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Configurable+Reusable.swift"; sourceTree = "<group>"; };
@@ -226,6 +234,14 @@
 			path = TableAction;
 			sourceTree = "<group>";
 		};
+		A1134A17219873C6000BFBF2 /* Speller */ = {
+			isa = PBXGroup;
+			children = (
+				A1134A18219873E4000BFBF2 /* SpellMistake.swift */,
+			);
+			path = Speller;
+			sourceTree = "<group>";
+		};
 		A14B233821970B6800C39CD8 /* DictionaryArticle */ = {
 			isa = PBXGroup;
 			children = (
@@ -237,6 +253,7 @@
 		A16D7B4121851C6F00434A7D /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
+				A1134A1A219874E9000BFBF2 /* SpellerUseCase.swift */,
 				A16D7B4C21852A5100434A7D /* DictionaryUseCase.swift */,
 				A16D7B482185263C00434A7D /* TranslateUseCase.swift */,
 				A16D7B4A2185268100434A7D /* SupportedLanguagesUseCase.swift */,
@@ -249,6 +266,7 @@
 			children = (
 				A16D7B4321851C6F00434A7D /* DictionaryProvider.swift */,
 				A16D7B4421851C6F00434A7D /* TranslateProvider.swift */,
+				A1134A132198707D000BFBF2 /* SpellerProvider.swift */,
 			);
 			path = Providers;
 			sourceTree = "<group>";
@@ -258,6 +276,7 @@
 			children = (
 				A1A4805B217D2950003FF5B8 /* YandexTranslate.swift */,
 				A1A4805C217D2950003FF5B8 /* YandexDictionary.swift */,
+				A1134A152198708D000BFBF2 /* YandexSpeller.swift */,
 			);
 			path = Endpoints;
 			sourceTree = "<group>";
@@ -409,6 +428,7 @@
 			isa = PBXGroup;
 			children = (
 				A1A48093217D2AA7003FF5B8 /* DataStructures */,
+				A1134A17219873C6000BFBF2 /* Speller */,
 				A1A4808F217D2AA7003FF5B8 /* Translation */,
 				A1A48095217D2AA7003FF5B8 /* Language */,
 				A1A48099217D2AA7003FF5B8 /* Dictionary */,
@@ -858,7 +878,9 @@
 				A16D7B4521851C6F00434A7D /* DictionaryProvider.swift in Sources */,
 				A120EA3321920CAC0063FE14 /* LimitedTextView.swift in Sources */,
 				A1A4804C217D28A3003FF5B8 /* ITSwitch+Rx.swift in Sources */,
+				A1134A1B219874E9000BFBF2 /* SpellerUseCase.swift in Sources */,
 				A1A48061217D2950003FF5B8 /* YandexTranslate.swift in Sources */,
+				A1134A142198707D000BFBF2 /* SpellerProvider.swift in Sources */,
 				A16488DD2194E7F800C00E4C /* SVSizedView.swift in Sources */,
 				A1A48062217D2950003FF5B8 /* YandexDictionary.swift in Sources */,
 				A14BB0F92194CC0900519B0D /* AppView.swift in Sources */,
@@ -870,6 +892,7 @@
 				A1A480A1217D2AA7003FF5B8 /* FixedQueue.swift in Sources */,
 				A1A48055217D28A3003FF5B8 /* NSButton+Rx.swift in Sources */,
 				A17AB1E22185136B00E14D15 /* TranslationView.swift in Sources */,
+				A1134A19219873E4000BFBF2 /* SpellMistake.swift in Sources */,
 				A1C38D7C217BD615002B4995 /* Images.swift in Sources */,
 				A1A48066217D2A22003FF5B8 /* ViewModelType.swift in Sources */,
 				A1D9A851218F9DD90051A9D0 /* Highlightable.swift in Sources */,
@@ -878,6 +901,7 @@
 				A1C38D92217BE463002B4995 /* PopoverCoordinator.swift in Sources */,
 				A17AB1D02184FBA200E14D15 /* SupportedLanguages.swift in Sources */,
 				A1C38D7B217BD615002B4995 /* Fonts.swift in Sources */,
+				A1134A162198708D000BFBF2 /* YandexSpeller.swift in Sources */,
 				A1D9A852218F9DD90051A9D0 /* MouseTrackable.swift in Sources */,
 				A1C38D4F217BCE94002B4995 /* AppDelegate.swift in Sources */,
 				A1A48054217D28A3003FF5B8 /* RxSupportUtls.swift in Sources */,

@@ -24,7 +24,7 @@ class TranslationCellView: NSTableCellView, Configurable {
         ]
 
         textView.rx.linkClicked
-            .map { $0.0 as! String } // swiftlint:disable:this force_cast
+            .map { $0.0 as! String }
             .subscribe(onNext: { [weak sender = linkAction] text in
                 let result = text.split(separator: TranslateClickAction.separator).map(String.init)
                 let action = TranslateClickAction(rawValue: result.last!)!
@@ -51,14 +51,14 @@ class TranslationCellView: NSTableCellView, Configurable {
     private func translation(for translation: DictionaryArticle.DictionaryTranslation) -> NSAttributedString {
         let words = [translation.text] + (translation.synonyms?.map { $0.text } ?? [])
         return words
-            .map { NSMutableAttributedString(string: $0).applying(.link("\($0)\(TranslateClickAction.separator)swap")) }
+            .map { NSMutableAttributedString(string: $0).applying(.link("\($0)\(TranslateClickAction.separator)\(TranslateClickAction.swap.rawValue)")) }
             .joined(separator: ", ")
             .applying(.foregroundColor(.linkColor))
     }
 
     private func meaning(for translation: DictionaryArticle.DictionaryTranslation) -> NSAttributedString {
         return translation.meanings?.map { mean in
-            let kernel = NSMutableAttributedString(string: mean.text).applying(.link("\(mean.text)\(TranslateClickAction.separator)keep"))
+            let kernel = NSMutableAttributedString(string: mean.text).applying(.link("\(mean.text)\(TranslateClickAction.separator)\(TranslateClickAction.keep.rawValue)"))
             return NSAttributedString(string: "(") + kernel + NSAttributedString(string: ")")
         }
         .joined(separator: ", ")

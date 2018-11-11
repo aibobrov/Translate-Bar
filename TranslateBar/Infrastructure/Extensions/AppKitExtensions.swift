@@ -23,7 +23,7 @@ public extension NSResponder {
 
 extension NSApplication {
     var appDelegate: AppDelegate {
-        return NSApplication.shared.delegate as! AppDelegate // swiftlint:disable:this force_cast
+        return NSApplication.shared.delegate as! AppDelegate
     }
 }
 

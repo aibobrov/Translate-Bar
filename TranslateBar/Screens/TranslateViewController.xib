@@ -261,8 +261,86 @@
                                                                     </customView>
                                                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="wLc-Li-GpA">
                                                                         <rect key="frame" x="0.0" y="0.0" width="500" height="25"/>
+                                                                        <subviews>
+                                                                            <scrollView verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" horizontalScrollElasticity="none" verticalScrollElasticity="none" translatesAutoresizingMaskIntoConstraints="NO" id="zg2-RJ-taW" customClass="IgnoreScrollView" customModule="Translate_Bar" customModuleProvider="target">
+                                                                                <rect key="frame" x="0.0" y="4" width="500" height="17"/>
+                                                                                <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="Iq0-sh-E5Z">
+                                                                                    <rect key="frame" x="0.0" y="0.0" width="500" height="17"/>
+                                                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                                                    <subviews>
+                                                                                        <textView editable="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" findStyle="bar" spellingCorrection="YES" smartInsertDelete="YES" id="gtl-pv-cHT">
+                                                                                            <rect key="frame" x="0.0" y="0.0" width="500" height="17"/>
+                                                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                                                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                                                            <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                                            <size key="minSize" width="500" height="17"/>
+                                                                                            <size key="maxSize" width="500" height="10000000"/>
+                                                                                            <attributedString key="textStorage">
+                                                                                                <fragment content="Did you mean ....?">
+                                                                                                    <attributes>
+                                                                                                        <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                                                                        <font key="NSFont" size="13" name="Roboto-Regular"/>
+                                                                                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                                                                                            <tabStops>
+                                                                                                                <textTab alignment="left" location="28">
+                                                                                                                    <options/>
+                                                                                                                </textTab>
+                                                                                                                <textTab alignment="left" location="56">
+                                                                                                                    <options/>
+                                                                                                                </textTab>
+                                                                                                                <textTab alignment="left" location="84">
+                                                                                                                    <options/>
+                                                                                                                </textTab>
+                                                                                                                <textTab alignment="left" location="112">
+                                                                                                                    <options/>
+                                                                                                                </textTab>
+                                                                                                                <textTab alignment="left" location="140">
+                                                                                                                    <options/>
+                                                                                                                </textTab>
+                                                                                                                <textTab alignment="left" location="168">
+                                                                                                                    <options/>
+                                                                                                                </textTab>
+                                                                                                                <textTab alignment="left" location="196">
+                                                                                                                    <options/>
+                                                                                                                </textTab>
+                                                                                                                <textTab alignment="left" location="224">
+                                                                                                                    <options/>
+                                                                                                                </textTab>
+                                                                                                                <textTab alignment="left" location="252">
+                                                                                                                    <options/>
+                                                                                                                </textTab>
+                                                                                                                <textTab alignment="left" location="280">
+                                                                                                                    <options/>
+                                                                                                                </textTab>
+                                                                                                                <textTab alignment="left" location="308">
+                                                                                                                    <options/>
+                                                                                                                </textTab>
+                                                                                                                <textTab alignment="left" location="336">
+                                                                                                                    <options/>
+                                                                                                                </textTab>
+                                                                                                            </tabStops>
+                                                                                                        </paragraphStyle>
+                                                                                                    </attributes>
+                                                                                                </fragment>
+                                                                                            </attributedString>
+                                                                                            <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                                                        </textView>
+                                                                                    </subviews>
+                                                                                </clipView>
+                                                                                <constraints>
+                                                                                    <constraint firstAttribute="height" constant="17" id="DX9-GF-io6"/>
+                                                                                </constraints>
+                                                                                <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="R8S-jb-mar">
+                                                                                    <rect key="frame" x="-100" y="-100" width="15" height="25"/>
+                                                                                    <autoresizingMask key="autoresizingMask"/>
+                                                                                </scroller>
+                                                                            </scrollView>
+                                                                        </subviews>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="25" id="10C-eO-Yeh"/>
+                                                                            <constraint firstItem="zg2-RJ-taW" firstAttribute="leading" secondItem="wLc-Li-GpA" secondAttribute="leading" id="SsN-ol-xgK"/>
+                                                                            <constraint firstAttribute="trailing" secondItem="zg2-RJ-taW" secondAttribute="trailing" id="gAw-GK-Uk9"/>
+                                                                            <constraint firstItem="zg2-RJ-taW" firstAttribute="centerY" secondItem="wLc-Li-GpA" secondAttribute="centerY" id="sv4-77-0Mr"/>
                                                                         </constraints>
                                                                         <userDefinedRuntimeAttributes>
                                                                             <userDefinedRuntimeAttribute type="color" keyPath="backgroundColor">
@@ -298,6 +376,7 @@
                                                                 <connections>
                                                                     <outlet property="closeButton" destination="Fkp-2J-PcZ" id="xlL-dA-XqI"/>
                                                                     <outlet property="contentLengthField" destination="RwI-Gg-3iD" id="7Wh-eq-akj"/>
+                                                                    <outlet property="suggestionTextView" destination="gtl-pv-cHT" id="9V8-c2-Rlf"/>
                                                                     <outlet property="textView" destination="1Bl-i9-gVP" id="CQl-SR-KBN"/>
                                                                 </connections>
                                                             </customView>
