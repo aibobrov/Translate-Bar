@@ -101,6 +101,7 @@ extension TranslateViewModel: ViewModelType {
         let languagePickerQuery: Driver<String>
         let languagePickerSelectedIndex: Driver<IndexPath>
         let suggenstionLinkClicked: Driver<String>
+		let translationFromClipboardNeeded: Driver<Void>
     }
 
     struct Output {
@@ -123,6 +124,11 @@ extension TranslateViewModel {
         let limitationText = inputTextDriver.map { "\($0.count)/\(self.maxTextCharactersCount)" }
         let clearButtonHidden = Driver.merge(input.clearButtonClicked.map { _ in true },
                                              inputTextDriver.map { $0.isEmpty })
+		input.translationFromClipboardNeeded
+			.filter { Settings.shared.isAutomaticallyTranslateClipboard }
+			.map { NSPasteboard.clipboard ?? "" }
+			.drive(inputText)
+			.disposed(by: disposeBag)
         let autoDetectedLanguage = self.autoDetectedLanguage()
         input.suggenstionLinkClicked
             .map { text in

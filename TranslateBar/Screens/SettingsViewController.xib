@@ -7,12 +7,13 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="SettingsViewController" customModule="Translate_Bar" customModuleProvider="target">
             <connections>
+                <outlet property="settingsView" destination="czn-i4-GqA" id="lVy-cO-iHW"/>
                 <outlet property="view" destination="czn-i4-GqA" id="HwU-cO-8Aq"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <view id="czn-i4-GqA">
+        <view id="czn-i4-GqA" customClass="SettingsView" customModule="Translate_Bar" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="470" height="296"/>
             <autoresizingMask key="autoresizingMask"/>
             <subviews>
@@ -204,6 +205,12 @@
                 <constraint firstItem="DPJ-ev-5UY" firstAttribute="centerX" secondItem="czn-i4-GqA" secondAttribute="centerX" id="fsQ-Fa-Dh2"/>
                 <constraint firstItem="DPJ-ev-5UY" firstAttribute="top" secondItem="czn-i4-GqA" secondAttribute="top" constant="10" id="kmH-Sh-qHK"/>
             </constraints>
+            <connections>
+                <outlet property="closeButton" destination="PPC-N9-E1c" id="2A5-iC-Cml"/>
+                <outlet property="shortcutRecordView" destination="zQc-Db-q8o" id="320-qa-6oO"/>
+                <outlet property="showInDockSwitcher" destination="msb-CR-zbH" id="djC-za-uMt"/>
+                <outlet property="translateFromClipboardSwitcher" destination="euS-QA-0Mi" id="Qeu-IW-XwX"/>
+            </connections>
         </view>
     </objects>
 </document>

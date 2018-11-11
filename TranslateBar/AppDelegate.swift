@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import Magnet
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
@@ -29,11 +30,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         return popover
     }()
 
+    var toggleAppHotKey: HotKey?
     var coordinator: AppCoordinator!
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         coordinator = PopoverCoordinator(popover: popover)
         coordinator.start()
+        applyApplicationSettings()
     }
 
     func showPopover(_ sender: NSView) {
@@ -49,6 +52,28 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             closePopover(sender)
         } else {
             showPopover(sender)
+        }
+    }
+
+    public func setupToggleShortcut(with combo: KeyCombo?) {
+        toggleAppHotKey?.unregister()
+        if let combo = combo {
+            toggleAppHotKey = HotKey(identifier: "ToggleAppHotKey", keyCombo: combo, target: self, action: #selector(togglePopoverFromMenuBar), actionQueue: .main)
+            toggleAppHotKey!.register()
+        }
+    }
+
+    private func applyApplicationSettings() {
+        let settings = Settings.shared
+        NSApplication.shared.setActivationPolicy(settings.isShowIconInDock ? .regular : .accessory)
+        if let keyCombo = settings.toggleAppShortcut {
+            setupToggleShortcut(with: keyCombo)
+        }
+    }
+
+    @objc func togglePopoverFromMenuBar() {
+        if let button = statusItem.button {
+            togglePopover(button)
         }
     }
 

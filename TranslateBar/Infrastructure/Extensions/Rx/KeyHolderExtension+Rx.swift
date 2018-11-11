@@ -14,7 +14,7 @@ import RxSwift
 private class RxRecordViewDelegateProxy: DelegateProxy<RecordView, RecordViewDelegate>,
     RecordViewDelegate,
     DelegateProxyType {
-    fileprivate let keyCombo = PublishSubject<KeyCombo>()
+    fileprivate let keyCombo = PublishSubject<KeyCombo?>()
     fileprivate let viewDidEndRecording = PublishSubject<()>()
     fileprivate let viewDidClearShortcut = PublishSubject<()>()
 
@@ -48,6 +48,7 @@ private class RxRecordViewDelegateProxy: DelegateProxy<RecordView, RecordViewDel
 
     func recordViewDidClearShortcut(_ recordView: RecordView) {
         viewDidClearShortcut.onNext(())
+        keyCombo.onNext(nil)
     }
 
     func recordView(_ recordView: RecordView, didChangeKeyCombo keyCombo: KeyCombo) {
@@ -64,8 +65,11 @@ extension Reactive where Base: RecordView {
         return RxRecordViewDelegateProxy.proxy(for: base)
     }
 
-    var keyCombo: Observable<KeyCombo> {
-        return delegateProxy.keyCombo.asObservable()
+    var keyCombo: ControlProperty<KeyCombo?> {
+        let getter = Binder(base) { view, kombo in
+            view.keyCombo = kombo
+        }
+        return ControlProperty(values: delegateProxy.keyCombo, valueSink: getter)
     }
 
     var didEndRecording: Observable<()> {

@@ -36,17 +36,38 @@ class TranslateViewController: NSViewController {
 
         appView.translationView.input.textView.font = FontFamily.Roboto.regular.font(size: 13)
         appView.translationView.output.translationText.textView.font = FontFamily.Roboto.regular.font(size: 13)
+
+        appView.bottomBar.settingsButton.menu = {
+            let menu = NSMenu()
+            let settings = NSMenuItem(title: "Settings...", action: #selector(showSettings), keyEquivalent: ",")
+            let exit = NSMenuItem(title: "Quit Translate Bar", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q")
+            menu.addItem(settings)
+            menu.addItem(exit)
+            return menu
+        }()
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         createBindings()
         apply(viewModel.transform(input: input()))
+
+        setupActions()
+    }
+
+    private func setupActions() {
         appView.bottomBar.reloadButton.rx.tap
-			.subscribe { [unowned self] _ in
-				self.appView.invalidateIntrinsicContentSize()
-				self.view.layoutSubtreeIfNeeded()
-			}.disposed(by: disposeBag)
+            .subscribe(onNext: { [unowned self] _ in
+                self.appView.invalidateIntrinsicContentSize()
+                self.view.layoutSubtreeIfNeeded()
+            })
+            .disposed(by: disposeBag)
+        appView.bottomBar.settingsButton.rx.tap
+            .subscribe(onNext: { [weak button = appView.bottomBar.settingsButton] _ in
+                guard let button = button else { return }
+                NSMenu.popUpContextMenu(button.menu!, with: NSApp.currentEvent!, for: button)
+            })
+            .disposed(by: disposeBag)
     }
 
     private func input() -> TranslateViewModel.Input {
@@ -58,7 +79,8 @@ class TranslateViewController: NSViewController {
             swapButtonClicked: appView.topBar.swapButton.rx.controlEvent.asDriver(),
             languagePickerQuery: languagePickerQuery.asDriver(),
             languagePickerSelectedIndex: languagePickerSelectedIndex,
-            suggenstionLinkClicked: suggenstionLinkClicked.asDriverOnErrorJustComplete()
+			suggenstionLinkClicked: suggenstionLinkClicked.asDriverOnErrorJustComplete(),
+			translationFromClipboardNeeded: self.rx.viewWillAppear.asDriver()
         )
     }
 
@@ -131,5 +153,9 @@ extension TranslateViewController {
                 return item
             }
             .disposed(by: disposeBag)
+    }
+
+    @objc private func showSettings() {
+        NSApplication.shared.appDelegate.coordinator.navigate(to: .settings)
     }
 }
