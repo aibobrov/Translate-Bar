@@ -13,7 +13,6 @@ target 'TranslateBar' do
 
   pod 'RxSwift'
   pod 'RxCocoa'
-  pod 'RxSwiftExt'
   pod 'Moya/RxSwift'
   pod 'KeyHolder'  
   pod 'ITSwitch'

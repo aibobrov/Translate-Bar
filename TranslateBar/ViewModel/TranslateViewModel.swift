@@ -102,7 +102,7 @@ extension TranslateViewModel: ViewModelType {
         let languagePickerSelectedIndex: Driver<IndexPath>
         let suggenstionLinkClicked: Driver<String>
         let translationFromClipboardNeeded: Driver<Void>
-		let pinButtonState: Driver<NSControl.StateValue>
+        let pinButtonState: Driver<NSControl.StateValue>
     }
 
     struct Output {
@@ -187,7 +187,6 @@ extension TranslateViewModel {
                 let query = String(result.dropLast().joined())
                 return OnLinkActionQuery(action: action, query: query)
             }
-
             .drive(onNext: { object in
                 NotificationCenter.default.post(name: .linkClicked, object: object)
             })
@@ -198,12 +197,12 @@ extension TranslateViewModel {
             .map { NSPasteboard.clipboard ?? "" }
             .drive(inputText)
             .disposed(by: disposeBag)
-		input.pinButtonState
-			.map { $0 == .on ? NSPopover.Behavior.applicationDefined : .transient }
-			.drive(onNext: { behavior in
-				NSApplication.shared.appDelegate.popover.behavior = behavior
-			})
-			.disposed(by: disposeBag)
+        input.pinButtonState
+            .map { $0 == .on ? NSPopover.Behavior.applicationDefined : .transient }
+            .drive(onNext: { behavior in
+                NSApplication.shared.appDelegate.popover.behavior = behavior
+            })
+            .disposed(by: disposeBag)
     }
 
     private func suggestionsAttributedText(_ value: ([SpellMistake], String)) -> String {

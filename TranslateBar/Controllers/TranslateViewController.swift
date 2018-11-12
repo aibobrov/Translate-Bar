@@ -81,7 +81,7 @@ class TranslateViewController: NSViewController {
             languagePickerSelectedIndex: languagePickerSelectedIndex,
             suggenstionLinkClicked: suggenstionLinkClicked.asDriverOnErrorJustComplete(),
             translationFromClipboardNeeded: rx.viewWillAppear.asDriver(),
-			pinButtonState: appView.bottomBar.pinButton.rx.state.asDriver()
+            pinButtonState: appView.bottomBar.pinButton.rx.state.asDriver()
         )
     }
 
