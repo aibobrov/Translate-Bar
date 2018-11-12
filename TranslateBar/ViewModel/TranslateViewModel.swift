@@ -159,7 +159,7 @@ extension TranslateViewModel {
                 return string
             }
             .map { NSAttributedString(string: $0).applying(.link("\($0)\(TranslateClickAction.separator)\(TranslateClickAction.keep.rawValue)")) }
-            .map { NSAttributedString(string: "Did you mean ") + $0 + NSAttributedString(string: "?") }
+            .map { NSAttributedString(string: "\(L10n.suggest) ") + $0 + NSAttributedString(string: "?") }
         let suggestionAttributedString = Driver.merge(inputTextDriver.map { _ in NSAttributedString(string: "") }, suggestion)
         return TranslationDrivers(limitationText: limitationText,
                                   clearButtonHidden: clearButtonHidden,

@@ -39,8 +39,8 @@ class TranslateViewController: NSViewController {
 
         appView.bottomBar.settingsButton.menu = {
             let menu = NSMenu()
-            let settings = NSMenuItem(title: "Settings...", action: #selector(showSettings), keyEquivalent: ",")
-            let exit = NSMenuItem(title: "Quit Translate Bar", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q")
+            let settings = NSMenuItem(title: "\(L10n.settings)...", action: #selector(showSettings), keyEquivalent: ",")
+            let exit = NSMenuItem(title: L10n.quit, action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q")
             menu.addItem(settings)
             menu.addItem(exit)
             return menu

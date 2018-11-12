@@ -19,6 +19,10 @@
 		A1134A232198B18C000BFBF2 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1134A222198B18C000BFBF2 /* SettingsView.swift */; };
 		A1134A252198B221000BFBF2 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1134A242198B221000BFBF2 /* SettingsViewModel.swift */; };
 		A1134A272198BE43000BFBF2 /* NSViewController+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1134A262198BE43000BFBF2 /* NSViewController+Rx.swift */; };
+		A1134A792198F607000BFBF2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A1134A7B2198F607000BFBF2 /* Localizable.strings */; };
+		A1134A822198FAA2000BFBF2 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1134A842198FAA2000BFBF2 /* SettingsViewController.xib */; };
+		A1134A8B2198FC0C000BFBF2 /* TranslateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1134A8D2198FC0C000BFBF2 /* TranslateViewController.xib */; };
+		A1134A9A2198FEFD000BFBF2 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1134A992198FEFD000BFBF2 /* Strings.swift */; };
 		A120EA3321920CAC0063FE14 /* LimitedTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A120EA3221920CAC0063FE14 /* LimitedTextView.swift */; };
 		A120EA35219215480063FE14 /* IgnoreScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A120EA34219215480063FE14 /* IgnoreScrollView.swift */; };
 		A14B2335219642DF00C39CD8 /* Configurable+Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14B2334219642DF00C39CD8 /* Configurable+Reusable.swift */; };
@@ -75,9 +79,7 @@
 		A1C38D7D217BD615002B4995 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A1C38D77217BD615002B4995 /* Roboto-Regular.ttf */; };
 		A1C38D7E217BD615002B4995 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1C38D79217BD615002B4995 /* Assets.xcassets */; };
 		A1C38D83217BDDCA002B4995 /* TranslateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C38D81217BDDCA002B4995 /* TranslateViewController.swift */; };
-		A1C38D84217BDDCA002B4995 /* TranslateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1C38D82217BDDCA002B4995 /* TranslateViewController.xib */; };
 		A1C38D87217BDDE2002B4995 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C38D85217BDDE2002B4995 /* SettingsViewController.swift */; };
-		A1C38D88217BDDE2002B4995 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1C38D86217BDDE2002B4995 /* SettingsViewController.xib */; };
 		A1C38D8C217BDEA1002B4995 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1C38D8A217BDEA1002B4995 /* Main.storyboard */; };
 		A1C38D90217BDF0E002B4995 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C38D8F217BDF0E002B4995 /* Coordinator.swift */; };
 		A1C38D92217BE463002B4995 /* PopoverCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C38D91217BE463002B4995 /* PopoverCoordinator.swift */; };
@@ -120,6 +122,18 @@
 		A1134A222198B18C000BFBF2 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		A1134A242198B221000BFBF2 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		A1134A262198BE43000BFBF2 /* NSViewController+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSViewController+Rx.swift"; sourceTree = "<group>"; };
+		A1134A7A2198F607000BFBF2 /* global */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = global; path = global.lproj/Localizable.strings; sourceTree = "<group>"; };
+		A1134A7E2198F6C1000BFBF2 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/Main.storyboard; sourceTree = "<group>"; };
+		A1134A7F2198F6C1000BFBF2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		A1134A802198F937000BFBF2 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		A1134A812198F937000BFBF2 /* ru */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = ru; path = ru.lproj/Main.storyboard; sourceTree = "<group>"; };
+		A1134A832198FAA2000BFBF2 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/SettingsViewController.xib; sourceTree = "<group>"; };
+		A1134A872198FABD000BFBF2 /* global */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = global; path = global.lproj/SettingsViewController.xib; sourceTree = "<group>"; };
+		A1134A8A2198FAE8000BFBF2 /* ru */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ru; path = ru.lproj/SettingsViewController.xib; sourceTree = "<group>"; };
+		A1134A8C2198FC0C000BFBF2 /* global */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = global; path = global.lproj/TranslateViewController.xib; sourceTree = "<group>"; };
+		A1134A912198FC63000BFBF2 /* ru */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ru; path = ru.lproj/TranslateViewController.xib; sourceTree = "<group>"; };
+		A1134A982198FD71000BFBF2 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/TranslateViewController.xib; sourceTree = "<group>"; };
+		A1134A992198FEFD000BFBF2 /* Strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		A120EA3221920CAC0063FE14 /* LimitedTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LimitedTextView.swift; sourceTree = "<group>"; };
 		A120EA34219215480063FE14 /* IgnoreScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IgnoreScrollView.swift; sourceTree = "<group>"; };
 		A14B2334219642DF00C39CD8 /* Configurable+Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Configurable+Reusable.swift"; sourceTree = "<group>"; };
@@ -181,9 +195,7 @@
 		A1C38D77217BD615002B4995 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		A1C38D79217BD615002B4995 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A1C38D81217BDDCA002B4995 /* TranslateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateViewController.swift; sourceTree = "<group>"; };
-		A1C38D82217BDDCA002B4995 /* TranslateViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TranslateViewController.xib; sourceTree = "<group>"; };
 		A1C38D85217BDDE2002B4995 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		A1C38D86217BDDE2002B4995 /* SettingsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
 		A1C38D8B217BDEA1002B4995 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Main.storyboard; sourceTree = "<group>"; };
 		A1C38D8F217BDF0E002B4995 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		A1C38D91217BE463002B4995 /* PopoverCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverCoordinator.swift; sourceTree = "<group>"; };
@@ -267,6 +279,14 @@
 				A1134A222198B18C000BFBF2 /* SettingsView.swift */,
 			);
 			path = Settings;
+			sourceTree = "<group>";
+		};
+		A1134A6D2198F430000BFBF2 /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				A1134A7B2198F607000BFBF2 /* Localizable.strings */,
+			);
+			path = Localization;
 			sourceTree = "<group>";
 		};
 		A14B233821970B6800C39CD8 /* DictionaryArticle */ = {
@@ -400,7 +420,6 @@
 			children = (
 				A1A4805D217D2950003FF5B8 /* Settings.swift */,
 				A1A4805A217D2950003FF5B8 /* Networking */,
-				A1A48060217D2950003FF5B8 /* Player */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -413,13 +432,6 @@
 				A16D7B4721851C7600434A7D /* Endpoints */,
 			);
 			path = Networking;
-			sourceTree = "<group>";
-		};
-		A1A48060217D2950003FF5B8 /* Player */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Player;
 			sourceTree = "<group>";
 		};
 		A1A48067217D2A4E003FF5B8 /* MVVM */ = {
@@ -551,8 +563,9 @@
 			isa = PBXGroup;
 			children = (
 				A1C38D72217BD615002B4995 /* Generated */,
-				A1C38D76217BD615002B4995 /* Fonts */,
 				A1C38D78217BD615002B4995 /* Assets */,
+				A1C38D76217BD615002B4995 /* Fonts */,
+				A1134A6D2198F430000BFBF2 /* Localization */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -560,6 +573,7 @@
 		A1C38D72217BD615002B4995 /* Generated */ = {
 			isa = PBXGroup;
 			children = (
+				A1134A992198FEFD000BFBF2 /* Strings.swift */,
 				A1C38D74217BD615002B4995 /* Fonts.swift */,
 				A1C38D75217BD615002B4995 /* Images.swift */,
 			);
@@ -586,8 +600,8 @@
 			isa = PBXGroup;
 			children = (
 				A1C38D8A217BDEA1002B4995 /* Main.storyboard */,
-				A1C38D86217BDDE2002B4995 /* SettingsViewController.xib */,
-				A1C38D82217BDDCA002B4995 /* TranslateViewController.xib */,
+				A1134A842198FAA2000BFBF2 /* SettingsViewController.xib */,
+				A1134A8D2198FC0C000BFBF2 /* TranslateViewController.xib */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -765,8 +779,10 @@
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				en,
 				Base,
+				en,
+				ru,
+				global,
 			);
 			mainGroup = A1C38D42217BCE94002B4995;
 			productRefGroup = A1C38D4C217BCE94002B4995 /* Products */;
@@ -786,10 +802,11 @@
 			files = (
 				A1C38D7D217BD615002B4995 /* Roboto-Regular.ttf in Resources */,
 				A1D9A860218F9FFD0051A9D0 /* LanguageCollectionViewItem.xib in Resources */,
-				A1C38D88217BDDE2002B4995 /* SettingsViewController.xib in Resources */,
+				A1134A822198FAA2000BFBF2 /* SettingsViewController.xib in Resources */,
+				A1134A792198F607000BFBF2 /* Localizable.strings in Resources */,
 				A1C38D8C217BDEA1002B4995 /* Main.storyboard in Resources */,
 				A1C38D7E217BD615002B4995 /* Assets.xcassets in Resources */,
-				A1C38D84217BDDCA002B4995 /* TranslateViewController.xib in Resources */,
+				A1134A8B2198FC0C000BFBF2 /* TranslateViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -933,6 +950,7 @@
 				A1134A162198708D000BFBF2 /* YandexSpeller.swift in Sources */,
 				A1D9A852218F9DD90051A9D0 /* MouseTrackable.swift in Sources */,
 				A1C38D4F217BCE94002B4995 /* AppDelegate.swift in Sources */,
+				A1134A9A2198FEFD000BFBF2 /* Strings.swift in Sources */,
 				A1134A1F2198923A000BFBF2 /* NaturalLanguageExtensions.swift in Sources */,
 				A1A48054217D28A3003FF5B8 /* RxSupportUtls.swift in Sources */,
 				A1134A252198B221000BFBF2 /* SettingsViewModel.swift in Sources */,
@@ -997,10 +1015,42 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		A1134A7B2198F607000BFBF2 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A1134A7A2198F607000BFBF2 /* global */,
+				A1134A7F2198F6C1000BFBF2 /* en */,
+				A1134A802198F937000BFBF2 /* ru */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		A1134A842198FAA2000BFBF2 /* SettingsViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A1134A832198FAA2000BFBF2 /* en */,
+				A1134A872198FABD000BFBF2 /* global */,
+				A1134A8A2198FAE8000BFBF2 /* ru */,
+			);
+			name = SettingsViewController.xib;
+			sourceTree = "<group>";
+		};
+		A1134A8D2198FC0C000BFBF2 /* TranslateViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A1134A8C2198FC0C000BFBF2 /* global */,
+				A1134A912198FC63000BFBF2 /* ru */,
+				A1134A982198FD71000BFBF2 /* en */,
+			);
+			name = TranslateViewController.xib;
+			sourceTree = "<group>";
+		};
 		A1C38D8A217BDEA1002B4995 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				A1C38D8B217BDEA1002B4995 /* Base */,
+				A1134A7E2198F6C1000BFBF2 /* en */,
+				A1134A812198F937000BFBF2 /* ru */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";

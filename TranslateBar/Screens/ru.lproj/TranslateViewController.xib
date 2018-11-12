@@ -106,7 +106,7 @@
                                                                 <subviews>
                                                                     <textField focusRingType="none" translatesAutoresizingMaskIntoConstraints="NO" id="sro-bD-lkR">
                                                                         <rect key="frame" x="38" y="6" width="458" height="19"/>
-                                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" focusRingType="none" placeholderString="Search..." drawsBackground="YES" id="mna-Y3-3kh">
+                                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" focusRingType="none" placeholderString="Поиск..." drawsBackground="YES" id="mna-Y3-3kh">
                                                                             <font key="font" size="13" name="Roboto-Regular"/>
                                                                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -230,7 +230,7 @@
                                                                             <constraint firstAttribute="width" constant="12" id="uYe-i1-cn8"/>
                                                                             <constraint firstAttribute="height" constant="12" id="yKv-pj-XkN"/>
                                                                         </constraints>
-                                                                        <buttonCell key="cell" type="squareTextured" bezelStyle="texturedSquare" image="NSStopProgressTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" focusRingType="none" transparent="YES" imageScaling="proportionallyUpOrDown" inset="2" id="r7R-oW-OTf">
+                                                                        <buttonCell key="cell" type="squareTextured" bezelStyle="texturedSquare" image="NSStopProgressTemplate" imagePosition="only" alignment="center" borderStyle="border" focusRingType="none" transparent="YES" imageScaling="proportionallyUpOrDown" inset="2" id="r7R-oW-OTf">
                                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                                             <font key="font" metaFont="system"/>
                                                                         </buttonCell>
@@ -280,46 +280,7 @@
                                                                                                     <attributes>
                                                                                                         <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                                                                         <font key="NSFont" size="13" name="Roboto-Regular"/>
-                                                                                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
-                                                                                                            <tabStops>
-                                                                                                                <textTab alignment="left" location="28">
-                                                                                                                    <options/>
-                                                                                                                </textTab>
-                                                                                                                <textTab alignment="left" location="56">
-                                                                                                                    <options/>
-                                                                                                                </textTab>
-                                                                                                                <textTab alignment="left" location="84">
-                                                                                                                    <options/>
-                                                                                                                </textTab>
-                                                                                                                <textTab alignment="left" location="112">
-                                                                                                                    <options/>
-                                                                                                                </textTab>
-                                                                                                                <textTab alignment="left" location="140">
-                                                                                                                    <options/>
-                                                                                                                </textTab>
-                                                                                                                <textTab alignment="left" location="168">
-                                                                                                                    <options/>
-                                                                                                                </textTab>
-                                                                                                                <textTab alignment="left" location="196">
-                                                                                                                    <options/>
-                                                                                                                </textTab>
-                                                                                                                <textTab alignment="left" location="224">
-                                                                                                                    <options/>
-                                                                                                                </textTab>
-                                                                                                                <textTab alignment="left" location="252">
-                                                                                                                    <options/>
-                                                                                                                </textTab>
-                                                                                                                <textTab alignment="left" location="280">
-                                                                                                                    <options/>
-                                                                                                                </textTab>
-                                                                                                                <textTab alignment="left" location="308">
-                                                                                                                    <options/>
-                                                                                                                </textTab>
-                                                                                                                <textTab alignment="left" location="336">
-                                                                                                                    <options/>
-                                                                                                                </textTab>
-                                                                                                            </tabStops>
-                                                                                                        </paragraphStyle>
+                                                                                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
                                                                                                     </attributes>
                                                                                                 </fragment>
                                                                                             </attributedString>
@@ -352,6 +313,7 @@
                                                                 <constraints>
                                                                     <constraint firstAttribute="trailing" secondItem="hPp-KM-8Fp" secondAttribute="trailing" id="1ex-mS-C09"/>
                                                                     <constraint firstAttribute="trailing" secondItem="wLc-Li-GpA" secondAttribute="trailing" id="C0P-le-FTz"/>
+                                                                    <constraint firstItem="RwI-Gg-3iD" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Nim-hP-zX6" secondAttribute="leading" constant="20" symbolic="YES" id="Myn-DI-hRF"/>
                                                                     <constraint firstItem="3vF-Ot-jCL" firstAttribute="top" secondItem="Nim-hP-zX6" secondAttribute="top" constant="8" id="ROj-Ty-tll"/>
                                                                     <constraint firstItem="3vF-Ot-jCL" firstAttribute="leading" secondItem="Nim-hP-zX6" secondAttribute="leading" constant="8" id="RTV-HW-NR1"/>
                                                                     <constraint firstItem="hPp-KM-8Fp" firstAttribute="top" secondItem="3vF-Ot-jCL" secondAttribute="bottom" constant="4" id="Unn-xd-eCv"/>

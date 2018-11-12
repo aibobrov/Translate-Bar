@@ -22,8 +22,8 @@ struct AutoDetectedLanguage: LanguageProtocol {
 
 extension AutoDetectedLanguage: CustomStringConvertible {
     public var description: String {
-        guard let language = real else { return "определить язык" }
-        return "\(language.description) (определенный язык)"
+        guard let language = real else { return L10n.detect }
+        return "\(language.description) \(L10n.detected)"
     }
 }
 

@@ -56,19 +56,33 @@ extension YandexTranslate: TargetType {
     var task: Task {
         switch self {
         case .getSupportedLanguages:
-            return .requestParameters(parameters: [ParameterKeys.ui: "ru", ParameterKeys.key: keys.yandexTranslateKey],
-                                      encoding: URLEncoding.default)
+            return .requestParameters(
+                parameters: [
+                    ParameterKeys.ui: Settings.ui,
+                    ParameterKeys.key: keys.yandexTranslateKey
+                ],
+                encoding: URLEncoding.default
+            )
         case let .detectLanguage(text):
-            return .requestParameters(parameters: [ParameterKeys.key: keys.yandexTranslateKey, ParameterKeys.text: text],
-                                      encoding: URLEncoding.default)
+            return .requestParameters(
+                parameters: [
+                    ParameterKeys.key: keys.yandexTranslateKey,
+                    ParameterKeys.text: text,
+                    ParameterKeys.ui: Settings.ui
+                ],
+                encoding: URLEncoding.default
+            )
         case let .translate(from, to, text):
             let direction = TranslateDirection(source: from, target: to)
-            return .requestParameters(parameters: [
-                ParameterKeys.key: keys.yandexTranslateKey,
-                ParameterKeys.language: direction.string,
-                ParameterKeys.text: text
-            ],
-                                      encoding: URLEncoding.default)
+            return .requestParameters(
+                parameters: [
+                    ParameterKeys.key: keys.yandexTranslateKey,
+                    ParameterKeys.language: direction.string,
+                    ParameterKeys.text: text,
+                    ParameterKeys.ui: Settings.ui
+                ],
+                encoding: URLEncoding.default
+            )
         }
     }
 

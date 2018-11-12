@@ -32,15 +32,20 @@ extension YandexSpeller: TargetType {
     private struct ParameterKeys {
         static let text = "text"
         static let lang = "lang"
+        static let ui = "ui"
     }
 
     var task: Task {
         switch self {
         case let .spell(text, language):
-            return Task.requestParameters(parameters: [
-                ParameterKeys.text: text,
-                ParameterKeys.lang: language.short
-            ], encoding: URLEncoding.default)
+            return Task.requestParameters(
+                parameters: [
+                    ParameterKeys.text: text,
+                    ParameterKeys.lang: language.short,
+                    ParameterKeys.ui: Settings.ui
+                ],
+                encoding: URLEncoding.default
+            )
         }
     }
 

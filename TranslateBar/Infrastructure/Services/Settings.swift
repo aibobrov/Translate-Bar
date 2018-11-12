@@ -9,21 +9,11 @@
 import Foundation
 import Magnet
 
-extension UserDefaults {
-    subscript<T: RawRepresentable>(key: String) -> T? {
-        get {
-            if let rawValue = value(forKey: key) as? T.RawValue {
-                return T(rawValue: rawValue)
-            }
-            return nil
-        }
-        set {
-            set(newValue?.rawValue, forKey: key)
-        }
-    }
-}
-
 public final class Settings: NSObject {
+    static var ui: String {
+        return Locale.current.languageCode == "ru" ? "ru" : "en"
+    }
+
     static let shared = Settings()
 
     private var store = UserDefaults.standard

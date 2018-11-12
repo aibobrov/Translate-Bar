@@ -9,6 +9,19 @@
 			<key>orderHint</key>
 			<integer>13</integer>
 		</dict>
+		<key>TranslateBar_en.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>14</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>A1C38D4A217BCE94002B4995</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 	</dict>
 </dict>
 </plist>

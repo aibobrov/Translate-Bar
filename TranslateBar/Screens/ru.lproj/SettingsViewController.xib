@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14313.18"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="SettingsViewController" customModule="Translate_Bar" customModuleProvider="target">
+            <connections>
+                <outlet property="settingsView" destination="czn-i4-GqA" id="lVy-cO-iHW"/>
+                <outlet property="view" destination="czn-i4-GqA" id="HwU-cO-8Aq"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <view id="czn-i4-GqA" customClass="SettingsView" customModule="Translate_Bar" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="567" height="296"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <subviews>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="DPJ-ev-5UY">
+                    <rect key="frame" x="248" y="269" width="71" height="17"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="17" id="ajZ-1x-TA6"/>
+                    </constraints>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Настройки" id="ZbX-7u-rvW">
+                        <font key="font" size="13" name="Roboto-Regular"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="PPC-N9-E1c">
+                    <rect key="frame" x="495" y="269" width="57" height="17"/>
+                    <buttonCell key="cell" type="bevel" title="Закрыть" bezelStyle="rounded" alignment="center" imageScaling="proportionallyDown" inset="2" id="fCX-Qy-PNk">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" size="13" name="Roboto-Regular"/>
+                    </buttonCell>
+                </button>
+                <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qrG-S1-Kxl">
+                    <rect key="frame" x="15" y="8" width="537" height="253"/>
+                    <subviews>
+                        <customView translatesAutoresizingMaskIntoConstraints="NO" id="4h4-EV-hPR">
+                            <rect key="frame" x="0.0" y="193" width="537" height="60"/>
+                            <subviews>
+                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ran-yt-pdA">
+                                    <rect key="frame" x="20" y="15" width="244" height="30"/>
+                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Показывать иконку в Dock" drawsBackground="YES" id="2AU-4h-aJW">
+                                        <font key="font" size="19" name="Roboto-Regular"/>
+                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </textFieldCell>
+                                </textField>
+                                <customView canDrawConcurrently="YES" translatesAutoresizingMaskIntoConstraints="NO" id="msb-CR-zbH" customClass="ITSwitch">
+                                    <rect key="frame" x="464" y="15" width="53" height="30"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="53" id="kFY-YI-gCl"/>
+                                        <constraint firstAttribute="height" constant="30" id="n0m-5R-mdT"/>
+                                    </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="checked" value="NO"/>
+                                        <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
+                                            <color key="value" name="controlShadowColor" catalog="System" colorSpace="catalog"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </customView>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="Ran-yt-pdA" firstAttribute="centerY" secondItem="4h4-EV-hPR" secondAttribute="centerY" id="5sl-vL-Bjw"/>
+                                <constraint firstItem="Ran-yt-pdA" firstAttribute="leading" secondItem="4h4-EV-hPR" secondAttribute="leading" constant="20" id="IPm-zm-ukJ"/>
+                                <constraint firstAttribute="height" constant="60" id="Pg3-st-dBD"/>
+                                <constraint firstItem="msb-CR-zbH" firstAttribute="centerY" secondItem="4h4-EV-hPR" secondAttribute="centerY" id="QVt-dp-6wj"/>
+                                <constraint firstItem="msb-CR-zbH" firstAttribute="top" secondItem="Ran-yt-pdA" secondAttribute="top" id="V1c-xB-dsz"/>
+                                <constraint firstItem="msb-CR-zbH" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Ran-yt-pdA" secondAttribute="trailing" id="ZAP-I8-6aO"/>
+                                <constraint firstAttribute="trailing" secondItem="msb-CR-zbH" secondAttribute="trailing" constant="20" id="sQW-aJ-3lj"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="color" keyPath="backgroundColor">
+                                    <color key="value" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="10"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </customView>
+                        <customView translatesAutoresizingMaskIntoConstraints="NO" id="ULB-oJ-rCA">
+                            <rect key="frame" x="0.0" y="125" width="537" height="60"/>
+                            <subviews>
+                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pex-Um-4Lz">
+                                    <rect key="frame" x="20" y="15" width="382" height="30"/>
+                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Автоматически переводить буфер обмена" drawsBackground="YES" id="TVS-iK-Lts">
+                                        <font key="font" size="19" name="Roboto-Regular"/>
+                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </textFieldCell>
+                                </textField>
+                                <customView canDrawConcurrently="YES" translatesAutoresizingMaskIntoConstraints="NO" id="euS-QA-0Mi" customClass="ITSwitch">
+                                    <rect key="frame" x="464" y="15" width="53" height="30"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="checked" value="NO"/>
+                                        <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
+                                            <color key="value" white="0.67000000000000004" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </customView>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="pex-Um-4Lz" firstAttribute="centerY" secondItem="ULB-oJ-rCA" secondAttribute="centerY" id="QhK-Aq-sK3"/>
+                                <constraint firstItem="euS-QA-0Mi" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="pex-Um-4Lz" secondAttribute="trailing" id="Qyd-n5-cBw"/>
+                                <constraint firstItem="euS-QA-0Mi" firstAttribute="centerY" secondItem="ULB-oJ-rCA" secondAttribute="centerY" id="XUa-Qa-NNx"/>
+                                <constraint firstItem="euS-QA-0Mi" firstAttribute="top" secondItem="pex-Um-4Lz" secondAttribute="top" id="p7J-s2-VSI"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="color" keyPath="backgroundColor">
+                                    <color key="value" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="10"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </customView>
+                        <customView translatesAutoresizingMaskIntoConstraints="NO" id="lYA-ey-WVa">
+                            <rect key="frame" x="0.0" y="0.0" width="537" height="117"/>
+                            <subviews>
+                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zUd-EU-lUl">
+                                    <rect key="frame" x="20" y="78" width="492" height="29"/>
+                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Определить комбинацию, чтобы открыть Translate Bar" drawsBackground="YES" id="PMI-u0-A0B">
+                                        <font key="font" size="19" name="Roboto-Regular"/>
+                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </textFieldCell>
+                                </textField>
+                                <customView canDrawConcurrently="YES" focusRingType="none" translatesAutoresizingMaskIntoConstraints="NO" id="zQc-Db-q8o" customClass="RecordView" customModule="KeyHolder">
+                                    <rect key="frame" x="20" y="20" width="497" height="50"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="50" id="0LG-LZ-bJF"/>
+                                    </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="color" keyPath="backgroundColor">
+                                            <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
+                                            <color key="value" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                            <color key="value" white="0.80000000000000004" alpha="0.59999999999999998" colorSpace="deviceWhite"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                            <real key="value" value="1"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                            <real key="value" value="5"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="showsClearButton" value="YES"/>
+                                    </userDefinedRuntimeAttributes>
+                                </customView>
+                            </subviews>
+                            <constraints>
+                                <constraint firstAttribute="bottom" secondItem="zQc-Db-q8o" secondAttribute="bottom" constant="20" id="9Z1-u7-RS0"/>
+                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="zUd-EU-lUl" secondAttribute="trailing" id="CfQ-LL-TSB"/>
+                                <constraint firstAttribute="trailing" secondItem="zQc-Db-q8o" secondAttribute="trailing" constant="20" id="gDQ-e4-XBa"/>
+                                <constraint firstItem="zQc-Db-q8o" firstAttribute="top" secondItem="zUd-EU-lUl" secondAttribute="bottom" constant="8" id="kXM-kG-oA4"/>
+                                <constraint firstAttribute="height" constant="117" id="vPD-DV-Otf"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="color" keyPath="backgroundColor">
+                                    <color key="value" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="10"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </customView>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="lYA-ey-WVa" firstAttribute="leading" secondItem="qrG-S1-Kxl" secondAttribute="leading" id="94p-Lg-p8r"/>
+                        <constraint firstAttribute="trailing" secondItem="lYA-ey-WVa" secondAttribute="trailing" id="C7Y-dV-gjo"/>
+                        <constraint firstItem="ULB-oJ-rCA" firstAttribute="height" secondItem="4h4-EV-hPR" secondAttribute="height" id="DW2-za-5lb"/>
+                        <constraint firstItem="pex-Um-4Lz" firstAttribute="leading" secondItem="Ran-yt-pdA" secondAttribute="leading" id="LCF-0P-dTb"/>
+                        <constraint firstItem="ULB-oJ-rCA" firstAttribute="leading" secondItem="qrG-S1-Kxl" secondAttribute="leading" id="LDc-LA-MiB"/>
+                        <constraint firstItem="zQc-Db-q8o" firstAttribute="leading" secondItem="Ran-yt-pdA" secondAttribute="leading" id="LFo-cy-NyG"/>
+                        <constraint firstItem="ULB-oJ-rCA" firstAttribute="leading" secondItem="qrG-S1-Kxl" secondAttribute="leading" id="MA4-4J-eYV"/>
+                        <constraint firstItem="euS-QA-0Mi" firstAttribute="width" secondItem="msb-CR-zbH" secondAttribute="width" id="Mpu-bY-VYq"/>
+                        <constraint firstItem="msb-CR-zbH" firstAttribute="trailing" secondItem="zQc-Db-q8o" secondAttribute="trailing" id="TI9-HG-7Yi"/>
+                        <constraint firstItem="euS-QA-0Mi" firstAttribute="trailing" secondItem="zQc-Db-q8o" secondAttribute="trailing" id="U53-KH-mdZ"/>
+                        <constraint firstItem="4h4-EV-hPR" firstAttribute="leading" secondItem="qrG-S1-Kxl" secondAttribute="leading" id="idg-Xq-lgo"/>
+                        <constraint firstItem="zUd-EU-lUl" firstAttribute="leading" secondItem="Ran-yt-pdA" secondAttribute="leading" id="kBk-jf-zit"/>
+                        <constraint firstAttribute="trailing" secondItem="ULB-oJ-rCA" secondAttribute="trailing" id="mR6-BC-IOz"/>
+                        <constraint firstItem="euS-QA-0Mi" firstAttribute="height" secondItem="msb-CR-zbH" secondAttribute="height" id="svp-gr-wca"/>
+                        <constraint firstAttribute="height" constant="253" id="twv-q4-Nqp"/>
+                        <constraint firstAttribute="trailing" secondItem="4h4-EV-hPR" secondAttribute="trailing" id="yYP-AZ-nZB"/>
+                    </constraints>
+                    <visibilityPriorities>
+                        <integer value="1000"/>
+                        <integer value="1000"/>
+                        <integer value="1000"/>
+                    </visibilityPriorities>
+                    <customSpacing>
+                        <real value="3.4028234663852886e+38"/>
+                        <real value="3.4028234663852886e+38"/>
+                        <real value="3.4028234663852886e+38"/>
+                    </customSpacing>
+                </stackView>
+            </subviews>
+            <constraints>
+                <constraint firstItem="PPC-N9-E1c" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="DPJ-ev-5UY" secondAttribute="trailing" id="9uo-r7-En5"/>
+                <constraint firstAttribute="bottom" secondItem="qrG-S1-Kxl" secondAttribute="bottom" constant="8" id="HS9-MF-MLB"/>
+                <constraint firstAttribute="trailing" secondItem="qrG-S1-Kxl" secondAttribute="trailing" constant="15" id="ILo-cP-cQr"/>
+                <constraint firstItem="qrG-S1-Kxl" firstAttribute="leading" secondItem="czn-i4-GqA" secondAttribute="leading" constant="15" id="JY4-q4-y2A"/>
+                <constraint firstItem="qrG-S1-Kxl" firstAttribute="top" secondItem="DPJ-ev-5UY" secondAttribute="bottom" constant="8" id="MDA-Z5-jiJ"/>
+                <constraint firstAttribute="trailing" secondItem="PPC-N9-E1c" secondAttribute="trailing" constant="15" id="Mfc-9y-LL2"/>
+                <constraint firstItem="PPC-N9-E1c" firstAttribute="height" secondItem="DPJ-ev-5UY" secondAttribute="height" id="S2H-oU-nLL"/>
+                <constraint firstItem="PPC-N9-E1c" firstAttribute="top" secondItem="DPJ-ev-5UY" secondAttribute="top" id="fSF-zK-91o"/>
+                <constraint firstItem="DPJ-ev-5UY" firstAttribute="centerX" secondItem="czn-i4-GqA" secondAttribute="centerX" id="fsQ-Fa-Dh2"/>
+                <constraint firstItem="DPJ-ev-5UY" firstAttribute="top" secondItem="czn-i4-GqA" secondAttribute="top" constant="10" id="kmH-Sh-qHK"/>
+            </constraints>
+            <connections>
+                <outlet property="closeButton" destination="PPC-N9-E1c" id="2A5-iC-Cml"/>
+                <outlet property="shortcutRecordView" destination="zQc-Db-q8o" id="320-qa-6oO"/>
+                <outlet property="showInDockSwitcher" destination="msb-CR-zbH" id="djC-za-uMt"/>
+                <outlet property="translateFromClipboardSwitcher" destination="euS-QA-0Mi" id="Qeu-IW-XwX"/>
+            </connections>
+            <point key="canvasLocation" x="265.5" y="135"/>
+        </view>
+    </objects>
+</document>

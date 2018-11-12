@@ -50,17 +50,24 @@ extension YandexDictionary: TargetType {
     var task: Task {
         switch self {
         case .getSupportedLanguages:
-            return .requestParameters(parameters: [ParameterKeys.key: keys.yandexDictionaryKey],
-                                      encoding: URLEncoding.default)
+            return .requestParameters(
+                parameters: [
+                    ParameterKeys.key: keys.yandexDictionaryKey,
+                    ParameterKeys.ui: Settings.ui
+                ],
+                encoding: URLEncoding.default
+            )
         case let .lookup(from, to, text):
             let direction = TranslateDirection(source: from, target: to)
-            return .requestParameters(parameters: [
-                ParameterKeys.key: keys.yandexDictionaryKey,
-                ParameterKeys.text: text,
-                ParameterKeys.language: direction.string,
-                ParameterKeys.ui: "ru"
-            ],
-                                      encoding: URLEncoding.default)
+            return .requestParameters(
+                parameters: [
+                    ParameterKeys.key: keys.yandexDictionaryKey,
+                    ParameterKeys.text: text,
+                    ParameterKeys.language: direction.string,
+                    ParameterKeys.ui: Settings.ui
+                ],
+                encoding: URLEncoding.default
+            )
         }
     }
 
