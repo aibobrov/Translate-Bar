@@ -1,0 +1,17 @@
+xcassets:
+  inputs: ./TranslateBar/Resources/Assets/Assets.xcassets
+  outputs:
+    - templateName: swift4
+      output: ./TranslateBar/Resources/Generated/Images.swift
+
+fonts:
+  inputs: ./TranslateBar/Resources/Fonts
+  outputs:
+    - templateName: swift4
+      output: ./TranslateBar/Resources/Generated/Fonts.swift
+
+strings:
+  inputs: ./TranslateBar/Resources/Localization/global.lproj/Localizable.strings
+  outputs:
+    - templateName: structured-swift4
+      output: ./TranslateBar/Resources/Generated/Strings.swift

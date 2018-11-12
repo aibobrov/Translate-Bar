@@ -1,0 +1,18 @@
+disabled_rules:
+  - line_length
+  - identifier_name
+  - large_tuple
+  - superfluous_disable_command
+  - type_name
+  - type_body_length
+  - nesting
+  - force_cast
+excluded:
+  - Pods
+  - TranslateBarTests
+  - TranslateBarUITests
+
+force_cast:
+  severity: warning
+force_try:
+  severity: warning

@@ -1,0 +1,19 @@
+language: swift
+osx_image: xcode10
+xcode_project: TranslateBar.xcworkspace
+xcode_scheme: TranslateBar
+podfile: Podfile
+cache:
+- bundler
+- cocoapods
+before_install:
+- bundle install
+- bundle exec pod keys set YandexDictionaryKey $YANDEXAPITRANSLATEKEY TranslateBar
+- bundle exec pod keys set YandexTranslateKey $YANDEXAPIDICTIONARYKEY TranslateBar
+- pod update
+- chmod +x ./install_swiftlint.sh
+install: 
+- ./install_swiftlint.sh
+script: 
+- swiftlint
+- xcodebuild clean build -workspace TranslateBar.xcworkspace -scheme TranslateBar | xcpretty -c && exit ${PIPESTATUS[0]}

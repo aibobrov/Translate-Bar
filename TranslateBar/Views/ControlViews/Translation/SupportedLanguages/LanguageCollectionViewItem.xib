@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14313.18"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="LanguageCollectionViewItem" customModule="Translate_Bar" customModuleProvider="target">
+            <connections>
+                <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="Hz6-mo-xeY">
+            <rect key="frame" x="0.0" y="0.0" width="180" height="19"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mZj-26-k5a">
+                    <rect key="frame" x="23" y="-2" width="157" height="19"/>
+                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Language" drawsBackground="YES" id="Ce2-ke-fiK">
+                        <font key="font" size="13" name="Roboto-Regular"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </textFieldCell>
+                </textField>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MpJ-tn-WAb">
+                    <rect key="frame" x="0.0" y="0.0" width="19" height="19"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="MpJ-tn-WAb" secondAttribute="height" multiplier="1:1" id="Zpm-o5-WIm"/>
+                    </constraints>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="uU1-co-ir3"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="color" keyPath="backgroundColor">
+                            <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </imageView>
+            </subviews>
+            <constraints>
+                <constraint firstItem="MpJ-tn-WAb" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="D7e-aJ-7OX"/>
+                <constraint firstItem="mZj-26-k5a" firstAttribute="centerY" secondItem="Hz6-mo-xeY" secondAttribute="centerY" constant="2" id="j2Z-I9-w5T"/>
+                <constraint firstAttribute="bottom" secondItem="MpJ-tn-WAb" secondAttribute="bottom" id="lUB-oX-Rku"/>
+                <constraint firstItem="mZj-26-k5a" firstAttribute="height" secondItem="MpJ-tn-WAb" secondAttribute="height" id="q8s-yQ-doN"/>
+                <constraint firstItem="MpJ-tn-WAb" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="rv5-kQ-B2d"/>
+                <constraint firstAttribute="trailing" secondItem="mZj-26-k5a" secondAttribute="trailing" id="uNB-7Q-tDN"/>
+                <constraint firstItem="mZj-26-k5a" firstAttribute="leading" secondItem="MpJ-tn-WAb" secondAttribute="trailing" constant="4" id="yaH-5L-Cxe"/>
+            </constraints>
+            <point key="canvasLocation" x="125" y="172.5"/>
+        </customView>
+        <collectionViewItem id="aDl-ne-dz9" customClass="LanguageCollectionViewItem" customModule="Translate_Bar" customModuleProvider="target">
+            <connections>
+                <outlet property="imageView" destination="MpJ-tn-WAb" id="gk1-sh-VRZ"/>
+                <outlet property="textField" destination="mZj-26-k5a" id="L1n-QJ-cs6"/>
+                <outlet property="view" destination="Hz6-mo-xeY" id="GME-yG-2RL"/>
+            </connections>
+        </collectionViewItem>
+    </objects>
+</document>

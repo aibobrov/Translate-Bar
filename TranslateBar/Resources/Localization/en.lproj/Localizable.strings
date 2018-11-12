@@ -1,0 +1,16 @@
+/* 
+  Localizable.strings
+  TranslateBar
+
+  Created by Artem Bobrov on 12/11/2018.
+  Copyright © 2018 Artem Bobrov. All rights reserved.
+*/
+
+"suggest" = "Did you mean";
+"settings" = "Settings";
+"quit" = "Quit Translate Bar";
+"en" = "english";
+"ru" = "russian";
+"de" = "german";
+"detect" = "detect language";
+"detected" = "detected language";
