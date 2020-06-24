@@ -3,6 +3,8 @@ osx_image: xcode10
 xcode_project: TranslateBar.xcworkspace
 xcode_scheme: TranslateBar
 podfile: Podfile
+notifications:
+  email: false
 cache:
 - bundler
 - cocoapods
